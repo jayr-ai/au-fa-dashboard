@@ -1145,10 +1145,10 @@ function buildLeaderboard() {
 
   const d = {
     ucMtd: S(w.mtd, r=>r.uc), ucQtd: S(w.qtd, r=>r.uc), ucYtd: S(w.ytd, r=>r.uc),
-    revMtd: S(w.mtd, r=>r.rev), revQtd: S(w.qtd, r=>r.rev), revYtd: S(w.ytd, r=>r.rev),
+    revMtd: S(w.mtd, r=>r.rev, DATA.funnel), revQtd: S(w.qtd, r=>r.rev, DATA.funnel), revYtd: S(w.ytd, r=>r.rev, DATA.funnel),
     ucPmtd: S(w.pmtd, r=>r.uc),
     touchPmtd: S(w.pmtd, r=>r.di, DATA.kpi),
-    cashWtd: S(w.wtd, r=>r.cash),
+    cashWtd: S(w.wtd, r=>r.cash, DATA.funnel),
     leadsWtd: S(w.wtd, booked), leadsMtd: S(w.mtd, booked),
     touchWtd: S(w.wtd, r=>r.di, DATA.kpi), touchMtd: S(w.mtd, r=>r.di, DATA.kpi),
     setsMtd: S(w.mtd, r=>r.se, DATA.kpi), hoursMtd: S(w.mtd, r=>r.hrs, DATA.kpi),
