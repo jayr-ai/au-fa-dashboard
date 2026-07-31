@@ -1120,7 +1120,7 @@ function personalBests(year) {
   for (const r of DATA.funnel) {
     if (+r.d.slice(0,4) !== year) continue;
     const k = r.n + '|' + r.d.slice(0,7);
-    perMonth.set(k, (perMonth.get(k) || 0) + (r.uc || 0));
+    perMonth.set(k, (perMonth.get(k) || 0) + (r.rev || 0));
   }
   const best = new Map();
   for (const [k, v] of perMonth) {
