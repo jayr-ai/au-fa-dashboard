@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Everything the page needs. data.json is baked into the image, so a redeploy is
 # what refreshes the numbers unless the GitHub-commit path in the sync script is used.
-# Cache buster: rebuild to pick up index.html changes (2026-07-30 21:00)
+# Cache buster: rebuild to pick up July 29 perfect state data (2026-07-31 16:00)
 COPY index.html data.json serve.py robots.txt ./
 COPY assets ./assets
 
