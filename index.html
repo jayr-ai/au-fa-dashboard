@@ -1144,9 +1144,9 @@ function buildLeaderboard() {
   const booked = r => r.won + r.pen + r.lost + r.ns + r.mis + r.can;
 
   const d = {
-    ucMtd: S(w.mtd, r=>r.cash), ucQtd: S(w.qtd, r=>r.cash), ucYtd: S(w.ytd, r=>r.cash),
-    revMtd: S(w.mtd, r=>r.rev || 0), revQtd: S(w.qtd, r=>r.rev || 0), revYtd: S(w.ytd, r=>r.rev || 0),
-    ucPmtd: S(w.pmtd, r=>r.cash),
+    ucMtd: S(w.mtd, r=>r.cash || 0, DATA.funnel), ucQtd: S(w.qtd, r=>r.cash || 0, DATA.funnel), ucYtd: S(w.ytd, r=>r.cash || 0, DATA.funnel),
+    revMtd: S(w.mtd, r=>r.rev || 0, DATA.funnel), revQtd: S(w.qtd, r=>r.rev || 0, DATA.funnel), revYtd: S(w.ytd, r=>r.rev || 0, DATA.funnel),
+    ucPmtd: S(w.pmtd, r=>r.cash || 0, DATA.funnel),
     touchPmtd: S(w.pmtd, r=>r.di, DATA.kpi),
     cashWtd: S(w.wtd, r=>r.cash),
     leadsWtd: S(w.wtd, booked), leadsMtd: S(w.mtd, booked),
