@@ -1,0 +1,1608 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<link rel="icon" href="assets/favicon.png">
+<title>Freedom Academy · Sales Performance</title>
+<style>
+  /* ---------------------------------------------------------------------
+     Brand tokens sampled from join.freedomacademy.com.au
+       #172114 deep green (favicon field)   #EDEDEE off-white (mark)
+       #1C2A24 elevated green               #B9DACD light green   #6F9280 sage
+
+     The highlight is the brand's light green, not gold - gold was never in their
+     palette. Sage carries "in progress", light green carries "achieved":
+     contrast 4.82:1 and 11.05:1 on the surface, and the pair separates at
+     normal dE 23.3 / worst-CVD 22.5 (better than the gold pair it replaced,
+     because a single hue split by lightness survives every colour deficiency).
+     #4E6B5C is a track/divider tone only - at 2.83:1 it must never carry a mark.
+     --------------------------------------------------------------------- */
+  :root {
+    color-scheme: dark;
+    --plane:#0F1710; --surface:#172114; --raised:#1C2A24;
+    --ink:#EDEDEE; --ink-2:#A9B6A4; --muted:#8A9887;
+    --accent:#B9DACD; --accent-dim:#4E6B5C; --mint:#6F9280; --critical:#F87171;
+    /* Pattern-interrupt accent. Deliberately NOT pure neon green (#39FF14): that sits
+       only 28 degrees from the brand green in hue, so it reads as a brighter green
+       rather than a distinct signal, while carrying the highest halation risk
+       (lightness 0.87 x chroma 0.286 on a dark field is what makes edges vibrate and
+       tires eyes). This lime is 46 degrees away - a genuine interrupt - at 12.83:1
+       contrast with chroma pulled back to 0.191. Reserved for the single best thing in
+       view: never body text, never a large flat fill behind a paragraph. */
+    --neon:#C6F24E; --neon-ink:#12200F;
+    --line:rgba(237,237,238,0.10); --line-soft:rgba(237,237,238,0.055);
+    --radius:14px; --nav-w:212px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  /* An author `display:flex` beats the UA stylesheet's [hidden]{display:none}, so
+     elements toggled via the hidden attribute stay visible without this. */
+  [hidden] { display:none !important; }
+  body {
+    background:var(--plane); color:var(--ink);
+    font:14px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(1100px 620px at 12% -8%, rgba(185,218,205,0.07), transparent 62%),
+      radial-gradient(900px 520px at 88% 0%, rgba(185,218,205,0.055), transparent 60%);
+  }
+  #spotlight {
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0; transition:opacity .45s ease;
+    background:radial-gradient(460px circle at var(--gx,50%) var(--gy,50%),
+      rgba(185,218,205,0.085), rgba(111,146,128,0.045) 38%, transparent 62%);
+  }
+  body.cursor-live #spotlight { opacity:1; }
+
+  .wrap { position:relative; z-index:2; max-width:1620px; margin:0 auto; padding:24px 22px 72px; }
+
+  /* ---- top bar ---- */
+  .topbar { display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:20px; }
+  .logo { color:var(--ink); flex:0 0 auto; }
+  .logo svg { display:block; width:150px; height:auto; }
+  .logo svg path, .logo svg rect { fill:currentColor; }
+  .title-block { flex:1 1 220px; min-width:190px; }
+  h1 { font-size:18px; font-weight:600; margin:0; letter-spacing:-0.01em; }
+  .sub { color:var(--muted); font-size:12px; margin-top:3px; }
+  .sub b { color:var(--ink-2); font-weight:550; }
+
+  /* ---- period controls ---- */
+  .period { display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-left:auto; }
+  .seg { display:flex; gap:3px; background:var(--surface); border:1px solid var(--line);
+         border-radius:11px; padding:4px; }
+  .seg button {
+    font:inherit; font-size:12.5px; color:var(--ink-2); background:none; border:0;
+    padding:6px 12px; border-radius:7px; cursor:pointer; white-space:nowrap;
+    transition:background .18s, color .18s;
+  }
+  .seg button:hover { background:rgba(237,237,238,0.06); color:var(--ink); }
+  .seg button[aria-pressed="true"] {
+    background:var(--accent); color:#12200F; font-weight:620;
+    box-shadow:0 0 18px rgba(185,218,205,0.28);
+  }
+  .stepper { display:flex; align-items:center; gap:0; background:var(--surface);
+             border:1px solid var(--line); border-radius:11px; overflow:hidden; }
+  .stepper button {
+    font:inherit; font-size:15px; line-height:1; color:var(--ink-2); background:none; border:0;
+    padding:9px 11px; cursor:pointer; transition:background .18s, color .18s;
+  }
+  .stepper button:hover:not(:disabled) { background:rgba(237,237,238,0.07); color:var(--ink); }
+  .stepper button:disabled { color:#4a5548; cursor:default; }
+  /* Windows renders a transparent <select> as white and draws the option list with the
+     OS's own colours, so light text on it is unreadable. Both the control and every
+     <option> need explicit colours - color-scheme alone is not enough there. */
+  .stepper select {
+    font:inherit; font-size:12.5px; color:var(--ink); background-color:var(--surface); border:0;
+    border-left:1px solid var(--line); border-right:1px solid var(--line);
+    padding:8px 10px; cursor:pointer; min-width:190px; color-scheme:dark;
+    -webkit-appearance:none; appearance:none;
+    /* own chevron, since appearance:none removes the native one */
+    background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),
+                     linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);
+    background-position:calc(100% - 15px) 52%, calc(100% - 10px) 52%;
+    background-size:5px 5px, 5px 5px; background-repeat:no-repeat;
+    padding-right:30px;
+  }
+  .stepper select:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
+  select option, select optgroup {
+    background-color:#172114; color:#EDEDEE;
+  }
+  .custom-dates { display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted); }
+  .custom-dates input {
+    font:inherit; font-size:12.5px; color:var(--ink); background-color:var(--surface);
+    border:1px solid var(--line); border-radius:9px; padding:7px 9px; color-scheme:dark;
+  }
+  /* The native picker glyph is dark-on-dark on some platforms. */
+  .custom-dates input::-webkit-calendar-picker-indicator {
+    filter:invert(1) brightness(1.6); opacity:.65; cursor:pointer;
+  }
+  .custom-dates input::-webkit-calendar-picker-indicator:hover { opacity:1; }
+  .custom-dates input:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+
+  /* ---- shell: nav + content ---- */
+  .shell { display:grid; grid-template-columns:var(--nav-w) minmax(0,1fr); gap:24px; }
+  /* Grid children default to min-width:auto and would stretch to their widest content,
+     pushing the page sideways instead of letting inner containers scroll. */
+  .shell > * { min-width:0; }
+  nav { position:sticky; top:18px; align-self:start; }
+  .nav-item {
+    display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+    font:inherit; font-size:13.5px; color:var(--ink-2); background:none;
+    border:1px solid transparent; border-radius:10px; padding:10px 12px; cursor:pointer;
+    transition:background .18s, color .18s, border-color .18s;
+  }
+  .nav-item:hover { background:rgba(237,237,238,0.05); color:var(--ink); }
+  .nav-item[aria-current="true"] {
+    background:var(--surface); border-color:rgba(185,218,205,0.34); color:var(--ink); font-weight:600;
+  }
+  .nav-item[aria-current="true"] .dot { background:var(--accent); box-shadow:0 0 10px var(--accent); }
+  .dot { width:6px; height:6px; border-radius:50%; background:#3d4a3a; flex:0 0 auto; }
+  .nav-item .cnt { margin-left:auto; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .nav-sep { height:1px; background:var(--line-soft); margin:10px 4px; }
+  .nav-note { font-size:11px; color:var(--muted); padding:0 12px; line-height:1.6; }
+
+  /* ---- glow ---- */
+  .glow { position:relative; isolation:isolate; }
+  .glow::before {
+    content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    z-index:-1; opacity:0; transition:opacity .3s ease;
+    background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),
+      rgba(185,218,205,0.16), transparent 68%);
+  }
+  .glow:hover::before { opacity:1; }
+
+  /* ---- tiles ---- */
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:11px; }
+  .tile { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+          padding:15px 17px; transition:border-color .3s, transform .3s, box-shadow .3s; }
+  .tile:hover { border-color:rgba(185,218,205,0.42); transform:translateY(-2px);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,0.7), 0 0 24px -6px rgba(185,218,205,0.28); }
+  .tile .label { font-size:10.5px; color:var(--muted); text-transform:uppercase;
+                 letter-spacing:0.07em; font-weight:650; }
+  .tile .value { font-size:26px; font-weight:600; margin-top:6px; letter-spacing:-0.025em; }
+  .tile .value.hi { color:var(--accent); }
+  .tile .trend { font-size:11.5px; margin-top:4px; color:var(--muted); }
+  .tile .trend b { font-weight:650; }
+  .up { color:var(--accent); } .down { color:var(--critical); }
+
+  /* ---- sections ---- */
+  section { margin-bottom:34px; }
+  .sec-head { display:flex; align-items:baseline; gap:11px; margin-bottom:4px; flex-wrap:wrap; }
+  h2 { font-size:15px; font-weight:620; margin:0; letter-spacing:-0.005em; }
+  h2 .dim { color:var(--muted); font-weight:400; }
+  .sec-note { font-size:12.5px; color:var(--muted); }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+          overflow:hidden; margin-top:11px; }
+  .pad { padding:18px; }
+  .scroll { overflow-x:auto; }
+
+  /* ---- funnel ---- */
+  .funnel { display:grid; gap:12px; }
+  .fn-row { display:grid; grid-template-columns:110px 1fr auto; align-items:center; gap:14px; }
+  .fn-label { font-size:12.5px; color:var(--ink-2); }
+  .fn-track { height:26px; background:rgba(237,237,238,0.055); border-radius:6px; overflow:hidden; }
+  .fn-fill { height:100%; border-radius:6px; background:var(--mint); opacity:.9; }
+  .fn-fill.won { background:var(--accent); }
+  .fn-val { font-size:14px; font-weight:620; font-variant-numeric:tabular-nums; min-width:64px; text-align:right; }
+  .fn-step { font-size:11.5px; color:var(--muted); padding-left:124px; margin-top:-6px; }
+  .fn-step b { color:var(--ink-2); }
+
+  /* ---- month chart ---- */
+  .chart { display:flex; align-items:flex-end; gap:5px; height:132px; padding-top:6px; }
+  .col { flex:1 1 0; min-width:0; display:flex; flex-direction:column; justify-content:flex-end;
+         align-items:center; gap:5px; height:100%; }
+  .col .bar2 { width:100%; background:var(--accent); border-radius:4px 4px 0 0; min-height:2px;
+               transition:filter .2s; }
+  .col.sel .bar2 { box-shadow:0 0 14px rgba(185,218,205,0.6); }
+  .col.gap .bar2 { background:repeating-linear-gradient(135deg,
+      rgba(248,113,113,0.34) 0 4px, rgba(248,113,113,0.08) 4px 8px); height:100% !important; border-radius:4px; }
+  .col .lbl { font-size:9.5px; color:var(--muted); white-space:nowrap; transform:rotate(-45deg);
+              transform-origin:center; height:26px; }
+  .col:hover .bar2 { filter:brightness(1.18); }
+
+  /* ---- tables ---- */
+  table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+  th, td { padding:4px 5px; text-align:right; white-space:nowrap; font-size:12px; }
+  thead th { font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted);
+    font-weight:650; border-bottom:1px solid var(--line); background:var(--surface);
+    position:sticky; top:0; z-index:2; line-height:1.3; white-space:normal; padding:4px 5px; }
+  tbody tr + tr td { border-top:1px solid var(--line-soft); }
+  th.agent, td.agent { text-align:left; position:sticky; left:0; background:var(--surface);
+    z-index:1; font-weight:550; min-width:148px; }
+  thead th.agent { z-index:3; }
+  td.agent .full { display:block; font-weight:400; font-size:11px; color:var(--muted); }
+  tbody tr:hover td, tbody tr:hover td.agent { background:#1b2718; }
+  tr.overall td { border-top:1px solid var(--line) !important; font-weight:620; background:var(--raised); }
+  tr.overall td.agent { background:var(--raised); }
+  .grp { border-left:1px solid var(--line-soft); }
+  .nil { color:var(--muted); }
+  td.nodata { text-align:left; color:var(--muted); font-style:italic; font-size:12.5px; }
+  .inactive-tag { font-size:9.5px; color:var(--muted); border:1px solid var(--line);
+                  padding:0 5px; border-radius:999px; margin-left:6px; }
+
+  /* ---- agent cards ---- */
+  .board { display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:12px; margin-top:11px; }
+  .lb { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+        padding:15px 17px; transition:border-color .3s, transform .3s, box-shadow .3s; }
+  .lb:hover { transform:translateY(-2px); border-color:rgba(185,218,205,0.36);
+              box-shadow:0 12px 34px -14px rgba(0,0,0,0.75); }
+  .lb.top { border-color:rgba(185,218,205,0.5); box-shadow:0 0 30px -12px rgba(185,218,205,0.45); }
+  .lb-head { display:flex; align-items:center; gap:10px; }
+  .medal { font-size:20px; line-height:1; }
+  .lb-rank { font-size:11px; color:var(--muted); font-weight:650; letter-spacing:0.05em; }
+  .lb-name { font-size:14.5px; font-weight:620; }
+  .lb-name .full { display:block; font-size:11px; color:var(--muted); font-weight:400; }
+  .delta { margin-left:auto; font-size:11px; font-weight:650; padding:2px 8px;
+           border-radius:999px; border:1px solid var(--line); color:var(--ink-2); }
+  .delta.up { color:var(--accent); border-color:rgba(185,218,205,0.45); }
+  .delta.down { color:var(--critical); border-color:rgba(248,113,113,0.35); }
+  .lb-hero { margin-top:13px; }
+  .lb-hero .n { font-size:31px; font-weight:600; letter-spacing:-0.03em; color:var(--accent);
+                line-height:1.05; display:block; }
+  .lb-hero .cap { font-size:10.5px; color:var(--muted); text-transform:uppercase;
+                  letter-spacing:0.07em; font-weight:650; }
+  .lb-sub { display:flex; align-items:baseline; gap:7px; margin-top:9px;
+            padding-top:9px; border-top:1px solid var(--line-soft); font-size:11.5px; color:var(--muted); }
+  .lb-sub .cs { color:var(--ink-2); font-weight:620; font-variant-numeric:tabular-nums; }
+  .meter { height:4px; background:rgba(237,237,238,0.09); border-radius:2px; margin-top:7px; overflow:hidden; }
+  .meter > i { display:block; height:100%; border-radius:2px;
+               background:linear-gradient(90deg,var(--mint),var(--accent)); }
+  .lb-stats { display:flex; flex-wrap:wrap; gap:6px; margin-top:11px; }
+  .chip { font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid var(--line);
+          color:var(--ink-2); background:rgba(237,237,238,0.03); }
+  .chip b { color:var(--ink); font-weight:620; }
+  .chip.win { border-color:rgba(185,218,205,0.45); color:var(--accent); }
+  .lb.unranked { opacity:.75; }
+
+  /* ---- progress ---- */
+  .prog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(272px,1fr)); gap:16px 26px; padding:18px; }
+  .prog-agent { font-size:13px; font-weight:650; margin-bottom:4px; }
+  .prog-agent .tier { font-weight:400; color:var(--muted); font-size:11px; }
+  .hits { font-size:11px; color:var(--muted); margin-bottom:10px; }
+  .hits b { color:var(--accent); }
+  .prog-row { margin-bottom:9px; }
+  .prog-top { display:flex; justify-content:space-between; font-size:12px; gap:8px; }
+  .prog-top .m { color:var(--ink-2); }
+  .prog-top .v { color:var(--muted); font-variant-numeric:tabular-nums; }
+  .bar { height:6px; background:rgba(237,237,238,0.09); border-radius:3px; margin-top:5px;
+         overflow:hidden; position:relative; }
+  .bar > i { display:block; height:100%; border-radius:3px; background:var(--mint);
+             transition:width .6s cubic-bezier(.22,.8,.3,1); }
+  .bar > i.met { background:var(--accent); box-shadow:0 0 12px rgba(185,218,205,0.75); }
+  .bar > i.thin { background:repeating-linear-gradient(135deg,
+      rgba(169,182,164,0.55) 0 4px, rgba(169,182,164,0.16) 4px 8px); }
+  .pacemark { position:absolute; top:-2px; bottom:-2px; width:2px; border-radius:1px;
+              background:rgba(237,237,238,0.55); }
+  .tick { color:var(--accent); font-weight:700; }
+  .thin, .pace { font-size:10px; color:var(--muted); border:1px solid var(--line);
+                 padding:0 5px; border-radius:999px; cursor:help; }
+  .pace.ok { color:var(--mint); border-color:rgba(185,218,205,0.42); }
+
+  /* ---- misc ---- */
+  .badge { display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600;
+    background:rgba(185,218,205,0.10); border:1px solid rgba(185,218,205,0.34); color:var(--accent);
+    padding:3px 10px; border-radius:999px; }
+  .info { display:inline-flex; align-items:center; justify-content:center; width:15px; height:15px;
+    border-radius:50%; border:1px solid var(--line); color:var(--muted); font-size:10px;
+    font-weight:700; cursor:help; margin-left:5px; vertical-align:1px; }
+  .warn { background:var(--surface); border:1px solid var(--line); border-left:2px solid var(--accent-dim);
+    border-radius:10px; padding:11px 15px; font-size:12.5px; color:var(--ink-2); margin-top:12px; }
+  .warn b { color:var(--ink); font-weight:600; }
+  .warn.alert { border-left-color:var(--critical); }
+  footer { margin-top:44px; padding-top:18px; border-top:1px solid var(--line-soft);
+           font-size:12px; color:var(--muted); line-height:1.75; }
+  footer b { color:var(--ink-2); }
+  .err { padding:22px; color:var(--critical); }
+
+  /* ---- tier panels ----------------------------------------------------------
+     Three stacked tables read as one continuous block unless each is given its own
+     identity. Five cues do that here, deliberately not relying on colour: a large
+     numeral, a bold uppercase label, a coloured spine, a panel tint, and a wide gap.
+     The spine/badge colours are an ordinal ramp of one hue (light Tier 1 -> dark
+     Tier 3), all clearing 2:1 on the surface. --------------------------------- */
+  .tier-panel {
+    background:var(--tier-panel, var(--surface));
+    border:1px solid var(--line); border-left:4px solid var(--tier-spine, var(--accent));
+    border-radius:var(--radius); overflow:hidden; margin-top:12px;
+  }
+  .tier-panel + .tier-head-wrap, section + section .tier-panel { margin-top:0; }
+  .tier-band {
+    display:flex; align-items:center; gap:13px; padding:14px 18px;
+    background:linear-gradient(90deg, var(--tier-wash), transparent 62%);
+    border-bottom:1px solid var(--line);
+  }
+  .tier-num {
+    flex:0 0 auto; width:34px; height:34px; border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px; font-weight:700; letter-spacing:-0.02em;
+    background:var(--tier-spine); color:#101A0E;
+  }
+  .tier-titles { min-width:0; }
+  .tier-titles .t {
+    font-size:14px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--tier-spine); line-height:1.2;
+  }
+  .tier-titles .s { font-size:12px; color:var(--muted); margin-top:2px; }
+  .tier-meta { margin-left:auto; text-align:right; font-size:11.5px; color:var(--muted); white-space:nowrap; }
+  .tier-meta b { display:block; font-size:15px; font-weight:650; color:var(--ink); letter-spacing:-0.02em; }
+  .tier-panel .card { margin:0; border:0; border-radius:0; background:transparent; }
+  .tier-panel thead th { background:var(--tier-panel, var(--surface)); word-break:break-word; overflow-wrap:break-word; }
+  .tier-panel th.agent, .tier-panel td.agent { background:var(--tier-panel, var(--surface)); }
+  /* Row states use translucent overlays so they sit correctly on any panel tint
+     instead of a hardcoded colour that only matches one of the three. */
+  .tier-panel tbody tr:hover td,
+  .tier-panel tbody tr:hover td.agent { background:rgba(237,237,238,0.055); }
+  .tier-panel tr.lead td, .tier-panel tr.lead td.agent { background:var(--tier-wash); }
+  .tier-panel tr.lead td.agent { box-shadow:inset 2px 0 0 var(--tier-spine); }
+  .tier-panel tr.overall td, .tier-panel tr.overall td.agent {
+    background:rgba(0,0,0,0.22); border-top:1px solid var(--tier-spine) !important;
+  }
+  .tier-panel .warn { margin:0; border:0; border-top:1px solid var(--line);
+                      border-radius:0; background:rgba(0,0,0,0.18); }
+  /* Exec-summary per-tier cards borrow the same spine, so the two views agree. */
+  .lb.tier-tint { border-left:3px solid var(--tier-spine); }
+  .lb.tier-tint .lb-rank { color:var(--tier-spine); font-weight:700; letter-spacing:0.06em; }
+  .tier-gap { height:34px; }
+  @media (max-width:700px) {
+    .tier-meta { display:none; }
+    .tier-gap { height:22px; }
+  }
+
+  /* ---- leaderboard ---- */
+  th.rk, td.rk { width:44px; text-align:center; padding-left:8px; padding-right:8px;
+                 font-variant-numeric:tabular-nums; font-weight:650; }
+  td.rk { font-size:16px; }
+  tr.lead td { background:rgba(185,218,205,0.055); }
+  tr.lead td.agent { background:rgba(185,218,205,0.055); box-shadow:inset 2px 0 0 var(--accent); }
+  .mv { font-size:10px; font-weight:700; margin-left:6px; padding:1px 5px; border-radius:999px;
+        border:1px solid var(--line); vertical-align:1px; }
+  .mv.up { color:var(--accent); border-color:rgba(185,218,205,0.45); }
+  .mv.down { color:var(--critical); border-color:rgba(248,113,113,0.35); }
+
+  /* ---- pattern-interrupt accent -------------------------------------------
+     Applied to exactly four things, so it stays rare enough to actually interrupt:
+     the leader row, the top card's hero figure, the active nav marker, and a target
+     that has been met. Everything else keeps the calmer brand green. ---------- */
+  .tier-panel tr.lead td.agent { box-shadow:inset 3px 0 0 var(--neon); }
+  .tier-panel tr.lead td.rk { color:var(--neon); }
+  .lb.top .lb-hero .n { color:var(--neon); }
+  .nav-item[aria-current="true"] .dot {
+    background:var(--neon) !important; box-shadow:0 0 10px rgba(198,242,78,0.75);
+  }
+  .bar > i.met { background:var(--neon); box-shadow:0 0 12px rgba(198,242,78,0.6); }
+  .tick { color:var(--neon); }
+  .chip.win { border-color:rgba(198,242,78,0.5); color:var(--neon); }
+
+  /* ---- insights ---- */
+  /* The insights block follows the last tier panel, which has no trailing gap of its
+     own - without this it collides with the Tier 3 table. */
+  section.insights-sec { margin-top:52px; }
+  .insights { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin-top:11px; }
+  .ins { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+         padding:14px 16px; transition:border-color .3s, transform .3s; }
+  .ins:hover { transform:translateY(-2px); }
+  .ins h4 { margin:0 0 5px; font-size:13px; font-weight:620; letter-spacing:-0.005em; }
+  .ins p { margin:0; font-size:12.5px; color:var(--ink-2); line-height:1.6; }
+  /* Direction is carried by the glyph in the heading as well as the border colour,
+     so the good/flag split never rests on colour alone. */
+  .ins.good { border-left:2px solid var(--accent); }
+  .ins.good h4 { color:var(--accent); }
+  .ins.flag { border-left:2px solid var(--critical); }
+  .ins.flag h4 { color:var(--critical); }
+  .ins.good:hover { border-color:rgba(185,218,205,0.42); }
+  .ins.flag:hover { border-color:rgba(248,113,113,0.38); }
+
+  @media (max-width:900px) {
+    .shell { grid-template-columns:minmax(0,1fr); gap:14px; }
+    nav { position:static; }
+    .nav-list { display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; }
+    .nav-item { width:auto; white-space:nowrap; }
+    .nav-item .cnt, .nav-sep, .nav-note { display:none; }
+    .period { margin-left:0; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    * { transition:none !important; animation:none !important; }
+    #spotlight { display:none; }
+  }
+</style>
+</head>
+<body>
+<div id="spotlight"></div>
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo" aria-label="Freedom Academy">
+      <svg viewBox="0 0 1000 166.41" role="img" aria-label="Freedom Academy">
+        <path d="M343.41,92.71v73.7H317.73V0H498.17V24H343.41V68.7H483.9v24Z"/>
+        <path d="M726.16,166.41H696.68l-23.77-38H547.63l-23.54,38H494.37L595.65,0h29.47ZM567.59,95.09l-6.18,9.27h97.71l-5.94-9.27-42.8-72.51Z"/>
+        <rect x="767.62" y="122.03" width="93.43" height="23.97"/>
+        <rect x="749.55" y="70.49" width="182.67" height="23.97"/>
+        <rect x="731.48" y="18.95" width="268.52" height="23.97"/>
+        <rect x="138.95" y="122.03" width="93.43" height="23.97"/>
+        <rect x="67.78" y="70.49" width="182.67" height="23.97"/>
+        <rect y="18.95" width="268.52" height="23.97"/>
+      </svg>
+    </div>
+    <div class="title-block">
+      <h1>Sales Performance</h1>
+      <div class="sub" id="sub">Loading…</div>
+    </div>
+    <div class="period" id="period" hidden>
+      <div class="seg" id="modes"></div>
+      <div class="stepper" id="stepper">
+        <button id="prev" title="Previous period" aria-label="Previous period">‹</button>
+        <!-- autocomplete=off stops Chrome restoring a stale selection on reload and
+             firing change after boot, which silently moves the page to another period. -->
+        <select id="periodSel" aria-label="Select period" autocomplete="off"></select>
+        <button id="next" title="Next period" aria-label="Next period">›</button>
+      </div>
+      <div class="custom-dates" id="customDates" hidden>
+        <label for="from">From</label><input type="date" id="from" autocomplete="off">
+        <label for="to">To</label><input type="date" id="to" autocomplete="off">
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <nav>
+      <div class="nav-list" id="nav"></div>
+      <div class="nav-sep"></div>
+      <div class="nav-note" id="navNote"></div>
+    </nav>
+    <main id="app"></main>
+  </div>
+  <footer id="footer" hidden></footer>
+</div>
+
+<script>
+// ---------------------------------------------------------------------------
+// Metric definitions come from the source Sheet's own formulas, not guesses.
+// Every counter SUMS the `#` column; none count rows. See DASHBOARD_SPEC.md.
+// ---------------------------------------------------------------------------
+
+const WEIGHTS = { revenue:0.75, revPerBooking:0.15, onePay:0.10 };  // sheet row 14
+const RANK_MIN_HELD = 4;                  // sheet gate: Held > 4 to be ranked
+const RATE_MIN = RANK_MIN_HELD + 1;       // smallest denominator a ratio may claim a target on
+const ONE_PAY_RE = /(^|[^0-9])1PAY/;      // must not match 11PAY
+const PREMIUM_RE = /^Premium/i;
+const MEDALS = ['🥇','🥈','🥉'];
+const TIERS = ['TIER 1','TIER 2','TIER 3'];
+
+let DATA = null;
+let PERIODS = { week:[], month:[] };
+let DATA_MAX = null;   // newest date in the data; the leaderboard's to-date anchor
+const state = { view:'exec', mode:'month', idx:0, from:null, to:null };
+
+const fmtInt = n => n == null ? '–' : n.toLocaleString('en-AU');
+const fmtMoney = n => n == null ? '–' : '$' + Math.round(n).toLocaleString('en-AU');
+const fmtMoneyShort = n => {
+  if (n == null) return '–';
+  const a = Math.abs(n);
+  if (a >= 1e6) return '$' + (n/1e6).toFixed(a >= 1e7 ? 0 : 1) + 'M';
+  if (a >= 1e4) return '$' + Math.round(n/1e3) + 'k';
+  return '$' + Math.round(n).toLocaleString('en-AU');
+};
+const fmtPct = n => n == null ? '–' : (n*100).toFixed(1) + '%';
+const fmtNum = (n,d=1) => n == null ? '–' : n.toFixed(d);
+
+// Format from LOCAL components. toISOString() converts local midnight to UTC and
+// shifts the date back a day anywhere east of Greenwich.
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const parseISO = s => new Date(s + 'T00:00:00');
+const div = (a,b) => (b == null || b === 0) ? null : a/b;
+
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+/**
+ * Per-tier visual identity. An ordinal ramp of a single hue, light (Tier 1) to dark
+ * (Tier 3), so the tiers read as ordered rather than merely different. Every step
+ * clears 2:1 on the surface. Colour only reinforces here - the numeral and the
+ * uppercase label carry the identity, so this still works in greyscale.
+ */
+const TIER_STYLE = {
+  'TIER 1': { num:'1', spine:'#C7E3D6', panel:'#1A2618', wash:'rgba(199,227,214,0.10)' },
+  'TIER 2': { num:'2', spine:'#8CB8A2', panel:'#172114', wash:'rgba(140,184,162,0.09)' },
+  'TIER 3': { num:'3', spine:'#5E8A72', panel:'#131C11', wash:'rgba(94,138,114,0.11)' }
+};
+const tierVars = t => {
+  const s = TIER_STYLE[t] || TIER_STYLE['TIER 1'];
+  return `--tier-spine:${s.spine};--tier-panel:${s.panel};--tier-wash:${s.wash}`;
+};
+
+/**
+ * What "top performer" means per tier. Closers are judged on revenue sold; setters
+ * produce no revenue by design, so they are judged on appointments set - the output of
+ * their actual role. Ranking Tier 3 on revenue would show $0 for everyone forever.
+ */
+const TIER_HERO = {
+  'TIER 1': { role:'Closers', cap:'Revenue sold', verb:'sold', get:m=>m.revenue, fmt:fmtMoney,
+    has:m=>m.hasFunnel,
+    chips:m=>`<span class="chip">Won <b>${fmtInt(m.won)}</b></span>
+              <span class="chip">Held <b>${fmtInt(m.held)}</b></span>
+              <span class="chip">Close <b>${fmtPct(m.closeRate)}</b></span>
+              ${m.bestDay?`<span class="chip win">Best day <b>${fmtMoney(m.bestDay)}</b></span>`:''}` },
+  'TIER 2': { role:'Closers', cap:'Revenue sold', verb:'sold', get:m=>m.revenue, fmt:fmtMoney,
+    has:m=>m.hasFunnel,
+    chips:m=>`<span class="chip">Won <b>${fmtInt(m.won)}</b></span>
+              <span class="chip">Held <b>${fmtInt(m.held)}</b></span>
+              <span class="chip">Close <b>${fmtPct(m.closeRate)}</b></span>
+              ${m.bestDay?`<span class="chip win">Best day <b>${fmtMoney(m.bestDay)}</b></span>`:''}` },
+  'TIER 3': { role:'Setters', cap:'Appointments set', verb:'set', get:m=>m.sets, fmt:fmtInt,
+    has:m=>m.hasKpi,
+    chips:m=>`<span class="chip">Dials <b>${fmtInt(m.dials)}</b></span>
+              <span class="chip">Hours <b>${fmtNum(m.hours,1)}</b></span>
+              <span class="chip">Sets / hr <b>${fmtNum(m.setsPerHour,2)}</b></span>` }
+};
+
+/** ISO-8601 week number (weeks start Monday; week 1 contains the first Thursday). */
+function isoWeekNum(d) {
+  const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  t.setUTCDate(t.getUTCDate() - ((t.getUTCDay()+6)%7) + 3);
+  const ft = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+  ft.setUTCDate(ft.getUTCDate() - ((ft.getUTCDay()+6)%7) + 3);
+  return 1 + Math.round((t - ft) / (7*86400000));
+}
+const mondayOf = d => { const m = new Date(d); m.setDate(m.getDate() - ((m.getDay()+6)%7)); return m; };
+
+/**
+ * Enumerate only the periods that actually contain data. Months with no rows never
+ * appear as options - which is why the Jul-Dec 2025 gap is simply absent from the
+ * month list rather than showing as a run of zeroes.
+ */
+function buildPeriods() {
+  const dates = new Set();
+  for (const r of DATA.funnel) dates.add(r.d);
+  for (const k of DATA.kpi) dates.add(k.d);
+
+  const weeks = new Map(), months = new Map();
+  for (const ds of dates) {
+    const d = parseISO(ds);
+    const mon = mondayOf(d), sun = new Date(mon); sun.setDate(sun.getDate()+6);
+    const wk = iso(mon);
+    if (!weeks.has(wk)) weeks.set(wk, {
+      from: iso(mon), to: iso(sun),
+      label: `W${isoWeekNum(mon)} · ${MONTH_NAMES[mon.getMonth()]} ${mon.getDate()} → ${MONTH_NAMES[sun.getMonth()]} ${sun.getDate()}` +
+             (mon.getFullYear() !== sun.getFullYear() ? ` ${sun.getFullYear()}` : ` ${mon.getFullYear()}`)
+    });
+    const mk = ds.slice(0,7);
+    if (!months.has(mk)) {
+      const y = +mk.slice(0,4), m = +mk.slice(5,7) - 1;
+      months.set(mk, { from: iso(new Date(y,m,1)), to: iso(new Date(y,m+1,0)),
+                       label: `${MONTH_NAMES[m]} ${y}` });
+    }
+  }
+  const bySort = m => [...m.entries()].sort((a,b) => a[0] < b[0] ? -1 : 1).map(e => e[1]);
+  PERIODS.week = bySort(weeks);
+  PERIODS.month = bySort(months);
+  DATA_MAX = [...dates].sort().pop() || iso(new Date());
+}
+
+function targetBasis(from, to) {
+  const days = (parseISO(to) - parseISO(from))/86400000 + 1;
+  if (days <= 7) return { key:'w', label:'weekly' };
+  if (days <= 31) return { key:'mo', label:'monthly' };
+  return { key:'q', label:'quarterly' };
+}
+function priorRange(from, to) {
+  const f = parseISO(from), t = parseISO(to);
+  const days = Math.round((t-f)/86400000) + 1;
+  const pt = new Date(f); pt.setDate(pt.getDate()-1);
+  const pf = new Date(pt); pf.setDate(pf.getDate()-days+1);
+  return [iso(pf), iso(pt)];
+}
+function elapsedFraction(from, to) {
+  const f = parseISO(from), t = parseISO(to);
+  const now = new Date(); now.setHours(0,0,0,0);
+  if (now >= t) return 1;
+  if (now < f) return 0;
+  return ((now-f)/86400000 + 1) / ((t-f)/86400000 + 1);
+}
+
+// --- metrics ---------------------------------------------------------------
+
+function blankMetrics() {
+  return { won:0,pending:0,lost:0,noShow:0,missed:0,cancelled:0,pricePresented:0,termsSigned:0,
+    revenue:0,cash:0,onePay:0,premium:0,hours:0,dials:0,sets:0,appts:0,kpiNoShows:0,showUps:0,
+    confirmed:0,kpiSales:0,saleDays:0,bestDay:0,hasFunnel:false,hasKpi:false };
+}
+function compute(from, to) {
+  const by = new Map();
+  const get = n => { if (!by.has(n)) by.set(n, blankMetrics()); return by.get(n); };
+  const within = d => d >= from && d <= to;
+  for (const r of DATA.funnel) { if (!within(r.d)) continue;
+    const a = get(r.n); a.hasFunnel = true;
+    a.won+=r.won; a.pending+=r.pen; a.lost+=r.lost; a.noShow+=r.ns; a.missed+=r.mis;
+    a.cancelled+=r.can; a.pricePresented+=r.pp; a.termsSigned+=r.ts; a.revenue+=r.rev; a.cash+=r.cash;
+    if (r.won > 0) a.saleDays++;
+    if (r.rev > a.bestDay) a.bestDay = r.rev;
+  }
+  for (const p of DATA.programs) { if (!within(p.d)) continue;
+    const a = get(p.n);
+    if (ONE_PAY_RE.test(p.fl)) a.onePay += p.c;
+    if (PREMIUM_RE.test(p.g)) a.premium += p.c;
+  }
+  for (const k of DATA.kpi) { if (!within(k.d)) continue;
+    const a = get(k.n); a.hasKpi = true;
+    a.hours+=k.hrs; a.dials+=k.di; a.sets+=k.se; a.appts+=k.ap;
+    a.kpiNoShows+=k.ns; a.showUps+=k.su; a.confirmed+=k.cf; a.kpiSales+=k.sa;
+  }
+  for (const a of by.values()) derive(a);
+  return by;
+}
+function derive(a) {
+  a.booked = a.won+a.pending+a.lost+a.noShow+a.missed+a.cancelled;
+  a.held = a.won+a.pending+a.lost;
+  a.showRate = div(a.held,a.booked); a.offerRate = div(a.pricePresented,a.held);
+  a.acceptRate = div(a.termsSigned,a.pricePresented); a.closeRate = div(a.won,a.held);
+  a.convRate = div(a.won,a.booked); a.revPerBooking = div(a.revenue,a.booked);
+  a.onePayPct = div(a.onePay,a.won); a.premiumPct = div(a.premium,a.won);
+  a.dialsPerHour = div(a.dials,a.hours); a.setsPerHour = div(a.sets,a.hours);
+  a.showUpPct = div(a.showUps,a.appts); a.dialToBooking = div(a.sets,a.dials);
+  return a;
+}
+function sumAgents(list) {
+  const t = blankMetrics();
+  for (const a of list) {
+    for (const k of ['won','pending','lost','noShow','missed','cancelled','pricePresented',
+      'termsSigned','revenue','cash','onePay','premium','hours','dials','sets','appts',
+      'kpiNoShows','showUps','confirmed','kpiSales','saleDays']) t[k] += a[k];
+    t.bestDay = Math.max(t.bestDay, a.bestDay);
+    t.hasFunnel = t.hasFunnel || a.hasFunnel; t.hasKpi = t.hasKpi || a.hasKpi;
+  }
+  return derive(t);
+}
+
+/**
+ * Composite score, replicating the Sheet exactly. Min/max span every agent in the
+ * tier block; only Held > 4 earns a score and a rank. The sheet renders an
+ * un-computable ratio as numeric 0.00% and includes it in the min/max, so nulls are
+ * coerced to 0 here - the display still shows a dash.
+ */
+function scoreCohort(rows) {
+  const val = (r,k) => { const v = r.m[k]; return (v == null || !isFinite(v)) ? 0 : v; };
+  const ranges = {};
+  for (const k of ['revenue','revPerBooking','onePayPct']) {
+    const v = rows.map(r => val(r,k));
+    ranges[k] = v.length ? { min:Math.min(...v), max:Math.max(...v) } : { min:0, max:0 };
+  }
+  const norm = (k,x) => { const {min,max} = ranges[k]; return max > min ? (x-min)/(max-min) : 0; };
+  for (const r of rows) {
+    r.qualified = r.m.held > RANK_MIN_HELD;
+    r.score = r.qualified
+      ? WEIGHTS.revenue*norm('revenue',val(r,'revenue'))
+        + WEIGHTS.revPerBooking*norm('revPerBooking',val(r,'revPerBooking'))
+        + WEIGHTS.onePay*norm('onePayPct',val(r,'onePayPct')) : 0;
+  }
+  for (const r of rows) r.rank = r.qualified ? 1 + rows.filter(o => o.score > r.score).length : null;
+  return rows;
+}
+
+// --- helpers ---------------------------------------------------------------
+
+const el = (tag,cls,html) => { const n = document.createElement(tag);
+  if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+
+/**
+ * Agents to show. ACTIVE reps always appear (so a gap is visible as a gap), plus
+ * anyone with data in the selected window - otherwise historical periods would hide
+ * reps who have since left.
+ */
+function agentRows(metrics) {
+  return DATA.agents
+    .filter(a => a.s === 'ACTIVE' || (metrics.get(a.n)?.hasFunnel || metrics.get(a.n)?.hasKpi))
+    .map(a => ({ short:a.n, full:a.f, tier:a.t, active:a.s === 'ACTIVE',
+                 m: metrics.get(a.n) || derive(blankMetrics()) }));
+}
+
+function deltaHtml(cur, prev, fmt, invert) {
+  if (prev == null || prev === 0 || cur == null) return '';
+  const d = (cur - prev)/Math.abs(prev);
+  if (!isFinite(d)) return '';
+  const pct = Math.abs(d*100);
+  // Rounding to 0% while showing an arrow reads as a bug, so anything under half a
+  // point is called flat rather than dressed up with a direction.
+  if (pct < 0.5) return `<span>—<b> flat</b></span> vs prior ${fmt(prev)}`;
+  const good = invert ? d < 0 : d > 0;
+  const arrow = d > 0 ? '▲' : '▼';
+  return `<span class="${good ? 'up' : 'down'}"><b>${arrow}${pct < 10 ? pct.toFixed(1) : pct.toFixed(0)}%</b></span> vs prior ${fmt(prev)}`;
+}
+
+// --- views -----------------------------------------------------------------
+
+function viewExec(metrics, prior, basis) {
+  const frag = document.createDocumentFragment();
+  const rows = agentRows(metrics);
+  const priorRows = agentRows(prior);
+
+  const closerNow = rows.filter(r => !/3/.test(r.tier) && r.m.hasFunnel).map(r => r.m);
+  const closerPrev = priorRows.filter(r => !/3/.test(r.tier) && r.m.hasFunnel).map(r => r.m);
+  const tot = closerNow.length ? sumAgents(closerNow) : derive(blankMetrics());
+  const prv = closerPrev.length ? sumAgents(closerPrev) : derive(blankMetrics());
+
+  // ---- headline tiles with period-over-period movement
+  const s1 = el('section');
+  s1.appendChild(el('div','sec-head',
+    `<h2>Headline <span class="dim">· all closers</span></h2>
+     <span class="sec-note">Compared with the equal-length period immediately before.</span>`));
+  const tiles = el('div','tiles');
+  [['Revenue sold', fmtMoney(tot.revenue), tot.revenue, prv.revenue, fmtMoneyShort, 1],
+   ['Cash collected', fmtMoney(tot.cash), tot.cash, prv.cash, fmtMoneyShort, 0],
+   ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
+   ['Booked', fmtInt(tot.booked), tot.booked, prv.booked, fmtInt, 0],
+   ['Show rate', fmtPct(tot.showRate), tot.showRate, prv.showRate, fmtPct, 0],
+   ['Close rate', fmtPct(tot.closeRate), tot.closeRate, prv.closeRate, fmtPct, 0]
+  ].forEach(([label, disp, cur, prev, f, hi]) => {
+    const t = el('div','tile glow');
+    t.innerHTML = `<div class="label">${label}</div><div class="value${hi?' hi':''}">${disp}</div>
+                   <div class="trend">${deltaHtml(cur, prev, f) || '<span class="nil">no prior period</span>'}</div>`;
+    tiles.appendChild(t);
+  });
+  s1.appendChild(tiles);
+  frag.appendChild(s1);
+
+  // ---- top performer per tier: always three panels, one per tier
+  // Each tier is ranked on the metric that tier's role actually produces. Tier 3 are
+  // setters with no revenue at all, so ranking them on revenue would show $0 forever -
+  // they are ranked on appointments set, which is the output of the job.
+  const sTop = el('section');
+  sTop.appendChild(el('div','sec-head',
+    `<h2>Top performer by tier</h2>
+     <span class="sec-note">Closers ranked on revenue sold, setters on appointments set.</span>`));
+  const topBoard = el('div','board');
+  for (const tier of TIERS) {
+    const spec = TIER_HERO[tier];
+    const pool = rows.filter(r => r.tier === tier && spec.has(r.m));
+    const best = pool.slice().sort((a,b) => spec.get(b.m) - spec.get(a.m))[0];
+    const val = best ? spec.get(best.m) : null;
+    const earned = val != null && val > 0;   // no medal where nothing was produced
+
+    const card = el('div','lb glow tier-tint' + (earned ? ' top' : ' unranked'));
+    card.setAttribute('style', tierVars(tier));
+    if (!best) {
+      card.innerHTML =
+        `<div class="lb-head"><div><div class="lb-rank">${tier} · ${spec.role}</div>
+          <div class="lb-name" style="color:var(--muted)">No data recorded</div></div></div>
+         <div class="lb-hero"><span class="cap">${spec.cap}</span>
+           <span class="n" style="color:var(--muted)">–</span></div>
+         <div class="lb-stats"><span class="chip">Nobody in this tier reported this period</span></div>`;
+    } else {
+      card.innerHTML =
+        `<div class="lb-head">${earned ? '<span class="medal">🥇</span>' : ''}
+          <div><div class="lb-rank">${tier} · ${spec.role}</div>
+          <div class="lb-name">${best.short}${best.active?'':'<span class="inactive-tag">inactive</span>'}<span class="full">${best.full||''}</span></div></div></div>
+         <div class="lb-hero"><span class="cap">${spec.cap}</span>
+           <span class="n"${earned?'':' style="color:var(--muted)"'}>${spec.fmt(val)}</span></div>
+         <div class="lb-stats">${spec.chips(best.m)}
+           ${earned ? '' : `<span class="chip">Nothing ${spec.verb} yet this period</span>`}</div>`;
+    }
+    topBoard.appendChild(card);
+  }
+  sTop.appendChild(topBoard);
+  frag.appendChild(sTop);
+
+  // ---- funnel: magnitude across ordered stages
+  const s2 = el('section');
+  s2.appendChild(el('div','sec-head',
+    `<h2>Funnel</h2><span class="sec-note">Where the pipeline is lost, stage by stage.</span>`));
+  const stages = [['Booked', tot.booked, ''], ['Held', tot.held, ''], ['Won', tot.won, 'won']];
+  const max = Math.max(1, tot.booked);
+  const fn = el('div','funnel');
+  stages.forEach(([name, v, cls], i) => {
+    fn.appendChild(el('div','fn-row',
+      `<div class="fn-label">${name}</div>
+       <div class="fn-track"><div class="fn-fill ${cls}" style="width:${(v/max*100).toFixed(1)}%"></div></div>
+       <div class="fn-val">${fmtInt(v)}</div>`));
+    if (i < stages.length-1) {
+      const nxt = stages[i+1][1];
+      const rate = div(nxt, v);
+      fn.appendChild(el('div','fn-step',
+        `<b>${fmtPct(rate)}</b> of ${name.toLowerCase()} became ${stages[i+1][0].toLowerCase()}` +
+        ` · <b>${fmtInt(v-nxt)}</b> lost here`));
+    }
+  });
+  const c2 = el('div','card glow'); const p2 = el('div','pad'); p2.appendChild(fn); c2.appendChild(p2);
+  s2.appendChild(c2);
+  frag.appendChild(s2);
+
+  // ---- revenue by month, gaps shown as gaps
+  const s3 = el('section');
+  s3.appendChild(el('div','sec-head',
+    `<h2>Revenue by month</h2><span class="sec-note">Hatched columns are months with no data at all, not zero revenue.</span>`));
+  const byMonth = new Map();
+  for (const r of DATA.funnel) {
+    const k = r.d.slice(0,7);
+    byMonth.set(k, (byMonth.get(k) || 0) + r.rev);
+  }
+  const keys = [...byMonth.keys()].sort();
+  if (keys.length) {
+    // walk every month between first and last so absences are visible
+    const [y0,m0] = keys[0].split('-').map(Number);
+    const [y1,m1] = keys[keys.length-1].split('-').map(Number);
+    const all = [];
+    for (let y=y0, m=m0; y<y1 || (y===y1 && m<=m1); ) {
+      all.push(`${y}-${String(m).padStart(2,'0')}`);
+      m++; if (m > 12) { m = 1; y++; }
+    }
+    const peak = Math.max(...byMonth.values(), 1);
+    const chart = el('div','chart');
+    for (const k of all) {
+      const v = byMonth.get(k);
+      const has = v != null;
+      const col = el('div','col' + (has ? '' : ' gap') + (k === state.from.slice(0,7) ? ' sel' : ''));
+      const [yy,mm] = k.split('-');
+      col.title = has ? `${MONTH_NAMES[+mm-1]} ${yy} · ${fmtMoney(v)}` : `${MONTH_NAMES[+mm-1]} ${yy} · no data recorded`;
+      col.innerHTML = `<div class="bar2" style="height:${has ? Math.max(2,(v/peak)*100) : 100}%"></div>
+                       <div class="lbl">${MONTH_NAMES[+mm-1]} ${yy.slice(2)}</div>`;
+      chart.appendChild(col);
+    }
+    const c3 = el('div','card glow'); const p3 = el('div','pad'); p3.appendChild(chart); c3.appendChild(p3);
+    s3.appendChild(c3);
+    const missing = all.filter(k => !byMonth.has(k));
+    if (missing.length) {
+      s3.appendChild(el('div','warn alert',
+        `<b>${missing.length} month${missing.length===1?'':'s'} with no data at all</b> — ${missing.join(', ')}.
+         Archiving last ran in October 2025 and these rows are in neither consolidated tab. Treat any
+         trend spanning that window as broken, not as a downturn.`));
+    }
+  }
+  frag.appendChild(s3);
+
+  // ---- tier comparison
+  const s4 = el('section');
+  s4.appendChild(el('div','sec-head', `<h2>By tier</h2>`));
+  const tt = el('table');
+  tt.innerHTML = `<thead><tr><th class="agent">Tier</th><th>Reps with data</th><th>Booked</th>
+    <th>Held</th><th>Won</th><th class="grp">Show %</th><th>Close %</th>
+    <th class="grp">Revenue</th><th>Cash</th></tr></thead>`;
+  const tb = el('tbody');
+  for (const tier of TIERS) {
+    const tr = rows.filter(r => r.tier === tier);
+    const withData = tr.filter(r => r.m.hasFunnel);
+    const t = withData.length ? sumAgents(withData.map(r => r.m)) : derive(blankMetrics());
+    const isSetter = tier === 'TIER 3';
+    const row = el('tr');
+    row.innerHTML = `<td class="agent">${tier}<span class="full">${isSetter?'Setters':'Closers'}</span></td>` +
+      (isSetter
+        ? `<td>${tr.filter(r=>r.m.hasKpi).length} of ${tr.length}</td>` +
+          `<td colspan="7" class="nodata">Setters have no sales funnel by design — see the Tier 3 view for dialer activity</td>`
+        : `<td>${withData.length} of ${tr.length}</td><td>${fmtInt(t.booked)}</td><td>${fmtInt(t.held)}</td>
+           <td>${fmtInt(t.won)}</td><td class="grp">${fmtPct(t.showRate)}</td><td>${fmtPct(t.closeRate)}</td>
+           <td class="grp">${fmtMoney(t.revenue)}</td><td>${fmtMoney(t.cash)}</td>`);
+    tb.appendChild(row);
+  }
+  tt.appendChild(tb);
+  const c4 = el('div','card'); const sc4 = el('div','scroll'); sc4.appendChild(tt); c4.appendChild(sc4);
+  s4.appendChild(c4);
+  frag.appendChild(s4);
+
+  // ---- top performers across all closers
+  // ---- data health
+  const reporting = rows.filter(r => r.m.hasFunnel || r.m.hasKpi).length;
+  const activeCount = rows.filter(r => r.active).length;
+  const silent = rows.filter(r => r.active && !r.m.hasFunnel && !r.m.hasKpi).map(r => r.short);
+  const s6 = el('section');
+  s6.appendChild(el('div','sec-head', `<h2>Data health</h2>`));
+  const health = el('div','tiles');
+  [['Reps reporting', `${reporting} of ${activeCount}`, ''],
+   ['Period elapsed', Math.round(elapsedFraction(state.from, state.to)*100) + '%', ''],
+   ['Targets basis', basis.label, ''],
+   ['Last synced', (DATA.synced_at||'').slice(0,16).replace('T',' '), '']
+  ].forEach(([l,v]) => {
+    const t = el('div','tile glow');
+    t.innerHTML = `<div class="label">${l}</div><div class="value" style="font-size:19px">${v}</div>`;
+    health.appendChild(t);
+  });
+  s6.appendChild(health);
+  if (silent.length) {
+    s6.appendChild(el('div','warn',
+      `<b>No data recorded</b> this period for ${silent.join(', ')} — all listed ACTIVE.
+       Shown as gaps rather than zeros throughout, because a blank and a genuine zero mean different things.`));
+  }
+  frag.appendChild(s6);
+  return frag;
+}
+
+const CLOSER_COLS = [
+  ['Booked',m=>fmtInt(m.booked)],['Held',m=>fmtInt(m.held)],['Won',m=>fmtInt(m.won)],
+  ['Pending',m=>fmtInt(m.pending),true],['Lost',m=>fmtInt(m.lost)],['N/S',m=>fmtInt(m.noShow)],
+  ['Missed',m=>fmtInt(m.missed)],['Cancelled',m=>fmtInt(m.cancelled)],
+  ['Pric Prs',m=>fmtInt(m.pricePresented),true],['Terms',m=>fmtInt(m.termsSigned)],
+  ['Show%',m=>fmtPct(m.showRate),true],['Off%',m=>fmtPct(m.offerRate)],
+  ['Acpt%',m=>fmtPct(m.acceptRate)],['Cls%',m=>fmtPct(m.closeRate)],['Cnv%',m=>fmtPct(m.convRate)],
+  ['Revenue',m=>fmtMoney(m.revenue),true],['Cash',m=>fmtMoney(m.cash)],
+  ['Rev/Bk',m=>m.booked?fmtMoney(m.revPerBooking):'–'],
+  ['1Pay%',m=>fmtPct(m.onePayPct),true],['Prem%',m=>fmtPct(m.premiumPct)]
+];
+const SETTER_COLS = [
+  ['Hours',m=>fmtNum(m.hours,1)],['Dials',m=>fmtInt(m.dials)],['Sets',m=>fmtInt(m.sets)],
+  ['D/hr',m=>fmtNum(m.dialsPerHour,1),true],['S/hr',m=>fmtNum(m.setsPerHour,2)],
+  ['D→S%',m=>fmtPct(m.dialToBooking)],['Appts',m=>fmtInt(m.appts),true],
+  ['Conf',m=>fmtInt(m.confirmed)],['Shown',m=>fmtInt(m.showUps)],
+  ['N/S',m=>fmtInt(m.kpiNoShows)],['Show%',m=>fmtPct(m.showUpPct)],
+  ['Sales',m=>fmtInt(m.kpiSales),true]
+];
+
+function agentCell(r) {
+  return `<td class="agent">${r.short}${r.active?'':'<span class="inactive-tag">inactive</span>'}` +
+         `<span class="full">${r.full||''}</span></td>`;
+}
+
+function renderTable(rows, cols, hasData) {
+  const card = el('div','card'), scroll = el('div','scroll'), t = el('table');
+  t.innerHTML = '<thead><tr><th class="agent">Agent</th>' +
+    cols.map(c => `<th class="${c[2]?'grp':''}">${c[0]}</th>`).join('') + '</tr></thead>';
+  const tb = el('tbody');
+  for (const r of rows) {
+    const tr = el('tr');
+    if (!hasData(r.m)) {
+      // A gap is not a zero. Rendering 0% here would read as "performed terribly".
+      tr.innerHTML = agentCell(r) + `<td class="nodata" colspan="${cols.length}">No data recorded in this period</td>`;
+    } else {
+      tr.innerHTML = agentCell(r) + cols.map(c => {
+        const v = c[1](r.m);
+        return `<td class="${c[2]?'grp':''}${v==='–'?' nil':''}">${v}</td>`;
+      }).join('');
+    }
+    tb.appendChild(tr);
+  }
+  const present = rows.filter(r => hasData(r.m));
+  if (present.length) {
+    const tot = sumAgents(present.map(r => r.m));
+    const tr = el('tr','overall');
+    tr.innerHTML = `<td class="agent">Overall<span class="full">${present.length} rep${present.length===1?'':'s'} with data</span></td>` +
+      cols.map(c => `<td class="${c[2]?'grp':''}">${c[1](tot)}</td>`).join('');
+    tb.appendChild(tr);
+  }
+  t.appendChild(tb); scroll.appendChild(t); card.appendChild(scroll);
+  return card;
+}
+
+function renderBoard(rows, priorMetrics) {
+  const scored = scoreCohort(rows.filter(r => r.m.hasFunnel).map(r => ({...r})));
+  if (!scored.length) return null;
+  const prior = scoreCohort(rows.filter(r => r.m.hasFunnel)
+    .map(r => ({...r, m: priorMetrics.get(r.short) || derive(blankMetrics())})));
+  const priorRank = new Map(prior.map(p => [p.short, p.rank]));
+
+  scored.sort((a,b) => (a.rank ?? 99) - (b.rank ?? 99) || b.score - a.score);
+  const board = el('div','board');
+  for (const r of scored) {
+    const card = el('div','lb glow' + (r.rank===1?' top':'') + (r.qualified?'':' unranked'));
+    const pr = priorRank.get(r.short);
+    let delta = '';
+    if (r.qualified && pr) {
+      const d = pr - r.rank;
+      delta = d === 0
+        ? `<span class="delta" title="Same rank as the previous period">—</span>`
+        : `<span class="delta ${d>0?'up':'down'}" title="Was #${pr} last period">${d>0?'▲':'▼'}${Math.abs(d)}</span>`;
+    } else if (r.qualified) {
+      delta = `<span class="delta" title="No ranking in the previous period">new</span>`;
+    }
+    const medal = r.rank && r.rank <= 3 ? `<span class="medal">${MEDALS[r.rank-1]}</span>` : '';
+    card.innerHTML =
+      `<div class="lb-head">${medal}
+        <div><div class="lb-rank">${r.qualified?'RANK '+r.rank:'NOT RANKED'}</div>
+        <div class="lb-name">${r.short}${r.active?'':'<span class="inactive-tag">inactive</span>'}<span class="full">${r.full||''}</span></div></div>${delta}</div>
+       <div class="lb-hero"><span class="cap">Revenue sold</span><span class="n">${fmtMoney(r.m.revenue)}</span></div>
+       <div class="lb-sub">
+         <span>Composite <span class="cs">${r.qualified?r.score.toFixed(3):'–'}</span></span>
+         <span class="info" title="Relative to the other reps in this tier for the selected period, not an absolute measure. Min-max normalised: the top performer always scores 1.00 on a component and the bottom 0.00. Changing the period reshuffles scores, not just ranks. Weights: 75% revenue, 15% revenue per booking, 10% 1PAY share.">i</span>
+         ${r.qualified?'':`<span style="margin-left:auto">needs Held &gt; ${RANK_MIN_HELD}</span>`}
+       </div>
+       <div class="meter"><i style="width:${(r.qualified?r.score:0)*100}%"></i></div>
+       <div class="lb-stats">
+         <span class="chip">Won <b>${fmtInt(r.m.won)}</b></span>
+         <span class="chip">Held <b>${fmtInt(r.m.held)}</b></span>
+         <span class="chip">Close <b>${fmtPct(r.m.closeRate)}</b></span>
+         ${r.m.saleDays?`<span class="chip win">Selling days <b>${r.m.saleDays}</b></span>`:''}
+         ${r.m.bestDay?`<span class="chip">Best day <b>${fmtMoney(r.m.bestDay)}</b></span>`:''}
+       </div>`;
+    board.appendChild(card);
+  }
+  return board;
+}
+
+const pctVal = r => r == null ? null : r*100;
+// `basis`/`min`: the denominator a rate comes from, and the smallest denominator at
+// which hitting the target means anything. Without it a rep who took 2 calls and showed
+// for both "hits" a 50% show-rate target and out-ranks someone on 61 calls.
+// `cumulative`: accrues over the period, so mid-period it is judged against elapsed time.
+const TARGET_METRICS = {
+  'Hours':{get:m=>m.hours,fmt:v=>fmtNum(v,1)+'h',cumulative:true},
+  'Dials':{get:m=>m.dials,fmt:fmtInt,cumulative:true},
+  'Sets':{get:m=>m.sets,fmt:fmtInt,cumulative:true},
+  'Avg. dials per hour':{get:m=>m.dialsPerHour,fmt:v=>fmtNum(v,1),basis:m=>m.hours,min:1,unit:'hours'},
+  'Avg. sets per hour':{get:m=>m.setsPerHour,fmt:v=>fmtNum(v,2),basis:m=>m.hours,min:1,unit:'hours'},
+  'Cash collected':{get:m=>m.cash,fmt:fmtMoney,cumulative:true},
+  'Sales':{get:m=>m.won,fmt:fmtInt,cumulative:true},
+  'Show rate':{get:m=>pctVal(m.showRate),fmt:v=>v==null?'–':v.toFixed(1)+'%',basis:m=>m.booked,min:RATE_MIN,unit:'booked'},
+  'Close rate':{get:m=>pctVal(m.closeRate),fmt:v=>v==null?'–':v.toFixed(1)+'%',basis:m=>m.held,min:RATE_MIN,unit:'held'},
+  '1PAY ratio':{get:m=>pctVal(m.onePayPct),fmt:v=>v==null?'–':v.toFixed(1)+'%',basis:m=>m.won,min:RATE_MIN,unit:'won'},
+  'Premium ratio':{get:m=>pctVal(m.premiumPct),fmt:v=>v==null?'–':v.toFixed(1)+'%',basis:m=>m.won,min:RATE_MIN,unit:'won'}
+};
+// agent_list says "TIER 3"; kpi_target splits it Full/Part Time and nothing in the data
+// says which a rep is. Defaults to full-time, labelled in the UI.
+function targetTier(tier) {
+  if (/1/.test(tier)) return 'Tier 1';
+  if (/2/.test(tier)) return 'Tier 2';
+  return '3 - Full Time';
+}
+
+function renderProgress(rows, basis) {
+  const card = el('div','card'), grid = el('div','prog-grid');
+  const elapsed = elapsedFraction(state.from, state.to);
+  let any = false;
+  for (const r of rows) {
+    if (!r.m.hasFunnel && !r.m.hasKpi) continue;
+    const tt = targetTier(r.tier);
+    const targets = DATA.targets.filter(t => t.t === tt && TARGET_METRICS[t.m] && t[basis.key]);
+    if (!targets.length) continue;
+    any = true;
+    const box = el('div','glow'); box.style.padding = '2px';
+    const html = []; let hit = 0, total = 0;
+    for (const t of targets) {
+      const spec = TARGET_METRICS[t.m];
+      const actual = spec.get(r.m), target = t[basis.key];
+      const pct = actual == null ? null : Math.max(0, actual/target);
+      const basisVal = spec.basis ? spec.basis(r.m) : null;
+      const thin = spec.basis && (basisVal == null || basisVal < spec.min);
+      const met = pct != null && pct >= 1 && !thin;
+      total++; if (met) hit++;
+      const paced = spec.cumulative && elapsed > 0 && elapsed < 1;
+      const onPace = paced && pct != null && pct >= elapsed;
+      let tag = '';
+      if (thin) tag = ` <span class="thin" title="Only ${fmtNum(basisVal, basisVal%1?1:0)} ${spec.unit} in this period - too few for the ratio to count as a target hit.">low volume</span>`;
+      else if (met) tag = ' <span class="tick">✓</span>';
+      else if (paced) tag = ` <span class="pace ${onPace?'ok':''}" title="${Math.round(elapsed*100)}% of the period has elapsed, so on-pace is ${spec.fmt(target*elapsed)} by now.">${onPace?'on pace':'behind pace'}</span>`;
+      const marker = paced ? `<span class="pacemark" style="left:${(elapsed*100).toFixed(1)}%" title="Expected by now"></span>` : '';
+      html.push(`<div class="prog-row"><div class="prog-top">
+        <span class="m">${t.m}${tag}</span>
+        <span class="v">${actual==null?'–':spec.fmt(actual)} / ${spec.fmt(target)}${pct==null?'':' · '+Math.round(pct*100)+'%'}</span>
+        </div><div class="bar"><i class="${met?'met':''}${thin?' thin':''}" style="width:${pct==null?0:Math.min(100,pct*100)}%"></i>${marker}</div></div>`);
+    }
+    box.innerHTML = `<div class="prog-agent">${r.short} <span class="tier">${r.tier}${tt.startsWith('3')?' · full-time targets assumed':''}</span></div>
+      <div class="hits">Targets hit <b>${hit}</b> of ${total}</div>` + html.join('');
+    grid.appendChild(box);
+  }
+  if (!any) return null;
+  card.appendChild(grid);
+  return card;
+}
+
+// ---------------------------------------------------------------------------
+// SALES LEADERBOARD
+//
+// Column definitions were reverse-engineered from the client's "Leaderboard" tab and
+// verified against BigQuery - five of eight reps reconcile to the cent, including
+// Laura's whole month-by-month row:
+//   UPFRONT CASH        = SUM(upfront_cash)
+//   GROSS REVENUE (TCP) = SUM(tcp)
+//   PERSONAL BEST       = the best single calendar month of upfront cash this year
+//   # of TOUCH POINTS   = dials
+//   # of LEADS          = booked  (Won+Pending+Lost+NoShow+Missed+Cancelled)
+//   WTD COLLECTED       = cash collected, week to date
+//   RANK                = global dense rank on MTD upfront cash
+// Three figures on that tab (Nelson $82k, Peter Jr $11k, Zac $12k) match no source in
+// the workbook or the warehouse and appear hand-typed - see the flags panel.
+// ---------------------------------------------------------------------------
+
+/** Week/month/quarter/year to date, anchored to the newest date in the data. */
+function windows(anchorISO) {
+  const a = parseISO(anchorISO);
+  const y = a.getFullYear(), m = a.getMonth();
+  const mon = mondayOf(a);
+  return {
+    anchor: anchorISO,
+    wtd:  [iso(mon), anchorISO],
+    mtd:  [iso(new Date(y, m, 1)), anchorISO],
+    qtd:  [iso(new Date(y, Math.floor(m/3)*3, 1)), anchorISO],
+    ytd:  [iso(new Date(y, 0, 1)), anchorISO],
+    pmtd: (() => { const s = new Date(y, m-1, 1); return [iso(s), iso(new Date(y, m, 0))]; })()
+  };
+}
+
+/** Sum one field across a window, per agent. */
+function windowSum(from, to, pick, src) {
+  const out = new Map();
+  for (const r of (src || DATA.funnel)) {
+    if (r.d < from || r.d > to) continue;
+    out.set(r.n, (out.get(r.n) || 0) + (pick(r) || 0));
+  }
+  return out;
+}
+
+/** Best single calendar month of upfront cash within the anchor year. */
+function personalBests(year) {
+  const perMonth = new Map();
+  for (const r of DATA.funnel) {
+    if (+r.d.slice(0,4) !== year) continue;
+    const k = r.n + '|' + r.d.slice(0,7);
+    perMonth.set(k, (perMonth.get(k) || 0) + (r.rev || 0));
+  }
+  const best = new Map();
+  for (const [k, v] of perMonth) {
+    const n = k.split('|')[0];
+    if (v > (best.get(n) || 0)) best.set(n, v);
+  }
+  return best;
+}
+
+/** Dense rank, descending, ties share a rank - matching the sheet's RANK column. */
+function denseRank(entries) {
+  const vals = [...new Set(entries.map(e => e.v))].sort((a,b) => b-a);
+  const pos = new Map(vals.map((v,i) => [v, i+1]));
+  return new Map(entries.map(e => [e.k, pos.get(e.v)]));
+}
+
+function buildLeaderboard() {
+  const w = windows(DATA_MAX);
+  const yr = +DATA_MAX.slice(0,4);
+  const S = (rng, pick, src) => windowSum(rng[0], rng[1], pick, src);
+  const booked = r => r.won + r.pen + r.lost + r.ns + r.mis + r.can;
+
+  const d = {
+    ucMtd: S(w.mtd, r=>r.cash || 0, DATA.funnel), ucQtd: S(w.qtd, r=>r.cash || 0, DATA.funnel), ucYtd: S(w.ytd, r=>r.cash || 0, DATA.funnel),
+    revMtd: S(w.mtd, r=>r.rev || 0, DATA.funnel), revQtd: S(w.qtd, r=>r.rev || 0, DATA.funnel), revYtd: S(w.ytd, r=>r.rev || 0, DATA.funnel),
+    ucPmtd: S(w.pmtd, r=>r.cash || 0, DATA.funnel),
+    touchPmtd: S(w.pmtd, r=>r.di, DATA.kpi),
+    cashWtd: S(w.wtd, r=>r.cash),
+    leadsWtd: S(w.wtd, booked), leadsMtd: S(w.mtd, booked),
+    touchWtd: S(w.wtd, r=>r.di, DATA.kpi), touchMtd: S(w.mtd, r=>r.di, DATA.kpi),
+    setsMtd: S(w.mtd, r=>r.se, DATA.kpi), hoursMtd: S(w.mtd, r=>r.hrs, DATA.kpi),
+    apptsMtd: S(w.mtd, r=>r.ap, DATA.kpi),
+    best: personalBests(yr)
+  };
+
+  const rows = DATA.agents.filter(a => a.s === 'ACTIVE').map(a => ({
+    short: a.n, full: a.f, tier: a.t,
+    ucMtd: d.ucMtd.get(a.n)||0, ucQtd: d.ucQtd.get(a.n)||0, ucYtd: d.ucYtd.get(a.n)||0,
+    revMtd: d.revMtd.get(a.n)||0, revQtd: d.revQtd.get(a.n)||0, revYtd: d.revYtd.get(a.n)||0,
+    ucPmtd: d.ucPmtd.get(a.n)||0, touchPmtd: d.touchPmtd.get(a.n)||0,
+    cashWtd: d.cashWtd.get(a.n)||0,
+    leadsWtd: d.leadsWtd.get(a.n)||0, leadsMtd: d.leadsMtd.get(a.n)||0,
+    touchWtd: d.touchWtd.get(a.n)||0, touchMtd: d.touchMtd.get(a.n)||0,
+    setsMtd: d.setsMtd.get(a.n)||0, hoursMtd: d.hoursMtd.get(a.n)||0,
+    apptsMtd: d.apptsMtd.get(a.n)||0, best: d.best.get(a.n)||0
+  }));
+
+  // Global rank on MTD upfront cash, as the sheet does it, plus last month's rank
+  // on the same basis so movement is like-for-like.
+  const rank = denseRank(rows.map(r => ({ k:r.short, v:r.ucMtd })));
+  const rankPrev = denseRank(rows.map(r => ({ k:r.short, v:r.ucPmtd })));
+  for (const r of rows) {
+    r.rank = rank.get(r.short);
+    r.rankPrev = rankPrev.get(r.short);
+    r.setsPerHour = div(r.setsMtd, r.hoursMtd);
+  }
+  return { rows, w };
+}
+
+const LB_CLOSER_COLS = [
+  ['Upfront<br>MTD', r=>fmtMoney(r.ucMtd), true], ['Upfront<br>QTD', r=>fmtMoney(r.ucQtd)],
+  ['Upfront<br>YTD', r=>fmtMoney(r.ucYtd)],
+  ['Revenue<br>MTD', r=>fmtMoney(r.revMtd), true], ['Revenue<br>QTD', r=>fmtMoney(r.revQtd)],
+  ['Revenue<br>YTD', r=>fmtMoney(r.revYtd)],
+  ['Personal<br>best', r=>r.best?fmtMoney(r.best):'–', true],
+  ['Touch<br>WTD', r=>fmtInt(r.touchWtd), true], ['Touch<br>MTD', r=>fmtInt(r.touchMtd)],
+  ['Leads<br>WTD', r=>fmtInt(r.leadsWtd), true], ['Leads<br>MTD', r=>fmtInt(r.leadsMtd)],
+  ['Collected<br>WTD', r=>fmtMoney(r.cashWtd), true]
+];
+const LB_SETTER_COLS = [
+  ['Touch<br>WTD', r=>fmtInt(r.touchWtd), true], ['Touch<br>MTD', r=>fmtInt(r.touchMtd)],
+  ['Leads<br>WTD', r=>fmtInt(r.leadsWtd), true], ['Leads<br>MTD', r=>fmtInt(r.leadsMtd)],
+  ['Sets<br>MTD', r=>fmtInt(r.setsMtd), true], ['Hours<br>MTD', r=>fmtNum(r.hoursMtd,1)],
+  ['Sets / hr', r=>fmtNum(r.setsPerHour,2)], ['Appts<br>MTD', r=>fmtInt(r.apptsMtd)],
+  ['Upfront<br>YTD', r=>r.ucYtd?fmtMoney(r.ucYtd):'–', true]
+];
+
+function renderLbTable(tier, rows, isSetter) {
+  // Closers rank on MTD upfront cash; setters produce no cash, so they rank on MTD
+  // dials - the output of their role. Ranking setters on cash would be all zeroes.
+  const sortKey = isSetter ? (r=>r.touchMtd) : (r=>r.ucMtd);
+  const prevKey = isSetter ? (r=>r.touchPmtd) : (r=>r.ucPmtd);
+  const sorted = rows.slice().sort((a,b) => sortKey(b) - sortKey(a));
+  // Rank movement is computed WITHIN the tier, so it matches the # column beside it.
+  // Comparing tier position against a global rank would put two different scales
+  // next to each other.
+  const tierRank = denseRank(sorted.map(r => ({ k:r.short, v:sortKey(r) })));
+  const tierRankPrev = denseRank(sorted.map(r => ({ k:r.short, v:prevKey(r) })));
+  const cols = isSetter ? LB_SETTER_COLS : LB_CLOSER_COLS;
+  const anyone = sorted.some(r => sortKey(r) > 0);
+
+  const card = el('div','card'), scroll = el('div','scroll'), t = el('table');
+  t.innerHTML = `<thead><tr><th class="rk">#</th><th class="agent">Sales rep</th>` +
+    cols.map(c => `<th class="${c[2]?'grp':''}">${c[0]}</th>`).join('') + `</tr></thead>`;
+  const tb = el('tbody');
+
+  for (const r of sorted) {
+    const tr = el('tr');
+    const tRank = tierRank.get(r.short);
+    const earned = sortKey(r) > 0;
+    // Medals only where something was actually produced - a medal for zero is noise.
+    const medal = (earned && tRank <= 3) ? MEDALS[tRank-1] : '';
+    // Only reps who actually produced something get a movement badge. A rep on zero
+    // can climb the table purely because fewer colleagues sold this month, and showing
+    // them "▲3" would read as improvement where there was none.
+    let mv = '';
+    if (earned) {
+      const dlt = tierRankPrev.get(r.short) - tRank;
+      if (dlt !== 0) mv = `<span class="mv ${dlt>0?'up':'down'}" title="${tier} rank ${tierRankPrev.get(r.short)} last month → ${tRank} now">${dlt>0?'▲':'▼'}${Math.abs(dlt)}</span>`;
+    }
+    tr.className = earned && tRank === 1 ? 'lead' : '';
+    tr.innerHTML =
+      `<td class="rk">${medal || (earned ? tRank : '<span class="nil">–</span>')}</td>` +
+      `<td class="agent">${r.short}${mv}<span class="full">${r.full||''}</span></td>` +
+      cols.map(c => { const v = c[1](r); return `<td class="${c[2]?'grp':''}${v==='–'||v==='$0'||v==='0'?' nil':''}">${v}</td>`; }).join('');
+    tb.appendChild(tr);
+  }
+
+  if (sorted.length) {
+    const tot = {};
+    for (const k of ['ucMtd','ucQtd','ucYtd','revMtd','revQtd','revYtd','cashWtd',
+                     'leadsWtd','leadsMtd','touchWtd','touchMtd','setsMtd','hoursMtd','apptsMtd'])
+      tot[k] = sorted.reduce((s,r) => s + r[k], 0);
+    tot.best = Math.max(...sorted.map(r => r.best), 0);
+    tot.setsPerHour = div(tot.setsMtd, tot.hoursMtd);
+    const tr = el('tr','overall');
+    tr.innerHTML = `<td class="rk"></td><td class="agent">${tier} total<span class="full">${sorted.length} active rep${sorted.length===1?'':'s'}</span></td>` +
+      cols.map(c => `<td class="${c[2]?'grp':''}">${c[1](tot)}</td>`).join('');
+    tb.appendChild(tr);
+  }
+  t.appendChild(tb); scroll.appendChild(t); card.appendChild(scroll);
+  if (!anyone) {
+    const note = el('div','warn');
+    note.style.margin = '0'; note.style.borderRadius = '0';
+    note.innerHTML = isSetter
+      ? `<b>No dialer activity recorded</b> for this tier in the current month.`
+      : `<b>No upfront cash recorded</b> for this tier in the current month, so nobody is ranked.`;
+    card.appendChild(note);
+  }
+  return card;
+}
+
+/** Insight cards computed from the data - nothing hardcoded except the provenance flags. */
+function leaderboardInsights(rows, w) {
+  const closers = rows.filter(r => !/3/.test(r.tier));
+  const setters = rows.filter(r => /3/.test(r.tier));
+  const good = [], flags = [];
+
+  const teamMtd = closers.reduce((s,r) => s + r.ucMtd, 0);
+  const teamYtd = closers.reduce((s,r) => s + r.ucYtd, 0);
+  const top = closers.slice().sort((a,b) => b.ucMtd - a.ucMtd)[0];
+
+  if (top && top.ucMtd > 0) {
+    const share = teamMtd ? top.ucMtd/teamMtd : 0;
+    good.push([`${top.short} leads the month`,
+      `${fmtMoney(top.ucMtd)} upfront cash — ${fmtPct(share)} of everything the closers brought in this month.`]);
+    if (share >= 0.6 && closers.filter(r => r.ucMtd > 0).length > 1) {
+      flags.push([`Revenue is concentrated in one rep`,
+        `${top.short} accounts for ${fmtPct(share)} of month-to-date cash. If they have a slow month or leave, the number goes with them.`]);
+    }
+  }
+
+  // personal bests being set right now
+  const pb = closers.filter(r => r.ucMtd > 0 && r.ucMtd >= r.best);
+  if (pb.length) good.push([`Personal best${pb.length>1?'s':''} in progress`,
+    `${pb.map(r=>r.short).join(', ')} ${pb.length>1?'are':'is'} at or above ${pb.length>1?'their':'their'} best month of the year so far.`]);
+
+  // month-on-month movers
+  const movers = closers.filter(r => r.ucPmtd > 0 || r.ucMtd > 0)
+    .map(r => ({...r, delta: r.ucMtd - r.ucPmtd })).sort((a,b) => b.delta - a.delta);
+  if (movers.length && movers[0].delta > 0)
+    good.push([`Biggest improvement`, `${movers[0].short} is up ${fmtMoney(movers[0].delta)} on last month (${fmtMoney(movers[0].ucPmtd)} → ${fmtMoney(movers[0].ucMtd)}).`]);
+  const faller = movers[movers.length-1];
+  if (faller && faller.delta < 0)
+    flags.push([`Sharpest drop`, `${faller.short} is down ${fmtMoney(Math.abs(faller.delta))} on last month (${fmtMoney(faller.ucPmtd)} → ${fmtMoney(faller.ucMtd)}).`]);
+
+  // effort without result, and result without recorded effort
+  const dry = closers.filter(r => r.leadsMtd >= 10 && r.ucMtd === 0);
+  if (dry.length) flags.push([`Calls but no cash`,
+    `${dry.map(r=>`${r.short} (${r.leadsMtd} leads)`).join(', ')} — double-digit leads this month and nothing closed. Worth a pipeline review rather than a target reminder.`]);
+
+  const silentEffort = closers.filter(r => r.leadsMtd > 0 && r.touchMtd === 0);
+  if (silentEffort.length) flags.push([`Leads recorded with zero dials`,
+    `${silentEffort.map(r=>r.short).join(', ')} show booked calls but no touch points at all. Either the activity is not being logged, or leads arrive from somewhere other than outbound.`]);
+
+  const idle = rows.filter(r => r.leadsMtd === 0 && r.touchMtd === 0 && r.ucMtd === 0);
+  if (idle.length) flags.push([`No activity of any kind`,
+    `${idle.map(r=>r.short).join(', ')} — all marked ACTIVE, but no cash, leads or dials this month. Either genuinely idle, or missing from the source consolidation.`]);
+
+  const topSetter = setters.slice().sort((a,b) => b.touchMtd - a.touchMtd)[0];
+  if (topSetter && topSetter.touchMtd > 0)
+    good.push([`${topSetter.short} leads the dialer`,
+      `${fmtInt(topSetter.touchMtd)} touch points this month over ${fmtNum(topSetter.hoursMtd,1)} hours, converting to ${fmtInt(topSetter.setsMtd)} set${topSetter.setsMtd===1?'':'s'}.`]);
+
+  const setterNoSets = setters.filter(r => r.touchMtd >= 200 && r.setsMtd === 0);
+  if (setterNoSets.length) flags.push([`High dials, zero sets`,
+    `${setterNoSets.map(r=>`${r.short} (${fmtInt(r.touchMtd)} dials)`).join(', ')} — heavy dialing with nothing booked. Usually a list-quality or script problem, not effort.`]);
+
+  if (teamYtd > 0) good.push([`Year to date`,
+    `${fmtMoney(teamYtd)} upfront cash across the closer tiers, from ${closers.filter(r=>r.ucYtd>0).length} of ${closers.length} active closers.`]);
+
+  // provenance - these are about the source, not performance
+  flags.push([`Three source figures cannot be reproduced`,
+    `Five of the eight reps on the client Leaderboard tab reconcile with this dashboard to the dollar. Three do not: it shows Nelson $82,000, Peter Jr $11,000 and Zac $12,000 year-to-date, and none of those reconcile with CURRENT DATA, MonthlySale or ALLCASH. Peter Jr and Zac appear in none of them, and CURRENT DATA holds no Tier 3 rows at all. Since everything else matches exactly, those three look hand-entered.`]);
+  flags.push([`Two leaderboards, two answers`,
+    `That workbook holds a second tab sourced from the ALLCASH ledger instead, which reports Laura $164,260 and Shane $68,800 against $189,567 and $55,000 here. ALLCASH also shows roughly $676k of 2026 cash across many closers not in the active roster, including about $59,800 with no closer named. Worth deciding which is the number of record.`]);
+
+  return { good, flags };
+}
+
+function viewLeaderboard() {
+  const frag = document.createDocumentFragment();
+  const { rows, w } = buildLeaderboard();
+
+  frag.appendChild(el('div','sec-head',
+    `<h2>Sales leaderboard</h2>
+     <span class="sec-note">Week, month, quarter and year to date as at <b style="color:var(--ink-2)">${w.anchor}</b>.
+     This view is anchored to the latest data, so the period picker above does not apply.</span>`));
+
+  TIERS.forEach((tier, i) => {
+    const isSetter = tier === 'TIER 3';
+    const tierRows = rows.filter(r => r.tier === tier);
+    if (!tierRows.length) return;
+
+    const panel = el('div','tier-panel');
+    panel.setAttribute('style', tierVars(tier));
+
+    const withData = tierRows.filter(r => (isSetter ? r.touchMtd : r.ucMtd) > 0).length;
+    const headline = isSetter
+      ? fmtInt(tierRows.reduce((s,r) => s + r.touchMtd, 0)) + ' touch points'
+      : fmtMoney(tierRows.reduce((s,r) => s + r.ucMtd, 0));
+
+    panel.appendChild(el('div','tier-band',
+      `<div class="tier-num" aria-hidden="true">${TIER_STYLE[tier].num}</div>
+       <div class="tier-titles">
+         <div class="t">${tier} · ${isSetter?'Setters':'Closers'}</div>
+         <div class="s">${isSetter
+            ? 'Ranked on month-to-date touch points — setters produce no cash by design'
+            : 'Ranked on month-to-date upfront cash'}</div>
+       </div>
+       <div class="tier-meta"><b>${headline}</b>month to date · ${withData} of ${tierRows.length} producing</div>`));
+
+    panel.appendChild(renderLbTable(tier, tierRows, isSetter));
+    frag.appendChild(panel);
+    if (i < TIERS.length - 1) frag.appendChild(el('div','tier-gap'));
+  });
+
+  const { good, flags } = leaderboardInsights(rows, w);
+  const sec = el('section','insights-sec');
+  sec.appendChild(el('div','sec-head',
+    `<h2>Insights</h2><span class="sec-note">Generated from the data on every load, not written by hand.</span>`));
+  const grid = el('div','insights');
+  for (const [t,b] of good) grid.appendChild(el('div','ins good glow', `<h4>▲ ${t}</h4><p>${b}</p>`));
+  for (const [t,b] of flags) grid.appendChild(el('div','ins flag glow', `<h4>▼ ${t}</h4><p>${b}</p>`));
+  sec.appendChild(grid);
+  frag.appendChild(sec);
+  return frag;
+}
+
+function viewTier(tierName, metrics, prior, basis) {
+  const frag = document.createDocumentFragment();
+  const rows = agentRows(metrics).filter(r => r.tier === tierName);
+  const isSetter = tierName === 'TIER 3';
+  if (!rows.length) { frag.appendChild(el('div','warn','No agents in this tier.')); return frag; }
+
+  const sec = el('section');
+  const head = el('div','sec-head');
+  head.appendChild(el('h2', null, isSetter
+    ? 'Tier 3 <span class="dim">· Setters</span>' : `${tierName} <span class="dim">· Closers</span>`));
+  head.appendChild(el('span','sec-note', isSetter
+    ? 'Dialer activity. Tier 3 have no sales funnel by design — they book, they do not close.'
+    : 'Discovery call funnel.'));
+  const withData = rows.filter(r => isSetter ? r.m.hasKpi : r.m.hasFunnel);
+  if (!isSetter && withData.length) {
+    const top = withData.slice().sort((a,b) => b.m.revenue - a.m.revenue)[0];
+    if (top && top.m.revenue > 0)
+      head.appendChild(el('span','badge', `★ Top performer · ${top.short} · ${fmtMoney(top.m.revenue)}`));
+  }
+  sec.appendChild(head);
+
+  if (!isSetter) {
+    const board = renderBoard(rows, prior);
+    if (board) {
+      const h = el('div','sec-head'); h.style.marginTop = '14px';
+      h.appendChild(el('h2',null,'Leaderboard'));
+      h.appendChild(el('span','sec-note', `Ranked by composite score · qualifier Held &gt; ${RANK_MIN_HELD}`));
+      sec.appendChild(h); sec.appendChild(board);
+    }
+  }
+
+  const th = el('div','sec-head'); th.style.marginTop = '18px';
+  th.appendChild(el('h2', null, isSetter ? 'Activity' : 'Funnel detail'));
+  sec.appendChild(th);
+  sec.appendChild(renderTable(rows, isSetter ? SETTER_COLS : CLOSER_COLS,
+    m => isSetter ? m.hasKpi : m.hasFunnel));
+
+  const missing = rows.filter(r => r.active && (isSetter ? !r.m.hasKpi : !r.m.hasFunnel)).map(r => r.short);
+  if (missing.length) sec.appendChild(el('div','warn',
+    `<b>No data recorded</b> for ${missing.join(', ')} in this period. Shown as gaps rather than zeros — a blank and a genuine zero mean different things.`));
+
+  const prog = renderProgress(rows, basis);
+  if (prog) {
+    const h = el('div','sec-head'); h.style.marginTop = '18px';
+    h.appendChild(el('h2',null,'KPI progress'));
+    h.appendChild(el('span','sec-note', `vs ${basis.label} targets`));
+    sec.appendChild(h); sec.appendChild(prog);
+  }
+  frag.appendChild(sec);
+  return frag;
+}
+
+// --- shell -----------------------------------------------------------------
+
+function renderNav(metrics) {
+  const nav = document.getElementById('nav');
+  nav.innerHTML = '';
+  const rows = agentRows(metrics);
+  const items = [
+    ['exec','Executive summary', null],
+    ['board','Sales leaderboard', null],
+    ['tier1','Tier 1 · Closers', 'TIER 1'],
+    ['tier2','Tier 2 · Closers', 'TIER 2'],
+    ['tier3','Tier 3 · Setters', 'TIER 3']
+  ];
+  for (const [key,label,tier] of items) {
+    const b = el('button','nav-item');
+    b.setAttribute('aria-current', String(state.view === key));
+    let cnt = '';
+    if (tier) {
+      const tr = rows.filter(r => r.tier === tier);
+      const wd = tr.filter(r => tier === 'TIER 3' ? r.m.hasKpi : r.m.hasFunnel).length;
+      cnt = `<span class="cnt" title="Reps with data in this period">${wd}/${tr.length}</span>`;
+    }
+    // Tier nav dots carry the same ordinal colour as their panel, so the nav and the
+    // leaderboard reinforce one another rather than being two unrelated schemes.
+    const dotStyle = tier ? ` style="background:${TIER_STYLE[tier].spine}"` : '';
+    b.innerHTML = `<span class="dot"${dotStyle}></span><span>${label}</span>${cnt}`;
+    b.onclick = () => { state.view = key; render(); window.scrollTo({top:0, behavior:'smooth'}); };
+    nav.appendChild(b);
+  }
+  document.getElementById('navNote').innerHTML =
+    `Showing <b style="color:var(--ink-2)">${state.from}</b> → <b style="color:var(--ink-2)">${state.to}</b>`;
+}
+
+function render() {
+  const metrics = compute(state.from, state.to);
+  const [pf,pt] = priorRange(state.from, state.to);
+  const prior = compute(pf, pt);
+  const basis = targetBasis(state.from, state.to);
+
+  renderNav(metrics);
+  // The leaderboard is anchored to to-date windows, so a period control would be a
+  // dead input on that view. Hide it rather than leave something that does nothing.
+  document.getElementById('period').hidden = state.view === 'board';
+
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  app.appendChild(
+    state.view === 'exec' ? viewExec(metrics, prior, basis)
+    : state.view === 'board' ? viewLeaderboard()
+    : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
+               metrics, prior, basis));
+  bindGlow();
+}
+
+function syncPeriodUI() {
+  const list = PERIODS[state.mode] || [];
+  const sel = document.getElementById('periodSel');
+  const custom = state.mode === 'custom';
+  document.getElementById('stepper').hidden = custom;
+  document.getElementById('customDates').hidden = !custom;
+  if (!custom) {
+    sel.innerHTML = list.map((p,i) => `<option value="${i}"${i===state.idx?' selected':''}>${p.label}</option>`).join('');
+    document.getElementById('prev').disabled = state.idx <= 0;
+    document.getElementById('next').disabled = state.idx >= list.length-1;
+  }
+  document.querySelectorAll('#modes button')
+    .forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === state.mode)));
+  document.getElementById('from').value = state.from;
+  document.getElementById('to').value = state.to;
+}
+
+function applyPeriod() {
+  if (state.mode !== 'custom') {
+    const p = PERIODS[state.mode][state.idx];
+    if (p) { state.from = p.from; state.to = p.to; }
+  }
+  syncPeriodUI();
+  render();
+}
+
+function setMode(mode) {
+  state.mode = mode;
+  if (mode !== 'custom') {
+    const list = PERIODS[mode];
+    // land on the period containing the current start date, else the latest
+    let i = list.findIndex(p => state.from >= p.from && state.from <= p.to);
+    state.idx = i >= 0 ? i : list.length - 1;
+  }
+  applyPeriod();
+}
+
+// --- glow ------------------------------------------------------------------
+
+let gx = 0, gy = 0, pending = false;
+function onMove(e) {
+  gx = e.clientX; gy = e.clientY;
+  if (!pending) {
+    pending = true;
+    requestAnimationFrame(() => {
+      pending = false;
+      const s = document.getElementById('spotlight');
+      s.style.setProperty('--gx', gx+'px'); s.style.setProperty('--gy', gy+'px');
+    });
+  }
+}
+function bindGlow() {
+  document.querySelectorAll('.glow').forEach(node => {
+    if (node.dataset.glow) return;
+    node.dataset.glow = '1';
+    node.addEventListener('pointermove', e => {
+      const r = node.getBoundingClientRect();
+      node.style.setProperty('--mx', (e.clientX-r.left)+'px');
+      node.style.setProperty('--my', (e.clientY-r.top)+'px');
+    }, { passive:true });
+  });
+}
+
+function boot() {
+  buildPeriods();
+  if (!PERIODS.month.length) throw new Error('No dated rows in data.json.');
+
+  const modes = document.getElementById('modes');
+  [['week','Weekly'],['month','Monthly'],['custom','Custom']].forEach(([k,label]) => {
+    const b = el('button', null, label);
+    b.dataset.k = k; b.setAttribute('aria-pressed','false');
+    b.onclick = () => setMode(k);
+    modes.appendChild(b);
+  });
+  document.getElementById('periodSel').onchange = e => { state.idx = +e.target.value; applyPeriod(); };
+  document.getElementById('prev').onclick = () => { if (state.idx > 0) { state.idx--; applyPeriod(); } };
+  document.getElementById('next').onclick = () => {
+    if (state.idx < PERIODS[state.mode].length-1) { state.idx++; applyPeriod(); } };
+  document.getElementById('from').onchange = e => { state.from = e.target.value; render(); };
+  document.getElementById('to').onchange = e => { state.to = e.target.value; render(); };
+  document.getElementById('period').hidden = false;
+
+  const synced = DATA.synced_at ? DATA.synced_at.replace(/\+00$/,' UTC') : 'unknown';
+  document.getElementById('sub').innerHTML =
+    `FreedomAcademy AU · synced from the source sheet at <b>${synced}</b>`;
+
+  const f = document.getElementById('footer');
+  f.hidden = false;
+  f.innerHTML = `
+    <div><b>How to read this.</b> Every counter sums the source sheet's <code>#</code> column, not a row count —
+    one row can record several no-shows. Booked = Won + Pending + Lost + No Show + Missed + Cancelled.
+    Held = Won + Pending + Lost. A dash means the figure cannot be computed (no denominator), which is not the same as zero.</div>
+    <div style="margin-top:8px">Composite scores are <b>relative to the reps in that tier for the selected period</b> —
+    changing the period reshuffles scores, not just ranks. Rank movement compares the equal-length window immediately before.</div>
+    <div style="margin-top:8px">Only periods that contain data are listed. Ratios computed on fewer than ${RATE_MIN}
+    underlying events are marked <i>low volume</i> and cannot claim a target.</div>
+    <div style="margin-top:8px">Figures are unreconciled. Check against GoHighLevel and Stripe before using any total externally.</div>`;
+
+  window.addEventListener('pointermove', onMove, { passive:true });
+  window.addEventListener('pointerdown', onMove, { passive:true });
+  document.body.classList.add('cursor-live');
+
+  // open on the most recent month that has data
+  state.mode = 'month';
+  state.idx = PERIODS.month.length - 1;
+  applyPeriod();
+}
+
+fetch('data.json')
+  .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+  .then(d => { DATA = d; boot(); })
+  .catch(e => {
+    document.getElementById('sub').textContent = '';
+    document.getElementById('app').innerHTML =
+      `<div class="card"><div class="err">Could not load <code>data.json</code> (${e.message}).<br>
+       This page must be served over HTTP, not opened directly from the filesystem.</div></div>`;
+  });
+</script>
+</body>
+</html>
