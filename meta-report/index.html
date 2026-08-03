@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shane Da Costa AU · Meta Ads Performance Report</title>
+<script>
+  (function(){ try{ var t=localStorage.getItem('sdc-theme'); document.documentElement.setAttribute('data-theme',(t==='light'||t==='dark')?t:'dark'); }catch(e){ document.documentElement.setAttribute('data-theme','dark'); } })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#E6EBF4; --text2:#B8C4D6; --blue:#60A5FA; --paper:#0B1220; --paper2:#131D30;
+    --muted:#94A3B8; --faint:#64748B; --line:#25324A; --line2:#1A2436;
+    --hover:rgba(96,165,250,.12); --navtext:#C3CDDC;
+    --good:#22C55E; --warn:#FBBF24; --bad:#F87171; --sidebar:264px;
+  }
+  :root[data-theme="light"]{
+    --ink:#0F172A; --text2:#334155; --blue:#2563EB; --paper:#ffffff; --paper2:#F8FAFC;
+    --muted:#64748B; --faint:#94A3B8; --line:#E2E8F0; --line2:#EEF2F7;
+    --hover:#EEF3FB; --navtext:#334155; --good:#16A34A; --warn:#D97706; --bad:#DC2626;
+  }
+  *{box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',system-ui,-apple-system,sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; transition:background .2s ease, color .2s ease;}
+  a{color:inherit; text-decoration:none;}
+  .sidebar{position:fixed; top:0; left:0; width:var(--sidebar); height:100vh; border-right:1px solid var(--line); background:var(--paper2); padding:30px 22px; overflow-y:auto; transition:background .2s ease;}
+  .brand{font-size:19px; font-weight:700; letter-spacing:-0.02em; line-height:1.2;}
+  .brand .b{color:var(--blue);}
+  .brand-sub{font-size:12.5px; color:var(--muted); margin-top:3px;}
+  .navgroup{margin-top:26px;}
+  .navgroup h4{font-size:10.5px; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin:0 0 9px 0;}
+  .navlink{display:flex; gap:10px; align-items:baseline; padding:5px 8px; border-radius:7px; font-size:13.5px; color:var(--navtext); margin-left:-8px;}
+  .navlink .n{font-size:11px; color:var(--faint); font-variant-numeric:tabular-nums; min-width:16px;}
+  .navlink:hover{background:var(--hover);} .navlink:hover .n{color:var(--blue);}
+  main{margin-left:var(--sidebar);}
+  .wrap{max-width:880px; margin:0; padding:56px 56px 120px;}
+  h1.display{font-size:54px; font-weight:300; letter-spacing:-0.025em; line-height:1.04; margin:0 0 10px;}
+  h1.display .b{color:var(--blue);}
+  .lead{font-size:14.5px; color:var(--text2); max-width:72ch;}
+  .rangebar{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; padding:6px; background:var(--paper2); border:1px solid var(--line); border-radius:14px;}
+  .rangebar button{flex:1; min-width:110px; border:1px solid transparent; background:transparent; color:var(--text2); font-family:inherit; font-size:13.5px; font-weight:600; padding:9px 10px; border-radius:9px; cursor:pointer; transition:all .15s ease; line-height:1.2;}
+  .rangebar button small{display:block; font-size:10.5px; font-weight:500; color:var(--faint); margin-top:2px;}
+  .rangebar button:hover{background:var(--hover);}
+  .rangebar button[aria-selected="true"]{background:var(--blue); color:#0B1220; border-color:var(--blue);}
+  .rangebar button[aria-selected="true"] small{color:rgba(11,18,32,.7);}
+  .pills{display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 6px;}
+  .pill{border:1px solid var(--line); border-radius:999px; padding:7px 15px; font-size:13.5px; background:var(--paper2);}
+  .pill b{font-weight:600;} .pill span{color:var(--muted);}
+  .callout{background:var(--paper2); border-left:3px solid var(--blue); border-radius:0 10px 10px 0; padding:16px 20px; margin:22px 0; font-size:14.5px; color:var(--text2);}
+  .callout b{color:var(--ink);} .callout.amber{border-left-color:var(--warn);}
+  section{padding-top:48px; margin-top:8px; border-top:1px solid var(--line2);}
+  .sec-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;}
+  .sec-eyebrow{font-size:11px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--blue);}
+  .sec-num{font-size:13px; color:var(--faint); font-variant-numeric:tabular-nums;}
+  h2{font-size:30px; font-weight:300; letter-spacing:-0.02em; margin:6px 0 16px;}
+  h2 .b{color:var(--blue);}
+  p{margin:12px 0; font-size:14.5px; color:var(--text2);}
+  .note{font-size:14px; color:var(--muted);}
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14px;}
+  th,td{text-align:right; padding:9px 12px; border-bottom:1px solid var(--line2);}
+  th:first-child,td:first-child{text-align:left;}
+  thead th{font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); border-bottom:1px solid var(--line);}
+  tbody tr:hover{background:var(--paper2);}
+  tfoot td{font-weight:600; border-top:1px solid var(--line); border-bottom:none; color:var(--ink);}
+  td.strong{font-weight:600; color:var(--ink);}
+  .tag{display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:6px;}
+  .tag.pur{background:rgba(96,165,250,.16); color:#93C5FD;}
+  .tag.lead{background:rgba(34,197,94,.16); color:#4ADE80;}
+  .tag.oth{background:rgba(148,163,184,.16); color:#CBD5E1;}
+  :root[data-theme="light"] .tag.pur{background:#DBEAFE; color:#1E40AF;}
+  :root[data-theme="light"] .tag.lead{background:#DCFCE7; color:#166534;}
+  :root[data-theme="light"] .tag.oth{background:#F1F5F9; color:#475569;}
+  .metrics{display:flex; gap:16px; flex-wrap:wrap; margin:22px 0;}
+  .metric{flex:1; min-width:150px; border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:var(--paper2);}
+  .metric .k{font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);}
+  .metric .v{font-size:30px; font-weight:300; letter-spacing:-0.02em; margin-top:6px;}
+  .metric .v .b{color:var(--blue);}
+  .metric .d{font-size:12.5px; color:var(--muted); margin-top:4px;}
+  ol.actions{counter-reset:a; list-style:none; padding:0; margin:16px 0;}
+  ol.actions li{counter-increment:a; position:relative; padding:14px 0 14px 44px; border-bottom:1px solid var(--line2); font-size:14.5px; color:var(--text2);}
+  ol.actions li::before{content:counter(a); position:absolute; left:0; top:12px; width:28px; height:28px; border-radius:8px; background:var(--blue); color:#0B1220; font-size:13px; font-weight:700; display:grid; place-items:center;}
+  :root[data-theme="light"] ol.actions li::before{background:var(--ink); color:#fff; font-weight:600;}
+  ol.actions li b{color:var(--ink);}
+  ul.clean{list-style:none; padding:0; margin:14px 0;}
+  ul.clean li{padding:10px 0 10px 20px; border-bottom:1px solid var(--line2); position:relative; font-size:14.5px;}
+  ul.clean li::before{content:""; position:absolute; left:2px; top:19px; width:6px; height:6px; border-radius:50%; background:var(--blue);}
+  ul.clean li b{color:var(--ink);}
+  footer{margin-top:64px; padding-top:24px; border-top:1px solid var(--line); font-size:13px; color:var(--muted);}
+  footer .tagline{font-size:16px; color:var(--ink); font-weight:500; margin-bottom:8px;}
+  .updated{display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:12.5px; color:var(--muted); margin-bottom:18px;}
+  .updated .u-live{font-weight:600; color:var(--text2);} .updated .u-sep{color:var(--faint);}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--good); flex:none; animation:pulse 2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55);} 70%{box-shadow:0 0 0 8px rgba(34,197,94,0);} 100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}}
+  .theme-toggle{position:fixed; top:18px; right:20px; z-index:60; display:inline-flex; align-items:center; gap:7px; border:1px solid var(--line); background:var(--paper2); color:var(--ink); padding:7px 13px; border-radius:999px; font-family:inherit; font-size:12.5px; font-weight:600; cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,.25);}
+  .theme-toggle:hover{border-color:var(--blue);} .theme-toggle .ic{font-size:14px; line-height:1;}
+  @media(max-width:900px){
+    .sidebar{display:none;} main{margin-left:0;} .wrap{padding:66px 20px 108px; max-width:none;}
+    section{scroll-margin-top:66px;} .theme-toggle{top:14px; right:14px; padding:6px 11px;}
+    table{font-size:13px; display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap;}
+    .metrics{gap:10px;} .metric{min-width:calc(50% - 5px); padding:14px 15px;} .metric .v{font-size:24px;}
+    .rangebar button{min-width:calc(50% - 4px);}
+  }
+</style>
+</head>
+<body>
+
+<button id="themeToggle" class="theme-toggle" type="button" onclick="__toggleTheme()" aria-label="Toggle night mode"><span class="ic">&#9790;</span><span class="lbl">Night mode</span></button>
+
+<aside class="sidebar">
+  <div class="brand">Shane Da Costa <span class="b">AU</span></div>
+  <div class="brand-sub">Paid Media Report · Meta Ads</div>
+  <div class="navgroup"><h4>Overview</h4>
+    <a class="navlink" href="#s00"><span class="n">00</span> Executive summary</a>
+    <a class="navlink" href="#s01"><span class="n">01</span> Account snapshot</a></div>
+  <div class="navgroup"><h4>Performance</h4>
+    <a class="navlink" href="#s02"><span class="n">02</span> Campaigns</a>
+    <a class="navlink" href="#s03"><span class="n">03</span> Ads</a></div>
+  <div class="navgroup"><h4>Audience &amp; delivery</h4>
+    <a class="navlink" href="#s05"><span class="n">04</span> Placement &amp; platform</a>
+    <a class="navlink" href="#s07"><span class="n">05</span> Demographics</a>
+    <a class="navlink" href="#s08"><span class="n">06</span> Geography</a>
+    <a class="navlink" href="#s09"><span class="n">07</span> Dayparting</a></div>
+  <div class="navgroup"><h4>Data &amp; actions</h4>
+    <a class="navlink" href="#s10"><span class="n">08</span> Data trust</a>
+    <a class="navlink" href="#s11"><span class="n">09</span> Opportunities</a>
+    <a class="navlink" href="#s12"><span class="n">10</span> Action list</a></div>
+</aside>
+
+<main>
+<div class="wrap">
+  <div class="updated"><span class="dot"></span><span class="u-live">Live snapshot</span><span class="u-sep">·</span><span>Pulled Monday, August 3, 2026 (advertiser time zone, Australia/Sydney)</span><span class="u-sep">·</span><span id="winLabel"></span></div>
+  <h1 class="display">Paid Media <span class="b">Report</span></h1>
+  <p class="lead">Shane Da Costa AU, Meta ad account act_1185223312884959 (currency AUD, advertiser time zone Australia/Sydney). This is a high-ticket coaching funnel, so the headline is cost per lead and cost per front-end signup (challenge and masterclass), not ROAS. The high-ticket program is closed offline on sales calls and is not in this data. Use the range selector to switch the window.</p>
+
+  <div class="rangebar" id="rangebar" role="tablist" aria-label="Reporting range"></div>
+  <div class="pills" id="heroPills"></div>
+
+  <div class="callout" id="rangeNote"></div>
+  <div class="callout amber"><b>Read ROAS with care.</b> The Meta pixel only sees front-end funnel events (leads, registrations, challenge and masterclass signups). The high-ticket program sale is closed offline on a sales call and is <b>not</b> tracked here, so the pixel ROAS shown is a front-end product figure, not a measure of the business's true return. Judge performance on cost per lead and cost per front-end signup, and reconcile revenue against the client's CRM.</div>
+
+  <section id="s00"><div class="sec-head"><span class="sec-eyebrow">Overview</span><span class="sec-num">00</span></div>
+    <h2>Executive <span class="b">summary</span></h2><p id="execSummary"></p></section>
+
+  <section id="s01"><div class="sec-head"><span class="sec-eyebrow">Overview</span><span class="sec-num">01</span></div>
+    <h2>Account <span class="b">snapshot</span></h2><div class="metrics" id="snapMetrics"></div><p class="note" id="snapNote"></p></section>
+
+  <section id="s02"><div class="sec-head"><span class="sec-eyebrow">Performance</span><span class="sec-num">02</span></div>
+    <h2>Campaign <span class="b">performance</span></h2>
+    <p class="note">All campaigns for the selected window, ranked by spend. Result types are never cross-compared: PUR = front-end purchases (challenge/masterclass), LEAD = website leads, REG = registrations, APPT = appointments, VID = video views. ROAS is front-end pixel value only.</p>
+    <table><thead><tr><th>Campaign</th><th>Result</th><th>Cost/result</th><th>ROAS*</th><th>Spend</th><th>CTR</th><th>CPC</th></tr></thead><tbody id="campBody"></tbody><tfoot id="campFoot"></tfoot></table></section>
+
+  <section id="s03"><div class="sec-head"><span class="sec-eyebrow">Performance</span><span class="sec-num">03</span></div>
+    <h2>Ad <span class="b">performance</span></h2>
+    <p class="note">Top 8 ads by spend for the selected window.</p>
+    <table><thead><tr><th>Ad</th><th>Spend</th><th>Result</th><th>ROAS*</th><th>CTR</th></tr></thead><tbody id="adBody"></tbody></table></section>
+
+  <section id="s05"><div class="sec-head"><span class="sec-eyebrow">Audience &amp; delivery</span><span class="sec-num">04</span></div>
+    <h2>Placement &amp; <span class="b">platform</span></h2>
+    <table><thead><tr><th>Platform</th><th>Spend</th><th>CTR</th><th>CPC</th><th>CPM</th></tr></thead><tbody id="platBody"></tbody></table>
+    <table><thead><tr><th>Top positions</th><th>Spend</th><th>CTR</th><th>CPC</th></tr></thead><tbody id="posBody"></tbody></table>
+    <p class="note">Device breakdown: Meta returned no impression-device split for this account, so that view is unavailable (not shown rather than guessed).</p></section>
+
+  <section id="s07"><div class="sec-head"><span class="sec-eyebrow">Audience &amp; delivery</span><span class="sec-num">05</span></div>
+    <h2>Demographics</h2>
+    <table><thead><tr><th>Age</th><th>Spend</th><th>CTR</th><th>CPC</th></tr></thead><tbody id="ageBody"></tbody></table>
+    <table><thead><tr><th>Gender</th><th>Spend</th><th>CTR</th><th>CPC</th></tr></thead><tbody id="genBody"></tbody></table></section>
+
+  <section id="s08"><div class="sec-head"><span class="sec-eyebrow">Audience &amp; delivery</span><span class="sec-num">06</span></div>
+    <h2>Geography</h2><p class="note">Australian states/territories by spend.</p>
+    <table><thead><tr><th>State</th><th>Spend</th><th>CTR</th><th>CPC</th></tr></thead><tbody id="regBody"></tbody></table></section>
+
+  <section id="s09"><div class="sec-head"><span class="sec-eyebrow">Audience &amp; delivery</span><span class="sec-num">07</span></div>
+    <h2>Dayparting</h2><p class="note">Full 24 hours, advertiser time zone (Australia/Sydney).</p>
+    <table><thead><tr><th>Hour (AEST)</th><th>Spend</th><th>CTR</th><th>CPC</th></tr></thead><tbody id="hourBody"></tbody></table></section>
+
+  <section id="s10"><div class="sec-head"><span class="sec-eyebrow">Data &amp; actions</span><span class="sec-num">08</span></div>
+    <h2>Data <span class="b">trust</span></h2>
+    <p>Account-level, current state (does not change with the range selector). The main "Shane Da Costa AU" pixel is active with <b>both browser-side and server-side signal firing</b> through this reporting window, so front-end event tracking is healthy. The real limitation is structural, not technical: the pixel cannot see the high-ticket close, which happens offline on a sales call. So cost per lead and cost per front-end signup above are trustworthy, but ROAS is not a revenue measure. A secondary "Shane Pixel1" dataset last fired 2026-07-03 and looks stale.</p>
+    <table><thead><tr><th>Dataset / pixel</th><th>Browser signal</th><th>Server signal</th><th>Verdict</th></tr></thead><tbody>
+      <tr><td>Shane Da Costa AU (main)</td><td>Active</td><td>Firing</td><td><span class="tag lead">Healthy</span></td></tr>
+      <tr><td>Shane Pixel1 (secondary)</td><td>Stale since 2026-07-03</td><td>Stale since 2026-07-03</td><td><span class="tag oth">Check</span></td></tr>
+    </tbody></table>
+    <p class="note"><b>Gap for JV:</b> reconcile front-end signups against the CRM/sales-call bookings to get true cost per booked call and cost per high-ticket sale. Verify EMQ per event in Events Manager (the MCP quality endpoint returned no numeric match-quality score).</p></section>
+
+  <section id="s11"><div class="sec-head"><span class="sec-eyebrow">Data &amp; actions</span><span class="sec-num">09</span></div>
+    <h2>Opportunities</h2>
+    <p>Account-level, current state. Meta Opportunity Score: <b>85 / 100</b> (healthy, up from 73). Recommendations sorted by score lift (points).</p>
+    <table><thead><tr><th>Fix</th><th>Estimated impact</th><th>Points</th></tr></thead><tbody>
+      <tr><td>Turn on Advantage+ creative (standard enhancements) across 10 ads</td><td>53% lower cost per result</td><td>4</td></tr>
+      <tr><td>Optimise for the Maximize-conversions goal (offsite conversions)</td><td>17% lower cost per result</td><td>1</td></tr>
+      <tr><td>Add 9:16 sound-on video to Reels ads</td><td>8% lower cost per result</td><td>1</td></tr>
+      <tr><td>Turn on Advantage+ audience</td><td>7.2% lower median cost per result</td><td>1</td></tr>
+      <tr><td>Add mixed image + video formats to an ad set</td><td>More conversions per dollar</td><td>1</td></tr>
+    </tbody></table></section>
+
+  <section id="s12"><div class="sec-head"><span class="sec-eyebrow">Data &amp; actions</span><span class="sec-num">10</span></div>
+    <h2>Action list</h2>
+    <ol class="actions">
+      <li><b>Turn on Advantage+ creative across the top 10 ads.</b> Meta's highest-value opportunity (+4 points) estimates up to <b>53% lower cost per result</b> from standard enhancements, and the account already leans on Reels, so this is the lowest-effort win available right now.</li>
+      <li><b>Watch the funnel mix.</b> July ran masterclass lead-gen heavy (510 website leads at A$38.63 blended, plus 65 front-end purchases at A$361.01); the earlier June model leaned on paid challenge and application purchases. Early August has opened on pure lead-gen again. Confirm with the client which funnel is actually closing high-ticket sales before scaling one over the other.</li>
+      <li><b>Reconcile against the CRM.</b> Because the high-ticket close is offline, pull booked-call and closed-sale numbers from the client's CRM and divide by spend to get true cost per booked call and cost per sale. That is the number that should drive budget, not pixel ROAS.</li>
+      <li><b>Scale the proven creative winners.</b> "Reel: $100k Side Hustle" is the standout lead driver (A$25.26 per lead in July, 273 leads); "Reel: Best Side Hustle", "Stacie 2: Kids" and "Stacie 1: Netflix" also carry lead volume, while "Ad 2 | Teacher" and "Podcast Ad 3/4" drove the front-end purchases. Feed budget to these angles.</li>
+      <li><b>Fix conversion optimisation and Reels specs.</b> Meta flags optimising for the Maximize-conversions goal (17% lower cost per result) and adding 9:16 sound-on video to Reels ads (8% lower). Both are quick structural fixes.</li>
+      <li><b>Lean into the 55+ audience.</b> Across every window the 55-64 and 65+ brackets deliver the highest CTR at competitive CPC; they are under-weighted on spend versus 35-54. Test shifting budget older.</li>
+      <li><b>Prune the Sandbox and low-return test campaigns.</b> "Sandbox | 3 Day Challenge" spent A$604.91 in July with zero tracked purchases and "Application Funnel | Purchases" spent A$931.06 for a single purchase; cap or cut them and redirect to the working challenge and masterclass funnels.</li>
+      <li><b>Keep delivery in the strong AU states.</b> NSW, VIC and QLD carry the volume at healthy CTR; the account is already well-distributed, so hold that and monitor frequency (currently ~1.3 to 2.8).</li>
+    </ol></section>
+
+  <footer><div class="tagline">Shane Da Costa AU · Meta Ads Report</div><p id="footNote"></p></footer>
+</div>
+</main>
+
+<script id="rangesData" type="application/json">{"order": ["this-week", "last-week", "this-month", "last-month"], "pull": "Monday, August 3, 2026 (advertiser time zone, Australia/Sydney)", "currency": "AUD", "ranges": {"last-month": {"label": "Last Month", "window": "Jul 1 to Jul 31, 2026", "kind": "Completed month", "live": false, "days": 31, "hero": {"spend_day": 1422.25, "purch": 65, "cpp": 361.01, "leads": 510, "cpl": 38.63, "roas": 1.85}, "snapshot": {"spend": 44089.78, "impr": "831,267", "clicks": "29,210", "ctr": "3.51%", "cpc": "A$1.51", "cpm": "A$53.04", "reach": "297,934", "freq": "2.79", "roas": 1.85}, "summary": "Last Month (Jul 1 to Jul 31, 2026) ran A$44,089.78 and generated 65 front-end purchases (challenge and masterclass signups) at A$361.01 each and 510 website leads at A$38.63 each, A$1,422.25/day. Account CTR 3.51%. July leaned heavily into masterclass lead-gen: the Remote Sales Masterclass LEADS campaign alone took A$18,518.74 for 489 leads. The high-ticket program is closed offline on sales calls and is not in this data, so the 1.85x pixel ROAS reflects front-end product value only, not true revenue. This period is fully settled.", "campaigns": [{"name": "Remote Sales Masterclass | LEADS", "rc": 489, "rl": "LEAD", "cpr": "A$37.87", "spend": 18518.74, "ctr": "3.22%", "cpc": "A$2.03", "roas": "0.76"}, {"name": "Application Funnel | PUR", "rc": 12, "rl": "PUR", "cpr": "A$1,103.52", "spend": 13242.26, "ctr": "2.55%", "cpc": "A$1.89", "roas": "4.20"}, {"name": "3 Day Challenge Funnel | PUR", "rc": 32, "rl": "PUR", "cpr": "A$215.65", "spend": 6900.94, "ctr": "5.34%", "cpc": "A$0.80", "roas": "0.08"}, {"name": "LEADS | 3 Day Challenge Funnel", "rc": 21, "rl": "LEAD", "cpr": "A$56.38", "spend": 1183.88, "ctr": "6.16%", "cpc": "A$0.79", "roas": "0.06"}, {"name": "3 Day HT Closer Challenge | PUR", "rc": 17, "rl": "PUR", "cpr": "A$56.76", "spend": 964.97, "ctr": "4.22%", "cpc": "A$1.43", "roas": "11.60"}, {"name": "Application Funnel | Purchases", "rc": 1, "rl": "PUR", "cpr": "A$931.06", "spend": 931.06, "ctr": "3.15%", "cpc": "A$2.45", "roas": "0.01"}, {"name": "Sandbox 2 | App Funnel", "rc": 3, "rl": "PUR", "cpr": "A$273.88", "spend": 821.64, "ctr": "2.74%", "cpc": "A$1.70", "roas": "0.14"}, {"name": "3 Day Challenge Funnel | Leads (reg)", "rc": 2, "rl": "REG", "cpr": "A$360.73", "spend": 721.46, "ctr": "4.93%", "cpc": "A$0.75", "roas": "-"}, {"name": "Sandbox | 3 Day Challenge", "rc": 0, "rl": "PUR", "cpr": "-", "spend": 604.91, "ctr": "2.45%", "cpc": "A$2.12", "roas": "-"}, {"name": "Application Funnel | Schedule", "rc": 0, "rl": "APPT", "cpr": "-", "spend": 113.36, "ctr": "2.60%", "cpc": "A$1.01", "roas": "0.18"}, {"name": "Masterclass Retarget | Video Views", "rc": 4328, "rl": "VID", "cpr": "A$0.02", "spend": 86.56, "ctr": "0.15%", "cpc": "A$10.82", "roas": "-"}], "camp_total": {"spend": 44089.78, "purch": 65, "leads": 510}, "ads": [{"name": "Reel: $100k Side Hustle", "spend": 6896.05, "rc": 273, "rl": "LEAD", "roas": "0.24", "ctr": "3.52%"}, {"name": "Reel: Best Side Hustle", "spend": 5166.14, "rc": 108, "rl": "LEAD", "roas": "2.27", "ctr": "2.05%"}, {"name": "Ad 2 | Teacher", "spend": 2739.74, "rc": 14, "rl": "PUR", "roas": "0.08", "ctr": "7.31%"}, {"name": "Stacie 2: Kids", "spend": 2690.48, "rc": 49, "rl": "LEAD", "roas": "0.14", "ctr": "4.44%"}, {"name": "Stacie 1: Netflix", "spend": 2370.43, "rc": 39, "rl": "LEAD", "roas": "0.08", "ctr": "4.05%"}, {"name": "Podcast Ad 3", "spend": 2072.24, "rc": 4, "rl": "PUR", "roas": "5.58", "ctr": "1.78%"}, {"name": "Podcast Ad 1", "spend": 1621.71, "rc": 1, "rl": "PUR", "roas": "0.01", "ctr": "2.65%"}, {"name": "Podcast Ad 4", "spend": 1360.78, "rc": 1, "rl": "PUR", "roas": "8.08", "ctr": "1.98%"}], "platform": [["Facebook", 24682.45, "4.73%", "A$1.30", "A$61.36"], ["Instagram", 19040.06, "2.30%", "A$1.98", "A$45.44"], ["Audience Network", 366.84, "5.35%", "A$0.69", "A$36.86"]], "position": [["Feed", 17138.5, "4.19%", "A$1.58"], ["Facebook Reels", 11626.2, "5.36%", "A$1.18"], ["Instagram Reels", 8648.35, "2.05%", "A$1.69"], ["Instagram Stories", 3236.29, "3.01%", "A$2.08"], ["Instream video", 1556.12, "3.62%", "A$1.95"], ["Facebook Stories", 845.11, "4.94%", "A$3.45"], ["Facebook Reels overlay", 360.93, "0.51%", "A$2.12"], ["Rewarded video", 246.13, "4.54%", "A$0.89"]], "age": [["18-24", 4455.27, "1.96%", "A$1.32"], ["25-34", 8567.41, "3.05%", "A$1.16"], ["35-44", 10910.88, "3.75%", "A$1.51"], ["45-54", 11168.84, "4.40%", "A$1.88"], ["55-64", 6207.79, "5.69%", "A$1.80"], ["65+", 2779.04, "6.31%", "A$1.49"]], "gender": [["Female", 22987.45, "4.16%", "A$1.72"], ["Male", 20566.91, "3.09%", "A$1.33"]], "region": [["New South Wales", 14271.14, "3.46%", "A$1.53"], ["Victoria", 12096.52, "3.41%", "A$1.50"], ["Queensland", 9779.79, "3.68%", "A$1.58"], ["Western Australia", 4335.39, "3.71%", "A$1.42"], ["South Australia", 2248.77, "3.42%", "A$1.43"], ["ACT", 643.29, "3.49%", "A$1.47"], ["Tasmania", 398.96, "3.55%", "A$1.26"], ["Northern Territory", 278.91, "3.51%", "A$1.35"]], "hourly": [[1863.18, "3.50%", "A$1.56"], [841.99, "3.82%", "A$1.40"], [581.1, "3.15%", "A$1.86"], [481.59, "3.60%", "A$1.69"], [528.48, "3.50%", "A$1.79"], [786.12, "3.69%", "A$1.79"], [1373.32, "3.93%", "A$1.69"], [2123.66, "3.67%", "A$1.84"], [2511.3, "3.88%", "A$1.68"], [2506.23, "3.47%", "A$1.69"], [2488.94, "3.38%", "A$1.57"], [2324.55, "3.34%", "A$1.56"], [2451.77, "3.26%", "A$1.52"], [2157.54, "3.31%", "A$1.53"], [2019.63, "3.35%", "A$1.44"], [2149.27, "3.52%", "A$1.36"], [2060.89, "3.60%", "A$1.33"], [1970.86, "3.36%", "A$1.38"], [2073.79, "3.34%", "A$1.49"], [2331.37, "3.60%", "A$1.40"], [2495.25, "3.52%", "A$1.44"], [2409.06, "3.76%", "A$1.42"], [2036.92, "3.63%", "A$1.37"], [1522.97, "3.61%", "A$1.37"]]}, "last-week": {"label": "Last Week", "window": "Mon Jul 27 to Sun Aug 2, 2026", "kind": "Completed week (Mon to Sun)", "live": false, "days": 7, "hero": {"spend_day": 922.32, "purch": 3, "cpp": 140.01, "leads": 165, "cpl": 36.37, "roas": 5.25}, "snapshot": {"spend": 6456.22, "impr": "108,269", "clicks": "3,950", "ctr": "3.65%", "cpc": "A$1.63", "cpm": "A$59.63", "reach": "62,814", "freq": "1.72", "roas": 5.25}, "summary": "Last Week (Mon Jul 27 to Sun Aug 2, 2026) ran A$6,456.22 and generated 3 front-end purchases (challenge/masterclass signups) at A$140.01 each and 165 website leads at A$36.37 each, A$922.32/day. Account CTR 3.65%. The high-ticket program is closed offline on sales calls and is not in this data, so the 5.25x pixel ROAS reflects front-end value only. This period is now fully settled.", "campaigns": [{"name": "Remote Sales Masterclass | LEADS", "rc": 165, "rl": "LEAD", "cpr": "A$36.37", "spend": 6001.16, "ctr": "3.88%", "cpc": "A$1.58", "roas": "1.89"}, {"name": "Application Funnel | PUR", "rc": 3, "rl": "PUR", "cpr": "A$140.01", "spend": 420.02, "ctr": "1.94%", "cpc": "A$2.86", "roas": "53.69"}, {"name": "Masterclass Retarget | Video Views", "rc": 3504, "rl": "VID", "cpr": "A$0.01", "spend": 35.04, "ctr": "0.15%", "cpc": "A$8.76", "roas": "-"}], "camp_total": {"spend": 6456.22, "purch": 3, "leads": 165}, "ads": [{"name": "Reel: $100k Side Hustle", "spend": 2751.61, "rc": 110, "rl": "LEAD", "roas": "0.09", "ctr": "4.18%"}, {"name": "Reel: Best Side Hustle", "spend": 1667.53, "rc": 29, "rl": "LEAD", "roas": "6.62", "ctr": "2.23%"}, {"name": "Stacie 1: Netflix", "spend": 921.08, "rc": 10, "rl": "LEAD", "roas": "0.02", "ctr": "4.27%"}, {"name": "Static 7: Take this skill seriously", "spend": 275.38, "rc": 7, "rl": "LEAD", "roas": "-", "ctr": "4.44%"}, {"name": "Static 4: Control your future", "spend": 140.58, "rc": 1, "rl": "LEAD", "roas": "-", "ctr": "7.17%"}, {"name": "Podcast Ad 4", "spend": 117.7, "rc": 0, "rl": "PUR", "roas": "-", "ctr": "1.70%"}, {"name": "Static 3: Path out of full time", "spend": 101.49, "rc": 6, "rl": "LEAD", "roas": "-", "ctr": "4.65%"}, {"name": "Podcast Ad 4 (v2)", "spend": 90.68, "rc": 0, "rl": "PUR", "roas": "-", "ctr": "2.88%"}], "platform": [["Facebook", 3937.63, "5.29%", "A$1.35", "A$71.29"], ["Instagram", 2444.85, "1.96%", "A$2.49", "A$48.95"], ["Audience Network", 73.74, "1.52%", "A$1.57", "A$23.93"]], "position": [["Facebook Reels", 2291.07, "5.30%", "A$1.12"], ["Feed", 1981.91, "3.94%", "A$1.99"], ["Instagram Reels", 1268.95, "1.74%", "A$2.21"], ["Instagram Stories", 321.1, "3.28%", "A$3.09"], ["Instream video", 311.41, "6.45%", "A$2.24"], ["Facebook Stories", 146.41, "4.22%", "A$5.23"], ["Rewarded video", 64.26, "0.99%", "A$2.22"], ["Facebook Reels overlay", 22.68, "0.46%", "A$4.54"]], "age": [["18-24", 695.19, "2.05%", "A$1.39"], ["25-34", 1016.36, "3.21%", "A$1.17"], ["35-44", 1388.09, "3.99%", "A$1.51"], ["45-54", 1712.35, "4.49%", "A$1.93"], ["55-64", 1130.64, "5.64%", "A$2.06"], ["65+", 513.58, "5.32%", "A$2.25"]], "gender": [["Female", 3241.94, "4.12%", "A$2.02"], ["Male", 3138.51, "3.37%", "A$1.37"]], "region": [["New South Wales", 2093.78, "3.41%", "A$1.73"], ["Victoria", 1809.26, "3.85%", "A$1.51"], ["Queensland", 1422.27, "3.67%", "A$1.82"], ["Western Australia", 608.12, "3.71%", "A$1.55"], ["South Australia", 340.59, "3.82%", "A$1.46"], ["ACT", 94.97, "3.88%", "A$1.48"], ["Tasmania", 47.2, "3.24%", "A$1.24"], ["Northern Territory", 39.54, "4.02%", "A$1.32"]], "hourly": [[298.22, "3.10%", "A$1.71"], [172.13, "3.69%", "A$1.46"], [128.33, "2.88%", "A$2.21"], [101.66, "2.89%", "A$2.31"], [105.51, "3.58%", "A$1.88"], [170.64, "4.65%", "A$1.85"], [258.65, "4.31%", "A$1.85"], [339.6, "3.91%", "A$2.12"], [358.01, "4.45%", "A$1.56"], [355.0, "3.75%", "A$1.87"], [277.67, "3.82%", "A$1.60"], [300.16, "3.82%", "A$1.66"], [264.6, "3.86%", "A$1.48"], [273.88, "3.19%", "A$1.90"], [238.55, "3.77%", "A$1.41"], [250.93, "3.12%", "A$1.70"], [272.39, "3.42%", "A$1.51"], [286.0, "3.44%", "A$1.47"], [340.41, "3.33%", "A$1.66"], [367.92, "3.86%", "A$1.55"], [328.26, "3.52%", "A$1.60"], [361.79, "3.64%", "A$1.59"], [338.43, "3.68%", "A$1.42"], [267.48, "3.86%", "A$1.29"]]}, "this-week": {"label": "This Week", "window": "Mon Aug 3, 2026 (to date)", "kind": "Week-to-date (Mon to Sun, in progress)", "live": true, "days": 1, "hero": {"spend_day": 276.71, "purch": 0, "cpp": 0, "leads": 8, "cpl": 34.47, "roas": 0}, "snapshot": {"spend": 276.71, "impr": "4,441", "clicks": "218", "ctr": "4.91%", "cpc": "A$1.27", "cpm": "A$62.31", "reach": "3,885", "freq": "1.14", "roas": 0}, "summary": "This Week (Mon Aug 3, 2026, to date) ran A$276.71 on its opening day and generated 0 front-end purchases and 8 website leads at A$34.47 each, A$276.71/day so far. Account CTR 4.91%, the strongest of any window. Only the first partial day of the week has run (through mid-morning Sydney time), so every figure here is an early floor. The high-ticket program is closed offline on sales calls and is not in this data.", "campaigns": [{"name": "Remote Sales Masterclass | LEADS", "rc": 8, "rl": "LEAD", "cpr": "A$34.47", "spend": 275.74, "ctr": "4.99%", "cpc": "A$1.26", "roas": "-"}, {"name": "Masterclass Retarget | Video Views", "rc": 49, "rl": "VID", "cpr": "A$0.02", "spend": 0.97, "ctr": "0.00%", "cpc": "n/a", "roas": "-"}], "camp_total": {"spend": 276.71, "purch": 0, "leads": 8}, "ads": [{"name": "Reel: $100k Side Hustle", "spend": 106.5, "rc": 5, "rl": "LEAD", "roas": "-", "ctr": "5.39%"}, {"name": "Reel: Best Side Hustle", "spend": 84.96, "rc": 2, "rl": "LEAD", "roas": "-", "ctr": "2.17%"}, {"name": "Static 7: Take this skill seriously", "spend": 60.3, "rc": 1, "rl": "LEAD", "roas": "-", "ctr": "5.42%"}, {"name": "Static 4: Control your future", "spend": 11.23, "rc": 0, "rl": "LEAD", "roas": "-", "ctr": "5.19%"}, {"name": "Static 3: Path out of full time", "spend": 9.52, "rc": 0, "rl": "LEAD", "roas": "-", "ctr": "6.91%"}, {"name": "Static 1: Wondering if you'll retire", "spend": 2.39, "rc": 0, "rl": "LEAD", "roas": "-", "ctr": "8.33%"}, {"name": "Dynamic | No CTA Reels", "spend": 0.97, "rc": 97, "rl": "VID", "roas": "-", "ctr": "0.00%"}, {"name": "Static 5: $100k+ skill", "spend": 0.84, "rc": 0, "rl": "LEAD", "roas": "-", "ctr": "0.00%"}], "platform": [["Facebook", 193.78, "6.34%", "A$1.03", "A$65.38"], ["Instagram", 81.97, "2.13%", "A$2.73", "A$58.13"], ["Audience Network", 0.96, "0.00%", "n/a", "A$14.31"]], "position": [["Facebook Reels", 112.79, "6.36%", "A$0.94"], ["Feed", 99.02, "4.95%", "A$1.38"], ["Instagram Reels", 33.41, "1.71%", "A$2.39"], ["Instagram Stories", 15.82, "7.69%", "A$1.76"], ["Facebook Stories", 8.93, "4.35%", "A$8.93"], ["Instream video", 4.42, "3.57%", "A$4.42"], ["Marketplace", 1.02, "3.23%", "A$1.02"], ["Rewarded video", 0.95, "0.00%", "n/a"]], "age": [["18-24", 17.33, "1.92%", "A$1.44"], ["25-34", 32.24, "6.20%", "A$0.56"], ["35-44", 60.08, "4.48%", "A$1.23"], ["45-54", 76.82, "5.44%", "A$1.35"], ["55-64", 58.0, "5.39%", "A$2.07"], ["65+", 32.24, "6.28%", "A$2.30"]], "gender": [["Female", 120.64, "5.78%", "A$1.61"], ["Male", 150.83, "4.39%", "A$1.12"]], "region": [["New South Wales", 86.93, "4.51%", "A$1.36"], ["Victoria", 79.67, "5.15%", "A$1.23"], ["Queensland", 62.46, "6.13%", "A$1.22"], ["Western Australia", 30.63, "4.62%", "A$1.23"], ["South Australia", 7.87, "4.07%", "A$0.87"], ["ACT", 4.96, "1.56%", "A$4.96"], ["Tasmania", 2.1, "2.00%", "A$2.10"], ["Northern Territory", 2.1, "3.77%", "A$1.05"]], "hourly": [[44.86, "3.58%", "A$1.40"], [22.33, "4.84%", "A$1.12"], [12.39, "7.75%", "A$0.62"], [17.47, "4.25%", "A$1.59"], [28.38, "4.47%", "A$2.18"], [36.63, "4.22%", "A$1.93"], [18.45, "4.28%", "A$1.42"], [32.52, "7.60%", "A$0.81"], [1.53, "0.00%", "n/a"], [51.7, "5.18%", "A$1.15"], [10.45, "3.14%", "A$2.09"]]}, "this-month": {"label": "This Month", "window": "Aug 1 to Aug 3, 2026", "kind": "Month-to-date (in progress)", "live": true, "days": 3, "hero": {"spend_day": 770.81, "purch": 0, "cpp": 0, "leads": 63, "cpl": 36.51, "roas": 0}, "snapshot": {"spend": 2312.42, "impr": "37,092", "clicks": "1,509", "ctr": "4.07%", "cpc": "A$1.53", "cpm": "A$62.34", "reach": "27,150", "freq": "1.37", "roas": 0}, "summary": "This Month (Aug 1 to Aug 3, 2026) ran A$2,312.42 across its first three days and generated 0 front-end purchases (August has opened on pure lead-gen) and 63 website leads at A$36.51 each, A$770.81/day. Account CTR 4.07%. Only three days have run, so treat every figure as an early floor. The high-ticket program is closed offline on sales calls and is not in this data.", "campaigns": [{"name": "Remote Sales Masterclass | LEADS", "rc": 63, "rl": "LEAD", "cpr": "A$36.51", "spend": 2300.36, "ctr": "4.16%", "cpc": "A$1.53", "roas": "-"}, {"name": "Masterclass Retarget | Video Views", "rc": 603, "rl": "VID", "cpr": "A$0.02", "spend": 12.06, "ctr": "0.12%", "cpc": "A$12.06", "roas": "-"}], "camp_total": {"spend": 2312.42, "purch": 0, "leads": 63}, "ads": [{"name": "Reel: $100k Side Hustle", "spend": 1049.93, "rc": 37, "rl": "LEAD", "roas": "-", "ctr": "4.21%"}, {"name": "Reel: Best Side Hustle", "spend": 652.75, "rc": 12, "rl": "LEAD", "roas": "-", "ctr": "2.56%"}, {"name": "Static 7: Take this skill seriously", "spend": 276.07, "rc": 6, "rl": "LEAD", "roas": "-", "ctr": "4.84%"}, {"name": "Static 4: Control your future", "spend": 135.48, "rc": 1, "rl": "LEAD", "roas": "-", "ctr": "6.59%"}, {"name": "Static 3: Path out of full time", "spend": 105.13, "rc": 6, "rl": "LEAD", "roas": "-", "ctr": "4.83%"}, {"name": "Static 1: Wondering if you'll retire", "spend": 53.98, "rc": 0, "rl": "LEAD", "roas": "-", "ctr": "7.12%"}, {"name": "Static 5: $100k+ skill", "spend": 17.85, "rc": 1, "rl": "LEAD", "roas": "-", "ctr": "5.88%"}, {"name": "Dynamic | No CTA Reels", "spend": 12.06, "rc": 603, "rl": "VID", "roas": "-", "ctr": "0.12%"}], "platform": [["Facebook", 1529.35, "5.64%", "A$1.25", "A$70.30"], ["Instagram", 768.2, "1.90%", "A$2.79", "A$53.21"], ["Audience Network", 19.09, "0.78%", "A$2.73", "A$21.21"]], "position": [["Facebook Reels", 972.62, "5.33%", "A$1.22"], ["Feed", 731.22, "4.68%", "A$1.53"], ["Instagram Reels", 364.63, "1.71%", "A$2.41"], ["Instagram Stories", 100.52, "3.35%", "A$2.87"], ["Instream video", 55.01, "5.97%", "A$2.39"], ["Facebook Stories", 54.45, "5.85%", "A$4.95"], ["Rewarded video", 16.88, "0.79%", "A$2.41"], ["Marketplace", 11.83, "1.17%", "A$2.96"]], "age": [["18-24", 184.48, "1.97%", "A$1.44"], ["25-34", 309.8, "3.45%", "A$1.08"], ["35-44", 494.17, "4.26%", "A$1.43"], ["45-54", 629.71, "5.07%", "A$1.52"], ["55-64", 482.91, "5.70%", "A$2.00"], ["65+", 211.34, "5.23%", "A$2.25"]], "gender": [["Female", 995.52, "4.49%", "A$1.92"], ["Male", 1283.46, "3.83%", "A$1.34"]], "region": [["New South Wales", 749.33, "3.82%", "A$1.61"], ["Victoria", 627.68, "4.44%", "A$1.36"], ["Queensland", 527.33, "4.33%", "A$1.65"], ["Western Australia", 225.0, "3.89%", "A$1.54"], ["South Australia", 110.68, "3.55%", "A$1.46"], ["ACT", 35.04, "3.87%", "A$1.67"], ["Tasmania", 19.15, "2.54%", "A$1.74"], ["Northern Territory", 18.11, "3.46%", "A$1.65"]], "hourly": [[117.12, "2.82%", "A$1.80"], [77.55, "3.72%", "A$1.44"], [54.19, "4.51%", "A$1.29"], [55.4, "3.55%", "A$2.05"], [66.37, "4.80%", "A$1.70"], [98.31, "4.60%", "A$1.85"], [101.72, "5.48%", "A$1.41"], [133.37, "5.67%", "A$1.43"], [124.99, "3.82%", "A$1.87"], [176.95, "4.61%", "A$1.49"], [112.47, "3.57%", "A$1.79"], [115.13, "4.59%", "A$1.48"], [90.29, "2.93%", "A$2.01"], [81.92, "3.85%", "A$1.58"], [76.33, "4.10%", "A$1.47"], [71.7, "3.98%", "A$1.46"], [83.96, "4.05%", "A$1.38"], [86.12, "5.26%", "A$1.16"], [86.16, "4.05%", "A$1.35"], [105.12, "3.61%", "A$1.70"], [99.1, "4.74%", "A$1.22"], [113.35, "3.44%", "A$1.57"], [115.8, "3.22%", "A$1.68"], [69.0, "4.04%", "A$1.23"]]}}}</script>
+<script>
+(function(){
+  var DATA = JSON.parse(document.getElementById('rangesData').textContent);
+  var root = document.documentElement;
+  function A(n){ return 'A$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function A0(n){ return 'A$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:0}); }
+  var RL={PUR:'purchases',LEAD:'leads',REG:'registrations',APPT:'appointments',APP:'applications',VID:'video views'};
+  function rTag(rl){ var c = rl==='PUR'?'pur':(rl==='LEAD'?'lead':'oth'); return c; }
+  function td(cls,html){ return '<td'+(cls?' class="'+cls+'"':'')+'>'+html+'</td>'; }
+  function fill(id, rows){ var h=''; rows.forEach(function(r){ h+='<tr>'+td('',r[0]); for(var i=1;i<r.length;i++){ h+=td('', (typeof r[i]==='number')?A(r[i]):r[i]); } h+='</tr>'; }); document.getElementById(id).innerHTML=h; }
+
+  function render(key){
+    var r=DATA.ranges[key], h=r.hero, s=r.snapshot;
+    document.getElementById('winLabel').textContent = r.kind+': '+r.window;
+    document.getElementById('heroPills').innerHTML =
+      '<div class="pill"><b>'+A(h.spend_day)+'</b> <span>per day</span></div>'+
+      '<div class="pill"><b>'+h.purch+'</b> <span>front-end purchases</span></div>'+
+      '<div class="pill"><b>'+(h.purch?A(h.cpp):'n/a')+'</b> <span>per purchase</span></div>'+
+      '<div class="pill"><b>'+h.leads+'</b> <span>website leads</span></div>'+
+      '<div class="pill"><b>'+A(h.cpl)+'</b> <span>per lead</span></div>';
+    document.getElementById('rangeNote').innerHTML = r.live
+      ? '<b>'+r.label+' is in progress.</b> This window ('+r.window+') is still running, so totals are partial and the last two to three days are still settling under Meta’s attribution lag. Treat counts as floors.'
+      : '<b>'+r.label+' is a fully settled period.</b> This window ('+r.window+') is complete, so figures are final aside from minor late attribution.';
+    document.getElementById('execSummary').textContent = r.summary;
+    document.getElementById('snapMetrics').innerHTML =
+      '<div class="metric"><div class="k">Total spend</div><div class="v">'+A(s.spend)+'</div><div class="d">'+A(h.spend_day)+' / day over '+r.days+' days</div></div>'+
+      '<div class="metric"><div class="k">Impressions</div><div class="v">'+s.impr+'</div><div class="d">'+s.clicks+' clicks · '+s.ctr+' CTR</div></div>'+
+      '<div class="metric"><div class="k">Front-end purchases</div><div class="v"><span class="b">'+h.purch+'</span></div><div class="d">'+(h.purch?A(h.cpp)+' each':'no purchases this window')+'</div></div>'+
+      '<div class="metric"><div class="k">Website leads</div><div class="v"><span class="b">'+h.leads+'</span></div><div class="d">'+A(h.cpl)+' each</div></div>';
+    document.getElementById('snapNote').innerHTML = 'Currency AUD. Reach '+s.reach+' at '+s.freq+' frequency, CPM '+s.cpm+', CPC '+s.cpc+'. Front-end pixel ROAS '+s.roas.toFixed(2)+'x (not a true-revenue measure, see note above). Business: Miyagi 1. Account act_1185223312884959, advertiser time zone Australia/Sydney.';
+    // campaigns
+    var cb='';
+    r.campaigns.forEach(function(c){
+      var res = c.rc+' <span class="tag '+rTag(c.rl)+'">'+RL[c.rl]+'</span>';
+      cb+='<tr>'+td('',c.name)+td('',res)+td('',c.cpr)+td('', c.roas==='-'?'-':c.roas+'x')+td('',A(c.spend))+td('',c.ctr)+td('',c.cpc)+'</tr>';
+    });
+    document.getElementById('campBody').innerHTML=cb;
+    document.getElementById('campFoot').innerHTML='<tr>'+td('','Account total')+td('', h.purch+' PUR · '+h.leads+' LEAD')+td('','-')+td('','-')+td('',A(r.camp_total.spend))+td('',s.ctr)+td('',s.cpc)+'</tr>';
+    // ads
+    var ab='';
+    r.ads.forEach(function(x){
+      var res=x.rc+' <span class="tag '+rTag(x.rl)+'">'+RL[x.rl]+'</span>';
+      ab+='<tr>'+td('strong',x.name)+td('',A(x.spend))+td('',res)+td('', x.roas==='-'?'-':x.roas+'x')+td('',x.ctr)+'</tr>';
+    });
+    document.getElementById('adBody').innerHTML=ab;
+    // breakdowns
+    fill('platBody', r.platform); fill('posBody', r.position); fill('ageBody', r.age); fill('genBody', r.gender); fill('regBody', r.region);
+    var hb=''; r.hourly.forEach(function(row,i){ var hr=(i<10?'0'+i:i)+':00'; hb+='<tr>'+td('',hr)+td('',A(row[0]))+td('',row[1])+td('',row[2])+'</tr>'; });
+    document.getElementById('hourBody').innerHTML=hb;
+    document.getElementById('footNote').innerHTML='Selected window '+r.window+' ('+r.kind+'), advertiser time zone Australia/Sydney, currency AUD. All figures pulled live from the Meta Marketing API for Shane Da Costa AU (act_1185223312884959) on '+DATA.pull+'. Campaign spend reconciles to the account total of '+A(s.spend)+' to the cent. This is a high-ticket coaching funnel: the pixel sees front-end events only and the high-ticket close is offline, so pixel ROAS is not a revenue measure. Breakdown tables show spend and engagement only. '+(r.live?'This window is still settling, so counts are floors. ':'')+'Read only: nothing in the ad account was changed by this report.';
+    Array.prototype.forEach.call(document.querySelectorAll('#rangebar button'), function(b){ b.setAttribute('aria-selected', b.dataset.key===key?'true':'false'); });
+  }
+  var bar=document.getElementById('rangebar');
+  DATA.order.forEach(function(key){ var r=DATA.ranges[key]; var b=document.createElement('button'); b.type='button'; b.setAttribute('role','tab'); b.dataset.key=key; b.innerHTML=r.label+'<small>'+r.window.replace(', 2026','')+'</small>'; b.addEventListener('click', function(){ render(key); }); bar.appendChild(b); });
+  render(DATA.order[0]);
+  function rt(){ var l=root.getAttribute('data-theme')==='light'; var b=document.getElementById('themeToggle'); b.querySelector('.ic').innerHTML=l?'&#9728;':'&#9790;'; b.querySelector('.lbl').textContent=l?'Day mode':'Night mode'; }
+  window.__toggleTheme=function(){ var n=root.getAttribute('data-theme')==='light'?'dark':'light'; root.setAttribute('data-theme',n); try{localStorage.setItem('sdc-theme',n);}catch(e){} rt(); };
+  rt();
+})();
+</script>
+</body>
+</html>
