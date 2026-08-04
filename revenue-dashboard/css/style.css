@@ -177,14 +177,14 @@ body::before {
 /* Date Selector */
 .date-selector {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 16px;
     min-width: fit-content;
 }
 
 .date-period-toggle {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     background: rgba(185, 218, 205, 0.05);
     border-radius: 8px;
     padding: 4px;
@@ -192,11 +192,11 @@ body::before {
 }
 
 .period-btn {
-    padding: 6px 14px;
-    font-size: 12px;
+    padding: 5px 12px;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.3px;
     color: var(--ink-2);
     background: transparent;
     border: none;
@@ -218,17 +218,17 @@ body::before {
 
 .date-inputs-group {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
 }
 
 .date-inputs-group input[type="date"] {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--ink);
     background-color: var(--raised);
     border: 1px solid var(--line);
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     cursor: pointer;
     transition: var(--transition);
 }
@@ -242,16 +242,17 @@ body::before {
 .date-separator {
     color: var(--muted);
     font-weight: 600;
+    font-size: 12px;
 }
 
 .month-selector {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: rgba(185, 218, 205, 0.05);
     border: 1px solid var(--line);
     border-radius: 8px;
-    padding: 6px 8px;
+    padding: 5px 8px;
 }
 
 .month-nav-btn {
@@ -259,9 +260,9 @@ body::before {
     border: none;
     color: var(--muted);
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    padding: 4px 8px;
+    padding: 3px 6px;
     transition: color 0.2s ease;
     line-height: 1;
 }
@@ -271,14 +272,14 @@ body::before {
 }
 
 .month-year-select {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--ink);
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-weight: 500;
     flex: 0 1 auto;
-    min-width: 110px;
+    min-width: 100px;
     text-align: center;
 }
 
@@ -642,26 +643,23 @@ body::before {
     }
 
     .date-selector {
-        width: 100%;
         gap: 10px;
-    }
-
-    .date-period-toggle {
-        width: 100%;
+        flex-wrap: wrap;
     }
 
     .period-btn {
-        flex: 1;
-        padding: 8px 10px;
-        font-size: 11px;
+        padding: 5px 10px;
+        font-size: 10px;
     }
 
-    .month-selector {
-        width: 100%;
+    .month-nav-btn {
+        font-size: 14px;
+        padding: 2px 4px;
     }
 
     .month-year-select {
-        flex: 1;
+        font-size: 10px;
+        min-width: 90px;
     }
 
     .kpi-section {
