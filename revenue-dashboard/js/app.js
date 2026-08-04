@@ -35,84 +35,44 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Setup date filter event listeners
 function setupDateFilters() {
-    const periodBtns = document.querySelectorAll('.period-btn');
-    const customPeriodBtn = document.getElementById('customPeriodBtn');
-    const monthYearSelect = document.getElementById('monthYearSelect');
-    const prevMonth = document.getElementById('prevMonth');
-    const nextMonth = document.getElementById('nextMonth');
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
-    const dateInputsGroup = document.getElementById('dateInputsGroup');
-    const monthSelector = document.querySelector('.month-selector');
 
-    // Period button toggles
-    periodBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            periodBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    // Set default dates: Jan 1 of current year to today
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const janFirst = new Date(currentYear, 0, 1);
 
-            if (btn === customPeriodBtn) {
-                dateInputsGroup.style.display = 'flex';
-                monthSelector.style.display = 'none';
-            } else {
-                dateInputsGroup.style.display = 'none';
-                monthSelector.style.display = 'flex';
-            }
-            applyFilters();
-        });
-    });
+    dateFrom.value = formatDateForInput(janFirst);
+    dateTo.value = formatDateForInput(today);
 
-    // Month/Year selection
-    monthYearSelect.addEventListener('change', applyFilters);
-
-    // Month navigation
-    prevMonth.addEventListener('click', () => {
-        const currentValue = monthYearSelect.value;
-        const options = Array.from(monthYearSelect.options).map(o => o.value);
-        const currentIndex = options.indexOf(currentValue);
-        if (currentIndex > 0) {
-            monthYearSelect.value = options[currentIndex - 1];
-            applyFilters();
-        }
-    });
-
-    nextMonth.addEventListener('click', () => {
-        const currentValue = monthYearSelect.value;
-        const options = Array.from(monthYearSelect.options).map(o => o.value);
-        const currentIndex = options.indexOf(currentValue);
-        if (currentIndex < options.length - 1) {
-            monthYearSelect.value = options[currentIndex + 1];
-            applyFilters();
-        }
-    });
-
+    // Add event listeners
     dateFrom.addEventListener('change', applyFilters);
     dateTo.addEventListener('change', applyFilters);
+
+    // Apply filters on initial load
+    applyFilters();
+}
+
+// Format date for HTML date input (YYYY-MM-DD)
+function formatDateForInput(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
 // Apply date filters
 function applyFilters() {
-    const customPeriodBtn = document.getElementById('customPeriodBtn');
-    const monthYearSelect = document.getElementById('monthYearSelect');
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
 
     filteredData = JSON.parse(JSON.stringify(originalData));
 
-    if (customPeriodBtn.classList.contains('active')) {
-        // Custom date range mode
-        if (dateFrom.value && dateTo.value) {
-            const fromDate = new Date(dateFrom.value);
-            const toDate = new Date(dateTo.value);
-            filterByDateRange(fromDate, toDate);
-        }
-    } else {
-        // Month/Year selection mode
-        const monthYearValue = monthYearSelect.value;
-        if (monthYearValue !== 'all') {
-            const [year, month] = monthYearValue.split('-');
-            filterByYearMonth(parseInt(year), parseInt(month));
-        }
+    if (dateFrom.value && dateTo.value) {
+        const fromDate = new Date(dateFrom.value);
+        const toDate = new Date(dateTo.value);
+        filterByDateRange(fromDate, toDate);
     }
 
     renderDashboard(filteredData);
