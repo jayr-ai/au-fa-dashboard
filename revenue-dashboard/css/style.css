@@ -51,7 +51,7 @@ body::before {
     z-index: 2;
     max-width: 1620px;
     margin: 0 auto;
-    padding: 24px 22px 72px;
+    padding: 0 22px 72px;
     animation: fadeInUp 0.6s ease-out;
 }
 
@@ -89,97 +89,184 @@ body::before {
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, var(--surface) 0%, rgba(28, 42, 36, 0.9) 100%);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(28, 42, 36, 0.95) 100%);
     color: var(--ink);
-    padding: 40px 20px;
+    padding: 28px 20px;
     border-bottom: 1px solid var(--line);
     margin: -24px -22px 30px -22px;
     animation: slideInDown 0.5s ease-out;
 }
 
-.header-top {
+.header-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 30px;
+    align-items: center;
+    gap: 40px;
     max-width: 1620px;
     margin: 0 auto;
 }
 
-.header-content > div {
-    text-align: center;
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
     flex: 1;
+}
+
+.header-branding {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-badge {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--accent) 0%, #6F9280 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--plane);
+    box-shadow: 0 4px 12px rgba(185, 218, 205, 0.15);
+}
+
+.header-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-titles h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin: 0;
+}
+
+.header-titles p {
+    font-size: 13px;
+    color: var(--ink-2);
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.sync-info {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Date Selector */
 .date-selector {
     display: flex;
-    gap: 15px;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    flex: 1;
-}
-
-.selector-group {
-    display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 12px;
+    min-width: fit-content;
 }
 
-.selector-group label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--muted);
+.date-period-toggle {
+    display: flex;
+    gap: 8px;
+    background: rgba(185, 218, 205, 0.05);
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid var(--line);
+}
+
+.period-btn {
+    padding: 6px 14px;
+    font-size: 12px;
     font-weight: 600;
-}
-
-.selector-group input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--ink-2);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    margin-right: 6px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
-.selector-group select,
-.selector-group input[type="date"] {
-    font: inherit;
-    font-size: 13px;
+.period-btn:hover {
+    color: var(--accent);
+    background: rgba(185, 218, 205, 0.08);
+}
+
+.period-btn.active {
+    background: var(--accent);
+    color: var(--plane);
+}
+
+.date-inputs-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.date-inputs-group input[type="date"] {
+    font-size: 12px;
     color: var(--ink);
     background-color: var(--raised);
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 8px 12px;
     cursor: pointer;
     transition: var(--transition);
 }
 
-.selector-group select:hover,
-.selector-group input[type="date"]:hover {
+.date-inputs-group input[type="date"]:hover,
+.date-inputs-group input[type="date"]:focus {
+    border-color: rgba(185, 218, 205, 0.34);
+    box-shadow: 0 0 12px rgba(185, 218, 205, 0.15);
+}
+
+.date-separator {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.date-dropdowns {
+    display: flex;
+    gap: 10px;
+}
+
+.date-select {
+    font-size: 12px;
+    color: var(--ink);
+    background-color: var(--raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 7px 11px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    min-width: 120px;
+}
+
+.date-select:hover {
     border-color: rgba(185, 218, 205, 0.34);
     background-color: var(--surface);
 }
 
-.selector-group select:focus,
-.selector-group input[type="date"]:focus {
+.date-select:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 12px rgba(185, 218, 205, 0.2);
-}
-
-.custom-dates {
-    flex-direction: row;
-    gap: 8px;
-}
-
-.custom-dates label {
-    margin: 0;
-    align-self: center;
-}
-
-.custom-dates input[type="date"] {
-    padding: 8px 10px;
 }
 
 .header-content h1 {
@@ -495,9 +582,70 @@ body::before {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .header-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .header-right {
+        width: 100%;
+    }
+
+    .date-selector {
+        width: 100%;
+    }
+
+    .date-dropdowns {
+        width: 100%;
+    }
+
+    .date-select {
+        flex: 1;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
-        padding: 24px 15px 72px;
+        padding: 0 15px 72px;
+    }
+
+    .header-wrapper {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .header-left {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .sync-info {
+        font-size: 10px;
+    }
+
+    .date-selector {
+        width: 100%;
+    }
+
+    .date-period-toggle {
+        width: 100%;
+    }
+
+    .period-btn {
+        flex: 1;
+        padding: 8px 10px;
+    }
+
+    .date-dropdowns {
+        width: 100%;
+    }
+
+    .date-select {
+        flex: 1;
+        min-width: unset;
     }
 
     .kpi-section {
@@ -535,12 +683,12 @@ body::before {
         padding: 10px 8px;
     }
 
-    .header-content h1 {
-        font-size: 20px;
+    .header-titles h1 {
+        font-size: 16px;
     }
 
-    .header-content h2 {
-        font-size: 16px;
+    .header-titles p {
+        font-size: 12px;
     }
 }
 

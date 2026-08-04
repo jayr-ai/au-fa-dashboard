@@ -11,26 +11,43 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <div class="header-content">
-                <div class="header-top">
-                    <div>
-                        <h1>FREEDOM ACADEMY</h1>
-                        <h2>REVENUE DASHBOARD</h2>
+            <div class="header-wrapper">
+                <div class="header-left">
+                    <div class="header-branding">
+                        <div class="logo-badge">FA</div>
+                        <div class="header-titles">
+                            <h1>FREEDOM ACADEMY</h1>
+                            <p>Revenue Dashboard</p>
+                        </div>
                     </div>
+                    <div class="sync-info">
+                        <span id="lastSync">Synced at 2026-08-04 02:00:01 UTC</span>
+                    </div>
+                </div>
+
+                <div class="header-right">
                     <!-- Date Range Selector -->
                     <div class="date-selector">
-                        <div class="selector-group">
-                            <label for="yearSelect">Year</label>
-                            <select id="yearSelect">
+                        <div class="date-period-toggle">
+                            <button class="period-btn active" data-period="all">All Time</button>
+                            <button class="period-btn" data-period="ytd">YTD</button>
+                            <button class="period-btn" data-period="custom" id="customPeriodBtn">Custom</button>
+                        </div>
+
+                        <div class="date-inputs-group" id="dateInputsGroup" style="display: none;">
+                            <input type="date" id="dateFrom" placeholder="From">
+                            <span class="date-separator">→</span>
+                            <input type="date" id="dateTo" placeholder="To">
+                        </div>
+
+                        <div class="date-dropdowns">
+                            <select id="yearSelect" class="date-select">
                                 <option value="all">All Years</option>
                                 <option value="2025">2025</option>
                                 <option value="2026" selected>2026</option>
                                 <option value="2027">2027</option>
                             </select>
-                        </div>
-                        <div class="selector-group">
-                            <label for="monthSelect">Month</label>
-                            <select id="monthSelect">
+                            <select id="monthSelect" class="date-select">
                                 <option value="all">All Months</option>
                                 <option value="1">JAN</option>
                                 <option value="2">FEB</option>
@@ -45,17 +62,6 @@
                                 <option value="11">NOV</option>
                                 <option value="12">DEC</option>
                             </select>
-                        </div>
-                        <div class="selector-group">
-                            <label for="customToggle">
-                                <input type="checkbox" id="customToggle"> Custom Range
-                            </label>
-                        </div>
-                        <div class="selector-group custom-dates" id="customDatesGroup" style="display: none;">
-                            <label>From</label>
-                            <input type="date" id="dateFrom">
-                            <label>To</label>
-                            <input type="date" id="dateTo">
                         </div>
                     </div>
                 </div>

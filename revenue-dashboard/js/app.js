@@ -37,26 +37,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 function setupDateFilters() {
     const yearSelect = document.getElementById('yearSelect');
     const monthSelect = document.getElementById('monthSelect');
-    const customToggle = document.getElementById('customToggle');
+    const periodBtns = document.querySelectorAll('.period-btn');
+    const customPeriodBtn = document.getElementById('customPeriodBtn');
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
-    const customDatesGroup = document.getElementById('customDatesGroup');
+    const dateInputsGroup = document.getElementById('dateInputsGroup');
+    const dateDropdowns = document.querySelector('.date-dropdowns');
+
+    // Period button toggles
+    periodBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            periodBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (btn === customPeriodBtn) {
+                dateInputsGroup.style.display = 'flex';
+                dateDropdowns.style.display = 'none';
+            } else {
+                dateInputsGroup.style.display = 'none';
+                dateDropdowns.style.display = 'flex';
+            }
+            applyFilters();
+        });
+    });
 
     yearSelect.addEventListener('change', applyFilters);
     monthSelect.addEventListener('change', applyFilters);
-
-    customToggle.addEventListener('change', (e) => {
-        customDatesGroup.style.display = e.target.checked ? 'flex' : 'none';
-        if (e.target.checked) {
-            yearSelect.disabled = true;
-            monthSelect.disabled = true;
-        } else {
-            yearSelect.disabled = false;
-            monthSelect.disabled = false;
-        }
-        applyFilters();
-    });
-
     dateFrom.addEventListener('change', applyFilters);
     dateTo.addEventListener('change', applyFilters);
 }
@@ -65,13 +71,13 @@ function setupDateFilters() {
 function applyFilters() {
     const yearSelect = document.getElementById('yearSelect');
     const monthSelect = document.getElementById('monthSelect');
-    const customToggle = document.getElementById('customToggle');
+    const customPeriodBtn = document.getElementById('customPeriodBtn');
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
 
     filteredData = JSON.parse(JSON.stringify(originalData));
 
-    if (customToggle.checked && dateFrom.value && dateTo.value) {
+    if (customPeriodBtn.classList.contains('active') && dateFrom.value && dateTo.value) {
         const fromDate = new Date(dateFrom.value);
         const toDate = new Date(dateTo.value);
         filterByDateRange(fromDate, toDate);
