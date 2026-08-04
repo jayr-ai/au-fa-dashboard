@@ -97,8 +97,8 @@ function filterByYearMonth(year, month) {
         const itemYear = parseInt(yearStr);
         const itemMonth = getMonthNumber(monthStr);
 
-        if (year !== NaN && itemYear !== year) return false;
-        if (month !== NaN && itemMonth !== month) return false;
+        if (!isNaN(year) && year !== 'all' && itemYear !== year) return false;
+        if (!isNaN(month) && month !== 'all' && itemMonth !== month) return false;
         return true;
     });
 
@@ -205,11 +205,18 @@ function generateInsights(data) {
     }
 
     // Insight 4: Average monthly revenue
-    const avgMonthly = (summary.totalRevenue / monthlyData.length).toFixed(0);
-    insights.push({
-        icon: '📊',
-        text: `<strong>Average monthly revenue:</strong> ${formatCurrency(avgMonthly)}`
-    });
+    if (monthlyData.length > 0) {
+        const avgMonthly = (summary.totalRevenue / monthlyData.length).toFixed(0);
+        insights.push({
+            icon: '📊',
+            text: `<strong>Average monthly revenue:</strong> ${formatCurrency(avgMonthly)}`
+        });
+    } else {
+        insights.push({
+            icon: '📊',
+            text: `<strong>Data status:</strong> Awaiting monthly revenue data from BigQuery`
+        });
+    }
 
     return insights;
 }
