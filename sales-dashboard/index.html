@@ -902,6 +902,65 @@ function viewExec(metrics, prior, basis) {
        Shown as gaps rather than zeros throughout, because a blank and a genuine zero mean different things.`));
   }
   frag.appendChild(s6);
+
+  // ---- maintenance & troubleshooting panel
+  // Calculate cutoff date: 2 months ago from today
+  const today = new Date();
+  const twoMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 2, today.getDate());
+  const cutoffDate = twoMonthsAgo.toISOString().split('T')[0];
+
+  const recentDataAgents = new Set();
+  for (const r of DATA.funnel) {
+    if (r.d >= cutoffDate) recentDataAgents.add(r.n);
+  }
+  for (const r of DATA.programs) {
+    if (r.d >= cutoffDate) recentDataAgents.add(r.n);
+  }
+  for (const r of DATA.kpi) {
+    if (r.d >= cutoffDate) recentDataAgents.add(r.n);
+  }
+
+  const registeredAgents = new Set(DATA.agents.map(a => a.n));
+  const missingAgents = [...recentDataAgents].filter(a => !registeredAgents.has(a)).sort();
+
+  const agentsWithoutTier = DATA.agents.filter(a => !a.t || a.t.trim() === '').map(a => a.n).sort();
+
+  if (missingAgents.length > 0 || agentsWithoutTier.length > 0) {
+    const sMaint = el('section');
+    sMaint.appendChild(el('div','sec-head',
+      `<h2>⚠️ Maintenance & troubleshooting</h2>
+       <span class="sec-note">Action required to keep data accurate and complete.</span>`));
+
+    const maintContent = el('div');
+
+    if (missingAgents.length > 0) {
+      const missingDiv = el('div','card glow');
+      const missingPad = el('div','pad');
+      missingPad.innerHTML = `<h3 style="color:var(--accent);margin:0 0 12px;font-size:14px">🔴 New agents detected (not in Agent List)</h3>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--ink-2)"><b>${missingAgents.length} agent${missingAgents.length === 1 ? '' : 's'}</b> appearing in current data but missing from the agent roster. Update the <b>Agent List</b> tab in your Google Sheet with the tier assignment for each.</p>
+        <div style="background:rgba(185,218,205,0.08);border-radius:8px;padding:12px;font-family:monospace;font-size:12px;max-height:200px;overflow-y:auto">
+          ${missingAgents.map(a => `<div style="padding:4px 0;border-bottom:1px solid rgba(185,218,205,0.15)"><b>${a}</b></div>`).join('')}
+        </div>`;
+      missingDiv.appendChild(missingPad);
+      maintContent.appendChild(missingDiv);
+    }
+
+    if (agentsWithoutTier.length > 0) {
+      const tierDiv = el('div','card glow');
+      const tierPad = el('div','pad');
+      tierPad.innerHTML = `<h3 style="color:#B9A856;margin:0 0 12px;font-size:14px">🟡 Incomplete agent setup (tier missing)</h3>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--ink-2)"><b>${agentsWithoutTier.length} agent${agentsWithoutTier.length === 1 ? '' : 's'}</b> missing tier assignment. Assign TIER 1, TIER 2, or TIER 3.</p>
+        <div style="background:rgba(185,218,205,0.12);border-radius:8px;padding:12px;font-family:monospace;font-size:12px;max-height:200px;overflow-y:auto">
+          ${agentsWithoutTier.map(a => `<div style="padding:4px 0;border-bottom:1px solid rgba(185,218,205,0.2)"><b>${a}</b></div>`).join('')}
+        </div>`;
+      tierDiv.appendChild(tierPad);
+      maintContent.appendChild(tierDiv);
+    }
+
+    sMaint.appendChild(maintContent);
+    frag.appendChild(sMaint);
+  }
+
   return frag;
 }
 
