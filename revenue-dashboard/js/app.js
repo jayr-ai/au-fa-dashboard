@@ -76,7 +76,9 @@ function applyFilters() {
         const toDate = new Date(dateTo.value);
         filterByDateRange(fromDate, toDate);
     } else if (yearSelect.value !== 'all' || monthSelect.value !== 'all') {
-        filterByYearMonth(parseInt(yearSelect.value), parseInt(monthSelect.value));
+        const year = yearSelect.value === 'all' ? 'all' : parseInt(yearSelect.value);
+        const month = monthSelect.value === 'all' ? 'all' : parseInt(monthSelect.value);
+        filterByYearMonth(year, month);
     }
 
     renderDashboard(filteredData);
@@ -97,8 +99,8 @@ function filterByYearMonth(year, month) {
         const itemYear = parseInt(yearStr);
         const itemMonth = getMonthNumber(monthStr);
 
-        if (!isNaN(year) && year !== 'all' && itemYear !== year) return false;
-        if (!isNaN(month) && month !== 'all' && itemMonth !== month) return false;
+        if (year !== 'all' && itemYear !== year) return false;
+        if (month !== 'all' && itemMonth !== month) return false;
         return true;
     });
 
