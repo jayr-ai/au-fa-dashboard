@@ -136,7 +136,7 @@ body::before {
 .header-titles {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
 }
 
 .header-titles h1 {
@@ -147,7 +147,13 @@ body::before {
     margin: 0;
 }
 
-.header-titles p {
+.subtitle-with-sync {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.subtitle-with-sync p {
     font-size: 13px;
     color: var(--ink-2);
     margin: 0;
@@ -156,11 +162,9 @@ body::before {
 }
 
 .sync-info {
-    display: flex;
-    align-items: center;
     font-size: 11px;
     color: var(--muted);
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.3px;
 }
 
@@ -240,33 +244,48 @@ body::before {
     font-weight: 600;
 }
 
-.date-dropdowns {
+.month-selector {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 8px;
+    background: rgba(185, 218, 205, 0.05);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px 8px;
 }
 
-.date-select {
+.month-nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 4px 8px;
+    transition: color 0.2s ease;
+    line-height: 1;
+}
+
+.month-nav-btn:hover {
+    color: var(--accent);
+}
+
+.month-year-select {
     font-size: 12px;
     color: var(--ink);
-    background-color: var(--raised);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 7px 11px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    transition: var(--transition);
     font-weight: 500;
-    min-width: 120px;
+    flex: 0 1 auto;
+    min-width: 110px;
+    text-align: center;
 }
 
-.date-select:hover {
-    border-color: rgba(185, 218, 205, 0.34);
-    background-color: var(--surface);
-}
-
-.date-select:focus {
+.month-year-select:hover,
+.month-year-select:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 12px rgba(185, 218, 205, 0.2);
+    color: var(--accent);
 }
 
 .header-content h1 {
@@ -597,12 +616,8 @@ body::before {
         width: 100%;
     }
 
-    .date-dropdowns {
+    .month-selector {
         width: 100%;
-    }
-
-    .date-select {
-        flex: 1;
     }
 }
 
@@ -628,6 +643,7 @@ body::before {
 
     .date-selector {
         width: 100%;
+        gap: 10px;
     }
 
     .date-period-toggle {
@@ -637,15 +653,15 @@ body::before {
     .period-btn {
         flex: 1;
         padding: 8px 10px;
+        font-size: 11px;
     }
 
-    .date-dropdowns {
+    .month-selector {
         width: 100%;
     }
 
-    .date-select {
+    .month-year-select {
         flex: 1;
-        min-width: unset;
     }
 
     .kpi-section {

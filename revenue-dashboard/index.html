@@ -17,11 +17,11 @@
                         <div class="logo-badge">FA</div>
                         <div class="header-titles">
                             <h1>FREEDOM ACADEMY</h1>
-                            <p>Revenue Dashboard</p>
+                            <div class="subtitle-with-sync">
+                                <p>Revenue Dashboard</p>
+                                <span class="sync-info" id="lastSync">synced from the source sheet at 2026-08-04 02:00:01 UTC</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="sync-info">
-                        <span id="lastSync">Synced at 2026-08-04 02:00:01 UTC</span>
                     </div>
                 </div>
 
@@ -34,34 +34,50 @@
                             <button class="period-btn" data-period="custom" id="customPeriodBtn">Custom</button>
                         </div>
 
+                        <div class="month-selector">
+                            <button class="month-nav-btn" id="prevMonth">‹</button>
+                            <select id="monthYearSelect" class="month-year-select">
+                                <option value="all">All Time</option>
+                                <option value="2025-01">Jan 2025</option>
+                                <option value="2025-02">Feb 2025</option>
+                                <option value="2025-03">Mar 2025</option>
+                                <option value="2025-04">Apr 2025</option>
+                                <option value="2025-05">May 2025</option>
+                                <option value="2025-06">Jun 2025</option>
+                                <option value="2025-07">Jul 2025</option>
+                                <option value="2025-08">Aug 2025</option>
+                                <option value="2025-09">Sep 2025</option>
+                                <option value="2025-10">Oct 2025</option>
+                                <option value="2025-11">Nov 2025</option>
+                                <option value="2025-12">Dec 2025</option>
+                                <option value="2026-01">Jan 2026</option>
+                                <option value="2026-02">Feb 2026</option>
+                                <option value="2026-03">Mar 2026</option>
+                                <option value="2026-04">Apr 2026</option>
+                                <option value="2026-05">May 2026</option>
+                                <option value="2026-06">Jun 2026</option>
+                                <option value="2026-07">Jul 2026</option>
+                                <option value="2026-08" selected>Aug 2026</option>
+                                <option value="2026-09">Sep 2026</option>
+                                <option value="2026-10">Oct 2026</option>
+                                <option value="2026-11">Nov 2026</option>
+                                <option value="2026-12">Dec 2026</option>
+                                <option value="2027-01">Jan 2027</option>
+                                <option value="2027-02">Feb 2027</option>
+                                <option value="2027-03">Mar 2027</option>
+                                <option value="2027-04">Apr 2027</option>
+                                <option value="2027-05">May 2027</option>
+                                <option value="2027-06">Jun 2027</option>
+                                <option value="2027-07">Jul 2027</option>
+                                <option value="2027-08">Aug 2027</option>
+                            </select>
+                            <button class="month-nav-btn" id="nextMonth">›</button>
+                        </div>
+
                         <div class="date-inputs-group" id="dateInputsGroup" style="display: none;">
                             <input type="date" id="dateFrom" placeholder="From">
                             <span class="date-separator">→</span>
                             <input type="date" id="dateTo" placeholder="To">
-                        </div>
-
-                        <div class="date-dropdowns">
-                            <select id="yearSelect" class="date-select">
-                                <option value="all">All Years</option>
-                                <option value="2025">2025</option>
-                                <option value="2026" selected>2026</option>
-                                <option value="2027">2027</option>
-                            </select>
-                            <select id="monthSelect" class="date-select">
-                                <option value="all">All Months</option>
-                                <option value="1">JAN</option>
-                                <option value="2">FEB</option>
-                                <option value="3">MAR</option>
-                                <option value="4">APR</option>
-                                <option value="5">MAY</option>
-                                <option value="6">JUN</option>
-                                <option value="7">JUL</option>
-                                <option value="8">AUG</option>
-                                <option value="9">SEP</option>
-                                <option value="10">OCT</option>
-                                <option value="11">NOV</option>
-                                <option value="12">DEC</option>
-                            </select>
                         </div>
                     </div>
                 </div>

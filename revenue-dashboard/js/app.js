@@ -35,14 +35,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Setup date filter event listeners
 function setupDateFilters() {
-    const yearSelect = document.getElementById('yearSelect');
-    const monthSelect = document.getElementById('monthSelect');
     const periodBtns = document.querySelectorAll('.period-btn');
     const customPeriodBtn = document.getElementById('customPeriodBtn');
+    const monthYearSelect = document.getElementById('monthYearSelect');
+    const prevMonth = document.getElementById('prevMonth');
+    const nextMonth = document.getElementById('nextMonth');
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
     const dateInputsGroup = document.getElementById('dateInputsGroup');
-    const dateDropdowns = document.querySelector('.date-dropdowns');
+    const monthSelector = document.querySelector('.month-selector');
 
     // Period button toggles
     periodBtns.forEach(btn => {
@@ -52,39 +53,66 @@ function setupDateFilters() {
 
             if (btn === customPeriodBtn) {
                 dateInputsGroup.style.display = 'flex';
-                dateDropdowns.style.display = 'none';
+                monthSelector.style.display = 'none';
             } else {
                 dateInputsGroup.style.display = 'none';
-                dateDropdowns.style.display = 'flex';
+                monthSelector.style.display = 'flex';
             }
             applyFilters();
         });
     });
 
-    yearSelect.addEventListener('change', applyFilters);
-    monthSelect.addEventListener('change', applyFilters);
+    // Month/Year selection
+    monthYearSelect.addEventListener('change', applyFilters);
+
+    // Month navigation
+    prevMonth.addEventListener('click', () => {
+        const currentValue = monthYearSelect.value;
+        const options = Array.from(monthYearSelect.options).map(o => o.value);
+        const currentIndex = options.indexOf(currentValue);
+        if (currentIndex > 0) {
+            monthYearSelect.value = options[currentIndex - 1];
+            applyFilters();
+        }
+    });
+
+    nextMonth.addEventListener('click', () => {
+        const currentValue = monthYearSelect.value;
+        const options = Array.from(monthYearSelect.options).map(o => o.value);
+        const currentIndex = options.indexOf(currentValue);
+        if (currentIndex < options.length - 1) {
+            monthYearSelect.value = options[currentIndex + 1];
+            applyFilters();
+        }
+    });
+
     dateFrom.addEventListener('change', applyFilters);
     dateTo.addEventListener('change', applyFilters);
 }
 
 // Apply date filters
 function applyFilters() {
-    const yearSelect = document.getElementById('yearSelect');
-    const monthSelect = document.getElementById('monthSelect');
     const customPeriodBtn = document.getElementById('customPeriodBtn');
+    const monthYearSelect = document.getElementById('monthYearSelect');
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
 
     filteredData = JSON.parse(JSON.stringify(originalData));
 
-    if (customPeriodBtn.classList.contains('active') && dateFrom.value && dateTo.value) {
-        const fromDate = new Date(dateFrom.value);
-        const toDate = new Date(dateTo.value);
-        filterByDateRange(fromDate, toDate);
-    } else if (yearSelect.value !== 'all' || monthSelect.value !== 'all') {
-        const year = yearSelect.value === 'all' ? 'all' : parseInt(yearSelect.value);
-        const month = monthSelect.value === 'all' ? 'all' : parseInt(monthSelect.value);
-        filterByYearMonth(year, month);
+    if (customPeriodBtn.classList.contains('active')) {
+        // Custom date range mode
+        if (dateFrom.value && dateTo.value) {
+            const fromDate = new Date(dateFrom.value);
+            const toDate = new Date(dateTo.value);
+            filterByDateRange(fromDate, toDate);
+        }
+    } else {
+        // Month/Year selection mode
+        const monthYearValue = monthYearSelect.value;
+        if (monthYearValue !== 'all') {
+            const [year, month] = monthYearValue.split('-');
+            filterByYearMonth(parseInt(year), parseInt(month));
+        }
     }
 
     renderDashboard(filteredData);
