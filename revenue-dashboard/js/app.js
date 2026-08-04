@@ -4,13 +4,16 @@ let sourceBreakdownChart = null;
 let monthlyCashChart = null;
 let paymentChannelChart = null;
 
-// Color scheme
+// Brand color scheme
 const colors = {
     stripe: '#ff9d56',
     finance: '#5b8def',
     eft: '#9b59b6',
-    primary: '#1a4d2e',
-    background: '#f5f5f5'
+    accent: '#B9DACD',
+    ink: '#EDEDEE',
+    muted: '#8A9887',
+    surface: '#172114',
+    raised: '#1C2A24'
 };
 
 // Load and render dashboard
@@ -37,6 +40,8 @@ function renderDashboard(data) {
 
     renderKPIs(data.summary);
     renderYearComparison(data.yearComparison);
+    renderRevenueTrend(data.monthlyData);
+    renderSourceBreakdown(data.summary);
     renderMonthlyCash(data.monthlyData);
     renderPaymentChannel(data.monthlyData);
     renderProductData(data.productData);
@@ -68,6 +73,110 @@ function renderYearComparison(data) {
     });
 }
 
+// Render Revenue Trend (Line Chart)
+function renderRevenueTrend(data) {
+    const ctx = document.getElementById('revenueTrendChart');
+
+    if (revenueTrendChart) {
+        revenueTrendChart.destroy();
+    }
+
+    revenueTrendChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.map(d => d.month),
+            datasets: [{
+                label: 'Total Revenue',
+                data: data.map(d => d.total),
+                borderColor: colors.accent,
+                backgroundColor: 'rgba(185, 218, 205, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: colors.accent,
+                pointBorderColor: colors.surface,
+                pointBorderWidth: 2,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: colors.ink,
+                        font: { size: 12, weight: '600' }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        color: colors.muted,
+                        callback: function(value) {
+                            return '$' + (value / 1000).toFixed(0) + 'k';
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(185, 218, 205, 0.1)'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: colors.muted
+                    },
+                    grid: {
+                        color: 'rgba(185, 218, 205, 0.05)'
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Render Source Breakdown (Pie Chart)
+function renderSourceBreakdown(summary) {
+    const ctx = document.getElementById('sourceBreakdownChart');
+
+    if (sourceBreakdownChart) {
+        sourceBreakdownChart.destroy();
+    }
+
+    const total = summary.totalRevenue;
+    const stripePercent = (summary.stripeRevenue / total * 100).toFixed(1);
+    const financePercent = (summary.financeRevenue / total * 100).toFixed(1);
+    const eftPercent = (summary.eftRevenue / total * 100).toFixed(1);
+
+    sourceBreakdownChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [`Stripe (${stripePercent}%)`, `Finance (${financePercent}%)`, `EFT (${eftPercent}%)`],
+            datasets: [{
+                data: [summary.stripeRevenue, summary.financeRevenue, summary.eftRevenue],
+                backgroundColor: [colors.stripe, colors.finance, colors.eft],
+                borderColor: colors.surface,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: colors.ink,
+                        font: { size: 12, weight: '600' },
+                        padding: 15
+                    }
+                }
+            }
+        }
+    });
+}
+
 // Render Monthly Cash Chart
 function renderMonthlyCash(data) {
     const ctx = document.getElementById('monthlyCashChart');
@@ -85,19 +194,19 @@ function renderMonthlyCash(data) {
                     label: 'Stripe',
                     data: data.map(d => d.stripe),
                     backgroundColor: colors.stripe,
-                    borderRadius: 4
+                    borderRadius: 6
                 },
                 {
                     label: 'Finance',
                     data: data.map(d => d.finance),
                     backgroundColor: colors.finance,
-                    borderRadius: 4
+                    borderRadius: 6
                 },
                 {
                     label: 'EFT',
                     data: data.map(d => d.eft),
                     backgroundColor: colors.eft,
-                    borderRadius: 4
+                    borderRadius: 6
                 }
             ]
         },
@@ -106,18 +215,32 @@ function renderMonthlyCash(data) {
             maintainAspectRatio: true,
             plugins: {
                 legend: {
-                    position: 'top',
-                    labels: { font: { size: 12 } }
+                    labels: {
+                        color: colors.ink,
+                        font: { size: 12, weight: '600' }
+                    }
                 }
             },
             scales: {
-                x: { stacked: true },
+                x: {
+                    stacked: true,
+                    ticks: {
+                        color: colors.muted
+                    },
+                    grid: {
+                        color: 'rgba(185, 218, 205, 0.05)'
+                    }
+                },
                 y: {
                     stacked: true,
                     ticks: {
+                        color: colors.muted,
                         callback: function(value) {
-                            return '$' + value.toLocaleString();
+                            return '$' + (value / 1000).toFixed(0) + 'k';
                         }
+                    },
+                    grid: {
+                        color: 'rgba(185, 218, 205, 0.1)'
                     }
                 }
             }
@@ -172,16 +295,30 @@ function renderPaymentChannel(data) {
             maintainAspectRatio: true,
             plugins: {
                 legend: {
-                    position: 'top',
-                    labels: { font: { size: 12 } }
+                    labels: {
+                        color: colors.ink,
+                        font: { size: 12, weight: '600' }
+                    }
                 }
             },
             scales: {
                 y: {
                     ticks: {
+                        color: colors.muted,
                         callback: function(value) {
                             return '$' + (value / 1000).toFixed(0) + 'k';
                         }
+                    },
+                    grid: {
+                        color: 'rgba(185, 218, 205, 0.1)'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: colors.muted
+                    },
+                    grid: {
+                        color: 'rgba(185, 218, 205, 0.05)'
                     }
                 }
             }

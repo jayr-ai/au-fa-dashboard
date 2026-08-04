@@ -13,6 +13,7 @@
     --line: rgba(237, 237, 238, 0.10);
     --line-soft: rgba(237, 237, 238, 0.055);
     --radius: 14px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -51,16 +52,50 @@ body::before {
     max-width: 1620px;
     margin: 0 auto;
     padding: 24px 22px 72px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(185, 218, 205, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(185, 218, 205, 0.5);
+    }
 }
 
 /* Header */
 .header {
-    background-color: var(--surface);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(28, 42, 36, 0.9) 100%);
     color: var(--ink);
     padding: 40px 20px;
     text-align: center;
     border-bottom: 1px solid var(--line);
     margin: -24px -22px 30px -22px;
+    animation: slideInDown 0.5s ease-out;
 }
 
 .header-content h1 {
@@ -84,20 +119,42 @@ body::before {
     gap: 20px;
     padding: 0;
     margin-bottom: 30px;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
 }
 
 .kpi-card {
-    background: var(--surface);
+    background: linear-gradient(135deg, var(--surface) 0%, var(--raised) 100%);
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 25px;
     text-align: center;
-    transition: background 0.2s, border-color 0.2s;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(185, 218, 205, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .kpi-card:hover {
-    background: var(--raised);
+    background: linear-gradient(135deg, var(--raised) 0%, #1C2A24 100%);
     border-color: rgba(185, 218, 205, 0.34);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(185, 218, 205, 0.15);
+}
+
+.kpi-card:hover::before {
+    opacity: 1;
 }
 
 .kpi-label {
@@ -107,24 +164,50 @@ body::before {
     color: var(--muted);
     margin-bottom: 12px;
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.kpi-card:hover .kpi-label {
+    color: var(--accent);
 }
 
 .kpi-value {
     font-size: 32px;
     font-weight: 700;
     color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+.kpi-card:hover .kpi-value {
+    color: var(--neon);
+    text-shadow: 0 0 20px rgba(198, 242, 78, 0.3);
 }
 
 .kpi-value.stripe-color {
     color: #ff9d56;
 }
 
+.kpi-card:hover .kpi-value.stripe-color {
+    color: #ffb07a;
+    text-shadow: 0 0 20px rgba(255, 157, 86, 0.3);
+}
+
 .kpi-value.finance-color {
     color: #5b8def;
 }
 
+.kpi-card:hover .kpi-value.finance-color {
+    color: #7da3f5;
+    text-shadow: 0 0 20px rgba(91, 141, 239, 0.3);
+}
+
 .kpi-value.eft-color {
     color: #9b59b6;
+}
+
+.kpi-card:hover .kpi-value.eft-color {
+    color: #b377d9;
+    text-shadow: 0 0 20px rgba(155, 89, 182, 0.3);
 }
 
 /* Charts Section */
@@ -136,10 +219,38 @@ body::before {
 }
 
 .chart-container {
-    background: var(--surface);
+    background: linear-gradient(135deg, var(--surface) 0%, var(--raised) 100%);
     border-radius: var(--radius);
     padding: 25px;
     border: 1px solid var(--line);
+    transition: var(--transition);
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(600px circle at var(--gx, 50%) var(--gy, 50%),
+        rgba(185, 218, 205, 0.08), transparent 80%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.chart-container:hover {
+    border-color: rgba(185, 218, 205, 0.34);
+    box-shadow: 0 20px 40px rgba(185, 218, 205, 0.1);
+    transform: translateY(-4px);
+}
+
+.chart-container:hover::before {
+    opacity: 1;
 }
 
 .chart-container h3 {
@@ -149,6 +260,11 @@ body::before {
     margin-bottom: 20px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--line);
+    transition: color 0.3s ease;
+}
+
+.chart-container:hover h3 {
+    color: var(--accent);
 }
 
 .chart-container canvas {
@@ -158,10 +274,17 @@ body::before {
 /* Table Section */
 .table-section {
     padding: 25px;
-    background: var(--surface);
+    background: linear-gradient(135deg, var(--surface) 0%, var(--raised) 100%);
     border: 1px solid var(--line);
     border-radius: var(--radius);
     margin-bottom: 30px;
+    transition: var(--transition);
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+.table-section:hover {
+    border-color: rgba(185, 218, 205, 0.34);
+    box-shadow: 0 20px 40px rgba(185, 218, 205, 0.1);
 }
 
 .table-section h3 {
@@ -198,10 +321,15 @@ body::before {
     padding: 15px 12px;
     border-bottom: 1px solid var(--line-soft);
     color: var(--ink);
+    transition: background-color 0.2s ease;
 }
 
 .data-table tbody tr:hover {
-    background-color: rgba(185, 218, 205, 0.05);
+    background-color: rgba(185, 218, 205, 0.08);
+}
+
+.data-table tbody tr:hover td {
+    color: var(--accent);
 }
 
 .data-table tbody tr:last-child td {
