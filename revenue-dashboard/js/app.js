@@ -4,6 +4,10 @@ let sourceBreakdownChart = null;
 let monthlyCashChart = null;
 let paymentChannelChart = null;
 
+// Global data
+let originalData = null;
+let filteredData = null;
+
 // Brand color scheme
 const colors = {
     stripe: '#ff9d56',
@@ -19,13 +23,115 @@ const colors = {
 // Load and render dashboard
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const data = await loadData();
-        renderDashboard(data);
+        originalData = await loadData();
+        filteredData = JSON.parse(JSON.stringify(originalData));
+        renderDashboard(filteredData);
+        setupDateFilters();
     } catch (error) {
         console.error('Error loading dashboard:', error);
         document.getElementById('loadingMessage').textContent = 'Error loading dashboard data. Please try again.';
     }
 });
+
+// Setup date filter event listeners
+function setupDateFilters() {
+    const yearSelect = document.getElementById('yearSelect');
+    const monthSelect = document.getElementById('monthSelect');
+    const customToggle = document.getElementById('customToggle');
+    const dateFrom = document.getElementById('dateFrom');
+    const dateTo = document.getElementById('dateTo');
+    const customDatesGroup = document.getElementById('customDatesGroup');
+
+    yearSelect.addEventListener('change', applyFilters);
+    monthSelect.addEventListener('change', applyFilters);
+
+    customToggle.addEventListener('change', (e) => {
+        customDatesGroup.style.display = e.target.checked ? 'flex' : 'none';
+        if (e.target.checked) {
+            yearSelect.disabled = true;
+            monthSelect.disabled = true;
+        } else {
+            yearSelect.disabled = false;
+            monthSelect.disabled = false;
+        }
+        applyFilters();
+    });
+
+    dateFrom.addEventListener('change', applyFilters);
+    dateTo.addEventListener('change', applyFilters);
+}
+
+// Apply date filters
+function applyFilters() {
+    const yearSelect = document.getElementById('yearSelect');
+    const monthSelect = document.getElementById('monthSelect');
+    const customToggle = document.getElementById('customToggle');
+    const dateFrom = document.getElementById('dateFrom');
+    const dateTo = document.getElementById('dateTo');
+
+    filteredData = JSON.parse(JSON.stringify(originalData));
+
+    if (customToggle.checked && dateFrom.value && dateTo.value) {
+        const fromDate = new Date(dateFrom.value);
+        const toDate = new Date(dateTo.value);
+        filterByDateRange(fromDate, toDate);
+    } else if (yearSelect.value !== 'all' || monthSelect.value !== 'all') {
+        filterByYearMonth(parseInt(yearSelect.value), parseInt(monthSelect.value));
+    }
+
+    renderDashboard(filteredData);
+}
+
+// Filter data by date range
+function filterByDateRange(fromDate, toDate) {
+    filteredData.monthlyData = filteredData.monthlyData.filter(item => {
+        const itemDate = new Date(item.month);
+        return itemDate >= fromDate && itemDate <= toDate;
+    });
+}
+
+// Filter data by year and month
+function filterByYearMonth(year, month) {
+    filteredData.monthlyData = filteredData.monthlyData.filter(item => {
+        const [monthStr, yearStr] = item.month.split(' ');
+        const itemYear = parseInt(yearStr);
+        const itemMonth = getMonthNumber(monthStr);
+
+        if (year !== NaN && itemYear !== year) return false;
+        if (month !== NaN && itemMonth !== month) return false;
+        return true;
+    });
+
+    // Recalculate summary based on filtered data
+    const summary = calculateSummary(filteredData.monthlyData);
+    filteredData.summary = summary;
+}
+
+// Get month number from month name
+function getMonthNumber(monthStr) {
+    const months = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+                    'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12 };
+    return months[monthStr] || 0;
+}
+
+// Calculate summary from monthly data
+function calculateSummary(monthlyData) {
+    const totals = {
+        totalRevenue: 0,
+        stripeRevenue: 0,
+        financeRevenue: 0,
+        eftRevenue: 0
+    };
+
+    monthlyData.forEach(month => {
+        totals.totalRevenue += month.total || 0;
+        totals.stripeRevenue += month.stripe || 0;
+        totals.financeRevenue += month.finance || 0;
+        totals.eftRevenue += month.eft || 0;
+    });
+
+    return totals;
+}
 
 // Load JSON data
 async function loadData() {
@@ -38,6 +144,7 @@ async function loadData() {
 function renderDashboard(data) {
     document.getElementById('loadingMessage').style.display = 'none';
 
+    renderInsights(data);
     renderKPIs(data.summary);
     renderYearComparison(data.yearComparison);
     renderRevenueTrend(data.monthlyData);
@@ -45,6 +152,66 @@ function renderDashboard(data) {
     renderMonthlyCash(data.monthlyData);
     renderPaymentChannel(data.monthlyData);
     renderProductData(data.productData);
+}
+
+// Generate and render executive insights
+function renderInsights(data) {
+    const insights = generateInsights(data);
+    const insightsHtml = insights.map(insight => `
+        <div class="insight-item">
+            <span class="insight-icon">${insight.icon}</span>
+            <span class="insight-text">${insight.text}</span>
+        </div>
+    `).join('');
+
+    document.getElementById('insightsContent').innerHTML = insightsHtml;
+}
+
+// Generate executive insights from data
+function generateInsights(data) {
+    const insights = [];
+    const summary = data.summary;
+    const monthlyData = data.monthlyData;
+
+    // Insight 1: Total Revenue
+    insights.push({
+        icon: '💰',
+        text: `<strong>Total Revenue: ${formatCurrency(summary.totalRevenue)}</strong> from ${monthlyData.length} month(s) of data`
+    });
+
+    // Insight 2: Top performing channel
+    const channels = [
+        { name: 'Finance', value: summary.financeRevenue, icon: '🏦' },
+        { name: 'Stripe', value: summary.stripeRevenue, icon: '💳' },
+        { name: 'EFT', value: summary.eftRevenue, icon: '📤' }
+    ];
+    const topChannel = channels.reduce((a, b) => a.value > b.value ? a : b);
+    const percentage = ((topChannel.value / summary.totalRevenue) * 100).toFixed(1);
+    insights.push({
+        icon: topChannel.icon,
+        text: `<strong>${topChannel.name}</strong> leads with ${formatCurrency(topChannel.value)} (${percentage}% of total revenue)`
+    });
+
+    // Insight 3: Month-over-month growth
+    if (monthlyData.length > 1) {
+        const lastMonth = monthlyData[monthlyData.length - 1];
+        const prevMonth = monthlyData[monthlyData.length - 2];
+        const growth = ((lastMonth.total - prevMonth.total) / prevMonth.total * 100).toFixed(1);
+        const trend = growth > 0 ? '📈' : '📉';
+        insights.push({
+            icon: trend,
+            text: `<strong>Latest period</strong> shows ${Math.abs(growth)}% ${growth > 0 ? 'growth' : 'decline'} vs. previous month`
+        });
+    }
+
+    // Insight 4: Average monthly revenue
+    const avgMonthly = (summary.totalRevenue / monthlyData.length).toFixed(0);
+    insights.push({
+        icon: '📊',
+        text: `<strong>Average monthly revenue:</strong> ${formatCurrency(avgMonthly)}`
+    });
+
+    return insights;
 }
 
 // Render KPI Cards

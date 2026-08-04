@@ -12,10 +12,65 @@
         <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <h1>FREEDOM ACADEMY</h1>
-                <h2>REVENUE DASHBOARD</h2>
+                <div class="header-top">
+                    <div>
+                        <h1>FREEDOM ACADEMY</h1>
+                        <h2>REVENUE DASHBOARD</h2>
+                    </div>
+                    <!-- Date Range Selector -->
+                    <div class="date-selector">
+                        <div class="selector-group">
+                            <label for="yearSelect">Year</label>
+                            <select id="yearSelect">
+                                <option value="all">All Years</option>
+                                <option value="2025">2025</option>
+                                <option value="2026" selected>2026</option>
+                                <option value="2027">2027</option>
+                            </select>
+                        </div>
+                        <div class="selector-group">
+                            <label for="monthSelect">Month</label>
+                            <select id="monthSelect">
+                                <option value="all">All Months</option>
+                                <option value="1">JAN</option>
+                                <option value="2">FEB</option>
+                                <option value="3">MAR</option>
+                                <option value="4">APR</option>
+                                <option value="5">MAY</option>
+                                <option value="6">JUN</option>
+                                <option value="7">JUL</option>
+                                <option value="8">AUG</option>
+                                <option value="9">SEP</option>
+                                <option value="10">OCT</option>
+                                <option value="11">NOV</option>
+                                <option value="12">DEC</option>
+                            </select>
+                        </div>
+                        <div class="selector-group">
+                            <label for="customToggle">
+                                <input type="checkbox" id="customToggle"> Custom Range
+                            </label>
+                        </div>
+                        <div class="selector-group custom-dates" id="customDatesGroup" style="display: none;">
+                            <label>From</label>
+                            <input type="date" id="dateFrom">
+                            <label>To</label>
+                            <input type="date" id="dateTo">
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
+
+        <!-- Executive Insights Section -->
+        <section class="insights-section">
+            <div class="insights-card">
+                <h3>Executive Summary</h3>
+                <div class="insights-content" id="insightsContent">
+                    <p>Loading insights...</p>
+                </div>
+            </div>
+        </section>
 
         <!-- KPI Section -->
         <section class="kpi-section">

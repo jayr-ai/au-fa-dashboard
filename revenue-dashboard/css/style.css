@@ -92,10 +92,94 @@ body::before {
     background: linear-gradient(135deg, var(--surface) 0%, rgba(28, 42, 36, 0.9) 100%);
     color: var(--ink);
     padding: 40px 20px;
-    text-align: center;
     border-bottom: 1px solid var(--line);
     margin: -24px -22px 30px -22px;
     animation: slideInDown 0.5s ease-out;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1620px;
+    margin: 0 auto;
+}
+
+.header-content > div {
+    text-align: center;
+    flex: 1;
+}
+
+/* Date Selector */
+.date-selector {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.selector-group label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.selector-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.selector-group select,
+.selector-group input[type="date"] {
+    font: inherit;
+    font-size: 13px;
+    color: var(--ink);
+    background-color: var(--raised);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.selector-group select:hover,
+.selector-group input[type="date"]:hover {
+    border-color: rgba(185, 218, 205, 0.34);
+    background-color: var(--surface);
+}
+
+.selector-group select:focus,
+.selector-group input[type="date"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(185, 218, 205, 0.2);
+}
+
+.custom-dates {
+    flex-direction: row;
+    gap: 8px;
+}
+
+.custom-dates label {
+    margin: 0;
+    align-self: center;
+}
+
+.custom-dates input[type="date"] {
+    padding: 8px 10px;
 }
 
 .header-content h1 {
@@ -110,6 +194,72 @@ body::before {
     font-weight: 400;
     letter-spacing: -0.01em;
     color: var(--ink-2);
+}
+
+/* Insights Section */
+.insights-section {
+    margin-bottom: 30px;
+    animation: fadeInUp 0.6s ease-out 0.05s both;
+}
+
+.insights-card {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--raised) 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 25px;
+    transition: var(--transition);
+}
+
+.insights-card:hover {
+    border-color: rgba(185, 218, 205, 0.34);
+    box-shadow: 0 20px 40px rgba(185, 218, 205, 0.1);
+}
+
+.insights-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+.insights-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.insight-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(185, 218, 205, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    transition: var(--transition);
+}
+
+.insight-item:hover {
+    background: rgba(185, 218, 205, 0.1);
+    border-left-color: var(--neon);
+}
+
+.insight-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    line-height: 1.5;
+}
+
+.insight-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-2);
+}
+
+.insight-text strong {
+    color: var(--ink);
+    font-weight: 600;
 }
 
 /* KPI Section */
