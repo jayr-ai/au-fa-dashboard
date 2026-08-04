@@ -1,42 +1,80 @@
+:root {
+    --plane: #0F1710;
+    --surface: #172114;
+    --raised: #1C2A24;
+    --ink: #EDEDEE;
+    --ink-2: #A9B6A4;
+    --muted: #8A9887;
+    --accent: #B9DACD;
+    --accent-dim: #4E6B5C;
+    --mint: #6F9280;
+    --critical: #F87171;
+    --neon: #C6F24E;
+    --line: rgba(237, 237, 238, 0.10);
+    --line-soft: rgba(237, 237, 238, 0.055);
+    --radius: 14px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
+    background: var(--plane);
+    color: var(--ink);
+    font: 14px / 1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(1100px 620px at 12% -8%, rgba(185, 218, 205, 0.07), transparent 62%),
+        radial-gradient(900px 520px at 88% 0%, rgba(185, 218, 205, 0.055), transparent 60%);
 }
 
 .container {
-    max-width: 1400px;
+    position: relative;
+    z-index: 2;
+    max-width: 1620px;
     margin: 0 auto;
-    padding: 0;
+    padding: 24px 22px 72px;
 }
 
 /* Header */
 .header {
-    background-color: #1a4d2e;
-    color: white;
+    background-color: var(--surface);
+    color: var(--ink);
     padding: 40px 20px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--line);
+    margin: -24px -22px 30px -22px;
 }
 
 .header-content h1 {
     font-size: 28px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: -0.01em;
     margin-bottom: 8px;
 }
 
 .header-content h2 {
     font-size: 20px;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: -0.01em;
+    color: var(--ink-2);
 }
 
 /* KPI Section */
@@ -44,31 +82,29 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    padding: 30px 20px;
-    background: white;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 0;
+    margin-bottom: 30px;
 }
 
 .kpi-card {
-    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
     padding: 25px;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: background 0.2s, border-color 0.2s;
 }
 
 .kpi-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: var(--raised);
+    border-color: rgba(185, 218, 205, 0.34);
 }
 
 .kpi-label {
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #666;
+    color: var(--muted);
     margin-bottom: 12px;
     font-weight: 600;
 }
@@ -76,7 +112,7 @@ body {
 .kpi-value {
     font-size: 32px;
     font-weight: 700;
-    color: #1a4d2e;
+    color: var(--accent);
 }
 
 .kpi-value.stripe-color {
@@ -96,24 +132,23 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 30px;
-    padding: 30px 20px;
+    margin-bottom: 30px;
 }
 
 .chart-container {
-    background: white;
-    border-radius: 8px;
+    background: var(--surface);
+    border-radius: var(--radius);
     padding: 25px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--line);
 }
 
 .chart-container h3 {
     font-size: 16px;
     font-weight: 600;
-    color: #1a4d2e;
+    color: var(--ink);
     margin-bottom: 20px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 1px solid var(--line);
 }
 
 .chart-container canvas {
@@ -122,20 +157,20 @@ body {
 
 /* Table Section */
 .table-section {
-    padding: 30px 20px;
-    background: white;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 30px;
 }
 
 .table-section h3 {
     font-size: 16px;
     font-weight: 600;
-    color: #1a4d2e;
+    color: var(--ink);
     margin-bottom: 20px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 1px solid var(--line);
 }
 
 .data-table {
@@ -145,15 +180,15 @@ body {
 }
 
 .data-table thead {
-    background-color: #f9f9f9;
+    background-color: var(--raised);
 }
 
 .data-table th {
     padding: 15px 12px;
     text-align: left;
     font-weight: 600;
-    color: #1a4d2e;
-    border-bottom: 2px solid #e0e0e0;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.5px;
@@ -161,31 +196,35 @@ body {
 
 .data-table td {
     padding: 15px 12px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink);
 }
 
 .data-table tbody tr:hover {
-    background-color: #f9f9f9;
+    background-color: rgba(185, 218, 205, 0.05);
 }
 
 .data-table tbody tr:last-child td {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--line);
 }
 
 /* Loading Message */
 .loading-message {
     text-align: center;
     padding: 40px 20px;
-    color: #666;
+    color: var(--muted);
     font-size: 16px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 24px 15px 72px;
+    }
+
     .kpi-section {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 15px;
-        padding: 20px 15px;
     }
 
     .kpi-card {
@@ -199,7 +238,6 @@ body {
     .charts-section {
         grid-template-columns: 1fr;
         gap: 20px;
-        padding: 20px 15px;
     }
 
     .chart-container {
@@ -207,8 +245,7 @@ body {
     }
 
     .table-section {
-        padding: 20px 15px;
-        margin: 15px;
+        padding: 15px;
     }
 
     .data-table {
@@ -235,7 +272,7 @@ body {
     }
 
     .charts-section {
-        padding: 15px 10px;
+        grid-template-columns: 1fr;
     }
 
     .chart-container {
@@ -243,7 +280,6 @@ body {
     }
 
     .table-section {
-        padding: 15px 10px;
-        margin: 10px;
+        padding: 12px;
     }
 }
