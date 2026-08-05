@@ -377,6 +377,22 @@ function renderYearComparison(data) {
     });
 }
 
+// Sort monthly data chronologically (oldest to newest)
+function sortMonthlyData(data) {
+    const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+                    'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
+
+    return [...data].sort((a, b) => {
+        const [monthA, yearA] = a.month.split(' ');
+        const [monthB, yearB] = b.month.split(' ');
+
+        const yearDiff = parseInt(yearA) - parseInt(yearB);
+        if (yearDiff !== 0) return yearDiff;
+
+        return months[monthA] - months[monthB];
+    });
+}
+
 // Render Revenue Trend (Line Chart)
 function renderRevenueTrend(data) {
     const ctx = document.getElementById('revenueTrendChart');
@@ -385,13 +401,16 @@ function renderRevenueTrend(data) {
         revenueTrendChart.destroy();
     }
 
+    // Sort data chronologically before rendering
+    const sortedData = sortMonthlyData(data);
+
     revenueTrendChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: data.map(d => d.month),
+            labels: sortedData.map(d => d.month),
             datasets: [{
                 label: 'Total Revenue',
-                data: data.map(d => d.total),
+                data: sortedData.map(d => d.total),
                 borderColor: colors.accent,
                 backgroundColor: 'rgba(185, 218, 205, 0.1)',
                 borderWidth: 3,
@@ -489,26 +508,29 @@ function renderMonthlyCash(data) {
         monthlyCashChart.destroy();
     }
 
+    // Sort data chronologically before rendering
+    const sortedData = sortMonthlyData(data);
+
     monthlyCashChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: data.map(d => d.month),
+            labels: sortedData.map(d => d.month),
             datasets: [
                 {
                     label: 'Stripe',
-                    data: data.map(d => d.stripe),
+                    data: sortedData.map(d => d.stripe),
                     backgroundColor: colors.stripe,
                     borderRadius: 6
                 },
                 {
                     label: 'Finance',
-                    data: data.map(d => d.finance),
+                    data: sortedData.map(d => d.finance),
                     backgroundColor: colors.finance,
                     borderRadius: 6
                 },
                 {
                     label: 'EFT',
-                    data: data.map(d => d.eft),
+                    data: sortedData.map(d => d.eft),
                     backgroundColor: colors.eft,
                     borderRadius: 6
                 }
@@ -560,14 +582,17 @@ function renderPaymentChannel(data) {
         paymentChannelChart.destroy();
     }
 
+    // Sort data chronologically before rendering
+    const sortedData = sortMonthlyData(data);
+
     paymentChannelChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: data.map(d => d.month),
+            labels: sortedData.map(d => d.month),
             datasets: [
                 {
                     label: 'Finance',
-                    data: data.map(d => d.finance),
+                    data: sortedData.map(d => d.finance),
                     borderColor: colors.finance,
                     backgroundColor: 'rgba(91, 141, 239, 0.1)',
                     borderWidth: 2,
@@ -576,7 +601,7 @@ function renderPaymentChannel(data) {
                 },
                 {
                     label: 'Stripe',
-                    data: data.map(d => d.stripe),
+                    data: sortedData.map(d => d.stripe),
                     borderColor: colors.stripe,
                     backgroundColor: 'rgba(255, 157, 86, 0.1)',
                     borderWidth: 2,
@@ -585,7 +610,7 @@ function renderPaymentChannel(data) {
                 },
                 {
                     label: 'EFT',
-                    data: data.map(d => d.eft),
+                    data: sortedData.map(d => d.eft),
                     borderColor: colors.eft,
                     backgroundColor: 'rgba(155, 89, 182, 0.1)',
                     borderWidth: 2,
