@@ -172,6 +172,7 @@ body::before {
     display: flex;
     align-items: center;
     gap: 20px;
+    padding-right: 60px;
 }
 
 /* Period Buttons */
