@@ -209,9 +209,17 @@ function calculateSummary(monthlyData) {
     return totals;
 }
 
-// Load JSON data
+// Load JSON data with aggressive cache busting
 async function loadData() {
-    const response = await fetch('data/revenue-data.json?t=' + new Date().getTime());
+    const response = await fetch('data/revenue-data.json?t=' + new Date().getTime(), {
+        method: 'GET',
+        cache: 'no-store',
+        headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        }
+    });
     if (!response.ok) throw new Error('Failed to load data');
     const data = await response.json();
 
