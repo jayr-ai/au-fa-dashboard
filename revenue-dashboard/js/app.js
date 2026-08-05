@@ -131,7 +131,7 @@ function calculateSummary(monthlyData) {
 
 // Load JSON data
 async function loadData() {
-    const response = await fetch('data/revenue-data.json');
+    const response = await fetch('data/revenue-data.json?t=' + new Date().getTime());
     if (!response.ok) throw new Error('Failed to load data');
     return await response.json();
 }
