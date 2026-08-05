@@ -235,6 +235,14 @@ async function loadData() {
 function renderDashboard(data) {
     document.getElementById('loadingMessage').style.display = 'none';
 
+    // Generate missing data from monthlyData if needed
+    if (!data.yearComparison || data.yearComparison.length === 0) {
+        data.yearComparison = generateYearComparison(data.monthlyData);
+    }
+    if (!data.productData || data.productData.length === 0) {
+        data.productData = generateProductData(data.monthlyData);
+    }
+
     renderInsights(data);
     renderKPIs(data.summary);
     renderYearComparison(data.yearComparison);
@@ -243,6 +251,37 @@ function renderDashboard(data) {
     renderMonthlyCash(data.monthlyData);
     renderPaymentChannel(data.monthlyData);
     renderProductData(data.productData);
+}
+
+// Generate year comparison from monthly data
+function generateYearComparison(monthlyData) {
+    const yearTotals = {};
+
+    monthlyData.forEach(month => {
+        const year = month.year;
+        if (!yearTotals[year]) {
+            yearTotals[year] = 0;
+        }
+        yearTotals[year] += month.total || 0;
+    });
+
+    // Create comparison row
+    const years = Object.keys(yearTotals).sort();
+    const comparison = {
+        mode: '2026 Revenue',
+        2025: yearTotals[2025] || 0,
+        2026: yearTotals[2026] || 0,
+        2027: yearTotals[2027] || 0,
+        total: Object.values(yearTotals).reduce((a, b) => a + b, 0)
+    };
+
+    return [comparison];
+}
+
+// Generate product data from monthly data (placeholder)
+function generateProductData(monthlyData) {
+    // Return empty for now - can be enhanced with BigQuery data later
+    return [];
 }
 
 // Generate and render executive insights
