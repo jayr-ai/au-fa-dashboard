@@ -1,13 +1,146 @@
 {
-  "lastUpdated": "2026-08-04T05:33:07.859Z",
+  "lastUpdated": "2026-08-05T23:45:00.000Z",
   "summary": {
-    "totalRevenue": 1336084,
-    "stripeRevenue": 455638,
-    "financeRevenue": 612796,
-    "eftRevenue": 267650
+    "totalRevenue": 2004126,
+    "stripeRevenue": 683457,
+    "financeRevenue": 919194,
+    "eftRevenue": 401475
   },
-  "yearComparison": [],
-  "monthlyData": [],
-  "productData": [],
-  "transactions": []
+  "yearComparison": [
+    {
+      "mode": "2026 Revenue",
+      "2025": 59091,
+      "2026": 2004126,
+      "2027": 0,
+      "total": 2063217
+    }
+  ],
+  "monthlyData": [
+    {
+      "month": "Jul 2026",
+      "year": 2026,
+      "stripe": 138225,
+      "finance": 24000,
+      "eft": 37800,
+      "total": 200025
+    },
+    {
+      "month": "Jun 2026",
+      "year": 2026,
+      "stripe": 107442,
+      "finance": 270000,
+      "eft": 69000,
+      "total": 446442
+    },
+    {
+      "month": "May 2026",
+      "year": 2026,
+      "stripe": 81585,
+      "finance": 285750,
+      "eft": 69600,
+      "total": 436935
+    },
+    {
+      "month": "Apr 2026",
+      "year": 2026,
+      "stripe": 171018,
+      "finance": 280353,
+      "eft": 110775,
+      "total": 562146
+    },
+    {
+      "month": "Mar 2026",
+      "year": 2026,
+      "stripe": 57354,
+      "finance": 0,
+      "eft": 34800,
+      "total": 92154
+    },
+    {
+      "month": "Feb 2026",
+      "year": 2026,
+      "stripe": 117249,
+      "finance": 0,
+      "eft": 79500,
+      "total": 196749
+    },
+    {
+      "month": "Jan 2026",
+      "year": 2026,
+      "stripe": 10584,
+      "finance": 0,
+      "eft": 0,
+      "total": 10584
+    },
+    {
+      "month": "Nov 2025",
+      "year": 2025,
+      "stripe": 0,
+      "finance": 59091,
+      "eft": 0,
+      "total": 59091
+    }
+  ],
+  "productData": [
+    {
+      "product": "Accelerator",
+      "2025": 0,
+      "2026": 1644990,
+      "total": 1644990
+    },
+    {
+      "product": "Intensive",
+      "2025": 59091,
+      "2026": 79500,
+      "total": 138591
+    },
+    {
+      "product": "Freedom Fighters Comm",
+      "2025": 0,
+      "2026": 20850,
+      "total": 20850
+    },
+    {
+      "product": "FDR Masterclass VIP Upgrade",
+      "2025": 0,
+      "2026": 14187,
+      "total": 14187
+    },
+    {
+      "product": "Freedom Coach Upgrade",
+      "2025": 0,
+      "2026": 5784,
+      "total": 5784
+    },
+    {
+      "product": "Deposit",
+      "2025": 0,
+      "2026": 4830,
+      "total": 4830
+    },
+    {
+      "product": "Live Closing Accelerator",
+      "2025": 0,
+      "2026": 1728,
+      "total": 1728
+    },
+    {
+      "product": "FDR Application Deposit",
+      "2025": 0,
+      "2026": 1500,
+      "total": 1500
+    },
+    {
+      "product": "3D HT Closer Challenge",
+      "2025": 0,
+      "2026": 804,
+      "total": 804
+    },
+    {
+      "product": "FA 5Day Challenge",
+      "2025": 0,
+      "2026": 462,
+      "total": 462
+    }
+  ]
 }
