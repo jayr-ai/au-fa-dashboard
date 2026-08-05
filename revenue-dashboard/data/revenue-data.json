@@ -1,85 +1,12 @@
 {
-  "lastUpdated": "2026-08-05T14:13:32.647Z",
+  "lastUpdated": "2026-08-05T14:14:00.322Z",
   "summary": {
-    "totalRevenue": 748844.6799999999,
-    "stripeRevenue": 247305,
-    "financeRevenue": 349348,
-    "eftRevenue": 152191.68
+    "totalRevenue": 0,
+    "stripeRevenue": 0,
+    "financeRevenue": 0,
+    "eftRevenue": 0
   },
-  "monthlyData": [
-    {
-      "month": "Nov 2025",
-      "year": 2025,
-      "stripe": 0,
-      "finance": 19697,
-      "eft": 0,
-      "total": 19697
-    },
-    {
-      "month": "Jan 2026",
-      "year": 2026,
-      "stripe": 5482,
-      "finance": 0,
-      "eft": 0,
-      "total": 5482
-    },
-    {
-      "month": "Feb 2026",
-      "year": 2026,
-      "stripe": 41618,
-      "finance": 0,
-      "eft": 31500,
-      "total": 73118
-    },
-    {
-      "month": "Mar 2026",
-      "year": 2026,
-      "stripe": 19650,
-      "finance": 0,
-      "eft": 12600,
-      "total": 32250
-    },
-    {
-      "month": "Apr 2026",
-      "year": 2026,
-      "stripe": 58097,
-      "finance": 93451,
-      "eft": 38025,
-      "total": 189573
-    },
-    {
-      "month": "May 2026",
-      "year": 2026,
-      "stripe": 32827,
-      "finance": 95250,
-      "eft": 23200,
-      "total": 151277
-    },
-    {
-      "month": "Jun 2026",
-      "year": 2026,
-      "stripe": 42065,
-      "finance": 101000,
-      "eft": 24000,
-      "total": 167065
-    },
-    {
-      "month": "Jul 2026",
-      "year": 2026,
-      "stripe": 47469,
-      "finance": 39950,
-      "eft": 21766.68,
-      "total": 109185.68
-    },
-    {
-      "month": "Aug 2026",
-      "year": 2026,
-      "stripe": 97,
-      "finance": 0,
-      "eft": 1100,
-      "total": 1197
-    }
-  ],
+  "monthlyData": [],
   "yearComparison": [],
   "productData": []
 }
