@@ -189,12 +189,6 @@ function getMonthNumber(monthStr) {
     return months[monthStr] || 0;
 }
 
-// Parse "MMM YYYY" format to comparable date
-function parseMonthYear(monthStr) {
-    const [month, year] = monthStr.split(' ');
-    const monthNum = getMonthNumber(month);
-    return new Date(parseInt(year), monthNum - 1, 1).getTime();
-}
 
 // Calculate summary from monthly data
 function calculateSummary(monthlyData) {
@@ -337,12 +331,8 @@ function renderRevenueTrend(data) {
         revenueTrendChart.destroy();
     }
 
-    // Sort data in ascending order by date (oldest first)
-    const sortedData = [...data].sort((a, b) => {
-        const dateA = parseMonthYear(a.month);
-        const dateB = parseMonthYear(b.month);
-        return dateA - dateB;
-    });
+    // Reverse data to ascending order (oldest first)
+    const sortedData = [...data].reverse();
 
     revenueTrendChart = new Chart(ctx, {
         type: 'line',
@@ -448,12 +438,8 @@ function renderMonthlyCash(data) {
         monthlyCashChart.destroy();
     }
 
-    // Sort data in ascending order by date (oldest first)
-    const sortedData = [...data].sort((a, b) => {
-        const dateA = parseMonthYear(a.month);
-        const dateB = parseMonthYear(b.month);
-        return dateA - dateB;
-    });
+    // Reverse data to ascending order (oldest first)
+    const sortedData = [...data].reverse();
 
     monthlyCashChart = new Chart(ctx, {
         type: 'bar',
@@ -526,12 +512,8 @@ function renderPaymentChannel(data) {
         paymentChannelChart.destroy();
     }
 
-    // Sort data in ascending order by date (oldest first)
-    const sortedData = [...data].sort((a, b) => {
-        const dateA = parseMonthYear(a.month);
-        const dateB = parseMonthYear(b.month);
-        return dateA - dateB;
-    });
+    // Reverse data to ascending order (oldest first)
+    const sortedData = [...data].reverse();
 
     paymentChannelChart = new Chart(ctx, {
         type: 'line',
