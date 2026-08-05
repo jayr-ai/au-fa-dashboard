@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-05T14:15:52.681Z",
+  "lastUpdated": "2026-08-05T14:20:01.664Z",
   "summary": {
     "totalRevenue": 748844.6799999999,
     "stripeRevenue": 247305,
@@ -81,5 +81,83 @@
     }
   ],
   "yearComparison": [],
-  "productData": []
+  "productData": [
+    {
+      "2025": 0,
+      "2026": 642096.68,
+      "2027": 0,
+      "product": "Accelerator",
+      "total": 642096.68
+    },
+    {
+      "2025": 19697,
+      "2026": 31500,
+      "2027": 0,
+      "product": "Intensive",
+      "total": 51197
+    },
+    {
+      "2025": 0,
+      "2026": 32938,
+      "2027": 0,
+      "product": "All Products",
+      "total": 32938
+    },
+    {
+      "2025": 0,
+      "2026": 8050,
+      "2027": 0,
+      "product": "Freedom Fighters Comm",
+      "total": 8050
+    },
+    {
+      "2025": 0,
+      "2026": 6569,
+      "2027": 0,
+      "product": "FDR Masterclass VIP Upgrade",
+      "total": 6569
+    },
+    {
+      "2025": 0,
+      "2026": 3042,
+      "2027": 0,
+      "product": "Freedom Coach Upgrade",
+      "total": 3042
+    },
+    {
+      "2025": 0,
+      "2026": 1610,
+      "2027": 0,
+      "product": "Deposit",
+      "total": 1610
+    },
+    {
+      "2025": 0,
+      "2026": 1175,
+      "2027": 0,
+      "product": "3D HT Closer Challenge",
+      "total": 1175
+    },
+    {
+      "2025": 0,
+      "2026": 994,
+      "2027": 0,
+      "product": "FA 5Day Challenge",
+      "total": 994
+    },
+    {
+      "2025": 0,
+      "2026": 673,
+      "2027": 0,
+      "product": "Live Closing Accelerator",
+      "total": 673
+    },
+    {
+      "2025": 0,
+      "2026": 500,
+      "2027": 0,
+      "product": "FDR Application Deposit",
+      "total": 500
+    }
+  ]
 }
