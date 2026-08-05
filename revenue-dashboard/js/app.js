@@ -88,9 +88,11 @@ function setupDateFilters() {
         applyFilters();
     });
 
-    // Date input listeners
+    // Date input listeners (both 'change' and 'input' for better compatibility)
     dateFrom.addEventListener('change', applyFilters);
     dateTo.addEventListener('change', applyFilters);
+    dateFrom.addEventListener('input', applyFilters);
+    dateTo.addEventListener('input', applyFilters);
 
     // Apply filters on initial load
     applyFilters();
