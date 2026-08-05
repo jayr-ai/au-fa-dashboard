@@ -134,13 +134,19 @@ function applyFilters() {
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
 
+    console.log('applyFilters called - From:', dateFrom.value, 'To:', dateTo.value);
+
     filteredData = JSON.parse(JSON.stringify(originalData));
+    console.log('Original data monthly count:', filteredData.monthlyData.length);
 
     if (dateFrom.value && dateTo.value) {
         const fromDate = new Date(dateFrom.value);
         const toDate = new Date(dateTo.value);
         filterByDateRange(fromDate, toDate);
     }
+
+    console.log('Filtered data monthly count:', filteredData.monthlyData.length);
+    console.log('Filtered summary:', filteredData.summary);
 
     renderDashboard(filteredData);
 }
@@ -298,6 +304,7 @@ function generateInsights(data) {
 
 // Render KPI Cards
 function renderKPIs(summary) {
+    console.log('Rendering KPIs with summary:', summary);
     document.getElementById('totalRevenue').textContent = formatCurrency(summary.totalRevenue);
     document.getElementById('stripeRevenue').textContent = formatCurrency(summary.stripeRevenue);
     document.getElementById('financeRevenue').textContent = formatCurrency(summary.financeRevenue);
