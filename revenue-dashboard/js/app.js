@@ -213,7 +213,14 @@ function calculateSummary(monthlyData) {
 async function loadData() {
     const response = await fetch('data/revenue-data.json?t=' + new Date().getTime());
     if (!response.ok) throw new Error('Failed to load data');
-    return await response.json();
+    const data = await response.json();
+
+    // SORT monthly data in ascending order (oldest first) RIGHT WHEN LOADING
+    if (data.monthlyData && Array.isArray(data.monthlyData)) {
+        data.monthlyData = data.monthlyData.reverse();
+    }
+
+    return data;
 }
 
 // Main render function
@@ -331,16 +338,13 @@ function renderRevenueTrend(data) {
         revenueTrendChart.destroy();
     }
 
-    // Reverse data to ascending order (oldest first)
-    const sortedData = [...data].reverse();
-
     revenueTrendChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: sortedData.map(d => d.month),
+            labels: data.map(d => d.month),
             datasets: [{
                 label: 'Total Revenue',
-                data: sortedData.map(d => d.total),
+                data: data.map(d => d.total),
                 borderColor: colors.accent,
                 backgroundColor: 'rgba(185, 218, 205, 0.1)',
                 borderWidth: 3,
@@ -438,29 +442,26 @@ function renderMonthlyCash(data) {
         monthlyCashChart.destroy();
     }
 
-    // Reverse data to ascending order (oldest first)
-    const sortedData = [...data].reverse();
-
     monthlyCashChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: sortedData.map(d => d.month),
+            labels: data.map(d => d.month),
             datasets: [
                 {
                     label: 'Stripe',
-                    data: sortedData.map(d => d.stripe),
+                    data: data.map(d => d.stripe),
                     backgroundColor: colors.stripe,
                     borderRadius: 6
                 },
                 {
                     label: 'Finance',
-                    data: sortedData.map(d => d.finance),
+                    data: data.map(d => d.finance),
                     backgroundColor: colors.finance,
                     borderRadius: 6
                 },
                 {
                     label: 'EFT',
-                    data: sortedData.map(d => d.eft),
+                    data: data.map(d => d.eft),
                     backgroundColor: colors.eft,
                     borderRadius: 6
                 }
@@ -512,17 +513,14 @@ function renderPaymentChannel(data) {
         paymentChannelChart.destroy();
     }
 
-    // Reverse data to ascending order (oldest first)
-    const sortedData = [...data].reverse();
-
     paymentChannelChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: sortedData.map(d => d.month),
+            labels: data.map(d => d.month),
             datasets: [
                 {
                     label: 'Finance',
-                    data: sortedData.map(d => d.finance),
+                    data: data.map(d => d.finance),
                     borderColor: colors.finance,
                     backgroundColor: 'rgba(91, 141, 239, 0.1)',
                     borderWidth: 2,
@@ -531,7 +529,7 @@ function renderPaymentChannel(data) {
                 },
                 {
                     label: 'Stripe',
-                    data: sortedData.map(d => d.stripe),
+                    data: data.map(d => d.stripe),
                     borderColor: colors.stripe,
                     backgroundColor: 'rgba(255, 157, 86, 0.1)',
                     borderWidth: 2,
@@ -540,7 +538,7 @@ function renderPaymentChannel(data) {
                 },
                 {
                     label: 'EFT',
-                    data: sortedData.map(d => d.eft),
+                    data: data.map(d => d.eft),
                     borderColor: colors.eft,
                     backgroundColor: 'rgba(155, 89, 182, 0.1)',
                     borderWidth: 2,
