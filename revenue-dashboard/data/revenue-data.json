@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-05T13:43:09.302Z",
+  "lastUpdated": "2026-08-05T14:02:20.688Z",
   "summary": {
     "totalRevenue": 748844.6799999999,
     "stripeRevenue": 247305,
@@ -81,5 +81,13 @@
     }
   ],
   "yearComparison": [],
-  "productData": []
+  "productData": [
+    {
+      "2025": 19697,
+      "2026": 729147.68,
+      "2027": 0,
+      "product": "All Products",
+      "total": 748844.68
+    }
+  ]
 }
