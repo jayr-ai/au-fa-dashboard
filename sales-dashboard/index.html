@@ -1627,7 +1627,19 @@ function boot() {
   document.getElementById('to').onchange = e => { state.to = e.target.value; render(); };
   document.getElementById('period').hidden = false;
 
-  const synced = DATA.synced_at ? DATA.synced_at.replace(/\+00$/,' UTC') : 'unknown';
+  const synced = DATA.synced_at ? (() => {
+    const utcDate = new Date(DATA.synced_at);
+    const sydneyStr = utcDate.toLocaleString('en-AU', {
+      timeZone: 'Australia/Sydney',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    }).replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$3-$2-$1');
+    return sydneyStr + ' AEDT';
+  })() : 'unknown';
   document.getElementById('sub').innerHTML =
     `FreedomAcademy AU · synced from the source sheet at <b>${synced}</b>`;
 
