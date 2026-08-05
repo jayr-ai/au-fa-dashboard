@@ -146,7 +146,16 @@ function applyFilters() {
 // Filter data by date range
 function filterByDateRange(fromDate, toDate) {
     filteredData.monthlyData = filteredData.monthlyData.filter(item => {
-        const itemDate = new Date(item.month);
+        // Parse "MMM YYYY" format (e.g., "Jul 2026")
+        const [monthStr, yearStr] = item.month.split(' ');
+        const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+                        'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
+        const itemMonth = months[monthStr];
+        const itemYear = parseInt(yearStr);
+
+        // Create date for first day of the month
+        const itemDate = new Date(itemYear, itemMonth, 1);
+
         return itemDate >= fromDate && itemDate <= toDate;
     });
 
