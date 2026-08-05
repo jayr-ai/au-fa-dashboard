@@ -29,8 +29,15 @@
                 </div>
 
                 <div class="header-right">
+                    <!-- Quick Period Buttons -->
+                    <div class="period-buttons">
+                        <button class="period-btn" id="allTimeBtn">ALL TIME</button>
+                        <button class="period-btn" id="ytdBtn">YTD</button>
+                        <button class="period-btn active" id="customBtn">CUSTOM</button>
+                    </div>
+
                     <!-- Date Range Selector -->
-                    <div class="date-selector">
+                    <div class="date-selector" id="dateRangeSelector">
                         <span class="date-label">Period:</span>
                         <input type="date" id="dateFrom" placeholder="From">
                         <span class="date-separator">→</span>

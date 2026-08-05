@@ -23,6 +23,9 @@ const colors = {
 // Load and render dashboard
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        // Update timestamp to Sydney time
+        updateSyncTimestamp();
+
         originalData = await loadData();
         filteredData = JSON.parse(JSON.stringify(originalData));
         renderDashboard(filteredData);
@@ -33,10 +36,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+// Convert UTC timestamp to Sydney time
+function updateSyncTimestamp() {
+    const lastSyncEl = document.getElementById('lastSync');
+    const now = new Date();
+    const sydneyTime = new Date(now.toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+
+    const year = sydneyTime.getFullYear();
+    const month = String(sydneyTime.getMonth() + 1).padStart(2, '0');
+    const day = String(sydneyTime.getDate()).padStart(2, '0');
+    const hours = String(sydneyTime.getHours()).padStart(2, '0');
+    const minutes = String(sydneyTime.getMinutes()).padStart(2, '0');
+    const seconds = String(sydneyTime.getSeconds()).padStart(2, '0');
+
+    lastSyncEl.textContent = `synced from the source sheet at ${year}-${month}-${day} ${hours}:${minutes}:${seconds} AEST`;
+}
+
 // Setup date filter event listeners
 function setupDateFilters() {
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
+    const allTimeBtn = document.getElementById('allTimeBtn');
+    const ytdBtn = document.getElementById('ytdBtn');
+    const customBtn = document.getElementById('customBtn');
+    const dateRangeSelector = document.getElementById('dateRangeSelector');
 
     // Set default dates: Jan 1 of current year to today
     const today = new Date();
@@ -46,12 +69,54 @@ function setupDateFilters() {
     dateFrom.value = formatDateForInput(janFirst);
     dateTo.value = formatDateForInput(today);
 
-    // Add event listeners
+    // Period button handlers
+    allTimeBtn.addEventListener('click', function() {
+        dateRangeSelector.style.display = 'none';
+        setActiveButton(allTimeBtn);
+        filterByAllTime();
+    });
+
+    ytdBtn.addEventListener('click', function() {
+        dateRangeSelector.style.display = 'none';
+        setActiveButton(ytdBtn);
+        filterByYTD();
+    });
+
+    customBtn.addEventListener('click', function() {
+        dateRangeSelector.style.display = 'flex';
+        setActiveButton(customBtn);
+        applyFilters();
+    });
+
+    // Date input listeners
     dateFrom.addEventListener('change', applyFilters);
     dateTo.addEventListener('change', applyFilters);
 
     // Apply filters on initial load
     applyFilters();
+}
+
+// Set active period button
+function setActiveButton(btn) {
+    document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+// Filter all time data
+function filterByAllTime() {
+    filteredData = JSON.parse(JSON.stringify(originalData));
+    renderDashboard(filteredData);
+}
+
+// Filter YTD (Year To Date)
+function filterByYTD() {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const janFirst = new Date(currentYear, 0, 1);
+
+    filteredData = JSON.parse(JSON.stringify(originalData));
+    filterByDateRange(janFirst, today);
+    renderDashboard(filteredData);
 }
 
 // Format date for HTML date input (YYYY-MM-DD)
