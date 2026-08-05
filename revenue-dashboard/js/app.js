@@ -134,19 +134,13 @@ function applyFilters() {
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
 
-    console.log('applyFilters called - From:', dateFrom.value, 'To:', dateTo.value);
-
     filteredData = JSON.parse(JSON.stringify(originalData));
-    console.log('Original data monthly count:', filteredData.monthlyData.length);
 
     if (dateFrom.value && dateTo.value) {
         const fromDate = new Date(dateFrom.value);
         const toDate = new Date(dateTo.value);
         filterByDateRange(fromDate, toDate);
     }
-
-    console.log('Filtered data monthly count:', filteredData.monthlyData.length);
-    console.log('Filtered summary:', filteredData.summary);
 
     renderDashboard(filteredData);
 }
@@ -193,6 +187,13 @@ function getMonthNumber(monthStr) {
     const months = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
                     'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12 };
     return months[monthStr] || 0;
+}
+
+// Parse "MMM YYYY" format to comparable date
+function parseMonthYear(monthStr) {
+    const [month, year] = monthStr.split(' ');
+    const monthNum = getMonthNumber(month);
+    return new Date(parseInt(year), monthNum - 1, 1).getTime();
 }
 
 // Calculate summary from monthly data
@@ -304,7 +305,6 @@ function generateInsights(data) {
 
 // Render KPI Cards
 function renderKPIs(summary) {
-    console.log('Rendering KPIs with summary:', summary);
     document.getElementById('totalRevenue').textContent = formatCurrency(summary.totalRevenue);
     document.getElementById('stripeRevenue').textContent = formatCurrency(summary.stripeRevenue);
     document.getElementById('financeRevenue').textContent = formatCurrency(summary.financeRevenue);
@@ -337,8 +337,12 @@ function renderRevenueTrend(data) {
         revenueTrendChart.destroy();
     }
 
-    // Sort data in ascending order (oldest first)
-    const sortedData = [...data].reverse();
+    // Sort data in ascending order by date (oldest first)
+    const sortedData = [...data].sort((a, b) => {
+        const dateA = parseMonthYear(a.month);
+        const dateB = parseMonthYear(b.month);
+        return dateA - dateB;
+    });
 
     revenueTrendChart = new Chart(ctx, {
         type: 'line',
@@ -444,8 +448,12 @@ function renderMonthlyCash(data) {
         monthlyCashChart.destroy();
     }
 
-    // Sort data in ascending order (oldest first)
-    const sortedData = [...data].reverse();
+    // Sort data in ascending order by date (oldest first)
+    const sortedData = [...data].sort((a, b) => {
+        const dateA = parseMonthYear(a.month);
+        const dateB = parseMonthYear(b.month);
+        return dateA - dateB;
+    });
 
     monthlyCashChart = new Chart(ctx, {
         type: 'bar',
@@ -518,8 +526,12 @@ function renderPaymentChannel(data) {
         paymentChannelChart.destroy();
     }
 
-    // Sort data in ascending order (oldest first)
-    const sortedData = [...data].reverse();
+    // Sort data in ascending order by date (oldest first)
+    const sortedData = [...data].sort((a, b) => {
+        const dateA = parseMonthYear(a.month);
+        const dateB = parseMonthYear(b.month);
+        return dateA - dateB;
+    });
 
     paymentChannelChart = new Chart(ctx, {
         type: 'line',
