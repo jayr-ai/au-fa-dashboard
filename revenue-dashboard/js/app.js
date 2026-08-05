@@ -268,7 +268,7 @@ function generateYearComparison(monthlyData) {
     // Create comparison row
     const years = Object.keys(yearTotals).sort();
     const comparison = {
-        mode: '2026 Revenue',
+        mode: 'Total Revenue',
         2025: yearTotals[2025] || 0,
         2026: yearTotals[2026] || 0,
         2027: yearTotals[2027] || 0,
