@@ -143,6 +143,7 @@ function applyFilters() {
     const dateTo = document.getElementById('dateTo');
 
     filteredData = JSON.parse(JSON.stringify(originalData));
+    let filteredTransactions = [...(originalData.transactionData || [])];
 
     if (dateFrom.value && dateTo.value) {
         const fromDate = parseDateInput(dateFrom.value);
@@ -150,9 +151,16 @@ function applyFilters() {
         // Extend toDate to include entire end date
         toDate.setHours(23, 59, 59, 999);
         filterByDateRange(fromDate, toDate);
+
+        // Also filter transactions by date range
+        filteredTransactions = filteredTransactions.filter(tx => {
+            const txDate = new Date(tx.date);
+            return txDate >= fromDate && txDate <= toDate;
+        });
     }
 
     renderDashboard(filteredData);
+    renderSalesBreakdown(filteredTransactions);
 }
 
 // Filter data by date range
