@@ -67,14 +67,29 @@ function setupDateFilters() {
     const nextBtn = document.getElementById('nextBtn');
     const periodSel = document.getElementById('periodSel');
 
-    // State for period filtering - make these global accessible
     window.currentMode = 'monthly';
     window.currentMonth = new Date();
     window.currentWeekStart = getWeekStart(new Date());
 
     const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    function populatePeriodSelect() {
+    function getWeekNumber(date) {
+        const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        const dayNum = d.getUTCDay() || 7;
+        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    }
+
+    function formatWeekLabel(startDate) {
+        const endDate = new Date(startDate.getTime() + 6 * 24 * 60 * 60 * 1000);
+        const weekNum = getWeekNumber(startDate);
+        const startStr = `${MONTH_NAMES[startDate.getMonth()]} ${startDate.getDate()}`;
+        const endStr = `${MONTH_NAMES[endDate.getMonth()]} ${endDate.getDate()} ${endDate.getFullYear()}`;
+        return `W${weekNum} · ${startStr} → ${endStr}`;
+    }
+
+    function populateMonthlySelect() {
         periodSel.innerHTML = '';
         const today = new Date();
         for (let i = 0; i < 12; i++) {
@@ -88,6 +103,24 @@ function setupDateFilters() {
         const currentStr = `${MONTH_NAMES[today.getMonth()]} ${today.getFullYear()}`;
         periodSel.value = currentStr;
         window.currentMonth = today;
+    }
+
+    function populateWeeklySelect() {
+        periodSel.innerHTML = '';
+        const today = new Date();
+        let currentWeek = getWeekStart(today);
+
+        for (let i = 0; i < 52; i++) {
+            const weekDate = new Date(currentWeek.getTime() - (i * 7 * 24 * 60 * 60 * 1000));
+            const label = formatWeekLabel(weekDate);
+            const option = document.createElement('option');
+            option.value = label;
+            option.textContent = label;
+            periodSel.appendChild(option);
+        }
+
+        const currentLabel = formatWeekLabel(window.currentWeekStart);
+        periodSel.value = currentLabel;
     }
 
     function setPeriodMode(mode) {
@@ -104,7 +137,11 @@ function setupDateFilters() {
             stepper.style.display = 'flex';
             dateFrom.value = '';
             dateTo.value = '';
-            populatePeriodSelect();
+            if (mode === 'weekly') {
+                populateWeeklySelect();
+            } else {
+                populateMonthlySelect();
+            }
         }
 
         applyFilters();
@@ -112,9 +149,14 @@ function setupDateFilters() {
 
     function updatePeriodNavigation() {
         const today = new Date();
-        const firstMonth = new Date(today.getFullYear(), today.getMonth() - 11, 1);
-        prevBtn.disabled = window.currentMonth <= firstMonth;
-        nextBtn.disabled = window.currentMonth >= today;
+        if (window.currentMode === 'weekly') {
+            prevBtn.disabled = false;
+            nextBtn.disabled = window.currentWeekStart.getTime() >= getWeekStart(today).getTime();
+        } else {
+            const firstMonth = new Date(today.getFullYear(), today.getMonth() - 11, 1);
+            prevBtn.disabled = window.currentMonth <= firstMonth;
+            nextBtn.disabled = window.currentMonth >= today;
+        }
     }
 
     weeklyBtn.addEventListener('click', () => setPeriodMode('weekly'));
@@ -124,8 +166,12 @@ function setupDateFilters() {
     prevBtn.addEventListener('click', () => {
         if (window.currentMode === 'weekly') {
             window.currentWeekStart = new Date(window.currentWeekStart.getTime() - 7 * 24 * 60 * 60 * 1000);
+            const label = formatWeekLabel(window.currentWeekStart);
+            periodSel.value = label;
         } else {
             window.currentMonth = new Date(window.currentMonth.getFullYear(), window.currentMonth.getMonth() - 1, 1);
+            const monthStr = `${MONTH_NAMES[window.currentMonth.getMonth()]} ${window.currentMonth.getFullYear()}`;
+            periodSel.value = monthStr;
         }
         updatePeriodNavigation();
         applyFilters();
@@ -134,17 +180,36 @@ function setupDateFilters() {
     nextBtn.addEventListener('click', () => {
         if (window.currentMode === 'weekly') {
             window.currentWeekStart = new Date(window.currentWeekStart.getTime() + 7 * 24 * 60 * 60 * 1000);
+            const label = formatWeekLabel(window.currentWeekStart);
+            periodSel.value = label;
         } else {
             window.currentMonth = new Date(window.currentMonth.getFullYear(), window.currentMonth.getMonth() + 1, 1);
+            const monthStr = `${MONTH_NAMES[window.currentMonth.getMonth()]} ${window.currentMonth.getFullYear()}`;
+            periodSel.value = monthStr;
         }
         updatePeriodNavigation();
         applyFilters();
     });
 
     periodSel.addEventListener('change', () => {
-        const [monthName, year] = periodSel.value.split(' ');
-        const monthIdx = MONTH_NAMES.indexOf(monthName);
-        window.currentMonth = new Date(parseInt(year), monthIdx, 1);
+        if (window.currentMode === 'weekly') {
+            // Parse week label format: "W31 · Jul 27 → Aug 2 2026"
+            const parts = periodSel.value.split('·');
+            if (parts.length >= 2) {
+                const datePart = parts[1].trim().split('→');
+                if (datePart.length >= 2) {
+                    const endDateStr = datePart[1].trim();
+                    const [monthStr, dayStr, yearStr] = endDateStr.split(' ');
+                    const monthIdx = MONTH_NAMES.indexOf(monthStr);
+                    const endDate = new Date(parseInt(yearStr), monthIdx, parseInt(dayStr));
+                    window.currentWeekStart = new Date(endDate.getTime() - 6 * 24 * 60 * 60 * 1000);
+                }
+            }
+        } else {
+            const [monthName, year] = periodSel.value.split(' ');
+            const monthIdx = MONTH_NAMES.indexOf(monthName);
+            window.currentMonth = new Date(parseInt(year), monthIdx, 1);
+        }
         updatePeriodNavigation();
         applyFilters();
     });
@@ -155,7 +220,7 @@ function setupDateFilters() {
     dateTo.addEventListener('input', applyFilters);
 
     setPeriodMode('monthly');
-    populatePeriodSelect();
+    populateMonthlySelect();
     updatePeriodNavigation();
 }
 
