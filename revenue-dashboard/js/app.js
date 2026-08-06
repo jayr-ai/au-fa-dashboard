@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderDashboard(filteredData);
         setupDateFilters();
         setupCollapsibleSection();
-        renderSalesBreakdown(originalData.transactionData || []);
+        applyFilters();
     } catch (error) {
         console.error('Error loading dashboard:', error);
         document.getElementById('loadingMessage').textContent = 'Error loading dashboard data. Please try again.';
