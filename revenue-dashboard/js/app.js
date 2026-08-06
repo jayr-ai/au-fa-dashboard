@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         originalData = await loadData();
         filteredData = JSON.parse(JSON.stringify(originalData));
-        renderDashboard(filteredData);
         setupDateFilters();
         setupCollapsibleSection();
         applyFilters();
