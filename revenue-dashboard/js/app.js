@@ -284,12 +284,39 @@ function applyFilters() {
         fromDate = parseDateInput(dateFrom.value);
         toDate = parseDateInput(dateTo.value);
         toDate.setHours(23, 59, 59, 999);
-        filterByDateRange(fromDate, toDate);
 
+        // Filter transactions by custom date range
         filteredTransactions = filteredTransactions.filter(tx => {
             const txDate = new Date(tx.date);
             return txDate >= fromDate && txDate <= toDate;
         });
+
+        // Calculate summary from filtered transactions (not monthlyData which contains full months)
+        const customSummary = {
+            totalRevenue: 0,
+            stripeRevenue: 0,
+            financeRevenue: 0,
+            eftRevenue: 0
+        };
+
+        filteredTransactions.forEach(tx => {
+            const amount = parseFloat(tx.amount) || 0;
+            customSummary.totalRevenue += amount;
+
+            if (tx.source === 'Stripe') customSummary.stripeRevenue += amount;
+            else if (tx.source === 'Finance') customSummary.financeRevenue += amount;
+            else if (tx.source === 'EFT') customSummary.eftRevenue += amount;
+        });
+
+        filteredData.summary = {
+            totalRevenue: Math.round(customSummary.totalRevenue),
+            stripeRevenue: Math.round(customSummary.stripeRevenue),
+            financeRevenue: Math.round(customSummary.financeRevenue),
+            eftRevenue: Math.round(customSummary.eftRevenue)
+        };
+
+        // Still filter monthlyData for charts/tables that use it
+        filterByDateRange(fromDate, toDate);
     } else if (window.currentMode === 'monthly') {
         // Monthly mode - filter for the selected month
         const year = window.currentMonth.getFullYear();
