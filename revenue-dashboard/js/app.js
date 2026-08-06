@@ -316,12 +316,43 @@ function applyFilters() {
         toDate = new Date(window.currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000);
         toDate.setHours(23, 59, 59, 999);
 
-        filterByDateRange(fromDate, toDate);
-
+        // For weekly mode, don't use monthlyData - calculate summary from transactions
         filteredTransactions = filteredTransactions.filter(tx => {
             const txDate = new Date(tx.date);
             return txDate >= fromDate && txDate <= toDate;
         });
+
+        // Calculate weekly summary from filtered transactions
+        filteredData.summary = calculateSummary([]);
+        filteredData.monthlyData = [];
+
+        // Recalculate summary from filtered transactions
+        if (filteredTransactions.length > 0) {
+            const weekSummary = {
+                totalRevenue: 0,
+                stripeRevenue: 0,
+                financeRevenue: 0,
+                eftRevenue: 0
+            };
+
+            filteredTransactions.forEach(tx => {
+                const amount = parseFloat(tx.amount) || 0;
+                weekSummary.totalRevenue += amount;
+
+                if (tx.mode === 'Stripe') weekSummary.stripeRevenue += amount;
+                else if (tx.mode === 'Finance') weekSummary.financeRevenue += amount;
+                else if (tx.mode === 'EFT') weekSummary.eftRevenue += amount;
+            });
+
+            filteredData.summary = {
+                totalRevenue: Math.round(weekSummary.totalRevenue),
+                revenue: {
+                    Stripe: Math.round(weekSummary.stripeRevenue),
+                    Finance: Math.round(weekSummary.financeRevenue),
+                    EFT: Math.round(weekSummary.eftRevenue)
+                }
+            };
+        }
     }
 
     renderDashboard(filteredData);
