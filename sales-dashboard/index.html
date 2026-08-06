@@ -605,7 +605,7 @@ function elapsedFraction(from, to) {
 
 function blankMetrics() {
   return { won:0,pending:0,lost:0,noShow:0,missed:0,cancelled:0,pricePresented:0,termsSigned:0,
-    revenue:0,cash:0,onePay:0,premium:0,hours:0,dials:0,sets:0,appts:0,kpiNoShows:0,showUps:0,
+    revenue:0,cash:0,actualCashCollected:0,onePay:0,premium:0,hours:0,dials:0,sets:0,appts:0,kpiNoShows:0,showUps:0,
     confirmed:0,kpiSales:0,saleDays:0,bestDay:0,hasFunnel:false,hasKpi:false };
 }
 function compute(from, to) {
@@ -629,6 +629,10 @@ function compute(from, to) {
     a.hours+=k.hrs; a.dials+=k.di; a.sets+=k.se; a.appts+=k.ap;
     a.kpiNoShows+=k.ns; a.showUps+=k.su; a.confirmed+=k.cf; a.kpiSales+=k.sa;
   }
+  for (const c of (DATA.cash_collected || [])) { if (!within(c.d)) continue;
+    const tot = get('__total_cash__');
+    tot.actualCashCollected += c.amt;
+  }
   for (const a of by.values()) derive(a);
   return by;
 }
@@ -647,7 +651,7 @@ function sumAgents(list) {
   const t = blankMetrics();
   for (const a of list) {
     for (const k of ['won','pending','lost','noShow','missed','cancelled','pricePresented',
-      'termsSigned','revenue','cash','onePay','premium','hours','dials','sets','appts',
+      'termsSigned','revenue','cash','actualCashCollected','onePay','premium','hours','dials','sets','appts',
       'kpiNoShows','showUps','confirmed','kpiSales','saleDays']) t[k] += a[k];
     t.bestDay = Math.max(t.bestDay, a.bestDay);
     t.hasFunnel = t.hasFunnel || a.hasFunnel; t.hasKpi = t.hasKpi || a.hasKpi;
@@ -730,6 +734,7 @@ function viewExec(metrics, prior, basis) {
   const tiles = el('div','tiles');
   [['Revenue sold', fmtMoney(tot.revenue), tot.revenue, prv.revenue, fmtMoneyShort, 1],
    ['Cash collected', fmtMoney(tot.cash), tot.cash, prv.cash, fmtMoneyShort, 0],
+   ['Actual cash collected', fmtMoney(tot.actualCashCollected), tot.actualCashCollected, prv.actualCashCollected, fmtMoneyShort, 0],
    ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
    ['Booked', fmtInt(tot.booked), tot.booked, prv.booked, fmtInt, 0],
    ['Held', fmtInt(tot.held), tot.held, prv.held, fmtInt, 0],
