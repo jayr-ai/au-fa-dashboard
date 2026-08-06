@@ -108,11 +108,11 @@ function setupDateFilters() {
         });
 
         if (mode === 'custom') {
-            customDates.hidden = false;
-            stepper.hidden = true;
+            customDates.style.display = 'flex';
+            stepper.style.display = 'none';
         } else {
-            customDates.hidden = true;
-            stepper.hidden = false;
+            customDates.style.display = 'none';
+            stepper.style.display = 'flex';
             populatePeriodSelect();
         }
 
