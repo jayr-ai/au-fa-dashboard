@@ -38,19 +38,29 @@
                 </div>
 
                 <div class="header-right">
-                    <!-- Quick Period Buttons -->
-                    <div class="period-buttons">
-                        <button class="period-btn" id="allTimeBtn">ALL TIME</button>
-                        <button class="period-btn" id="ytdBtn">YTD</button>
-                        <button class="period-btn active" id="customBtn">CUSTOM</button>
-                    </div>
+                    <!-- Period Selection -->
+                    <div class="period-controls">
+                        <!-- Period Type Buttons -->
+                        <div class="seg" id="periodTypes">
+                            <button class="period-btn" id="weeklyBtn" aria-pressed="false">Weekly</button>
+                            <button class="period-btn" id="monthlyBtn" aria-pressed="true">Monthly</button>
+                            <button class="period-btn" id="customBtn" aria-pressed="false">Custom</button>
+                        </div>
 
-                    <!-- Date Range Selector -->
-                    <div class="date-selector" id="dateRangeSelector">
-                        <span class="date-label">Period:</span>
-                        <input type="date" id="dateFrom" placeholder="From">
-                        <span class="date-separator">→</span>
-                        <input type="date" id="dateTo" placeholder="To">
+                        <!-- Month/Year Stepper -->
+                        <div class="stepper" id="stepper">
+                            <button id="prevBtn" title="Previous period" aria-label="Previous period">‹</button>
+                            <select id="periodSel" aria-label="Select period" autocomplete="off"></select>
+                            <button id="nextBtn" title="Next period" aria-label="Next period">›</button>
+                        </div>
+
+                        <!-- Custom Date Range -->
+                        <div class="custom-dates" id="customDates" hidden>
+                            <label for="dateFrom">From</label>
+                            <input type="date" id="dateFrom" autocomplete="off">
+                            <label for="dateTo">To</label>
+                            <input type="date" id="dateTo" autocomplete="off">
+                        </div>
                     </div>
                 </div>
             </div>

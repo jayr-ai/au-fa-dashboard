@@ -56,54 +56,123 @@ function updateSyncTimestamp() {
 
 // Setup date filter event listeners
 function setupDateFilters() {
+    const weeklyBtn = document.getElementById('weeklyBtn');
+    const monthlyBtn = document.getElementById('monthlyBtn');
+    const customBtn = document.getElementById('customBtn');
+    const stepper = document.getElementById('stepper');
+    const customDates = document.getElementById('customDates');
     const dateFrom = document.getElementById('dateFrom');
     const dateTo = document.getElementById('dateTo');
-    const allTimeBtn = document.getElementById('allTimeBtn');
-    const ytdBtn = document.getElementById('ytdBtn');
-    const customBtn = document.getElementById('customBtn');
-    const dateRangeSelector = document.getElementById('dateRangeSelector');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const periodSel = document.getElementById('periodSel');
 
-    // Set default dates: Jan 1 of current year to today
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const janFirst = new Date(currentYear, 0, 1);
+    // State for period filtering
+    let currentMode = 'monthly'; // weekly, monthly, custom
+    let currentMonth = new Date();
 
-    dateFrom.value = formatDateForInput(janFirst);
-    dateTo.value = formatDateForInput(today);
+    const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    // Populate period select with available months
+    function populatePeriodSelect() {
+        periodSel.innerHTML = '';
+        // Get unique months from data
+        const months = new Set();
+        if (originalData.monthlyData) {
+            originalData.monthlyData.forEach(m => {
+                months.add(m.month);
+            });
+        }
+
+        // Add current and past months
+        const today = new Date();
+        for (let i = 0; i < 12; i++) {
+            const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
+            const monthStr = `${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
+            const option = document.createElement('option');
+            option.value = monthStr;
+            option.textContent = monthStr;
+            periodSel.appendChild(option);
+        }
+
+        // Set current month
+        const currentStr = `${MONTH_NAMES[today.getMonth()]} ${today.getFullYear()}`;
+        periodSel.value = currentStr;
+        currentMonth = today;
+    }
+
+    function setPeriodMode(mode) {
+        currentMode = mode;
+        document.querySelectorAll('[id$="Btn"]').forEach(btn => {
+            btn.setAttribute('aria-pressed', btn.id === mode + 'Btn' ? 'true' : 'false');
+        });
+
+        if (mode === 'custom') {
+            customDates.hidden = false;
+            stepper.hidden = true;
+        } else {
+            customDates.hidden = true;
+            stepper.hidden = false;
+            populatePeriodSelect();
+        }
+
+        applyFilters();
+    }
+
+    function updatePeriodNavigation() {
+        const today = new Date();
+        const firstMonth = new Date(today.getFullYear(), today.getMonth() - 11, 1);
+
+        prevBtn.disabled = currentMonth <= firstMonth;
+        nextBtn.disabled = currentMonth >= today;
+    }
 
     // Period button handlers
-    allTimeBtn.addEventListener('click', function() {
-        dateRangeSelector.style.display = 'none';
-        setActiveButton(allTimeBtn);
-        filterByAllTime();
-    });
+    weeklyBtn.addEventListener('click', () => setPeriodMode('weekly'));
+    monthlyBtn.addEventListener('click', () => setPeriodMode('monthly'));
+    customBtn.addEventListener('click', () => setPeriodMode('custom'));
 
-    ytdBtn.addEventListener('click', function() {
-        dateRangeSelector.style.display = 'none';
-        setActiveButton(ytdBtn);
-        filterByYTD();
-    });
-
-    customBtn.addEventListener('click', function() {
-        dateRangeSelector.style.display = 'flex';
-        setActiveButton(customBtn);
+    // Stepper navigation
+    prevBtn.addEventListener('click', () => {
+        currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
+        const monthStr = `${MONTH_NAMES[currentMonth.getMonth()]} ${currentMonth.getFullYear()}`;
+        periodSel.value = monthStr;
+        updatePeriodNavigation();
         applyFilters();
     });
 
-    // Date input listeners (both 'change' and 'input' for better compatibility)
+    nextBtn.addEventListener('click', () => {
+        currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
+        const monthStr = `${MONTH_NAMES[currentMonth.getMonth()]} ${currentMonth.getFullYear()}`;
+        periodSel.value = monthStr;
+        updatePeriodNavigation();
+        applyFilters();
+    });
+
+    periodSel.addEventListener('change', () => {
+        const [monthName, year] = periodSel.value.split(' ');
+        const monthIdx = MONTH_NAMES.indexOf(monthName);
+        currentMonth = new Date(parseInt(year), monthIdx, 1);
+        updatePeriodNavigation();
+        applyFilters();
+    });
+
+    // Custom date range listeners
     dateFrom.addEventListener('change', applyFilters);
     dateTo.addEventListener('change', applyFilters);
     dateFrom.addEventListener('input', applyFilters);
     dateTo.addEventListener('input', applyFilters);
 
-    // Apply filters on initial load
+    // Initialize
+    populatePeriodSelect();
+    updatePeriodNavigation();
     applyFilters();
 }
 
-// Set active period button
+// Set active period button (for backward compatibility)
 function setActiveButton(btn) {
-    document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    document.querySelectorAll('.period-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    btn.setAttribute('aria-pressed', 'true');
 }
 
 // Filter all time data
