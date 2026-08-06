@@ -629,10 +629,15 @@ function compute(from, to) {
     a.hours+=k.hrs; a.dials+=k.di; a.sets+=k.se; a.appts+=k.ap;
     a.kpiNoShows+=k.ns; a.showUps+=k.su; a.confirmed+=k.cf; a.kpiSales+=k.sa;
   }
+  let totalActualCash = 0;
   for (const c of (DATA.cash_collected || [])) { if (!within(c.d)) continue;
-    const tot = get('__total_cash__');
-    tot.actualCashCollected += c.amt;
+    totalActualCash += c.amt;
   }
+  const totalsKey = '__period_totals__';
+  const totals = blankMetrics();
+  totals.actualCashCollected = totalActualCash;
+  by.set(totalsKey, totals);
+
   for (const a of by.values()) derive(a);
   return by;
 }
@@ -725,6 +730,10 @@ function viewExec(metrics, prior, basis) {
   const closerPrev = priorRows.filter(r => !/3/.test(r.tier) && r.m.hasFunnel).map(r => r.m);
   const tot = closerNow.length ? sumAgents(closerNow) : derive(blankMetrics());
   const prv = closerPrev.length ? sumAgents(closerPrev) : derive(blankMetrics());
+
+  // Add actual cash collected from stored totals
+  if (metrics.has('__period_totals__')) tot.actualCashCollected = metrics.get('__period_totals__').actualCashCollected;
+  if (prior.has('__period_totals__')) prv.actualCashCollected = prior.get('__period_totals__').actualCashCollected;
 
   // ---- headline tiles with period-over-period movement
   const s1 = el('section');
