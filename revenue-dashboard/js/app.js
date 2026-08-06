@@ -346,11 +346,9 @@ function applyFilters() {
 
             filteredData.summary = {
                 totalRevenue: Math.round(weekSummary.totalRevenue),
-                revenue: {
-                    Stripe: Math.round(weekSummary.stripeRevenue),
-                    Finance: Math.round(weekSummary.financeRevenue),
-                    EFT: Math.round(weekSummary.eftRevenue)
-                }
+                stripeRevenue: Math.round(weekSummary.stripeRevenue),
+                financeRevenue: Math.round(weekSummary.financeRevenue),
+                eftRevenue: Math.round(weekSummary.eftRevenue)
             };
         }
     }
