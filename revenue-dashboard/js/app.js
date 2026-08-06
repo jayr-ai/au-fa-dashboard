@@ -67,24 +67,15 @@ function setupDateFilters() {
     const nextBtn = document.getElementById('nextBtn');
     const periodSel = document.getElementById('periodSel');
 
-    // State for period filtering
-    let currentMode = 'monthly'; // weekly, monthly, custom
-    let currentMonth = new Date();
+    // State for period filtering - make these global accessible
+    window.currentMode = 'monthly';
+    window.currentMonth = new Date();
+    window.currentWeekStart = getWeekStart(new Date());
 
     const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    // Populate period select with available months
     function populatePeriodSelect() {
         periodSel.innerHTML = '';
-        // Get unique months from data
-        const months = new Set();
-        if (originalData.monthlyData) {
-            originalData.monthlyData.forEach(m => {
-                months.add(m.month);
-            });
-        }
-
-        // Add current and past months
         const today = new Date();
         for (let i = 0; i < 12; i++) {
             const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
@@ -94,15 +85,13 @@ function setupDateFilters() {
             option.textContent = monthStr;
             periodSel.appendChild(option);
         }
-
-        // Set current month
         const currentStr = `${MONTH_NAMES[today.getMonth()]} ${today.getFullYear()}`;
         periodSel.value = currentStr;
-        currentMonth = today;
+        window.currentMonth = today;
     }
 
     function setPeriodMode(mode) {
-        currentMode = mode;
+        window.currentMode = mode;
         document.querySelectorAll('[id$="Btn"]').forEach(btn => {
             btn.setAttribute('aria-pressed', btn.id === mode + 'Btn' ? 'true' : 'false');
         });
@@ -113,6 +102,8 @@ function setupDateFilters() {
         } else {
             customDates.style.display = 'none';
             stepper.style.display = 'flex';
+            dateFrom.value = '';
+            dateTo.value = '';
             populatePeriodSelect();
         }
 
@@ -122,29 +113,30 @@ function setupDateFilters() {
     function updatePeriodNavigation() {
         const today = new Date();
         const firstMonth = new Date(today.getFullYear(), today.getMonth() - 11, 1);
-
-        prevBtn.disabled = currentMonth <= firstMonth;
-        nextBtn.disabled = currentMonth >= today;
+        prevBtn.disabled = window.currentMonth <= firstMonth;
+        nextBtn.disabled = window.currentMonth >= today;
     }
 
-    // Period button handlers
     weeklyBtn.addEventListener('click', () => setPeriodMode('weekly'));
     monthlyBtn.addEventListener('click', () => setPeriodMode('monthly'));
     customBtn.addEventListener('click', () => setPeriodMode('custom'));
 
-    // Stepper navigation
     prevBtn.addEventListener('click', () => {
-        currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
-        const monthStr = `${MONTH_NAMES[currentMonth.getMonth()]} ${currentMonth.getFullYear()}`;
-        periodSel.value = monthStr;
+        if (window.currentMode === 'weekly') {
+            window.currentWeekStart = new Date(window.currentWeekStart.getTime() - 7 * 24 * 60 * 60 * 1000);
+        } else {
+            window.currentMonth = new Date(window.currentMonth.getFullYear(), window.currentMonth.getMonth() - 1, 1);
+        }
         updatePeriodNavigation();
         applyFilters();
     });
 
     nextBtn.addEventListener('click', () => {
-        currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
-        const monthStr = `${MONTH_NAMES[currentMonth.getMonth()]} ${currentMonth.getFullYear()}`;
-        periodSel.value = monthStr;
+        if (window.currentMode === 'weekly') {
+            window.currentWeekStart = new Date(window.currentWeekStart.getTime() + 7 * 24 * 60 * 60 * 1000);
+        } else {
+            window.currentMonth = new Date(window.currentMonth.getFullYear(), window.currentMonth.getMonth() + 1, 1);
+        }
         updatePeriodNavigation();
         applyFilters();
     });
@@ -152,21 +144,27 @@ function setupDateFilters() {
     periodSel.addEventListener('change', () => {
         const [monthName, year] = periodSel.value.split(' ');
         const monthIdx = MONTH_NAMES.indexOf(monthName);
-        currentMonth = new Date(parseInt(year), monthIdx, 1);
+        window.currentMonth = new Date(parseInt(year), monthIdx, 1);
         updatePeriodNavigation();
         applyFilters();
     });
 
-    // Custom date range listeners
     dateFrom.addEventListener('change', applyFilters);
     dateTo.addEventListener('change', applyFilters);
     dateFrom.addEventListener('input', applyFilters);
     dateTo.addEventListener('input', applyFilters);
 
-    // Initialize
     setPeriodMode('monthly');
     populatePeriodSelect();
     updatePeriodNavigation();
+}
+
+// Get start of week (Sunday)
+function getWeekStart(date) {
+    const d = new Date(date);
+    const day = d.getDay();
+    const diff = d.getDate() - day;
+    return new Date(d.setDate(diff));
 }
 
 // Set active period button (for backward compatibility)
@@ -213,15 +211,47 @@ function applyFilters() {
 
     filteredData = JSON.parse(JSON.stringify(originalData));
     let filteredTransactions = [...(originalData.transactionData || [])];
+    let fromDate, toDate;
 
-    if (dateFrom.value && dateTo.value) {
-        const fromDate = parseDateInput(dateFrom.value);
-        const toDate = parseDateInput(dateTo.value);
-        // Extend toDate to include entire end date
+    if (window.currentMode === 'custom' && dateFrom.value && dateTo.value) {
+        // Custom date range mode
+        fromDate = parseDateInput(dateFrom.value);
+        toDate = parseDateInput(dateTo.value);
         toDate.setHours(23, 59, 59, 999);
         filterByDateRange(fromDate, toDate);
 
-        // Also filter transactions by date range
+        filteredTransactions = filteredTransactions.filter(tx => {
+            const txDate = new Date(tx.date);
+            return txDate >= fromDate && txDate <= toDate;
+        });
+    } else if (window.currentMode === 'monthly') {
+        // Monthly mode - filter for the selected month
+        const year = window.currentMonth.getFullYear();
+        const month = window.currentMonth.getMonth();
+        const monthStr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][month];
+
+        filteredData.monthlyData = filteredData.monthlyData.filter(item => {
+            return item.month === `${monthStr} ${year}`;
+        });
+
+        // Recalculate summary from filtered monthly data
+        filteredData.summary = calculateSummary(filteredData.monthlyData);
+
+        // Filter transactions for the selected month
+        fromDate = new Date(year, month, 1);
+        toDate = new Date(year, month + 1, 0, 23, 59, 59, 999);
+        filteredTransactions = filteredTransactions.filter(tx => {
+            const txDate = new Date(tx.date);
+            return txDate >= fromDate && txDate <= toDate;
+        });
+    } else if (window.currentMode === 'weekly') {
+        // Weekly mode - filter for the selected week
+        fromDate = new Date(window.currentWeekStart);
+        toDate = new Date(window.currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000);
+        toDate.setHours(23, 59, 59, 999);
+
+        filterByDateRange(fromDate, toDate);
+
         filteredTransactions = filteredTransactions.filter(tx => {
             const txDate = new Date(tx.date);
             return txDate >= fromDate && txDate <= toDate;
