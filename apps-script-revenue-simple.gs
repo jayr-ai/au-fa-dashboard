@@ -196,7 +196,8 @@ function generateCompleteJSON(transactions) {
     summary: summary,
     yearComparison: yearComparison,
     monthlyData: monthlyData,
-    productData: productData
+    productData: productData,
+    transactionData: transactions  // Include all transactions for sales breakdown
   };
 }
 

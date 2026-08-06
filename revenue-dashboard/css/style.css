@@ -273,6 +273,8 @@ body::before {
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 8px 14px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .date-label {
@@ -617,6 +619,39 @@ body::before {
     border-bottom: 1px solid var(--line);
 }
 
+/* Collapsible Section */
+.collapsible-header {
+    cursor: pointer;
+    user-select: none;
+}
+
+.collapsible-header h3 {
+    cursor: pointer;
+}
+
+.collapsible-header:hover h3 {
+    color: var(--accent);
+}
+
+.collapse-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.collapsible-header.open .collapse-icon {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.collapsible-content.open {
+    display: block !important;
+}
+
 /* Loading Message */
 .loading-message {
     text-align: center;
@@ -676,13 +711,25 @@ body::before {
         font-size: 10px;
     }
 
+    .date-selector {
+        padding: 12px 10px;
+        gap: 8px;
+    }
+
     .date-selector input[type="date"] {
         font-size: 11px;
-        padding: 5px 8px;
+        padding: 6px 8px;
+        flex: 1;
+        min-width: 110px;
     }
 
     .date-separator {
         font-size: 11px;
+        flex-basis: 100%;
+    }
+
+    .date-label {
+        flex-basis: 100%;
     }
 
     .kpi-section {

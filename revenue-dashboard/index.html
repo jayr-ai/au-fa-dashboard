@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Freedom Academy - Revenue Dashboard</title>
-    <link rel="stylesheet" href="css/style.css?nocache=20260805170000">
+    <link rel="stylesheet" href="css/style.css?nocache=20260806140000">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
 </head>
 <body>
@@ -149,10 +149,36 @@
             </table>
         </section>
 
+        <!-- Sales Breakdown (Collapsible) -->
+        <section class="table-section">
+            <div class="collapsible-header" id="breakdownToggle">
+                <h3 style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    Sales Breakdown
+                    <span class="collapse-icon" style="font-size: 14px; transition: transform 0.3s;">▼</span>
+                </h3>
+            </div>
+            <div class="collapsible-content" id="breakdownContent" style="display: none; margin-top: 16px; overflow-x: auto;">
+                <table class="data-table" id="breakdownTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Product</th>
+                            <th>Closer</th>
+                            <th>Mode</th>
+                            <th style="text-align: right;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="breakdownTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
         <!-- Loading State -->
         <div id="loadingMessage" class="loading-message">Loading dashboard data...</div>
     </div>
 
-    <script src="js/app.js?nocache=20260805170000"></script>
+    <script src="js/app.js?nocache=20260806140000"></script>
 </body>
 </html>

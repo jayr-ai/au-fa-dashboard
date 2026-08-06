@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         filteredData = JSON.parse(JSON.stringify(originalData));
         renderDashboard(filteredData);
         setupDateFilters();
+        setupCollapsibleSection();
+        renderSalesBreakdown(originalData.transactionData || []);
     } catch (error) {
         console.error('Error loading dashboard:', error);
         document.getElementById('loadingMessage').textContent = 'Error loading dashboard data. Please try again.';
@@ -129,6 +131,12 @@ function formatDateForInput(date) {
     return `${year}-${month}-${day}`;
 }
 
+// Parse date input (YYYY-MM-DD) to local date
+function parseDateInput(dateString) {
+    const [year, month, day] = dateString.split('-');
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+}
+
 // Apply date filters
 function applyFilters() {
     const dateFrom = document.getElementById('dateFrom');
@@ -137,8 +145,10 @@ function applyFilters() {
     filteredData = JSON.parse(JSON.stringify(originalData));
 
     if (dateFrom.value && dateTo.value) {
-        const fromDate = new Date(dateFrom.value);
-        const toDate = new Date(dateTo.value);
+        const fromDate = parseDateInput(dateFrom.value);
+        const toDate = parseDateInput(dateTo.value);
+        // Extend toDate to include entire end date
+        toDate.setHours(23, 59, 59, 999);
         filterByDateRange(fromDate, toDate);
     }
 
@@ -155,10 +165,12 @@ function filterByDateRange(fromDate, toDate) {
         const itemMonth = months[monthStr];
         const itemYear = parseInt(yearStr);
 
-        // Create date for first day of the month
-        const itemDate = new Date(itemYear, itemMonth, 1);
+        // Create date range for the entire month
+        const monthStart = new Date(itemYear, itemMonth, 1);
+        const monthEnd = new Date(itemYear, itemMonth + 1, 0, 23, 59, 59, 999);
 
-        return itemDate >= fromDate && itemDate <= toDate;
+        // Check if month overlaps with selected date range
+        return monthStart <= toDate && monthEnd >= fromDate;
     });
 
     // Recalculate summary from filtered monthly data
@@ -670,6 +682,64 @@ function renderProductData(data) {
         `;
         tbody.appendChild(tr);
     });
+}
+
+// Setup collapsible section
+function setupCollapsibleSection() {
+    const toggle = document.getElementById('breakdownToggle');
+    const content = document.getElementById('breakdownContent');
+
+    if (toggle && content) {
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('open');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        });
+    }
+}
+
+// Render sales breakdown table
+function renderSalesBreakdown(transactions) {
+    const tbody = document.getElementById('breakdownTableBody');
+
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+
+    if (!transactions || transactions.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted);">Transaction data not available yet</td></tr>';
+        return;
+    }
+
+    // Sort by date (newest first)
+    const sorted = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    sorted.forEach(tx => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${formatDate(tx.date)}</td>
+            <td>${tx.name || '-'}</td>
+            <td style="font-size: 11px;">${tx.email || '-'}</td>
+            <td>${tx.product || '-'}</td>
+            <td>${tx.closer || '-'}</td>
+            <td><span style="padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: ${getModeColor(tx.source)}">${tx.source}</span></td>
+            <td style="text-align: right; font-weight: 600;">${formatCurrency(tx.amount)}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Get color for payment mode
+function getModeColor(mode) {
+    switch(mode) {
+        case 'Stripe': return 'rgba(255, 157, 86, 0.2)';
+        case 'Finance': return 'rgba(91, 141, 239, 0.2)';
+        case 'EFT': return 'rgba(155, 89, 182, 0.2)';
+        default: return 'rgba(185, 218, 205, 0.1)';
+    }
 }
 
 // Utility Functions
