@@ -732,6 +732,7 @@ function viewExec(metrics, prior, basis) {
    ['Cash collected', fmtMoney(tot.cash), tot.cash, prv.cash, fmtMoneyShort, 0],
    ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
    ['Booked', fmtInt(tot.booked), tot.booked, prv.booked, fmtInt, 0],
+   ['Held', fmtInt(tot.held), tot.held, prv.held, fmtInt, 0],
    ['Show rate', fmtPct(tot.showRate), tot.showRate, prv.showRate, fmtPct, 0],
    ['Close rate', fmtPct(tot.closeRate), tot.closeRate, prv.closeRate, fmtPct, 0]
   ].forEach(([label, disp, cur, prev, f, hi]) => {
