@@ -453,10 +453,11 @@ function generateCompleteJSON(transactions, aggregatedData) {
     summary: summary,
     yearComparison: yearComparison,
     monthlyData: aggregatedData.monthlyData,
-    productData: productData
+    productData: productData,
+    transactionData: transactions
   };
 
-  Logger.log('JSON structure created with ' + aggregatedData.monthlyData.length + ' monthly records');
+  Logger.log('JSON structure created with ' + aggregatedData.monthlyData.length + ' monthly records and ' + transactions.length + ' transactions');
   return jsonData;
 }
 
