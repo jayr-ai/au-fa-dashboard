@@ -224,11 +224,12 @@ function setupDateFilters() {
     updatePeriodNavigation();
 }
 
-// Get start of week (Sunday)
+// Get start of week (Monday)
 function getWeekStart(date) {
     const d = new Date(date);
     const day = d.getDay();
-    const diff = d.getDate() - day;
+    // If Sunday (0), go back 6 days; otherwise go back (day-1) days to get to Monday
+    const diff = d.getDate() - (day === 0 ? 6 : day - 1);
     return new Date(d.setDate(diff));
 }
 
