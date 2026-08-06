@@ -776,6 +776,23 @@ body::before {
     }
 }
 
+@media (max-width: 768px) {
+    .header-right {
+        flex-direction: column;
+    }
+
+    .period-buttons {
+        order: 1;
+        width: 100%;
+    }
+
+    .date-selector {
+        order: 2;
+        width: 100%;
+        margin-top: 12px;
+    }
+}
+
 @media (max-width: 480px) {
     .kpi-section {
         grid-template-columns: 1fr;
@@ -796,5 +813,34 @@ body::before {
     .home-btn {
         width: 36px;
         height: 36px;
+    }
+
+    .period-buttons {
+        justify-content: space-between;
+    }
+
+    .period-btn {
+        flex: 1;
+        min-width: auto;
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .date-selector {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .date-label {
+        width: 100%;
+    }
+
+    .date-separator {
+        display: none;
+    }
+
+    .date-selector input[type="date"] {
+        width: 100%;
     }
 }
