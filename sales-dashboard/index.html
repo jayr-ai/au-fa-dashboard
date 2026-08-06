@@ -743,10 +743,10 @@ function viewExec(metrics, prior, basis) {
   const tiles = el('div','tiles');
   [['Revenue sold', fmtMoney(tot.revenue), tot.revenue, prv.revenue, fmtMoneyShort, 1],
    ['Cash collected', fmtMoney(tot.cash), tot.cash, prv.cash, fmtMoneyShort, 0],
-   ['Actual cash collected', fmtMoney(tot.actualCashCollected), tot.actualCashCollected, prv.actualCashCollected, fmtMoneyShort, 0],
-   ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
+   ['Actual cash col', fmtMoney(tot.actualCashCollected), tot.actualCashCollected, prv.actualCashCollected, fmtMoneyShort, 0],
    ['Booked', fmtInt(tot.booked), tot.booked, prv.booked, fmtInt, 0],
    ['Held', fmtInt(tot.held), tot.held, prv.held, fmtInt, 0],
+   ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
    ['Show rate', fmtPct(tot.showRate), tot.showRate, prv.showRate, fmtPct, 0],
    ['Close rate', fmtPct(tot.closeRate), tot.closeRate, prv.closeRate, fmtPct, 0]
   ].forEach(([label, disp, cur, prev, f, hi]) => {
