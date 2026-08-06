@@ -315,8 +315,10 @@ function applyFilters() {
             eftRevenue: Math.round(customSummary.eftRevenue)
         };
 
-        // Still filter monthlyData for charts/tables that use it
+        // Filter monthlyData for charts/tables that use it, but preserve the custom summary
+        const customSummaryBackup = JSON.parse(JSON.stringify(filteredData.summary));
         filterByDateRange(fromDate, toDate);
+        filteredData.summary = customSummaryBackup;
     } else if (window.currentMode === 'monthly') {
         // Monthly mode - filter for the selected month
         const year = window.currentMonth.getFullYear();
