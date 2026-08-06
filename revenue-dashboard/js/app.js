@@ -339,9 +339,9 @@ function applyFilters() {
                 const amount = parseFloat(tx.amount) || 0;
                 weekSummary.totalRevenue += amount;
 
-                if (tx.mode === 'Stripe') weekSummary.stripeRevenue += amount;
-                else if (tx.mode === 'Finance') weekSummary.financeRevenue += amount;
-                else if (tx.mode === 'EFT') weekSummary.eftRevenue += amount;
+                if (tx.source === 'Stripe') weekSummary.stripeRevenue += amount;
+                else if (tx.source === 'Finance') weekSummary.financeRevenue += amount;
+                else if (tx.source === 'EFT') weekSummary.eftRevenue += amount;
             });
 
             filteredData.summary = {
