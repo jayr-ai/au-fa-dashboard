@@ -308,6 +308,8 @@ function applyFilters() {
             else if (tx.source === 'EFT') customSummary.eftRevenue += amount;
         });
 
+        console.log('Custom date range - filtered transactions:', filteredTransactions.length, 'total revenue:', customSummary.totalRevenue);
+
         filteredData.summary = {
             totalRevenue: Math.round(customSummary.totalRevenue),
             stripeRevenue: Math.round(customSummary.stripeRevenue),
