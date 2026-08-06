@@ -164,9 +164,9 @@ function setupDateFilters() {
     dateTo.addEventListener('input', applyFilters);
 
     // Initialize
+    setPeriodMode('monthly');
     populatePeriodSelect();
     updatePeriodNavigation();
-    applyFilters();
 }
 
 // Set active period button (for backward compatibility)
