@@ -85,7 +85,9 @@ function readConsolidatedTab() {
       amount: amount,
       source: source,
       product: (row[headerMap['Product']] || '').toString(),
-      name: (row[headerMap['Name']] || '').toString()
+      name: (row[headerMap['Name']] || '').toString(),
+      email: (row[headerMap['Email']] || '').toString(),
+      closer: (row[headerMap['Closer']] || '').toString()
     });
   }
 
