@@ -759,6 +759,10 @@ function viewExec(metrics, prior, basis) {
   // Add actual cash collected from stored totals
   if (metrics.has('__period_totals__')) tot.actualCashCollected = metrics.get('__period_totals__').actualCashCollected;
   if (prior.has('__period_totals__')) prv.actualCashCollected = prior.get('__period_totals__').actualCashCollected;
+  if (metrics.has('__period_totals__')) tot.agentDrivenSales = metrics.get('__period_totals__').agentDrivenSales;
+  if (prior.has('__period_totals__')) prv.agentDrivenSales = prior.get('__period_totals__').agentDrivenSales;
+  if (metrics.has('__period_totals__')) tot.lowTicketSales = metrics.get('__period_totals__').lowTicketSales;
+  if (prior.has('__period_totals__')) prv.lowTicketSales = prior.get('__period_totals__').lowTicketSales;
 
   // ---- headline tiles with period-over-period movement
   const s1 = el('section');
@@ -769,6 +773,8 @@ function viewExec(metrics, prior, basis) {
   [['Revenue sold', fmtMoney(tot.revenue), tot.revenue, prv.revenue, fmtMoneyShort, 1],
    ['Cash collected', fmtMoney(tot.cash), tot.cash, prv.cash, fmtMoneyShort, 0],
    ['Actual cash col', fmtMoney(tot.actualCashCollected), tot.actualCashCollected, prv.actualCashCollected, fmtMoneyShort, 0],
+   ['Agent driven', fmtMoney(tot.agentDrivenSales), tot.agentDrivenSales, prv.agentDrivenSales, fmtMoneyShort, 0],
+   ['Low ticket', fmtMoney(tot.lowTicketSales), tot.lowTicketSales, prv.lowTicketSales, fmtMoneyShort, 0],
    ['Booked', fmtInt(tot.booked), tot.booked, prv.booked, fmtInt, 0],
    ['Held', fmtInt(tot.held), tot.held, prv.held, fmtInt, 0],
    ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
