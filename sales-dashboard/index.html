@@ -777,24 +777,37 @@ function viewExec(metrics, prior, basis) {
   const tiles = el('div','tiles');
   [['Revenue sold', fmtMoney(tot.revenue), tot.revenue, prv.revenue, fmtMoneyShort, 1],
    ['Cash collected', fmtMoney(tot.cash), tot.cash, prv.cash, fmtMoneyShort, 0],
-   ['Actual cash col', fmtMoney(tot.actualCashCollected), tot.actualCashCollected, prv.actualCashCollected, fmtMoneyShort, 0],
-   ['Agent driven', fmtMoney(tot.agentDrivenSales), tot.agentDrivenSales, prv.agentDrivenSales, fmtMoneyShort, 0],
-   ['Low ticket', fmtMoney(tot.lowTicketSales), tot.lowTicketSales, prv.lowTicketSales, fmtMoneyShort, 0],
    ['Booked', fmtInt(tot.booked), tot.booked, prv.booked, fmtInt, 0],
    ['Held', fmtInt(tot.held), tot.held, prv.held, fmtInt, 0],
    ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
    ['Show rate', fmtPct(tot.showRate), tot.showRate, prv.showRate, fmtPct, 0],
    ['Close rate', fmtPct(tot.closeRate), tot.closeRate, prv.closeRate, fmtPct, 0]
   ].forEach(([label, disp, cur, prev, f, hi]) => {
-    const cashBreakdownLabels = ['Actual cash col', 'Agent driven', 'Low ticket'];
-    const isCashBreakdown = cashBreakdownLabels.includes(label);
-    const t = el('div','tile glow' + (isCashBreakdown ? ' cash-breakdown-card' : ''));
+    const t = el('div','tile glow');
     t.innerHTML = `<div class="label">${label}</div><div class="value${hi?' hi':''}">${disp}</div>
                    <div class="trend">${deltaHtml(cur, prev, f) || '<span class="nil">no prior period</span>'}</div>`;
     tiles.appendChild(t);
   });
   s1.appendChild(tiles);
   frag.appendChild(s1);
+
+  // ---- consolidated cash section
+  const sCash = el('section');
+  sCash.appendChild(el('div','sec-head',
+    `<h2>Consolidated cash <span class="dim">· received</span></h2>
+     <span class="sec-note">These are the actual cash received from Stripe, Electronic Fund Transfers, and Finance.</span>`));
+  const cashTiles = el('div','tiles');
+  [['Actual cash collected', fmtMoney(tot.actualCashCollected), tot.actualCashCollected, prv.actualCashCollected, fmtMoneyShort, 0],
+   ['Agent driven cash', fmtMoney(tot.agentDrivenSales), tot.agentDrivenSales, prv.agentDrivenSales, fmtMoneyShort, 0],
+   ['Low ticket cash', fmtMoney(tot.lowTicketSales), tot.lowTicketSales, prv.lowTicketSales, fmtMoneyShort, 0]
+  ].forEach(([label, disp, cur, prev, f, hi]) => {
+    const t = el('div','tile glow cash-breakdown-card');
+    t.innerHTML = `<div class="label">${label}</div><div class="value${hi?' hi':''}">${disp}</div>
+                   <div class="trend">${deltaHtml(cur, prev, f) || '<span class="nil">no prior period</span>'}</div>`;
+    cashTiles.appendChild(t);
+  });
+  sCash.appendChild(cashTiles);
+  frag.appendChild(sCash);
 
   // ---- top performer per tier: always three panels, one per tier
   // Each tier is ranked on the metric that tier's role actually produces. Tier 3 are
