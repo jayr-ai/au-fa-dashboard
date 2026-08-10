@@ -73,9 +73,9 @@
   :root[data-theme="light"] .tag.lead{background:#EDF6D2; color:#4E7A12;}
   :root[data-theme="light"] .tag.oth{background:#F1F5F9; color:#475569;}
   .metrics{display:flex; gap:16px; flex-wrap:wrap; margin:22px 0;}
-  .metric{flex:1; min-width:150px; border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:var(--paper2);}
+  .metric{flex:1; min-width:170px; border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:var(--paper2); overflow:hidden;}
   .metric .k{font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);}
-  .metric .v{font-size:30px; font-weight:300; letter-spacing:-0.02em; margin-top:6px;}
+  .metric .v{font-size:24px; font-weight:300; letter-spacing:-0.02em; margin-top:6px; white-space:normal; overflow-wrap:anywhere; word-break:break-word;}
   .metric .v .b{color:var(--blue);}
   .metric .d{font-size:12.5px; color:var(--muted); margin-top:4px;}
   ol.actions{counter-reset:a; list-style:none; padding:0; margin:16px 0;}
@@ -104,7 +104,7 @@
     .sidebar{display:none;} main{margin-left:0;} .wrap{padding:66px 20px 108px; max-width:none;}
     section{scroll-margin-top:66px;} .topbar{top:14px; right:14px;} .theme-toggle{padding:6px 11px;} .home-btn{width:36px; height:36px;}
     table{font-size:13px; display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap;}
-    .metrics{gap:10px;} .metric{min-width:calc(50% - 5px); padding:14px 15px;} .metric .v{font-size:24px;}
+    .metrics{gap:10px;} .metric{min-width:calc(50% - 5px); padding:14px 15px;} .metric .v{font-size:20px;}
     .rangebar button{min-width:calc(50% - 4px);}
   }
 </style>
