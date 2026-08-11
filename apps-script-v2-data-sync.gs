@@ -259,7 +259,7 @@ function fetchCurrentDataTable() {
 function fetchCurrentDataKPITable() {
   const sql = `
     SELECT
-      n, t, CAST(d AS STRING) as d, hrs, di, se, ap, ns, su, cf, sa, cash, rev
+      n, t, CAST(d AS STRING) as d, hrs, di, se, ap, ns, su, cf, cash, rev
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.${BQ_TABLE_KPI}\`
     WHERE CAST(d AS DATE) >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH)
     ORDER BY d DESC
@@ -399,7 +399,6 @@ function transformV2Data(funnelData, kpiData) {
     ns: parseInt(row.ns) || 0,
     su: parseInt(row.su) || 0,
     cf: parseInt(row.cf) || 0,
-    sa: parseInt(row.sa) || 0,
     cash: parseFloat(row.cash) || 0,
     rev: parseFloat(row.rev) || 0
   }));
