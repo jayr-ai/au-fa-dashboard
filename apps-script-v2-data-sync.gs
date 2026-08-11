@@ -141,6 +141,7 @@ const COLUMN_MAPPING = {
   'price_presented': 'pp',
   'pric_prs': 'pp',
   'price presented': 'pp',
+  'term_signed': 'ts',
   'terms_signed': 'ts',
   'terms': 'ts',
   'terms signed': 'ts',
