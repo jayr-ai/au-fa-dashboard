@@ -1776,6 +1776,7 @@ fetch('data.json')
   .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
   .then(d => {
     // Support both old format (v1 only) and new format (v1 + v2)
+    console.log('Data loaded. Has v1:', !!d.v1, 'Has v2:', !!d.v2, 'v1.funnel rows:', d.v1?.funnel?.length);
     if (d.v1 && d.v2) {
       // New combined format - transform BigQuery names to short codes
       const v1Funnel = (d.v1.funnel || []).map(r => ({
