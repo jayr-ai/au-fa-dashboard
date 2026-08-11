@@ -1779,15 +1779,15 @@ fetch('data.json')
     if (d.v1 && d.v2) {
       // New combined format - transform BigQuery names to short codes
       const v1Funnel = (d.v1.funnel || []).map(r => ({
-        d: r.date, n: r.staff_name, won: +(r.won||0), pen: +(r.pending||0), lost: +(r.lost||0),
-        ns: +(r.no_show||0), mis: +(r.missed||0), can: +(r.cancelled||0),
+        d: r.date, n: r.staff_name, won: 0, pen: 0, lost: 0,
+        ns: 0, mis: 0, can: 0,
         pp: 0, ts: 0,
-        rev: +(r.revenue||0), cash: +(r.cash||0)
+        rev: Number(r.revenue) || 0, cash: Number(r.cash) || 0
       }));
       const v1Kpi = (d.v1.kpi || []).map(k => ({
-        d: k.date, n: k.agent_name, hrs: +(k.hours_on_dialer||0), di: +(k.dials||0),
-        se: +(k.sets||0), ap: +(k.appointments||0), ns: +(k.no_shows||0),
-        su: +(k.show_ups||0), cf: +(k.appointments_confirmed||0), sa: +(k.sales||0)
+        d: k.date, n: k.agent_name, hrs: Number(k.hours_on_dialer) || 0, di: Number(k.dials) || 0,
+        se: Number(k.sets) || 0, ap: Number(k.appointments) || 0, ns: Number(k.no_shows) || 0,
+        su: Number(k.show_ups) || 0, cf: Number(k.appointments_confirmed) || 0, sa: Number(k.sales) || 0
       }));
       DATA = {
         funnel: v1Funnel,
