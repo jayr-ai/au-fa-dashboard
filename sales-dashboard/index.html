@@ -1589,6 +1589,7 @@ function renderNav(metrics) {
   const rows = agentRows(metrics);
   const items = [
     ['exec','Executive summary', null],
+    ['exec_v2','Executive Summary v2', null],
     ['board','Sales leaderboard', null],
     ['tier1','Tier 1 · Closers', 'TIER 1'],
     ['tier2','Tier 2 · Closers', 'TIER 2'],
@@ -1630,27 +1631,17 @@ function render() {
 
   if (state.view === 'exec') {
     app.appendChild(viewExec(metrics, prior, basis));
+  } else if (state.view === 'exec_v2') {
+    // Show v2 Executive Summary
+    const v2Metrics = computeV2(state.from, state.to);
+    const v2Prior = computeV2(...priorRange(state.from, state.to));
 
-    // Add v2 section if v2 data is available
-    if (DATA && DATA.v2_funnel && DATA.v2_funnel.length > 0) {
-      const v2Container = el('div');
-      v2Container.style.marginTop = '60px';
-      v2Container.style.borderTop = '2px solid var(--line)';
-      v2Container.style.paddingTop = '40px';
+    const heading = el('div','sec-head');
+    heading.appendChild(el('h2', null, 'Executive Summary <span class="dim">· v2 data source</span>'));
+    heading.appendChild(el('span','sec-note', 'New sheet data. Compare with v1 before production switch.'));
+    app.appendChild(heading);
 
-      const v2Head = el('div','sec-head');
-      v2Head.appendChild(el('h2', null, 'Executive summary v2 <span class="dim">· new data source</span>'));
-      v2Head.appendChild(el('span','sec-note', 'Powered by new sheet. Compare with v1 above before production switch.'));
-      v2Container.appendChild(v2Head);
-
-      // Compute v2 metrics from the v2 data
-      const v2Metrics = computeV2(state.from, state.to);
-      const v2Prior = computeV2(...priorRange(state.from, state.to));
-
-      v2Container.appendChild(viewExec(v2Metrics, v2Prior, basis));
-
-      app.appendChild(v2Container);
-    }
+    app.appendChild(viewExec(v2Metrics, v2Prior, basis));
   } else {
     app.appendChild(
       state.view === 'board' ? viewLeaderboard()
