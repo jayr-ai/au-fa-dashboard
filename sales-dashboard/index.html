@@ -1779,13 +1779,36 @@ fetch('data.json')
     console.log('Data loaded. Has v1:', !!d.v1, 'Has v2:', !!d.v2, 'v1.funnel rows:', d.v1?.funnel?.length);
     if (d.v1 && d.v2) {
       // New combined format - transform BigQuery names to short codes
-      const v1Funnel = (d.v1.funnel || []).map(r => ({
-        d: r.date, n: r.staff_name, won: 0, pen: 0, lost: 0,
-        ns: 0, mis: 0, can: 0,
-        pp: 0, ts: 0,
-        rev: Number(r.revenue) || 0, cash: Number(r.cash) || 0
-      }));
-      console.log('v1Funnel transformed. Sample:', v1Funnel[0], 'Total rows:', v1Funnel.length, 'Aug rows:', v1Funnel.filter(r => r.d?.includes('2026-08')).length);
+      try {
+        const v1Funnel = (d.v1.funnel || []).map(r => ({
+          d: r.date, n: r.staff_name, won: 0, pen: 0, lost: 0,
+          ns: 0, mis: 0, can: 0,
+          pp: 0, ts: 0,
+          rev: Number(r.revenue) || 0, cash: Number(r.cash) || 0
+        }));
+        console.log('v1Funnel transformed. Sample:', v1Funnel[0], 'Total rows:', v1Funnel.length, 'Aug rows:', v1Funnel.filter(r => r.d?.includes('2026-08')).length);
+        const v1Kpi = (d.v1.kpi || []).map(k => ({
+          d: k.date, n: k.agent_name, hrs: Number(k.hours_on_dialer) || 0, di: Number(k.dials) || 0,
+          se: Number(k.sets) || 0, ap: Number(k.appointments) || 0, ns: Number(k.no_shows) || 0,
+          su: Number(k.show_ups) || 0, cf: Number(k.appointments_confirmed) || 0, sa: Number(k.sales) || 0
+        }));
+        console.log('v1Kpi transformed. Rows:', v1Kpi.length);
+        DATA = {
+          funnel: v1Funnel,
+          kpi: v1Kpi,
+          programs: [],
+          cash_breakdown: [],
+          agents: [],
+          targets: [],
+          v2_funnel: (d.v2.funnel || []),
+          v2_kpi: (d.v2.kpi || []),
+          synced_at: d.synced_at || (d.v1.synced_at)
+        };
+        console.log('DATA set successfully');
+      } catch (e) {
+        console.error('Error transforming data:', e.message, e.stack);
+        throw e;
+      }
       const v1Kpi = (d.v1.kpi || []).map(k => ({
         d: k.date, n: k.agent_name, hrs: Number(k.hours_on_dialer) || 0, di: Number(k.dials) || 0,
         se: Number(k.sets) || 0, ap: Number(k.appointments) || 0, ns: Number(k.no_shows) || 0,
