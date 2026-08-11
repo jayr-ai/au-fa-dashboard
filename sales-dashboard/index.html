@@ -498,6 +498,7 @@ const MEDALS = ['🥇','🥈','🥉'];
 const TIERS = ['TIER 1','TIER 2','TIER 3'];
 
 let DATA = null;
+let DATA_V2 = null;    // v2 data from new BigQuery source
 let PERIODS = { week:[], month:[] };
 let DATA_MAX = null;   // newest date in the data; the leaderboard's to-date anchor
 const state = { view:'exec', mode:'month', idx:0, from:null, to:null };
@@ -634,29 +635,30 @@ function blankMetrics() {
     revenue:0,cash:0,actualCashCollected:0,agentDrivenSales:0,lowTicketSales:0,onePay:0,premium:0,hours:0,dials:0,sets:0,appts:0,kpiNoShows:0,showUps:0,
     confirmed:0,kpiSales:0,saleDays:0,bestDay:0,hasFunnel:false,hasKpi:false };
 }
-function compute(from, to) {
+function compute(from, to, dataSource = null) {
+  const src = dataSource || DATA;
   const by = new Map();
   const get = n => { if (!by.has(n)) by.set(n, blankMetrics()); return by.get(n); };
   const within = d => d >= from && d <= to;
-  for (const r of DATA.funnel) { if (!within(r.d)) continue;
+  for (const r of src.funnel) { if (!within(r.d)) continue;
     const a = get(r.n); a.hasFunnel = true;
     a.won+=r.won; a.pending+=r.pen; a.lost+=r.lost; a.noShow+=r.ns; a.missed+=r.mis;
     a.cancelled+=r.can; a.pricePresented+=r.pp; a.termsSigned+=r.ts; a.revenue+=r.rev; a.cash+=r.cash;
     if (r.won > 0) a.saleDays++;
     if (r.rev > a.bestDay) a.bestDay = r.rev;
   }
-  for (const p of DATA.programs) { if (!within(p.d)) continue;
+  for (const p of src.programs) { if (!within(p.d)) continue;
     const a = get(p.n);
     if (ONE_PAY_RE.test(p.fl)) a.onePay += p.c;
     if (PREMIUM_RE.test(p.g)) a.premium += p.c;
   }
-  for (const k of DATA.kpi) { if (!within(k.d)) continue;
+  for (const k of src.kpi) { if (!within(k.d)) continue;
     const a = get(k.n); a.hasKpi = true;
     a.hours+=k.hrs; a.dials+=k.di; a.sets+=k.se; a.appts+=k.ap;
     a.kpiNoShows+=k.ns; a.showUps+=k.su; a.confirmed+=k.cf; a.kpiSales+=k.sa;
   }
   let totalActualCash = 0, totalAgentDriven = 0, totalLowTicket = 0;
-  for (const c of (DATA.cash_breakdown || [])) { if (!within(c.d)) continue;
+  for (const c of (src.cash_breakdown || [])) { if (!within(c.d)) continue;
     totalActualCash += Number(c.total_cash_collected) || 0;
     totalAgentDriven += Number(c.agent_driven_sales) || 0;
     totalLowTicket += Number(c.low_ticket_sales) || 0;
@@ -1867,9 +1869,12 @@ function renderNav(metrics) {
 }
 
 function render() {
-  const metrics = compute(state.from, state.to);
+  // For v2 view, use v2 data if available; otherwise fall back to v1
+  const useV2 = state.view === 'exec_v2' && DATA_V2;
+  const dataSource = useV2 ? DATA_V2 : DATA;
+  const metrics = compute(state.from, state.to, dataSource);
   const [pf,pt] = priorRange(state.from, state.to);
-  const prior = compute(pf, pt);
+  const prior = compute(pf, pt, dataSource);
   const basis = targetBasis(state.from, state.to);
 
   renderNav(metrics);
@@ -2008,13 +2013,15 @@ function boot() {
   applyPeriod();
 }
 
-fetch('data.json')
-  .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-  .then(d => { DATA = d; boot(); })
+Promise.all([
+  fetch('data.json').then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); }),
+  fetch('data-v2.json').then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); }).catch(() => null)
+])
+  .then(([d, v2]) => { DATA = d; DATA_V2 = v2; boot(); })
   .catch(e => {
     document.getElementById('sub').textContent = '';
     document.getElementById('app').innerHTML =
-      `<div class="card"><div class="err">Could not load <code>data.json</code> (${e.message}).<br>
+      `<div class="card"><div class="err">Could not load data files (${e.message}).<br>
        This page must be served over HTTP, not opened directly from the filesystem.</div></div>`;
   });
 </script>
