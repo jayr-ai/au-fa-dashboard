@@ -138,6 +138,12 @@ const COLUMN_MAPPING = {
   'cash': 'cash',
   'revenue': 'rev',
   'product': 'product',
+  'price_presented': 'pp',
+  'pric_prs': 'pp',
+  'price presented': 'pp',
+  'terms_signed': 'ts',
+  'terms': 'ts',
+  'terms signed': 'ts',
   // DATA_KPI sheet mapping
   'hours_on_dialer': 'hrs',
   'hours_on_dialler': 'hrs',
@@ -254,7 +260,7 @@ function syncToBI(rows, tableName) {
 function fetchCurrentDataTable() {
   const sql = `
     SELECT
-      n, t, CAST(d AS STRING) as d, pen, ns, mis, can, lost, won, cash, rev, product
+      n, t, CAST(d AS STRING) as d, pen, ns, mis, can, lost, won, pp, ts, cash, rev, product
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.${BQ_TABLE_DATA}\`
     WHERE CAST(d AS DATE) >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH)
     ORDER BY d DESC
@@ -381,8 +387,8 @@ function transformV2Data(funnelData, kpiData, agentList) {
     ns: parseInt(row.ns) || 0,
     mis: parseInt(row.mis) || 0,
     can: parseInt(row.can) || 0,
-    pp: 0,  // Price presented not in v2_funnel
-    ts: 0,  // Terms signed not in v2_funnel
+    pp: parseInt(row.pp) || 0,  // Price presented (now included from Google Sheet)
+    ts: parseInt(row.ts) || 0,  // Terms signed (now included from Google Sheet)
     rev: parseFloat(row.rev) || 0,
     cash: parseFloat(row.cash) || 0
   }));
