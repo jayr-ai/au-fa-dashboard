@@ -15,8 +15,8 @@
 
 const BQ_PROJECT_ID_V2 = 'jv-data-warehouse';
 const BQ_DATASET_V2 = 'freedom_academy_au';
-const BQ_TABLE_DATA = 'current_data';
-const BQ_TABLE_KPI = 'current_data_kpi';
+const BQ_TABLE_DATA = 'v2_funnel';
+const BQ_TABLE_KPI = 'v2_kpi';
 const SPREADSHEET_ID_V2 = '1LKIwjIpzn1jNSaIzzLAWLkkiODJUuKReKkw3QUT9c8A';
 const GITHUB_OWNER_V2 = 'jayr-ai';
 const GITHUB_REPO_V2 = 'au-fa-dashboard';
@@ -71,56 +71,30 @@ function syncV2DataNow() {
 // ============================================================================
 
 /**
- * Fetch data from current_data table (sales funnel data)
+ * Fetch data from v2_funnel table (pre-aggregated sales funnel data)
  */
 function fetchCurrentDataTable() {
   const sql = `
     SELECT
-      staff_name,
-      tier,
-      \`group\`,
-      field,
-      date,
-      COUNT(*) as count,
-      SUM(CAST(tcp AS FLOAT64)) as tcp,
-      SUM(CAST(upfront_cash AS FLOAT64)) as upfront_cash,
-      SUM(CAST(revenue AS FLOAT64)) as revenue,
-      SUM(CAST(cash AS FLOAT64)) as cash,
-      MAX(agent_full_name) as agent_full_name,
-      MAX(synced_at) as synced_at
+      n, t, d, pen, ns, mis, can, lost, won, cash, rev, product
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.${BQ_TABLE_DATA}\`
-    WHERE date >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH)
-    GROUP BY staff_name, tier, \`group\`, field, date
-    ORDER BY date DESC
+    WHERE d >= FORMAT_DATE('%Y-%m-%d', DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH))
+    ORDER BY d DESC
   `;
 
   return executeAndReturnRows(sql);
 }
 
 /**
- * Fetch data from current_data_kpi table (dialer/setter data)
+ * Fetch data from v2_kpi table (pre-aggregated dialer/setter data)
  */
 function fetchCurrentDataKPITable() {
   const sql = `
     SELECT
-      agent_name,
-      tier,
-      date,
-      CAST(hours_on_dialer AS FLOAT64) as hours,
-      dials,
-      sets,
-      appointments,
-      no_shows,
-      show_ups,
-      appointments_confirmed as confirmed,
-      sales,
-      CAST(cash_collected AS FLOAT64) as cash,
-      CAST(revenue AS FLOAT64) as revenue,
-      agent_full_name,
-      synced_at
+      n, t, d, hrs, di, se, ap, ns, su, cf, sa, cash, rev
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.${BQ_TABLE_KPI}\`
-    WHERE date >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH)
-    ORDER BY date DESC
+    WHERE d >= FORMAT_DATE('%Y-%m-%d', DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH))
+    ORDER BY d DESC
   `;
 
   return executeAndReturnRows(sql);
@@ -184,7 +158,7 @@ function convertBigQueryRows(rows, schema) {
 
 /**
  * Transform v2 BigQuery data into dashboard-compatible format
- * Creates funnel, kpi, agents, programs, and other required arrays
+ * Data from v2_funnel and v2_kpi is already pre-aggregated, so just map columns
  */
 function transformV2Data(funnelData, kpiData) {
   const v2Data = {
@@ -197,32 +171,32 @@ function transformV2Data(funnelData, kpiData) {
     cash_breakdown: []
   };
 
-  // Build unique agents list
+  // Build unique agents list from funnel and KPI data
   const agentsMap = new Map();
 
   funnelData.forEach(row => {
-    if (row.staff_name && row.agent_full_name) {
-      const key = row.staff_name;
+    if (row.n && row.t) {
+      const key = row.n;
       if (!agentsMap.has(key)) {
         agentsMap.set(key, {
-          n: row.staff_name,           // short name
-          f: row.agent_full_name,      // full name
-          t: formatTier(row.tier),     // tier
-          s: 'ACTIVE'                  // status
+          n: row.n,
+          f: row.n,  // Use name as fallback for full name
+          t: formatTier(row.t),
+          s: 'ACTIVE'
         });
       }
     }
   });
 
   kpiData.forEach(row => {
-    if (row.agent_name && row.agent_full_name) {
-      const key = row.agent_name;
+    if (row.n && row.t) {
+      const key = row.n;
       if (!agentsMap.has(key)) {
         agentsMap.set(key, {
-          n: row.agent_name,           // short name
-          f: row.agent_full_name,      // full name
-          t: formatTier(row.tier),     // tier
-          s: 'ACTIVE'                  // status
+          n: row.n,
+          f: row.n,  // Use name as fallback for full name
+          t: formatTier(row.t),
+          s: 'ACTIVE'
         });
       }
     }
@@ -230,102 +204,37 @@ function transformV2Data(funnelData, kpiData) {
 
   v2Data.agents = Array.from(agentsMap.values());
 
-  // Transform funnel data
-  // Group by staff_name and date, aggregate funnel stages correctly
-  const funnelMap = new Map();
-  const paymentPlanFields = ['🦄🇦🇺 1PAY', '🦄🇦🇺 2PAY', '🦄🇦🇺 3PAY', '💰🇦🇺 6PAY',
-                               '💥🇦🇺 Finance', '🐌🇦🇺 Exetnded - 11PAY'];
-
-  funnelData.forEach(row => {
-    if (!row.staff_name || !row.date) return;
-
-    const key = `${row.staff_name}|${row.date}`;
-    if (!funnelMap.has(key)) {
-      funnelMap.set(key, {
-        n: row.staff_name,
-        d: row.date,
-        won: 0,           // Payment plans (closed deals)
-        pending: 0,       // Pending
-        lost: 0,          // Lost
-        noShow: 0,        // No Show
-        missed: 0,        // Missed
-        cancelled: 0,     // Cancelled
-        pricePresented: 0,// Price Presented
-        termsSigned: 0,   // Terms Signed
-        rev: 0,
-        cash: 0
-      });
-    }
-
-    const record = funnelMap.get(key);
-    const fieldCount = parseInt(row.count) || 0;
-    const revenue = parseFloat(row.revenue) || 0;
-    const cash = parseFloat(row.cash) || 0;
-
-    // Map field values to metric counts
-    // Won = payment plan records (any field that is a payment plan)
-    if (paymentPlanFields.includes(row.field)) {
-      record.won += fieldCount;
-    } else if (row.field === 'Pending') {
-      record.pending += fieldCount;
-    } else if (row.field === 'Lost') {
-      record.lost += fieldCount;
-    } else if (row.field === 'No Show') {
-      record.noShow += fieldCount;
-    } else if (row.field === 'Missed') {
-      record.missed += fieldCount;
-    } else if (row.field === 'Cancelled') {
-      record.cancelled += fieldCount;
-    } else if (row.field === 'Price Presented') {
-      record.pricePresented += fieldCount;
-    } else if (row.field === 'Terms Signed') {
-      record.termsSigned += fieldCount;
-    }
-
-    record.rev += revenue;
-    record.cash += cash;
-  });
-
-  // Convert to final format with calculated Booked and Held
-  v2Data.funnel = Array.from(funnelMap.values()).map(r => ({
-    n: r.n,
-    d: r.d,
-    booked: r.won + r.pending + r.lost + r.noShow + r.missed + r.cancelled,  // All funnel stages
-    held: r.won + r.pending + r.lost,  // Won + pending + lost
-    won: r.won,     // Won = closed deals (payment plans)
-    pending: r.pending,
-    lost: r.lost,
-    noShow: r.noShow,
-    missed: r.missed,
-    cancelled: r.cancelled,
-    pricePresented: r.pricePresented,
-    termsSigned: r.termsSigned,
-    rev: r.rev,
-    cash: r.cash
+  // Transform funnel data - data is already aggregated, just format it
+  v2Data.funnel = funnelData.map(row => ({
+    n: row.n || '',
+    d: row.d || '',
+    won: parseInt(row.won) || 0,
+    pen: parseInt(row.pen) || 0,
+    lost: parseInt(row.lost) || 0,
+    ns: parseInt(row.ns) || 0,
+    mis: parseInt(row.mis) || 0,
+    can: parseInt(row.can) || 0,
+    pp: 0,  // Price presented not in v2_funnel
+    ts: 0,  // Terms signed not in v2_funnel
+    rev: parseFloat(row.rev) || 0,
+    cash: parseFloat(row.cash) || 0
   }));
 
-  // Transform KPI data (for Tier 3 - Setters)
-  kpiData.forEach(row => {
-    if (!row.agent_name || !row.date) return;
-
-    v2Data.kpi.push({
-      n: row.agent_name,
-      d: row.date,
-      hrs: parseFloat(row.hours) || 0,
-      di: parseInt(row.dials) || 0,
-      se: parseInt(row.sets) || 0,
-      ap: parseInt(row.appointments) || 0,
-      ns: parseInt(row.no_shows) || 0,
-      su: parseInt(row.show_ups) || 0,
-      cf: parseInt(row.confirmed) || 0,
-      sa: parseInt(row.sales) || 0,      // Won = sales count from KPI
-      cash: parseFloat(row.cash) || 0,
-      rev: parseFloat(row.revenue) || 0
-    });
-  });
-
-  // Note: programs, targets, and cash_breakdown would need additional logic
-  // For now, they're empty arrays that the dashboard can handle gracefully
+  // Transform KPI data - data is already aggregated, just format it
+  v2Data.kpi = kpiData.map(row => ({
+    n: row.n || '',
+    d: row.d || '',
+    hrs: parseFloat(row.hrs) || 0,
+    di: parseInt(row.di) || 0,
+    se: parseInt(row.se) || 0,
+    ap: parseInt(row.ap) || 0,
+    ns: parseInt(row.ns) || 0,
+    su: parseInt(row.su) || 0,
+    cf: parseInt(row.cf) || 0,
+    sa: parseInt(row.sa) || 0,
+    cash: parseFloat(row.cash) || 0,
+    rev: parseFloat(row.rev) || 0
+  }));
 
   return v2Data;
 }
