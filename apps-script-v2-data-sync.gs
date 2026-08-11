@@ -114,8 +114,44 @@ function syncGoogleSheetToBI() {
 }
 
 /**
+ * Column name mapping from Google Sheet to BigQuery abbreviated names
+ */
+const COLUMN_MAPPING = {
+  // DATA sheet mapping
+  'agent_name': 'n',
+  'staff_name': 'n',
+  'tier': 't',
+  'date': 'd',
+  'pending': 'pen',
+  'no_show': 'ns',
+  'missed': 'mis',
+  'cancelled': 'can',
+  'lost': 'lost',
+  'sales': 'won',
+  'won': 'won',
+  'cash_collected': 'cash',
+  'cash': 'cash',
+  'revenue': 'rev',
+  'product': 'product',
+  // DATA_KPI sheet mapping
+  'hours_on_dialer': 'hrs',
+  'hours_on_dialler': 'hrs',
+  'hours': 'hrs',
+  'dials': 'di',
+  'sets': 'se',
+  'appointments': 'ap',
+  'appointments_this_week': 'ap',
+  'no_shows': 'ns',
+  'show_ups': 'su',
+  'appointments_confirmed': 'cf',
+  'confirmed_appointments': 'cf',
+  'cash_collected': 'cash',
+  'revenue': 'rev'
+};
+
+/**
  * Read all data from a sheet (header + data rows)
- * Sanitizes column names for BigQuery (removes invalid characters)
+ * Maps Google Sheet column names to abbreviated BigQuery names
  */
 function readSheetData(sheet) {
   const data = sheet.getDataRange().getValues();
@@ -123,6 +159,7 @@ function readSheetData(sheet) {
 
   const headers = data[0];
   const sanitizedHeaders = headers.map(h => sanitizeColumnName(h));
+  const mappedHeaders = sanitizedHeaders.map(h => COLUMN_MAPPING[h] || h);
   const rows = [];
 
   for (let i = 1; i < data.length; i++) {
@@ -130,7 +167,7 @@ function readSheetData(sheet) {
     let hasData = false;
 
     for (let j = 0; j < headers.length; j++) {
-      obj[sanitizedHeaders[j]] = data[i][j];
+      obj[mappedHeaders[j]] = data[i][j];
       if (data[i][j] !== null && data[i][j] !== '') hasData = true;
     }
 
