@@ -1328,12 +1328,14 @@ const SETTER_COLS = [
   ['Sales',m=>fmtInt(m.kpiSales),true]
 ];
 
-// v2 versions (simplified - no programs/1Pay%/Prem%)
+// v2 versions (all columns except 1Pay%/Prem% which require programs data)
 const CLOSER_COLS_V2 = [
   ['Booked',m=>fmtInt(m.booked)],['Held',m=>fmtInt(m.held)],['Won',m=>fmtInt(m.won)],
   ['Pending',m=>fmtInt(m.pending),true],['Lost',m=>fmtInt(m.lost)],['N/S',m=>fmtInt(m.noShow)],
   ['Missed',m=>fmtInt(m.missed)],['Cancelled',m=>fmtInt(m.cancelled)],
-  ['Show%',m=>fmtPct(m.showRate),true],['Cls%',m=>fmtPct(m.closeRate)],['Cnv%',m=>fmtPct(m.convRate)],
+  ['Pric Prs',m=>fmtInt(m.pricePresented),true],['Terms',m=>fmtInt(m.termsSigned)],
+  ['Show%',m=>fmtPct(m.showRate),true],['Off%',m=>fmtPct(m.offerRate)],
+  ['Acpt%',m=>fmtPct(m.acceptRate)],['Cls%',m=>fmtPct(m.closeRate)],['Cnv%',m=>fmtPct(m.convRate)],
   ['Revenue',m=>fmtMoney(m.revenue),true],['Cash',m=>fmtMoney(m.cash)],
   ['Rev/Bk',m=>m.booked?fmtMoney(m.revPerBooking):'–']
 ];
