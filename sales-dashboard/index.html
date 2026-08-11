@@ -1880,8 +1880,13 @@ function render() {
   if (useV2) {
     const cashMetrics = compute(state.from, state.to, DATA);
     const cashPrior = compute(pf, pt, DATA);
+    const tot = cashMetrics.get('__period_totals__');
+    console.log('[v2-debug] Date range:', state.from, 'to', state.to);
+    console.log('[v2-debug] Cash metrics __period_totals__:', tot);
+    console.log('[v2-debug] DATA.cash_breakdown length:', DATA.cash_breakdown?.length);
     if (cashMetrics.has('__period_totals__')) {
-      metrics.set('__period_totals__', cashMetrics.get('__period_totals__'));
+      metrics.set('__period_totals__', tot);
+      console.log('[v2-debug] Injected cash metrics');
     }
     if (cashPrior.has('__period_totals__')) {
       prior.set('__period_totals__', cashPrior.get('__period_totals__'));
