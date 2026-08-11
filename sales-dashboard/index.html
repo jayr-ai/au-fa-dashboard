@@ -1583,6 +1583,47 @@ function buildLeaderboard() {
   return { rows, w };
 }
 
+function buildLeaderboardV2() {
+  const w = windows(DATA_MAX);
+  const yr = +DATA_MAX.slice(0,4);
+  const S = (rng, pick, src) => windowSum(rng[0], rng[1], pick, src);
+  const booked = r => r.won + r.pen + r.lost + r.ns + r.mis + r.can;
+
+  const d = {
+    ucMtd: S(w.mtd, r=>r.cash || 0, DATA_V2.funnel), ucQtd: S(w.qtd, r=>r.cash || 0, DATA_V2.funnel), ucYtd: S(w.ytd, r=>r.cash || 0, DATA_V2.funnel),
+    revMtd: S(w.mtd, r=>r.rev || 0, DATA_V2.funnel), revQtd: S(w.qtd, r=>r.rev || 0, DATA_V2.funnel), revYtd: S(w.ytd, r=>r.rev || 0, DATA_V2.funnel),
+    ucPmtd: S(w.pmtd, r=>r.cash || 0, DATA_V2.funnel),
+    touchPmtd: S(w.pmtd, r=>r.di, DATA_V2.kpi),
+    cashWtd: S(w.wtd, r=>r.cash, DATA_V2.funnel),
+    leadsWtd: S(w.wtd, booked, DATA_V2.funnel), leadsMtd: S(w.mtd, booked, DATA_V2.funnel),
+    touchWtd: S(w.wtd, r=>r.di, DATA_V2.kpi), touchMtd: S(w.mtd, r=>r.di, DATA_V2.kpi),
+    setsMtd: S(w.mtd, r=>r.se, DATA_V2.kpi), hoursMtd: S(w.mtd, r=>r.hrs, DATA_V2.kpi),
+    apptsMtd: S(w.mtd, r=>r.ap, DATA_V2.kpi),
+    best: personalBests(yr)
+  };
+
+  const rows = DATA_V2.agents.filter(a => a.s === 'ACTIVE').map(a => ({
+    short: a.n, full: a.f, tier: a.t,
+    ucMtd: d.ucMtd.get(a.n)||0, ucQtd: d.ucQtd.get(a.n)||0, ucYtd: d.ucYtd.get(a.n)||0,
+    revMtd: d.revMtd.get(a.n)||0, revQtd: d.revQtd.get(a.n)||0, revYtd: d.revYtd.get(a.n)||0,
+    ucPmtd: d.ucPmtd.get(a.n)||0, touchPmtd: d.touchPmtd.get(a.n)||0,
+    cashWtd: d.cashWtd.get(a.n)||0,
+    leadsWtd: d.leadsWtd.get(a.n)||0, leadsMtd: d.leadsMtd.get(a.n)||0,
+    touchWtd: d.touchWtd.get(a.n)||0, touchMtd: d.touchMtd.get(a.n)||0,
+    setsMtd: d.setsMtd.get(a.n)||0, hoursMtd: d.hoursMtd.get(a.n)||0,
+    apptsMtd: d.apptsMtd.get(a.n)||0, best: d.best.get(a.n)||0
+  }));
+
+  const rank = denseRank(rows.map(r => ({ k:r.short, v:r.ucMtd })));
+  const rankPrev = denseRank(rows.map(r => ({ k:r.short, v:r.ucPmtd })));
+  for (const r of rows) {
+    r.rank = rank.get(r.short);
+    r.rankPrev = rankPrev.get(r.short);
+    r.setsPerHour = div(r.setsMtd, r.hoursMtd);
+  }
+  return { rows, w };
+}
+
 const LB_CLOSER_COLS = [
   ['Upfront<br>MTD', r=>fmtMoney(r.ucMtd), true], ['Upfront<br>QTD', r=>fmtMoney(r.ucQtd)],
   ['Upfront<br>YTD', r=>fmtMoney(r.ucYtd)],
@@ -1783,6 +1824,55 @@ function viewLeaderboard() {
   return frag;
 }
 
+function viewLeaderboardV2() {
+  const frag = document.createDocumentFragment();
+  const { rows, w } = buildLeaderboardV2();
+
+  frag.appendChild(el('div','sec-head',
+    `<h2>Sales leaderboard v2</h2>
+     <span class="sec-note">Week, month, quarter and year to date as at <b style="color:var(--ink-2)">${w.anchor}</b>.
+     This view is anchored to the latest data, so the period picker above does not apply. (v2 data source)</span>`));
+
+  TIERS.forEach((tier, i) => {
+    const isSetter = tier === 'TIER 3';
+    const tierRows = rows.filter(r => r.tier === tier);
+    if (!tierRows.length) return;
+
+    const panel = el('div','tier-panel');
+    panel.setAttribute('style', tierVars(tier));
+
+    const withData = tierRows.filter(r => (isSetter ? r.touchMtd : r.ucMtd) > 0).length;
+    const headline = isSetter
+      ? fmtInt(tierRows.reduce((s,r) => s + r.touchMtd, 0)) + ' touch points'
+      : fmtMoney(tierRows.reduce((s,r) => s + r.ucMtd, 0));
+
+    panel.appendChild(el('div','tier-band',
+      `<div class="tier-num" aria-hidden="true">${TIER_STYLE[tier].num}</div>
+       <div class="tier-titles">
+         <div class="t">${tier} · ${isSetter?'Setters':'Closers'}</div>
+         <div class="s">${isSetter
+            ? 'Ranked on month-to-date touch points — setters produce no cash by design'
+            : 'Ranked on month-to-date upfront cash'}</div>
+       </div>
+       <div class="tier-meta"><b>${headline}</b>month to date · ${withData} of ${tierRows.length} producing</div>`));
+
+    panel.appendChild(renderLbTable(tier, tierRows, isSetter));
+    frag.appendChild(panel);
+    if (i < TIERS.length - 1) frag.appendChild(el('div','tier-gap'));
+  });
+
+  const { good, flags } = leaderboardInsights(rows, w);
+  const sec = el('section','insights-sec');
+  sec.appendChild(el('div','sec-head',
+    `<h2>Insights</h2><span class="sec-note">Generated from the data on every load, not written by hand.</span>`));
+  const grid = el('div','insights');
+  for (const [t,b] of good) grid.appendChild(el('div','ins good glow', `<h4>▲ ${t}</h4><p>${b}</p>`));
+  for (const [t,b] of flags) grid.appendChild(el('div','ins flag glow', `<h4>▼ ${t}</h4><p>${b}</p>`));
+  sec.appendChild(grid);
+  frag.appendChild(sec);
+  return frag;
+}
+
 function viewTier(tierName, metrics, prior, basis) {
   const frag = document.createDocumentFragment();
   const rows = agentRows(metrics).filter(r => r.tier === tierName);
@@ -1845,6 +1935,7 @@ function renderNav(metrics, dataSource = null) {
     ['exec','Executive summary', null],
     ['exec_v2','Executive summary v2', null],
     ['board','Sales leaderboard', null],
+    ['board_v2','Sales leaderboard v2', null],
     ['tier1','Tier 1 · Closers', 'TIER 1'],
     ['tier2','Tier 2 · Closers', 'TIER 2'],
     ['tier3','Tier 3 · Setters', 'TIER 3']
@@ -1903,6 +1994,7 @@ function render() {
     state.view === 'exec' ? viewExec(metrics, prior, basis)
     : state.view === 'exec_v2' ? viewExecV2(metrics, prior, basis)
     : state.view === 'board' ? viewLeaderboard()
+    : state.view === 'board_v2' ? viewLeaderboardV2()
     : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
                metrics, prior, basis));
   bindGlow();
