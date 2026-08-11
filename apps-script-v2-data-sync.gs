@@ -1,7 +1,7 @@
 /**
  * Freedom Academy Sales Dashboard v2 - BigQuery Data Pipeline
- * Reads from current_data and current_data_kpi BigQuery tables
- * Prepares v2 data for the dashboard (Executive Summary v2)
+ * Syncs data from Google Sheet (DATA, DATA_KPI tabs) to BigQuery (v2_funnel, v2_kpi)
+ * Then exports to GitHub for the dashboard
  *
  * Setup:
  * 1. Copy this code into the same Google Sheet's Apps Script project
@@ -17,7 +17,7 @@ const BQ_PROJECT_ID_V2 = 'jv-data-warehouse';
 const BQ_DATASET_V2 = 'freedom_academy_au';
 const BQ_TABLE_DATA = 'v2_funnel';
 const BQ_TABLE_KPI = 'v2_kpi';
-const SPREADSHEET_ID_V2 = '1LKIwjIpzn1jNSaIzzLAWLkkiODJUuKReKkw3QUT9c8A';
+const SPREADSHEET_ID_V2 = '1QHdtGqmQnLwk-V_d6dlqL2nVLpuiMSUoCdflO2QXgxk';
 const GITHUB_OWNER_V2 = 'jayr-ai';
 const GITHUB_REPO_V2 = 'au-fa-dashboard';
 const GITHUB_FILE_PATH_V2 = 'sales-dashboard/data-v2.json';
@@ -28,23 +28,28 @@ const GITHUB_BRANCH_V2 = 'main';
 // ============================================================================
 
 /**
- * Main v2 sync function - Run this to fetch v2 data from BigQuery
+ * Main v2 sync function - Run this to sync v2 data from Google Sheet to BigQuery and GitHub
  * Can be triggered daily or run manually
  */
 function syncV2DataNow() {
   try {
-    Logger.log('🔄 Starting v2 data sync from BigQuery...');
+    Logger.log('🔄 Starting v2 data sync...');
     const startTime = new Date();
 
-    // Step 1: Fetch from current_data table
-    Logger.log('📊 Fetching current_data (sales funnel)...');
-    const funnelData = fetchCurrentDataTable();
-    Logger.log(`   ✓ Fetched ${funnelData.length} records from current_data`);
+    // Step 0: Sync Google Sheet DATA & DATA_KPI to BigQuery (TRUNCATE to remove duplicates)
+    Logger.log('📝 Step 1: Syncing Google Sheet to BigQuery (clearing duplicates)...');
+    syncGoogleSheetToBI();
+    Logger.log('   ✓ Google Sheet synced to BigQuery');
 
-    // Step 2: Fetch from current_data_kpi table
-    Logger.log('📊 Fetching current_data_kpi (dialer/setter)...');
+    // Step 1: Fetch from v2_funnel table
+    Logger.log('📊 Step 2: Fetching v2_funnel (sales funnel)...');
+    const funnelData = fetchCurrentDataTable();
+    Logger.log(`   ✓ Fetched ${funnelData.length} records from v2_funnel`);
+
+    // Step 2: Fetch from v2_kpi table
+    Logger.log('📊 Step 3: Fetching v2_kpi (dialer/setter)...');
     const kpiData = fetchCurrentDataKPITable();
-    Logger.log(`   ✓ Fetched ${kpiData.length} records from current_data_kpi`);
+    Logger.log(`   ✓ Fetched ${kpiData.length} records from v2_kpi`);
 
     // Step 3: Transform data into dashboard format
     Logger.log('🔧 Transforming data for v2 dashboard...');
@@ -67,11 +72,122 @@ function syncV2DataNow() {
 }
 
 // ============================================================================
+// STEP 0: SYNC GOOGLE SHEET TO BIGQUERY (removes duplicates with TRUNCATE)
+// ============================================================================
+
+/**
+ * Read DATA and DATA_KPI tabs from Google Sheet, sync to BigQuery
+ * Uses WRITE_TRUNCATE to clear old data and prevent duplicates
+ */
+function syncGoogleSheetToBI() {
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID_V2);
+
+    // Read DATA tab and sync to v2_funnel
+    Logger.log('  Reading DATA tab from Google Sheet...');
+    const dataSheet = ss.getSheetByName('DATA');
+    if (!dataSheet) throw new Error('DATA sheet not found');
+    const dataRows = readSheetData(dataSheet);
+    Logger.log(`  Found ${dataRows.length} rows in DATA tab`);
+
+    if (dataRows.length > 0) {
+      syncToBI(dataRows, BQ_TABLE_DATA);
+      Logger.log(`  ✓ Synced ${dataRows.length} rows to ${BQ_TABLE_DATA} (duplicates cleared)`);
+    }
+
+    // Read DATA_KPI tab and sync to v2_kpi
+    Logger.log('  Reading DATA_KPI tab from Google Sheet...');
+    const kpiSheet = ss.getSheetByName('DATA_KPI');
+    if (!kpiSheet) throw new Error('DATA_KPI sheet not found');
+    const kpiRows = readSheetData(kpiSheet);
+    Logger.log(`  Found ${kpiRows.length} rows in DATA_KPI tab`);
+
+    if (kpiRows.length > 0) {
+      syncToBI(kpiRows, BQ_TABLE_KPI);
+      Logger.log(`  ✓ Synced ${kpiRows.length} rows to ${BQ_TABLE_KPI} (duplicates cleared)`);
+    }
+
+  } catch (error) {
+    Logger.log('ERROR syncing to BigQuery: ' + error.toString());
+    throw error;
+  }
+}
+
+/**
+ * Read all data from a sheet (header + data rows)
+ */
+function readSheetData(sheet) {
+  const data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return [];
+
+  const headers = data[0];
+  const rows = [];
+
+  for (let i = 1; i < data.length; i++) {
+    const obj = {};
+    let hasData = false;
+
+    for (let j = 0; j < headers.length; j++) {
+      obj[headers[j]] = data[i][j];
+      if (data[i][j] !== null && data[i][j] !== '') hasData = true;
+    }
+
+    if (hasData) rows.push(obj);
+  }
+
+  return rows;
+}
+
+/**
+ * Sync rows to BigQuery table using WRITE_TRUNCATE (clears duplicates)
+ */
+function syncToBI(rows, tableName) {
+  if (!rows || rows.length === 0) return;
+
+  // Convert rows to NDJSON
+  const ndjson = rows.map(r => JSON.stringify(r)).join('\n') + '\n';
+  const blob = Utilities.newBlob(ndjson, 'application/octet-stream');
+
+  const job = {
+    configuration: {
+      load: {
+        destinationTable: {
+          projectId: BQ_PROJECT_ID_V2,
+          datasetId: BQ_DATASET_V2,
+          tableId: tableName
+        },
+        sourceFormat: 'NEWLINE_DELIMITED_JSON',
+        writeDisposition: 'WRITE_TRUNCATE',  // <-- CRITICAL: clears duplicates
+        createDisposition: 'CREATE_IF_NEEDED',
+        autodetect: true
+      }
+    }
+  };
+
+  let job_ = BigQuery.Jobs.insert(job, BQ_PROJECT_ID_V2, blob);
+  const jobId = job_.jobReference.jobId;
+
+  // Wait for completion
+  const deadline = Date.now() + 5 * 60 * 1000;
+  while (job_.status.state !== 'DONE') {
+    if (Date.now() > deadline) {
+      throw new Error('BigQuery load timed out for ' + tableName);
+    }
+    Utilities.sleep(2000);
+    job_ = BigQuery.Jobs.get(BQ_PROJECT_ID_V2, jobId);
+  }
+
+  if (job_.status.errorResult) {
+    throw new Error('BigQuery load failed for ' + tableName + ': ' + job_.status.errorResult.message);
+  }
+}
+
+// ============================================================================
 // STEP 1: FETCH FROM BIGQUERY
 // ============================================================================
 
 /**
- * Fetch data from v2_funnel table (pre-aggregated sales funnel data)
+ * Fetch data from v2_funnel table (cleaned data from Google Sheet)
  */
 function fetchCurrentDataTable() {
   const sql = `
