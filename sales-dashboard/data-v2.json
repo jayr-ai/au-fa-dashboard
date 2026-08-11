@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-08-11T15:23:34.641Z",
+  "synced_at": "2026-08-11T23:06:07.683Z",
   "agents": [
     {
       "n": "Alexandra Smouha",
@@ -66,7 +66,7 @@
       "ns": 1,
       "mis": 0,
       "can": 1,
-      "pp": 0,
+      "pp": 1,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -164,7 +164,7 @@
       "ns": 0,
       "mis": 0,
       "can": 3,
-      "pp": 0,
+      "pp": 4,
       "ts": 0,
       "rev": 11000,
       "cash": 11000
@@ -192,8 +192,8 @@
       "ns": 0,
       "mis": 1,
       "can": 1,
-      "pp": 0,
-      "ts": 0,
+      "pp": 3,
+      "ts": 1,
       "rev": 11000,
       "cash": 5500
     },
@@ -220,7 +220,7 @@
       "ns": 1,
       "mis": 0,
       "can": 0,
-      "pp": 0,
+      "pp": 2,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -234,7 +234,7 @@
       "ns": 1,
       "mis": 2,
       "can": 1,
-      "pp": 0,
+      "pp": 3,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -262,8 +262,8 @@
       "ns": 0,
       "mis": 1,
       "can": 0,
-      "pp": 0,
-      "ts": 0,
+      "pp": 2,
+      "ts": 2,
       "rev": 0,
       "cash": 0
     },
@@ -290,7 +290,7 @@
       "ns": 1,
       "mis": 0,
       "can": 2,
-      "pp": 0,
+      "pp": 1,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -318,8 +318,8 @@
       "ns": 0,
       "mis": 0,
       "can": 0,
-      "pp": 0,
-      "ts": 0,
+      "pp": 1,
+      "ts": 1,
       "rev": 0,
       "cash": 0
     },
@@ -332,7 +332,7 @@
       "ns": 1,
       "mis": 0,
       "can": 0,
-      "pp": 0,
+      "pp": 1,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -346,7 +346,7 @@
       "ns": 1,
       "mis": 0,
       "can": 1,
-      "pp": 0,
+      "pp": 1,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -374,7 +374,7 @@
       "ns": 0,
       "mis": 0,
       "can": 0,
-      "pp": 0,
+      "pp": 1,
       "ts": 0,
       "rev": 11000,
       "cash": 3666.6666666666665
@@ -388,7 +388,7 @@
       "ns": 1,
       "mis": 0,
       "can": 1,
-      "pp": 0,
+      "pp": 2,
       "ts": 0,
       "rev": 11000,
       "cash": 11000
@@ -430,7 +430,7 @@
       "ns": 2,
       "mis": 0,
       "can": 0,
-      "pp": 0,
+      "pp": 1,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -458,8 +458,8 @@
       "ns": 1,
       "mis": 0,
       "can": 1,
-      "pp": 0,
-      "ts": 0,
+      "pp": 1,
+      "ts": 1,
       "rev": 0,
       "cash": 0
     },
@@ -472,8 +472,8 @@
       "ns": 1,
       "mis": 0,
       "can": 0,
-      "pp": 0,
-      "ts": 0,
+      "pp": 1,
+      "ts": 1,
       "rev": 11000,
       "cash": 11000
     },
@@ -3770,21 +3770,8 @@
   ],
   "kpi": [
     {
-      "n": "Nelson Lopera",
-      "d": "2026-08-11",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Marie Grondin",
-      "d": "2026-08-11",
+      "d": "2026-08-12",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -3797,7 +3784,7 @@
     },
     {
       "n": "Laura Fillmann",
-      "d": "2026-08-11",
+      "d": "2026-08-12",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -3810,7 +3797,59 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-08-11",
+      "d": "2026-08-12",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
+      "d": "2026-08-12",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
+      "d": "2026-08-12",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Peter Kladis Jr",
+      "d": "2026-08-12",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Nelson Lopera",
+      "d": "2026-08-12",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -3874,8 +3913,8 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
-      "d": "2026-08-10",
+      "n": "Nelson Lopera",
+      "d": "2026-08-11",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -3887,7 +3926,46 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Marie Grondin",
+      "d": "2026-08-11",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Laura Fillmann",
+      "d": "2026-08-11",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Brittany Cooper",
+      "d": "2026-08-11",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
       "d": "2026-08-10",
       "hrs": 0,
       "di": 0,
@@ -3978,7 +4056,33 @@
       "rev": 0
     },
     {
+      "n": "Vanessa Caruso",
+      "d": "2026-08-10",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Alexandra Smouha",
+      "d": "2026-08-09",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
       "d": "2026-08-09",
       "hrs": 0,
       "di": 0,
@@ -4045,32 +4149,6 @@
     {
       "n": "Brittany Cooper",
       "d": "2026-08-09",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Vanessa Caruso",
-      "d": "2026-08-09",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
-      "d": "2026-08-08",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -4173,6 +4251,32 @@
       "rev": 0
     },
     {
+      "n": "Alexandra Smouha",
+      "d": "2026-08-08",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
+      "d": "2026-08-07",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Vanessa Caruso",
       "d": "2026-08-07",
       "hrs": 0,
@@ -4265,19 +4369,6 @@
     },
     {
       "n": "Alexandra Smouha",
-      "d": "2026-08-07",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
       "d": "2026-08-06",
       "hrs": 0,
       "di": 0,
@@ -4381,33 +4472,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
-      "d": "2026-08-05",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Vanessa Caruso",
-      "d": "2026-08-05",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Shane Dacosta",
       "d": "2026-08-05",
       "hrs": 0,
       "di": 0,
@@ -4485,7 +4550,59 @@
       "rev": 0
     },
     {
+      "n": "Alexandra Smouha",
+      "d": "2026-08-05",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Shane Dacosta",
+      "d": "2026-08-05",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
+      "d": "2026-08-04",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Vanessa Caruso",
+      "d": "2026-08-04",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Shane Dacosta",
       "d": "2026-08-04",
       "hrs": 0,
       "di": 0,
@@ -4551,32 +4668,6 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-08-04",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
-      "d": "2026-08-04",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Shane Dacosta",
       "d": "2026-08-04",
       "hrs": 0,
       "di": 0,
@@ -4797,19 +4888,6 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
-      "d": "2026-08-01",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Vanessa Caruso",
       "d": "2026-08-01",
       "hrs": 0,
@@ -4901,6 +4979,32 @@
       "rev": 0
     },
     {
+      "n": "Alexandra Smouha",
+      "d": "2026-08-01",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
+      "d": "2026-07-31",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Vanessa Caruso",
       "d": "2026-07-31",
       "hrs": 0,
@@ -4980,19 +5084,6 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-07-31",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
       "d": "2026-07-31",
       "hrs": 0,
       "di": 0,
@@ -5122,32 +5213,6 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-29",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Shane Dacosta",
-      "d": "2026-07-29",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Peter Kladis Jr",
       "d": "2026-07-29",
       "hrs": 0,
@@ -5226,7 +5291,59 @@
       "rev": 0
     },
     {
-      "n": "Brittany Cooper",
+      "n": "Shane Dacosta",
+      "d": "2026-07-29",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
+      "d": "2026-07-29",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
+      "d": "2026-07-28",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
+      "d": "2026-07-28",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Shane Dacosta",
       "d": "2026-07-28",
       "hrs": 0,
       "di": 0,
@@ -5304,7 +5421,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Brittany Cooper",
       "d": "2026-07-28",
       "hrs": 0,
       "di": 0,
@@ -5317,33 +5434,7 @@
       "rev": 0
     },
     {
-      "n": "Shane Dacosta",
-      "d": "2026-07-28",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-28",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
+      "n": "Marie Grondin",
       "d": "2026-07-27",
       "hrs": 0,
       "di": 0,
@@ -5356,7 +5447,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Alexandra Smouha",
       "d": "2026-07-27",
       "hrs": 0,
       "di": 0,
@@ -5408,7 +5499,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Vanessa Caruso",
       "d": "2026-07-27",
       "hrs": 0,
       "di": 0,
@@ -5473,7 +5564,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Vanessa Caruso",
       "d": "2026-07-26",
       "hrs": 0,
       "di": 0,
@@ -5525,19 +5616,6 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-26",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Laura Fillmann",
       "d": "2026-07-26",
       "hrs": 0,
@@ -5577,7 +5655,20 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Alexandra Smouha",
+      "d": "2026-07-26",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
       "d": "2026-07-25",
       "hrs": 0,
       "di": 0,
@@ -5642,6 +5733,19 @@
       "rev": 0
     },
     {
+      "n": "Marie Grondin",
+      "d": "2026-07-25",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Laura Fillmann",
       "d": "2026-07-25",
       "hrs": 0,
@@ -5669,19 +5773,6 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-07-25",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
       "d": "2026-07-25",
       "hrs": 0,
       "di": 0,
@@ -5824,19 +5915,6 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-23",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Shane Dacosta",
       "d": "2026-07-23",
       "hrs": 0,
@@ -5928,7 +6006,33 @@
       "rev": 0
     },
     {
+      "n": "Vanessa Caruso",
+      "d": "2026-07-23",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Alexandra Smouha",
+      "d": "2026-07-22",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
       "d": "2026-07-22",
       "hrs": 0,
       "di": 0,
@@ -6020,19 +6124,6 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-07-22",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Vanessa Caruso",
       "d": "2026-07-22",
       "hrs": 0,
       "di": 0,
@@ -6175,19 +6266,6 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-20",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Shane Dacosta",
       "d": "2026-07-20",
       "hrs": 0,
@@ -6279,7 +6357,33 @@
       "rev": 0
     },
     {
+      "n": "Vanessa Caruso",
+      "d": "2026-07-20",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Alexandra Smouha",
+      "d": "2026-07-19",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
       "d": "2026-07-19",
       "hrs": 0,
       "di": 0,
@@ -6383,20 +6487,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-19",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
+      "n": "Marie Grondin",
       "d": "2026-07-18",
       "hrs": 0,
       "di": 0,
@@ -6409,7 +6500,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Alexandra Smouha",
       "d": "2026-07-18",
       "hrs": 0,
       "di": 0,
@@ -6461,7 +6552,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Vanessa Caruso",
       "d": "2026-07-18",
       "hrs": 0,
       "di": 0,
@@ -6526,7 +6617,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Vanessa Caruso",
       "d": "2026-07-17",
       "hrs": 0,
       "di": 0,
@@ -6578,19 +6669,6 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-17",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Laura Fillmann",
       "d": "2026-07-17",
       "hrs": 0,
@@ -6630,7 +6708,20 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Alexandra Smouha",
+      "d": "2026-07-17",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
       "d": "2026-07-16",
       "hrs": 0,
       "di": 0,
@@ -6695,6 +6786,19 @@
       "rev": 0
     },
     {
+      "n": "Marie Grondin",
+      "d": "2026-07-16",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Laura Fillmann",
       "d": "2026-07-16",
       "hrs": 0,
@@ -6734,46 +6838,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
-      "d": "2026-07-16",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
-      "d": "2026-07-15",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-15",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Shane Dacosta",
+      "n": "Brittany Cooper",
       "d": "2026-07-15",
       "hrs": 0,
       "di": 0,
@@ -6851,8 +6916,60 @@
       "rev": 0
     },
     {
-      "n": "Brittany Cooper",
+      "n": "Vanessa Caruso",
       "d": "2026-07-15",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
+      "d": "2026-07-15",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Shane Dacosta",
+      "d": "2026-07-15",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
+      "d": "2026-07-14",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
+      "d": "2026-07-14",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -6955,33 +7072,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
-      "d": "2026-07-14",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-14",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
+      "n": "Marie Grondin",
       "d": "2026-07-13",
       "hrs": 0,
       "di": 0,
@@ -7046,19 +7137,6 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
-      "d": "2026-07-13",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Laura Fillmann",
       "d": "2026-07-13",
       "hrs": 0,
@@ -7098,7 +7176,20 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Alexandra Smouha",
+      "d": "2026-07-13",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
       "d": "2026-07-12",
       "hrs": 0,
       "di": 0,
@@ -7163,6 +7254,19 @@
       "rev": 0
     },
     {
+      "n": "Marie Grondin",
+      "d": "2026-07-12",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Laura Fillmann",
       "d": "2026-07-12",
       "hrs": 0,
@@ -7190,19 +7294,6 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-07-12",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
       "d": "2026-07-12",
       "hrs": 0,
       "di": 0,
@@ -7345,19 +7436,6 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-10",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Shane Dacosta",
       "d": "2026-07-10",
       "hrs": 0,
@@ -7449,7 +7527,33 @@
       "rev": 0
     },
     {
+      "n": "Vanessa Caruso",
+      "d": "2026-07-10",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Alexandra Smouha",
+      "d": "2026-07-09",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
       "d": "2026-07-09",
       "hrs": 0,
       "di": 0,
@@ -7541,19 +7645,6 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-07-09",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Vanessa Caruso",
       "d": "2026-07-09",
       "hrs": 0,
       "di": 0,
@@ -7683,7 +7774,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Marie Grondin",
       "d": "2026-07-07",
       "hrs": 0,
       "di": 0,
@@ -7696,7 +7787,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Alexandra Smouha",
       "d": "2026-07-07",
       "hrs": 0,
       "di": 0,
@@ -7748,7 +7839,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Vanessa Caruso",
       "d": "2026-07-07",
       "hrs": 0,
       "di": 0,
@@ -7800,7 +7891,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Alexandra Smouha",
       "d": "2026-07-06",
       "hrs": 0,
       "di": 0,
@@ -7813,7 +7904,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Vanessa Caruso",
       "d": "2026-07-06",
       "hrs": 0,
       "di": 0,
@@ -7865,7 +7956,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Marie Grondin",
       "d": "2026-07-06",
       "hrs": 0,
       "di": 0,
@@ -7917,7 +8008,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Marie Grondin",
       "d": "2026-07-05",
       "hrs": 0,
       "di": 0,
@@ -7982,19 +8073,6 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
-      "d": "2026-07-05",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Laura Fillmann",
       "d": "2026-07-05",
       "hrs": 0,
@@ -8034,7 +8112,20 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Alexandra Smouha",
+      "d": "2026-07-05",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Alexandra Smouha",
       "d": "2026-07-04",
       "hrs": 0,
       "di": 0,
@@ -8099,6 +8190,19 @@
       "rev": 0
     },
     {
+      "n": "Marie Grondin",
+      "d": "2026-07-04",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Laura Fillmann",
       "d": "2026-07-04",
       "hrs": 0,
@@ -8126,19 +8230,6 @@
     },
     {
       "n": "Brittany Cooper",
-      "d": "2026-07-04",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Alexandra Smouha",
       "d": "2026-07-04",
       "hrs": 0,
       "di": 0,
@@ -8281,32 +8372,6 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-02",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Shane Dacosta",
-      "d": "2026-07-02",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Peter Kladis Jr",
       "d": "2026-07-02",
       "hrs": 3,
@@ -8385,60 +8450,8 @@
       "rev": 0
     },
     {
-      "n": "Laura Fillmann",
-      "d": "2026-07-01",
-      "hrs": 2,
-      "di": 25,
-      "se": 1,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Peter Kladis Jr",
-      "d": "2026-07-01",
-      "hrs": 2.5,
-      "di": 243,
-      "se": 1,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Marie Grondin",
-      "d": "2026-07-01",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Nelson Lopera",
-      "d": "2026-07-01",
-      "hrs": 3,
-      "di": 150,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Vanessa Caruso",
-      "d": "2026-07-01",
+      "d": "2026-07-02",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -8450,21 +8463,8 @@
       "rev": 0
     },
     {
-      "n": "Kymberley Peters",
-      "d": "2026-07-01",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Brittany Cooper",
-      "d": "2026-07-01",
+      "n": "Shane Dacosta",
+      "d": "2026-07-02",
       "hrs": 0,
       "di": 0,
       "se": 0,
@@ -8489,7 +8489,98 @@
       "rev": 0
     },
     {
+      "n": "Vanessa Caruso",
+      "d": "2026-07-01",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Shane Dacosta",
+      "d": "2026-07-01",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Peter Kladis Jr",
+      "d": "2026-07-01",
+      "hrs": 2.5,
+      "di": 243,
+      "se": 1,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Nelson Lopera",
+      "d": "2026-07-01",
+      "hrs": 3,
+      "di": 150,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Marie Grondin",
+      "d": "2026-07-01",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Laura Fillmann",
+      "d": "2026-07-01",
+      "hrs": 2,
+      "di": 25,
+      "se": 1,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Kymberley Peters",
+      "d": "2026-07-01",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Brittany Cooper",
       "d": "2026-07-01",
       "hrs": 0,
       "di": 0,
@@ -8619,7 +8710,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Alexandra Smouha",
       "d": "2026-06-29",
       "hrs": 0,
       "di": 0,
@@ -8632,7 +8723,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Vanessa Caruso",
       "d": "2026-06-29",
       "hrs": 0,
       "di": 0,
@@ -8684,7 +8775,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Marie Grondin",
       "d": "2026-06-29",
       "hrs": 0,
       "di": 0,
@@ -9087,7 +9178,7 @@
       "rev": 0
     },
     {
-      "n": "Alexandra Smouha",
+      "n": "Marie Grondin",
       "d": "2026-06-25",
       "hrs": 0,
       "di": 0,
@@ -9139,7 +9230,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Vanessa Caruso",
       "d": "2026-06-25",
       "hrs": 0,
       "di": 0,
@@ -9191,7 +9282,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Alexandra Smouha",
       "d": "2026-06-25",
       "hrs": 0,
       "di": 0,
@@ -10023,7 +10114,7 @@
       "rev": 0
     },
     {
-      "n": "Brittany Cooper",
+      "n": "Marie Grondin",
       "d": "2026-06-17",
       "hrs": 0,
       "di": 0,
@@ -10062,19 +10153,6 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
-      "d": "2026-06-17",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Laura Fillmann",
       "d": "2026-06-17",
       "hrs": 0,
@@ -10089,6 +10167,19 @@
     },
     {
       "n": "Kymberley Peters",
+      "d": "2026-06-17",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Brittany Cooper",
       "d": "2026-06-17",
       "hrs": 0,
       "di": 0,
@@ -16471,6 +16562,45 @@
       "rev": 0
     },
     {
+      "n": "Shane Dacosta",
+      "d": "2026-04-23",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Vanessa Caruso",
+      "d": "2026-04-23",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Peter Kladis Jr",
+      "d": "2026-04-23",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
       "n": "Nelson Lopera",
       "d": "2026-04-23",
       "hrs": 0,
@@ -16484,7 +16614,7 @@
       "rev": 0
     },
     {
-      "n": "Kymberley Peters",
+      "n": "Marie Grondin",
       "d": "2026-04-23",
       "hrs": 0,
       "di": 0,
@@ -16510,7 +16640,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Kymberley Peters",
       "d": "2026-04-23",
       "hrs": 0,
       "di": 0,
@@ -16528,45 +16658,6 @@
       "hrs": 1,
       "di": 22,
       "se": 1,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Peter Kladis Jr",
-      "d": "2026-04-23",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Shane Dacosta",
-      "d": "2026-04-23",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
-      "n": "Vanessa Caruso",
-      "d": "2026-04-23",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
       "ap": 0,
       "ns": 0,
       "su": 0,
