@@ -280,12 +280,13 @@ function fetchCurrentDataKPITable() {
 
 /**
  * Fetch agent list from BigQuery agent_list table
+ * Uses full_name to match agent names in v2_funnel and v2_kpi tables
  */
 function fetchAgentList() {
   const sql = `
-    SELECT sales_rep AS n, full_name AS f, tier AS t, status AS s
+    SELECT full_name AS n, full_name AS f, tier AS t, status AS s
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.agent_list\`
-    ORDER BY sales_rep
+    ORDER BY full_name
   `;
 
   return executeAndReturnRows(sql);
