@@ -244,9 +244,9 @@ function syncToBI(rows, tableName) {
 function fetchCurrentDataTable() {
   const sql = `
     SELECT
-      n, t, d, pen, ns, mis, can, lost, won, cash, rev, product
+      n, t, CAST(d AS STRING) as d, pen, ns, mis, can, lost, won, cash, rev, product
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.${BQ_TABLE_DATA}\`
-    WHERE d >= FORMAT_DATE('%Y-%m-%d', DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH))
+    WHERE CAST(d AS DATE) >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH)
     ORDER BY d DESC
   `;
 
@@ -254,14 +254,14 @@ function fetchCurrentDataTable() {
 }
 
 /**
- * Fetch data from v2_kpi table (pre-aggregated dialer/setter data)
+ * Fetch data from v2_kpi table (cleaned data from Google Sheet)
  */
 function fetchCurrentDataKPITable() {
   const sql = `
     SELECT
-      n, t, d, hrs, di, se, ap, ns, su, cf, sa, cash, rev
+      n, t, CAST(d AS STRING) as d, hrs, di, se, ap, ns, su, cf, sa, cash, rev
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.${BQ_TABLE_KPI}\`
-    WHERE d >= FORMAT_DATE('%Y-%m-%d', DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH))
+    WHERE CAST(d AS DATE) >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH)
     ORDER BY d DESC
   `;
 
