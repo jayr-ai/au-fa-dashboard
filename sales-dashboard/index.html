@@ -731,8 +731,9 @@ const el = (tag,cls,html) => { const n = document.createElement(tag);
  * anyone with data in the selected window - otherwise historical periods would hide
  * reps who have since left.
  */
-function agentRows(metrics) {
-  return DATA.agents
+function agentRows(metrics, dataSource = null) {
+  const src = dataSource || DATA;
+  return src.agents
     .filter(a => a.s === 'ACTIVE' || (metrics.get(a.n)?.hasFunnel || metrics.get(a.n)?.hasKpi))
     .map(a => ({ short:a.n, full:a.f, tier:a.t, active:a.s === 'ACTIVE',
                  m: metrics.get(a.n) || derive(blankMetrics()) }));
@@ -1037,8 +1038,8 @@ function viewExecV2(metrics, prior, basis) {
 
   // For v2: use v2 data if available, otherwise use metrics
   // But ALWAYS use original data for Consolidated Cash
-  const rows = agentRows(metrics);
-  const priorRows = agentRows(prior);
+  const rows = agentRows(metrics, DATA_V2);
+  const priorRows = agentRows(prior, DATA_V2);
 
   const closerNow = rows.filter(r => !/3/.test(r.tier) && r.m.hasFunnel).map(r => r.m);
   const closerPrev = priorRows.filter(r => !/3/.test(r.tier) && r.m.hasFunnel).map(r => r.m);
