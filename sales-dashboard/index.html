@@ -501,7 +501,7 @@ let DATA = null;
 let DATA_V2 = null;    // v2 data from new BigQuery source
 let PERIODS = { week:[], month:[] };
 let DATA_MAX = null;   // newest date in the data; the leaderboard's to-date anchor
-const state = { view:'exec', mode:'month', idx:0, from:null, to:null };
+const state = { view:'exec_v2', mode:'month', idx:0, from:null, to:null };
 
 const fmtInt = n => n == null ? '–' : n.toLocaleString('en-AU');
 const fmtMoney = n => n == null ? '–' : '$' + Math.round(n).toLocaleString('en-AU');
