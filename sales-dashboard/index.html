@@ -1328,6 +1328,17 @@ const SETTER_COLS = [
   ['Sales',m=>fmtInt(m.kpiSales),true]
 ];
 
+// v2 versions (simplified - no programs/1Pay%/Prem%)
+const CLOSER_COLS_V2 = [
+  ['Booked',m=>fmtInt(m.booked)],['Held',m=>fmtInt(m.held)],['Won',m=>fmtInt(m.won)],
+  ['Pending',m=>fmtInt(m.pending),true],['Lost',m=>fmtInt(m.lost)],['N/S',m=>fmtInt(m.noShow)],
+  ['Missed',m=>fmtInt(m.missed)],['Cancelled',m=>fmtInt(m.cancelled)],
+  ['Show%',m=>fmtPct(m.showRate),true],['Cls%',m=>fmtPct(m.closeRate)],['Cnv%',m=>fmtPct(m.convRate)],
+  ['Revenue',m=>fmtMoney(m.revenue),true],['Cash',m=>fmtMoney(m.cash)],
+  ['Rev/Bk',m=>m.booked?fmtMoney(m.revPerBooking):'–']
+];
+const SETTER_COLS_V2 = SETTER_COLS;
+
 function agentCell(r) {
   return `<td class="agent">${r.short}${r.active?'':'<span class="inactive-tag">inactive</span>'}` +
          `<span class="full">${r.full||''}</span></td>`;
@@ -1941,6 +1952,58 @@ function viewTier(tierName, metrics, prior, basis) {
   return frag;
 }
 
+function viewTierV2(tierName, metrics, prior, basis) {
+  const frag = document.createDocumentFragment();
+  const rows = agentRows(metrics, DATA_V2).filter(r => r.tier === tierName);
+  const isSetter = tierName === 'TIER 3';
+  if (!rows.length) { frag.appendChild(el('div','warn','No agents in this tier.')); return frag; }
+
+  const sec = el('section');
+  const head = el('div','sec-head');
+  head.appendChild(el('h2', null, isSetter
+    ? 'Tier 3 <span class="dim">· Setters</span>' : `${tierName} <span class="dim">· Closers</span>`));
+  head.appendChild(el('span','sec-note', isSetter
+    ? 'Dialer activity. Tier 3 have no sales funnel by design — they book, they do not close. (v2 data source)'
+    : 'Discovery call funnel. (v2 data source)'));
+  const withData = rows.filter(r => isSetter ? r.m.hasKpi : r.m.hasFunnel);
+  if (!isSetter && withData.length) {
+    const top = withData.slice().sort((a,b) => b.m.revenue - a.m.revenue)[0];
+    if (top && top.m.revenue > 0)
+      head.appendChild(el('span','badge', `★ Top performer · ${top.short} · ${fmtMoney(top.m.revenue)}`));
+  }
+  sec.appendChild(head);
+
+  if (!isSetter) {
+    const board = renderBoard(rows, prior);
+    if (board) {
+      const h = el('div','sec-head'); h.style.marginTop = '14px';
+      h.appendChild(el('h2',null,'Leaderboard'));
+      h.appendChild(el('span','sec-note', `Ranked by composite score · qualifier Held &gt; ${RANK_MIN_HELD}`));
+      sec.appendChild(h); sec.appendChild(board);
+    }
+  }
+
+  const th = el('div','sec-head'); th.style.marginTop = '18px';
+  th.appendChild(el('h2', null, isSetter ? 'Activity' : 'Funnel detail'));
+  sec.appendChild(th);
+  sec.appendChild(renderTable(rows, isSetter ? SETTER_COLS_V2 : CLOSER_COLS_V2,
+    m => isSetter ? m.hasKpi : m.hasFunnel));
+
+  const missing = rows.filter(r => r.active && (isSetter ? !r.m.hasKpi : !r.m.hasFunnel)).map(r => r.short);
+  if (missing.length) sec.appendChild(el('div','warn',
+    `<b>No data recorded</b> for ${missing.join(', ')} in this period. Shown as gaps rather than zeros — a blank and a genuine zero mean different things.`));
+
+  const prog = renderProgress(rows, basis);
+  if (prog) {
+    const h = el('div','sec-head'); h.style.marginTop = '18px';
+    h.appendChild(el('h2',null,'KPI progress'));
+    h.appendChild(el('span','sec-note', `vs ${basis.label} targets`));
+    sec.appendChild(h); sec.appendChild(prog);
+  }
+  frag.appendChild(sec);
+  return frag;
+}
+
 // --- shell -----------------------------------------------------------------
 
 function renderNav(metrics, dataSource = null) {
@@ -1950,9 +2013,9 @@ function renderNav(metrics, dataSource = null) {
   const items = [
     ['exec_v2','Executive summary', null],
     ['board_v2','Sales leaderboard', null],
-    ['tier1','Tier 1 · Closers', 'TIER 1'],
-    ['tier2','Tier 2 · Closers', 'TIER 2'],
-    ['tier3','Tier 3 · Setters', 'TIER 3']
+    ['tier1_v2','Tier 1 · Closers v2', 'TIER 1'],
+    ['tier2_v2','Tier 2 · Closers v2', 'TIER 2'],
+    ['tier3_v2','Tier 3 · Setters v2', 'TIER 3']
   ];
   for (const [key,label,tier] of items) {
     const b = el('button','nav-item');
@@ -1975,16 +2038,16 @@ function renderNav(metrics, dataSource = null) {
 }
 
 function render() {
-  // For v2 view, use v2 data if available; otherwise fall back to v1
-  const useV2 = state.view === 'exec_v2' && DATA_V2;
-  const dataSource = useV2 ? DATA_V2 : DATA;
+  // For v2 views, use v2 data if available; otherwise fall back to v1
+  const isV2View = (state.view === 'exec_v2' || /^tier\d_v2$/.test(state.view)) && DATA_V2;
+  const dataSource = isV2View ? DATA_V2 : DATA;
   const metrics = compute(state.from, state.to, dataSource);
   const [pf,pt] = priorRange(state.from, state.to);
   const prior = compute(pf, pt, dataSource);
 
   // For v2 view: inject consolidated cash from original DATA source
   // v2 BigQuery data doesn't include cash_breakdown, so we compute it from original DATA
-  if (useV2) {
+  if (isV2View && state.view === 'exec_v2') {
     const cashMetrics = compute(state.from, state.to, DATA);
     const cashPrior = compute(pf, pt, DATA);
     if (cashMetrics.has('__period_totals__')) {
@@ -2007,6 +2070,8 @@ function render() {
   app.appendChild(
     state.view === 'exec_v2' ? viewExecV2(metrics, prior, basis)
     : state.view === 'board_v2' ? viewLeaderboardV2()
+    : /^tier\d_v2$/.test(state.view) ? viewTierV2(state.view === 'tier1_v2' ? 'TIER 1' : state.view === 'tier2_v2' ? 'TIER 2' : 'TIER 3',
+               metrics, prior, basis)
     : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
                metrics, prior, basis));
   bindGlow();
