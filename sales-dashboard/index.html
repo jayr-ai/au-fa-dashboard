@@ -1837,10 +1837,10 @@ function viewTier(tierName, metrics, prior, basis) {
 
 // --- shell -----------------------------------------------------------------
 
-function renderNav(metrics) {
+function renderNav(metrics, dataSource = null) {
   const nav = document.getElementById('nav');
   nav.innerHTML = '';
-  const rows = agentRows(metrics);
+  const rows = agentRows(metrics, dataSource);
   const items = [
     ['exec','Executive summary', null],
     ['exec_v2','Executive summary v2', null],
@@ -1892,7 +1892,7 @@ function render() {
 
   const basis = targetBasis(state.from, state.to);
 
-  renderNav(metrics);
+  renderNav(metrics, dataSource);
   // The leaderboard is anchored to to-date windows, so a period control would be a
   // dead input on that view. Hide it rather than leave something that does nothing.
   document.getElementById('period').hidden = state.view === 'board';
