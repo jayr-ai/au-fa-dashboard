@@ -115,12 +115,14 @@ function syncGoogleSheetToBI() {
 
 /**
  * Read all data from a sheet (header + data rows)
+ * Sanitizes column names for BigQuery (removes invalid characters)
  */
 function readSheetData(sheet) {
   const data = sheet.getDataRange().getValues();
   if (data.length <= 1) return [];
 
   const headers = data[0];
+  const sanitizedHeaders = headers.map(h => sanitizeColumnName(h));
   const rows = [];
 
   for (let i = 1; i < data.length; i++) {
@@ -128,7 +130,7 @@ function readSheetData(sheet) {
     let hasData = false;
 
     for (let j = 0; j < headers.length; j++) {
-      obj[headers[j]] = data[i][j];
+      obj[sanitizedHeaders[j]] = data[i][j];
       if (data[i][j] !== null && data[i][j] !== '') hasData = true;
     }
 
@@ -136,6 +138,19 @@ function readSheetData(sheet) {
   }
 
   return rows;
+}
+
+/**
+ * Sanitize column name for BigQuery
+ * Converts invalid characters to underscores
+ */
+function sanitizeColumnName(name) {
+  if (!name) return 'column_' + Math.random().toString(36).substr(2, 9);
+  return String(name)
+    .replace(/[^a-zA-Z0-9_]/g, '_')  // Replace invalid chars with underscore
+    .replace(/_+/g, '_')               // Collapse multiple underscores
+    .replace(/^_|_$/g, '')             // Remove leading/trailing underscores
+    .toLowerCase();
 }
 
 /**
