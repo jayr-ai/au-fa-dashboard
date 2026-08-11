@@ -261,7 +261,7 @@ function syncToBI(rows, tableName) {
 function fetchCurrentDataTable() {
   const sql = `
     SELECT
-      n, t, CAST(d AS STRING) as d, pen, ns, mis, can, lost, won, price_presented as pp, term_signed as ts, cash, rev, product
+      n, t, CAST(d AS STRING) as d, pen, ns, mis, can, lost, won, price_presented as pp, terms_signed as ts, cash, rev, product
     FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.${BQ_TABLE_DATA}\`
     WHERE CAST(d AS DATE) >= DATE_SUB(CURRENT_DATE('Australia/Sydney'), INTERVAL 12 MONTH)
     ORDER BY d DESC
