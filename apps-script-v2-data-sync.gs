@@ -51,9 +51,14 @@ function syncV2DataNow() {
     const kpiData = fetchCurrentDataKPITable();
     Logger.log(`   ✓ Fetched ${kpiData.length} records from v2_kpi`);
 
-    // Step 3: Transform data into dashboard format
+    // Step 3: Fetch agent list
+    Logger.log('👥 Step 4: Fetching agent list...');
+    const agents = fetchAgentList();
+    Logger.log(`   ✓ Fetched ${agents.length} agents`);
+
+    // Step 4: Transform data into dashboard format
     Logger.log('🔧 Transforming data for v2 dashboard...');
-    const v2DataObject = transformV2Data(funnelData, kpiData);
+    const v2DataObject = transformV2Data(funnelData, kpiData, agents);
     Logger.log('   ✓ Data transformed');
 
     // Step 4: Export to GitHub
@@ -274,6 +279,19 @@ function fetchCurrentDataKPITable() {
 }
 
 /**
+ * Fetch agent list from BigQuery agent_list table
+ */
+function fetchAgentList() {
+  const sql = `
+    SELECT sales_rep AS n, full_name AS f, tier AS t, status AS s
+    FROM \`${BQ_PROJECT_ID_V2}.${BQ_DATASET_V2}.agent_list\`
+    ORDER BY sales_rep
+  `;
+
+  return executeAndReturnRows(sql);
+}
+
+/**
  * Execute BigQuery query and return rows as array of objects
  */
 function executeAndReturnRows(sql) {
@@ -331,9 +349,9 @@ function convertBigQueryRows(rows, schema) {
 
 /**
  * Transform v2 BigQuery data into dashboard-compatible format
- * Data from v2_funnel and v2_kpi is already pre-aggregated, so just map columns
+ * Uses agents from agent_list table for consistency with v1
  */
-function transformV2Data(funnelData, kpiData) {
+function transformV2Data(funnelData, kpiData, agentList) {
   const v2Data = {
     synced_at: new Date().toISOString(),
     agents: [],
@@ -344,38 +362,13 @@ function transformV2Data(funnelData, kpiData) {
     cash_breakdown: []
   };
 
-  // Build unique agents list from funnel and KPI data
-  const agentsMap = new Map();
-
-  funnelData.forEach(row => {
-    if (row.n && row.t) {
-      const key = row.n;
-      if (!agentsMap.has(key)) {
-        agentsMap.set(key, {
-          n: row.n,
-          f: row.n,  // Use name as fallback for full name
-          t: formatTier(row.t),
-          s: 'ACTIVE'
-        });
-      }
-    }
-  });
-
-  kpiData.forEach(row => {
-    if (row.n && row.t) {
-      const key = row.n;
-      if (!agentsMap.has(key)) {
-        agentsMap.set(key, {
-          n: row.n,
-          f: row.n,  // Use name as fallback for full name
-          t: formatTier(row.t),
-          s: 'ACTIVE'
-        });
-      }
-    }
-  });
-
-  v2Data.agents = Array.from(agentsMap.values());
+  // Use agent_list table directly, filter by ACTIVE status only
+  v2Data.agents = agentList.filter(a => a.s === 'ACTIVE').map(a => ({
+    n: a.n,
+    f: a.f,
+    t: a.t,
+    s: a.s
+  }));
 
   // Transform funnel data - data is already aggregated, just format it
   v2Data.funnel = funnelData.map(row => ({
