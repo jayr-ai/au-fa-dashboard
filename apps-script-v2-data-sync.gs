@@ -167,8 +167,13 @@ function readSheetData(sheet) {
     let hasData = false;
 
     for (let j = 0; j < headers.length; j++) {
-      obj[mappedHeaders[j]] = data[i][j];
-      if (data[i][j] !== null && data[i][j] !== '') hasData = true;
+      let value = data[i][j];
+      // Convert dates to YYYY-MM-DD format to avoid timezone shifts
+      if (value instanceof Date) {
+        value = Utilities.formatDate(value, 'Australia/Sydney', 'yyyy-MM-dd');
+      }
+      obj[mappedHeaders[j]] = value;
+      if (value !== null && value !== '') hasData = true;
     }
 
     if (hasData) rows.push(obj);
