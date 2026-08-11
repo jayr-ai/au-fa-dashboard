@@ -28,6 +28,32 @@ const GITHUB_BRANCH_V2 = 'main';
 // ============================================================================
 
 /**
+ * PUBLIC: Debug function - call this to see detailed logs about data pipeline
+ * Usage: Open Apps Script editor > Run > debugV2Pipeline
+ */
+function debugV2Pipeline() {
+  try {
+    Logger.log('🔍 STARTING DEBUG: v2 data pipeline\n');
+
+    const ss = getGoogleSheetV2();
+
+    // Debug DATA tab
+    Logger.log('--- DEBUGGING DATA TAB ---\n');
+    const dataSheet = ss.getSheetByName('DATA');
+    debugReadSheetData(dataSheet);
+
+    // Debug DATA_KPI tab
+    Logger.log('\n\n--- DEBUGGING DATA_KPI TAB ---\n');
+    const kpiSheet = ss.getSheetByName('DATA_KPI');
+    debugReadSheetData(kpiSheet);
+
+    Logger.log('\n✅ Debug complete. Check the Execution log above for details.');
+  } catch (error) {
+    Logger.log('❌ DEBUG ERROR: ' + error.toString());
+  }
+}
+
+/**
  * Main v2 sync function - Run this to sync v2 data from Google Sheet to BigQuery and GitHub
  * Can be triggered daily or run manually
  */
@@ -205,6 +231,61 @@ function sanitizeColumnName(name) {
     .replace(/_+/g, '_')               // Collapse multiple underscores
     .replace(/^_|_$/g, '')             // Remove leading/trailing underscores
     .toLowerCase();
+}
+
+/**
+ * DEBUG: Analyze what readSheetData is actually reading and how it's mapping columns
+ */
+function debugReadSheetData(sheet) {
+  const data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return;
+
+  const headers = data[0];
+  const sanitizedHeaders = headers.map(h => sanitizeColumnName(h));
+  const mappedHeaders = sanitizedHeaders.map(h => COLUMN_MAPPING[h] || h);
+
+  Logger.log('=== DEBUG readSheetData ===');
+  Logger.log('Sheet: ' + sheet.getName());
+  Logger.log('First row (original headers): ' + JSON.stringify(headers));
+  Logger.log('After sanitization: ' + JSON.stringify(sanitizedHeaders));
+  Logger.log('After COLUMN_MAPPING: ' + JSON.stringify(mappedHeaders));
+
+  // Log a few sample rows to see what data is being read
+  Logger.log('\nSample rows (first 3):');
+  for (let i = 1; i < Math.min(4, data.length); i++) {
+    const obj = {};
+    for (let j = 0; j < headers.length; j++) {
+      obj[mappedHeaders[j]] = data[i][j];
+    }
+    Logger.log(JSON.stringify(obj));
+  }
+
+  // Specifically check for pp and ts columns
+  const ppIndex = sanitizedHeaders.indexOf('price_presented');
+  const ppIndexAlt = sanitizedHeaders.indexOf('pric_prs');
+  const ppIndexAlt2 = sanitizedHeaders.indexOf('price_presented');
+  const tsIndex = sanitizedHeaders.indexOf('terms_signed');
+  const tsIndexAlt = sanitizedHeaders.indexOf('term_signed');
+
+  Logger.log('\nColumn indices:');
+  Logger.log('price_presented index: ' + ppIndex);
+  Logger.log('pric_prs index: ' + ppIndexAlt);
+  Logger.log('terms_signed index: ' + tsIndex);
+  Logger.log('term_signed index: ' + tsIndexAlt);
+
+  if (ppIndex >= 0) {
+    Logger.log('\nPrice Presented values (first 5 data rows):');
+    for (let i = 1; i < Math.min(6, data.length); i++) {
+      Logger.log('Row ' + i + ': ' + data[i][ppIndex] + ' (type: ' + typeof data[i][ppIndex] + ')');
+    }
+  }
+
+  if (tsIndex >= 0) {
+    Logger.log('\nTerms Signed values (first 5 data rows):');
+    for (let i = 1; i < Math.min(6, data.length); i++) {
+      Logger.log('Row ' + i + ': ' + data[i][tsIndex] + ' (type: ' + typeof data[i][tsIndex] + ')');
+    }
+  }
 }
 
 /**
