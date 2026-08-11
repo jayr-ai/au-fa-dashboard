@@ -1030,6 +1030,281 @@ function viewExec(metrics, prior, basis) {
   return frag;
 }
 
+function viewExecV2(metrics, prior, basis) {
+  const frag = document.createDocumentFragment();
+
+  // For v2: use v2 data if available, otherwise use metrics
+  // But ALWAYS use original data for Consolidated Cash
+  const rows = agentRows(metrics);
+  const priorRows = agentRows(prior);
+
+  const closerNow = rows.filter(r => !/3/.test(r.tier) && r.m.hasFunnel).map(r => r.m);
+  const closerPrev = priorRows.filter(r => !/3/.test(r.tier) && r.m.hasFunnel).map(r => r.m);
+  const tot = closerNow.length ? sumAgents(closerNow) : derive(blankMetrics());
+  const prv = closerPrev.length ? sumAgents(closerPrev) : derive(blankMetrics());
+
+  // === CONSOLIDATED CASH: Keep original data source (NOT v2) ===
+  if (metrics.has('__period_totals__')) tot.actualCashCollected = metrics.get('__period_totals__').actualCashCollected;
+  if (prior.has('__period_totals__')) prv.actualCashCollected = prior.get('__period_totals__').actualCashCollected;
+  if (metrics.has('__period_totals__')) tot.agentDrivenSales = metrics.get('__period_totals__').agentDrivenSales;
+  if (prior.has('__period_totals__')) prv.agentDrivenSales = prior.get('__period_totals__').agentDrivenSales;
+  if (metrics.has('__period_totals__')) tot.lowTicketSales = metrics.get('__period_totals__').lowTicketSales;
+  if (prior.has('__period_totals__')) prv.lowTicketSales = prior.get('__period_totals__').lowTicketSales;
+
+  // ---- headline tiles with period-over-period movement
+  const s1 = el('section');
+  s1.appendChild(el('div','sec-head',
+    `<h2>Headline <span class="dim">· all closers</span></h2>
+     <span class="sec-note">Compared with the equal-length period immediately before. (v2 data source)</span>`));
+  const tiles = el('div','tiles');
+  [['Revenue sold', fmtMoney(tot.revenue), tot.revenue, prv.revenue, fmtMoneyShort, 1],
+   ['Cash collected', fmtMoney(tot.cash), tot.cash, prv.cash, fmtMoneyShort, 0],
+   ['Booked', fmtInt(tot.booked), tot.booked, prv.booked, fmtInt, 0],
+   ['Held', fmtInt(tot.held), tot.held, prv.held, fmtInt, 0],
+   ['Won', fmtInt(tot.won), tot.won, prv.won, fmtInt, 1],
+   ['Show rate', fmtPct(tot.showRate), tot.showRate, prv.showRate, fmtPct, 0],
+   ['Close rate', fmtPct(tot.closeRate), tot.closeRate, prv.closeRate, fmtPct, 0]
+  ].forEach(([label, disp, cur, prev, f, hi]) => {
+    const t = el('div','tile glow');
+    t.innerHTML = `<div class="label">${label}</div><div class="value${hi?' hi':''}">${disp}</div>
+                   <div class="trend">${deltaHtml(cur, prev, f) || '<span class="nil">no prior period</span>'}</div>`;
+    tiles.appendChild(t);
+  });
+  s1.appendChild(tiles);
+  frag.appendChild(s1);
+
+  // ---- consolidated cash section (ORIGINAL DATA SOURCE - NOT V2)
+  const sCash = el('section');
+  sCash.appendChild(el('div','sec-head',
+    `<h2>Consolidated cash <span class="dim">· received</span></h2>
+     <span class="sec-note">These are the actual cash received from Stripe, Electronic Fund Transfers, and Finance. (Original data source)</span>`));
+  const cashTiles = el('div','tiles');
+  [['Actual cash collected', fmtMoney(tot.actualCashCollected), tot.actualCashCollected, prv.actualCashCollected, fmtMoneyShort, 0],
+   ['Agent driven cash', fmtMoney(tot.agentDrivenSales), tot.agentDrivenSales, prv.agentDrivenSales, fmtMoneyShort, 0],
+   ['Low ticket cash', fmtMoney(tot.lowTicketSales), tot.lowTicketSales, prv.lowTicketSales, fmtMoneyShort, 0]
+  ].forEach(([label, disp, cur, prev, f, hi]) => {
+    const t = el('div','tile glow cash-breakdown-card');
+    t.innerHTML = `<div class="label">${label}</div><div class="value${hi?' hi':''}">${disp}</div>
+                   <div class="trend">${deltaHtml(cur, prev, f) || '<span class="nil">no prior period</span>'}</div>`;
+    cashTiles.appendChild(t);
+  });
+  sCash.appendChild(cashTiles);
+  frag.appendChild(sCash);
+
+  // ---- top performer per tier
+  const sTop = el('section');
+  sTop.appendChild(el('div','sec-head',
+    `<h2>Top performer by tier</h2>
+     <span class="sec-note">Closers ranked on revenue sold, setters on appointments set. (v2 data source)</span>`));
+  const topBoard = el('div','board');
+  for (const tier of TIERS) {
+    const spec = TIER_HERO[tier];
+    const pool = rows.filter(r => r.tier === tier && spec.has(r.m));
+    const best = pool.slice().sort((a,b) => spec.get(b.m) - spec.get(a.m))[0];
+    const val = best ? spec.get(best.m) : null;
+    const earned = val != null && val > 0;
+
+    const card = el('div','lb glow tier-tint' + (earned ? ' top' : ' unranked'));
+    card.setAttribute('style', tierVars(tier));
+    if (!best) {
+      card.innerHTML =
+        `<div class="lb-head"><div><div class="lb-rank">${tier} · ${spec.role}</div>
+          <div class="lb-name" style="color:var(--muted)">No data recorded</div></div></div>
+         <div class="lb-hero"><span class="cap">${spec.cap}</span>
+           <span class="n" style="color:var(--muted)">–</span></div>
+         <div class="lb-stats"><span class="chip">Nobody in this tier reported this period</span></div>`;
+    } else {
+      card.innerHTML =
+        `<div class="lb-head">${earned ? '<span class="medal">🥇</span>' : ''}
+          <div><div class="lb-rank">${tier} · ${spec.role}</div>
+          <div class="lb-name">${best.short}${best.active?'':'<span class="inactive-tag">inactive</span>'}<span class="full">${best.full||''}</span></div></div></div>
+         <div class="lb-hero"><span class="cap">${spec.cap}</span>
+           <span class="n"${earned?'':' style="color:var(--muted)"'}>${spec.fmt(val)}</span></div>
+         <div class="lb-stats">${spec.chips(best.m)}
+           ${earned ? '' : `<span class="chip">Nothing ${spec.verb} yet this period</span>`}</div>`;
+    }
+    topBoard.appendChild(card);
+  }
+  sTop.appendChild(topBoard);
+  frag.appendChild(sTop);
+
+  // ---- funnel
+  const s2 = el('section');
+  s2.appendChild(el('div','sec-head',
+    `<h2>Funnel</h2><span class="sec-note">Where the pipeline is lost, stage by stage. (v2 data source)</span>`));
+  const stages = [['Booked', tot.booked, ''], ['Held', tot.held, ''], ['Won', tot.won, 'won']];
+  const max = Math.max(1, tot.booked);
+  const fn = el('div','funnel');
+  stages.forEach(([name, v, cls], i) => {
+    fn.appendChild(el('div','fn-row',
+      `<div class="fn-label">${name}</div>
+       <div class="fn-track"><div class="fn-fill ${cls}" style="width:${(v/max*100).toFixed(1)}%"></div></div>
+       <div class="fn-val">${fmtInt(v)}</div>`));
+    if (i < stages.length-1) {
+      const nxt = stages[i+1][1];
+      const rate = div(nxt, v);
+      fn.appendChild(el('div','fn-step',
+        `<b>${fmtPct(rate)}</b> of ${name.toLowerCase()} became ${stages[i+1][0].toLowerCase()}` +
+        ` · <b>${fmtInt(v-nxt)}</b> lost here`));
+    }
+  });
+  const c2 = el('div','card glow'); const p2 = el('div','pad'); p2.appendChild(fn); c2.appendChild(p2);
+  s2.appendChild(c2);
+  frag.appendChild(s2);
+
+  // ---- revenue by month
+  const s3 = el('section');
+  s3.appendChild(el('div','sec-head',
+    `<h2>Revenue by month</h2><span class="sec-note">Hatched columns are months with no data at all, not zero revenue. (v2 data source)</span>`));
+  const byMonth = new Map();
+  for (const r of DATA.funnel) {
+    const k = r.d.slice(0,7);
+    byMonth.set(k, (byMonth.get(k) || 0) + r.rev);
+  }
+  const keys = [...byMonth.keys()].sort();
+  if (keys.length) {
+    const [y0,m0] = keys[0].split('-').map(Number);
+    const [y1,m1] = keys[keys.length-1].split('-').map(Number);
+    const all = [];
+    for (let y=y0, m=m0; y<y1 || (y===y1 && m<=m1); ) {
+      all.push(`${y}-${String(m).padStart(2,'0')}`);
+      m++; if (m > 12) { m = 1; y++; }
+    }
+    const peak = Math.max(...byMonth.values(), 1);
+    const chart = el('div','chart');
+    for (const k of all) {
+      const v = byMonth.get(k);
+      const has = v != null;
+      const col = el('div','col' + (has ? '' : ' gap') + (k === state.from.slice(0,7) ? ' sel' : ''));
+      const [yy,mm] = k.split('-');
+      col.title = has ? `${MONTH_NAMES[+mm-1]} ${yy} · ${fmtMoney(v)}` : `${MONTH_NAMES[+mm-1]} ${yy} · no data recorded`;
+      col.innerHTML = `<div class="bar2" style="height:${has ? Math.max(2,(v/peak)*100) : 100}%"></div>
+                       <div class="lbl">${MONTH_NAMES[+mm-1]} ${yy.slice(2)}</div>`;
+      chart.appendChild(col);
+    }
+    const c3 = el('div','card glow'); const p3 = el('div','pad'); p3.appendChild(chart); c3.appendChild(p3);
+    s3.appendChild(c3);
+    const missing = all.filter(k => !byMonth.has(k));
+    if (missing.length) {
+      s3.appendChild(el('div','warn alert',
+        `<b>${missing.length} month${missing.length===1?'':'s'} with no data at all</b> — ${missing.join(', ')}.
+         Treat any trend spanning gaps as potentially broken.`));
+    }
+  }
+  frag.appendChild(s3);
+
+  // ---- tier comparison
+  const s4 = el('section');
+  s4.appendChild(el('div','sec-head', `<h2>By tier</h2><span class="sec-note">(v2 data source)</span>`));
+  const tt = el('table');
+  tt.innerHTML = `<thead><tr><th class="agent">Tier</th><th>Reps with data</th><th>Booked</th>
+    <th>Held</th><th>Won</th><th class="grp">Show %</th><th>Close %</th>
+    <th class="grp">Revenue</th><th>Cash</th></tr></thead>`;
+  const tb = el('tbody');
+  for (const tier of TIERS) {
+    const tr = rows.filter(r => r.tier === tier);
+    const withData = tr.filter(r => r.m.hasFunnel);
+    const t = withData.length ? sumAgents(withData.map(r => r.m)) : derive(blankMetrics());
+    const isSetter = tier === 'TIER 3';
+    const row = el('tr');
+    row.innerHTML = `<td class="agent">${tier}<span class="full">${isSetter?'Setters':'Closers'}</span></td>` +
+      (isSetter
+        ? `<td>${tr.filter(r=>r.m.hasKpi).length} of ${tr.length}</td>` +
+          `<td colspan="7" class="nodata">Setters have no sales funnel by design — see the Tier 3 view for dialer activity</td>`
+        : `<td>${withData.length} of ${tr.length}</td><td>${fmtInt(t.booked)}</td><td>${fmtInt(t.held)}</td>
+           <td>${fmtInt(t.won)}</td><td class="grp">${fmtPct(t.showRate)}</td><td>${fmtPct(t.closeRate)}</td>
+           <td class="grp">${fmtMoney(t.revenue)}</td><td>${fmtMoney(t.cash)}</td>`);
+    tb.appendChild(row);
+  }
+  tt.appendChild(tb);
+  const c4 = el('div','card'); const sc4 = el('div','scroll'); sc4.appendChild(tt); c4.appendChild(sc4);
+  s4.appendChild(c4);
+  frag.appendChild(s4);
+
+  // ---- data health
+  const reporting = rows.filter(r => r.m.hasFunnel || r.m.hasKpi).length;
+  const activeCount = rows.filter(r => r.active).length;
+  const silent = rows.filter(r => r.active && !r.m.hasFunnel && !r.m.hasKpi).map(r => r.short);
+  const s6 = el('section');
+  s6.appendChild(el('div','sec-head', `<h2>Data health</h2><span class="sec-note">(v2 data source)</span>`));
+  const health = el('div','tiles');
+  [['Reps reporting', `${reporting} of ${activeCount}`, ''],
+   ['Period elapsed', Math.round(elapsedFraction(state.from, state.to)*100) + '%', ''],
+   ['Targets basis', basis.label, ''],
+   ['Last synced', (DATA.synced_at||'').slice(0,16).replace('T',' '), '']
+  ].forEach(([l,v]) => {
+    const t = el('div','tile glow');
+    t.innerHTML = `<div class="label">${l}</div><div class="value" style="font-size:19px">${v}</div>`;
+    health.appendChild(t);
+  });
+  s6.appendChild(health);
+  if (silent.length) {
+    s6.appendChild(el('div','warn',
+      `<b>No data recorded</b> this period for ${silent.join(', ')} — all listed ACTIVE.
+       Shown as gaps rather than zeros throughout.`));
+  }
+  frag.appendChild(s6);
+
+  // ---- maintenance & troubleshooting panel
+  const today = new Date();
+  const twoMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 2, today.getDate());
+  const cutoffDate = twoMonthsAgo.toISOString().split('T')[0];
+
+  const recentDataAgents = new Set();
+  for (const r of DATA.funnel) {
+    if (r.d >= cutoffDate) recentDataAgents.add(r.n);
+  }
+  for (const r of DATA.programs) {
+    if (r.d >= cutoffDate) recentDataAgents.add(r.n);
+  }
+  for (const r of DATA.kpi) {
+    if (r.d >= cutoffDate) recentDataAgents.add(r.n);
+  }
+
+  const registeredAgents = new Set(DATA.agents.map(a => a.n));
+  const missingAgents = [...recentDataAgents].filter(a => !registeredAgents.has(a)).sort();
+
+  const agentsWithoutTier = DATA.agents.filter(a => !a.t || a.t.trim() === '').map(a => a.n).sort();
+
+  if (missingAgents.length > 0 || agentsWithoutTier.length > 0) {
+    const sMaint = el('section');
+    sMaint.appendChild(el('div','sec-head',
+      `<h2>⚠️ Maintenance & troubleshooting</h2>
+       <span class="sec-note">Action required to keep data accurate and complete.</span>`));
+
+    const maintContent = el('div');
+
+    if (missingAgents.length > 0) {
+      const missingDiv = el('div','card glow');
+      const missingPad = el('div','pad');
+      missingPad.innerHTML = `<h3 style="color:var(--accent);margin:0 0 12px;font-size:14px">🔴 New agents detected (not in Agent List)</h3>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--ink-2)"><b>${missingAgents.length} agent${missingAgents.length === 1 ? '' : 's'}</b> appearing in current data but missing from the agent roster. Update the <b>Agent List</b> tab in your Google Sheet with the tier assignment for each.</p>
+        <div style="background:rgba(185,218,205,0.08);border-radius:8px;padding:12px;font-family:monospace;font-size:12px;max-height:200px;overflow-y:auto">
+          ${missingAgents.map(a => `<div style="padding:4px 0;border-bottom:1px solid rgba(185,218,205,0.15)"><b>${a}</b></div>`).join('')}
+        </div>`;
+      missingDiv.appendChild(missingPad);
+      maintContent.appendChild(missingDiv);
+    }
+
+    if (agentsWithoutTier.length > 0) {
+      const tierDiv = el('div','card glow');
+      const tierPad = el('div','pad');
+      tierPad.innerHTML = `<h3 style="color:#B9A856;margin:0 0 12px;font-size:14px">🟡 Incomplete agent setup (tier missing)</h3>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--ink-2)"><b>${agentsWithoutTier.length} agent${agentsWithoutTier.length === 1 ? '' : 's'}</b> missing tier assignment. Assign TIER 1, TIER 2, or TIER 3.</p>
+        <div style="background:rgba(185,218,205,0.12);border-radius:8px;padding:12px;font-family:monospace;font-size:12px;max-height:200px;overflow-y:auto">
+          ${agentsWithoutTier.map(a => `<div style="padding:4px 0;border-bottom:1px solid rgba(185,218,205,0.2)"><b>${a}</b></div>`).join('')}
+        </div>`;
+      tierDiv.appendChild(tierPad);
+      maintContent.appendChild(tierDiv);
+    }
+
+    sMaint.appendChild(maintContent);
+    frag.appendChild(sMaint);
+  }
+
+  return frag;
+}
+
 const CLOSER_COLS = [
   ['Booked',m=>fmtInt(m.booked)],['Held',m=>fmtInt(m.held)],['Won',m=>fmtInt(m.won)],
   ['Pending',m=>fmtInt(m.pending),true],['Lost',m=>fmtInt(m.lost)],['N/S',m=>fmtInt(m.noShow)],
@@ -1565,6 +1840,7 @@ function renderNav(metrics) {
   const rows = agentRows(metrics);
   const items = [
     ['exec','Executive summary', null],
+    ['exec_v2','Executive summary v2', null],
     ['board','Sales leaderboard', null],
     ['tier1','Tier 1 · Closers', 'TIER 1'],
     ['tier2','Tier 2 · Closers', 'TIER 2'],
@@ -1605,6 +1881,7 @@ function render() {
   app.innerHTML = '';
   app.appendChild(
     state.view === 'exec' ? viewExec(metrics, prior, basis)
+    : state.view === 'exec_v2' ? viewExecV2(metrics, prior, basis)
     : state.view === 'board' ? viewLeaderboard()
     : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
                metrics, prior, basis));
