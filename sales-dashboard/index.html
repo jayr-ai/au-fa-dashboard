@@ -638,8 +638,6 @@ function compute(from, to) {
   const by = new Map();
   const get = n => { if (!by.has(n)) by.set(n, blankMetrics()); return by.get(n); };
   const within = d => d >= from && d <= to;
-  const funnelInRange = DATA.funnel.filter(r => within(r.d));
-  console.log('compute() called. Date range:', from, '-', to, 'Funnel rows in range:', funnelInRange.length, 'Sample:', funnelInRange[0]);
   for (const r of DATA.funnel) { if (!within(r.d)) continue;
     const a = get(r.n); a.hasFunnel = true;
     a.won+=r.won; a.pending+=r.pen; a.lost+=r.lost; a.noShow+=r.ns; a.missed+=r.mis;
@@ -669,30 +667,6 @@ function compute(from, to) {
   totals.agentDrivenSales = totalAgentDriven;
   totals.lowTicketSales = totalLowTicket;
   by.set(totalsKey, totals);
-
-  for (const a of by.values()) derive(a);
-  return by;
-}
-function computeV2(from, to) {
-  const by = new Map();
-  const get = n => { if (!by.has(n)) by.set(n, blankMetrics()); return by.get(n); };
-  const within = d => d >= from && d <= to;
-
-  // Process v2 funnel data (from v2_funnel table)
-  for (const r of (DATA.v2_funnel || [])) { if (!within(r.d)) continue;
-    const a = get(r.n); a.hasFunnel = true;
-    a.won += r.won; a.pending += r.pen; a.lost += r.lost; a.noShow += r.ns; a.missed += r.mis;
-    a.cancelled += r.can; a.revenue += r.rev; a.cash += r.cash;
-    if (r.won > 0) a.saleDays++;
-    if (r.rev > a.bestDay) a.bestDay = r.rev;
-  }
-
-  // Process v2 KPI data (from v2_kpi table)
-  for (const k of (DATA.v2_kpi || [])) { if (!within(k.d)) continue;
-    const a = get(k.n); a.hasKpi = true;
-    a.hours += k.hrs; a.dials += k.di; a.sets += k.se; a.appts += k.ap;
-    a.kpiNoShows += k.ns; a.showUps += k.su; a.confirmed += k.cf; a.kpiSales += k.sa;
-  }
 
   for (const a of by.values()) derive(a);
   return by;
@@ -1591,7 +1565,6 @@ function renderNav(metrics) {
   const rows = agentRows(metrics);
   const items = [
     ['exec','Executive summary', null],
-    ['exec_v2','Executive Summary v2', null],
     ['board','Sales leaderboard', null],
     ['tier1','Tier 1 · Closers', 'TIER 1'],
     ['tier2','Tier 2 · Closers', 'TIER 2'],
@@ -1630,27 +1603,11 @@ function render() {
 
   const app = document.getElementById('app');
   app.innerHTML = '';
-
-  if (state.view === 'exec') {
-    app.appendChild(viewExec(metrics, prior, basis));
-  } else if (state.view === 'exec_v2') {
-    // Show v2 Executive Summary
-    const v2Metrics = computeV2(state.from, state.to);
-    const v2Prior = computeV2(...priorRange(state.from, state.to));
-
-    const heading = el('div','sec-head');
-    heading.appendChild(el('h2', null, 'Executive Summary <span class="dim">· v2 data source</span>'));
-    heading.appendChild(el('span','sec-note', 'New sheet data. Compare with v1 before production switch.'));
-    app.appendChild(heading);
-
-    app.appendChild(viewExec(v2Metrics, v2Prior, basis));
-  } else {
-    app.appendChild(
-      state.view === 'board' ? viewLeaderboard()
-      : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
-                 metrics, prior, basis));
-  }
-
+  app.appendChild(
+    state.view === 'exec' ? viewExec(metrics, prior, basis)
+    : state.view === 'board' ? viewLeaderboard()
+    : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
+               metrics, prior, basis));
   bindGlow();
 }
 
@@ -1776,47 +1733,7 @@ function boot() {
 
 fetch('data.json')
   .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-  .then(d => {
-    // Support both old format (v1 only) and new format (v1 + v2)
-    console.log('Data loaded. Has v1:', !!d.v1, 'Has v2:', !!d.v2, 'v1.funnel rows:', d.v1?.funnel?.length);
-    if (d.v1 && d.v2) {
-      // New combined format - transform BigQuery names to short codes
-      try {
-        const v1Funnel = (d.v1.funnel || []).map(r => ({
-          d: r.date, n: r.staff_name, won: 0, pen: 0, lost: 0,
-          ns: 0, mis: 0, can: 0,
-          pp: 0, ts: 0,
-          rev: Number(r.revenue) || 0, cash: Number(r.cash) || 0
-        }));
-        console.log('v1Funnel transformed. Sample:', v1Funnel[0], 'Total rows:', v1Funnel.length, 'Aug rows:', v1Funnel.filter(r => r.d?.includes('2026-08')).length);
-        const v1Kpi = (d.v1.kpi || []).map(k => ({
-          d: k.date, n: k.agent_name, hrs: Number(k.hours_on_dialer) || 0, di: Number(k.dials) || 0,
-          se: Number(k.sets) || 0, ap: Number(k.appointments) || 0, ns: Number(k.no_shows) || 0,
-          su: Number(k.show_ups) || 0, cf: Number(k.appointments_confirmed) || 0, sa: Number(k.sales) || 0
-        }));
-        console.log('v1Kpi transformed. Rows:', v1Kpi.length);
-        DATA = {
-          funnel: v1Funnel,
-          kpi: v1Kpi,
-          programs: [],
-          cash_breakdown: [],
-          agents: [],
-          targets: [],
-          v2_funnel: (d.v2.funnel || []),
-          v2_kpi: (d.v2.kpi || []),
-          synced_at: d.synced_at || (d.v1.synced_at)
-        };
-        console.log('DATA set successfully');
-      } catch (e) {
-        console.error('Error transforming data:', e.message, e.stack);
-        throw e;
-      }
-    } else {
-      // Legacy format (v1 only)
-      DATA = d;
-    }
-    boot();
-  })
+  .then(d => { DATA = d; boot(); })
   .catch(e => {
     document.getElementById('sub').textContent = '';
     document.getElementById('app').innerHTML =
