@@ -1533,6 +1533,22 @@ function personalBests(year) {
   return best;
 }
 
+function personalBestsV2(year) {
+  if (!DATA_V2 || !DATA_V2.funnel) return new Map();
+  const perMonth = new Map();
+  for (const r of DATA_V2.funnel) {
+    if (+r.d.slice(0,4) !== year) continue;
+    const k = r.n + '|' + r.d.slice(0,7);
+    perMonth.set(k, (perMonth.get(k) || 0) + (r.rev || 0));
+  }
+  const best = new Map();
+  for (const [k, v] of perMonth) {
+    const n = k.split('|')[0];
+    if (v > (best.get(n) || 0)) best.set(n, v);
+  }
+  return best;
+}
+
 /** Dense rank, descending, ties share a rank - matching the sheet's RANK column. */
 function denseRank(entries) {
   const vals = [...new Set(entries.map(e => e.v))].sort((a,b) => b-a);
@@ -1599,7 +1615,7 @@ function buildLeaderboardV2() {
     touchWtd: S(w.wtd, r=>r.di, DATA_V2.kpi), touchMtd: S(w.mtd, r=>r.di, DATA_V2.kpi),
     setsMtd: S(w.mtd, r=>r.se, DATA_V2.kpi), hoursMtd: S(w.mtd, r=>r.hrs, DATA_V2.kpi),
     apptsMtd: S(w.mtd, r=>r.ap, DATA_V2.kpi),
-    best: personalBests(yr)
+    best: personalBestsV2(yr)
   };
 
   const rows = DATA_V2.agents.filter(a => a.s === 'ACTIVE').map(a => ({
