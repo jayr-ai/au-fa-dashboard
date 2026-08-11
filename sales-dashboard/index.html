@@ -1875,6 +1875,19 @@ function render() {
   const metrics = compute(state.from, state.to, dataSource);
   const [pf,pt] = priorRange(state.from, state.to);
   const prior = compute(pf, pt, dataSource);
+
+  // For v2 view: inject consolidated cash from original DATA source
+  if (useV2) {
+    const cashMetrics = compute(state.from, state.to, DATA);
+    const cashPrior = compute(pf, pt, DATA);
+    if (cashMetrics.has('__period_totals__')) {
+      metrics.set('__period_totals__', cashMetrics.get('__period_totals__'));
+    }
+    if (cashPrior.has('__period_totals__')) {
+      prior.set('__period_totals__', cashPrior.get('__period_totals__'));
+    }
+  }
+
   const basis = targetBasis(state.from, state.to);
 
   renderNav(metrics);
