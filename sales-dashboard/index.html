@@ -1948,10 +1948,8 @@ function renderNav(metrics, dataSource = null) {
   nav.innerHTML = '';
   const rows = agentRows(metrics, dataSource);
   const items = [
-    ['exec','Executive summary', null],
-    ['exec_v2','Executive summary v2', null],
-    ['board','Sales leaderboard', null],
-    ['board_v2','Sales leaderboard v2', null],
+    ['exec_v2','Executive summary', null],
+    ['board_v2','Sales leaderboard', null],
     ['tier1','Tier 1 · Closers', 'TIER 1'],
     ['tier2','Tier 2 · Closers', 'TIER 2'],
     ['tier3','Tier 3 · Setters', 'TIER 3']
@@ -2002,14 +2000,12 @@ function render() {
   renderNav(metrics, dataSource);
   // The leaderboard is anchored to to-date windows, so a period control would be a
   // dead input on that view. Hide it rather than leave something that does nothing.
-  document.getElementById('period').hidden = state.view === 'board';
+  document.getElementById('period').hidden = state.view === 'board_v2';
 
   const app = document.getElementById('app');
   app.innerHTML = '';
   app.appendChild(
-    state.view === 'exec' ? viewExec(metrics, prior, basis)
-    : state.view === 'exec_v2' ? viewExecV2(metrics, prior, basis)
-    : state.view === 'board' ? viewLeaderboard()
+    state.view === 'exec_v2' ? viewExecV2(metrics, prior, basis)
     : state.view === 'board_v2' ? viewLeaderboardV2()
     : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
                metrics, prior, basis));
