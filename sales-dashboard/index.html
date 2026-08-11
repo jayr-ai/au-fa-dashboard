@@ -1871,25 +1871,18 @@ function renderNav(metrics) {
 function render() {
   // For v2 view, use v2 data if available; otherwise fall back to v1
   const useV2 = state.view === 'exec_v2' && DATA_V2;
-  console.log('[render] state.view=', state.view, 'DATA_V2=', !!DATA_V2, 'useV2=', useV2);
   const dataSource = useV2 ? DATA_V2 : DATA;
   const metrics = compute(state.from, state.to, dataSource);
   const [pf,pt] = priorRange(state.from, state.to);
   const prior = compute(pf, pt, dataSource);
 
   // For v2 view: inject consolidated cash from original DATA source
+  // v2 BigQuery data doesn't include cash_breakdown, so we compute it from original DATA
   if (useV2) {
-    console.log('[v2-inject] Starting cash injection');
     const cashMetrics = compute(state.from, state.to, DATA);
     const cashPrior = compute(pf, pt, DATA);
-    const tot = cashMetrics.get('__period_totals__');
-    console.log('[v2-inject] Date range:', state.from, 'to', state.to);
-    console.log('[v2-inject] Cash metrics __period_totals__:', tot);
     if (cashMetrics.has('__period_totals__')) {
-      metrics.set('__period_totals__', tot);
-      console.log('[v2-inject] Injected cash metrics:', tot);
-    } else {
-      console.log('[v2-inject] WARNING: __period_totals__ not found in cashMetrics');
+      metrics.set('__period_totals__', cashMetrics.get('__period_totals__'));
     }
     if (cashPrior.has('__period_totals__')) {
       prior.set('__period_totals__', cashPrior.get('__period_totals__'));
