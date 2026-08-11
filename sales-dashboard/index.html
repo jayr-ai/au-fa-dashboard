@@ -671,6 +671,30 @@ function compute(from, to) {
   for (const a of by.values()) derive(a);
   return by;
 }
+function computeV2(from, to) {
+  const by = new Map();
+  const get = n => { if (!by.has(n)) by.set(n, blankMetrics()); return by.get(n); };
+  const within = d => d >= from && d <= to;
+
+  // Process v2 funnel data (from v2_funnel table)
+  for (const r of (DATA.v2_funnel || [])) { if (!within(r.d)) continue;
+    const a = get(r.n); a.hasFunnel = true;
+    a.won += r.won; a.pending += r.pen; a.lost += r.lost; a.noShow += r.ns; a.missed += r.mis;
+    a.cancelled += r.can; a.revenue += r.rev; a.cash += r.cash;
+    if (r.won > 0) a.saleDays++;
+    if (r.rev > a.bestDay) a.bestDay = r.rev;
+  }
+
+  // Process v2 KPI data (from v2_kpi table)
+  for (const k of (DATA.v2_kpi || [])) { if (!within(k.d)) continue;
+    const a = get(k.n); a.hasKpi = true;
+    a.hours += k.hrs; a.dials += k.di; a.sets += k.se; a.appts += k.ap;
+    a.kpiNoShows += k.ns; a.showUps += k.su; a.confirmed += k.cf; a.kpiSales += k.sa;
+  }
+
+  for (const a of by.values()) derive(a);
+  return by;
+}
 function derive(a) {
   a.booked = a.won+a.pending+a.lost+a.noShow+a.missed+a.cancelled;
   a.held = a.won+a.pending+a.lost;
@@ -1603,11 +1627,37 @@ function render() {
 
   const app = document.getElementById('app');
   app.innerHTML = '';
-  app.appendChild(
-    state.view === 'exec' ? viewExec(metrics, prior, basis)
-    : state.view === 'board' ? viewLeaderboard()
-    : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
-               metrics, prior, basis));
+
+  if (state.view === 'exec') {
+    app.appendChild(viewExec(metrics, prior, basis));
+
+    // Add v2 section if v2 data is available
+    if (DATA && DATA.v2_funnel && DATA.v2_funnel.length > 0) {
+      const v2Container = el('div');
+      v2Container.style.marginTop = '60px';
+      v2Container.style.borderTop = '2px solid var(--line)';
+      v2Container.style.paddingTop = '40px';
+
+      const v2Head = el('div','sec-head');
+      v2Head.appendChild(el('h2', null, 'Executive summary v2 <span class="dim">· new data source</span>'));
+      v2Head.appendChild(el('span','sec-note', 'Powered by new sheet. Compare with v1 above before production switch.'));
+      v2Container.appendChild(v2Head);
+
+      // Compute v2 metrics from the v2 data
+      const v2Metrics = computeV2(state.from, state.to);
+      const v2Prior = computeV2(...priorRange(state.from, state.to));
+
+      v2Container.appendChild(viewExec(v2Metrics, v2Prior, basis));
+
+      app.appendChild(v2Container);
+    }
+  } else {
+    app.appendChild(
+      state.view === 'board' ? viewLeaderboard()
+      : viewTier(state.view === 'tier1' ? 'TIER 1' : state.view === 'tier2' ? 'TIER 2' : 'TIER 3',
+                 metrics, prior, basis));
+  }
+
   bindGlow();
 }
 
@@ -1733,7 +1783,22 @@ function boot() {
 
 fetch('data.json')
   .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-  .then(d => { DATA = d; boot(); })
+  .then(d => {
+    // Support both old format (v1 only) and new format (v1 + v2)
+    if (d.v1 && d.v2) {
+      // New combined format
+      DATA = {
+        ...d.v1,
+        v2_funnel: d.v2.funnel || [],
+        v2_kpi: d.v2.kpi || [],
+        synced_at: d.synced_at || d.v1.synced_at
+      };
+    } else {
+      // Legacy format (v1 only)
+      DATA = d;
+    }
+    boot();
+  })
   .catch(e => {
     document.getElementById('sub').textContent = '';
     document.getElementById('app').innerHTML =
