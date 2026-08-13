@@ -45,12 +45,17 @@
     }
   ],
   "masterclassRuns": [
-    { "runDate": "2026-07-16", "runLabel": "16 Jul 2026", "registered": 85, "attended": 25, "showUpRatePct": 29.41, "application": 9, "vipUpgrade": 0, "attendToAppPct": 36.0, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0 },
-    { "runDate": "2026-07-22", "runLabel": "22 Jul 2026", "registered": 185, "attended": 40, "showUpRatePct": 21.62, "application": 11, "vipUpgrade": 0, "attendToAppPct": 27.5, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0 },
-    { "runDate": "2026-07-28", "runLabel": "28 Jul 2026", "registered": 194, "attended": 39, "showUpRatePct": 20.10, "application": 18, "vipUpgrade": 2, "attendToAppPct": 46.15, "revenue": 11000, "dealsClosed": 2, "cashFromAds": 11000, "cashFromOrganic": 0 },
-    { "runDate": "2026-08-04", "runLabel": "04 Aug 2026", "registered": 178, "attended": 53, "showUpRatePct": 29.78, "application": 17, "vipUpgrade": 0, "attendToAppPct": 32.08, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0 },
-    { "runDate": "2026-08-11", "runLabel": "11 Aug 2026", "registered": 227, "attended": 44, "showUpRatePct": 19.38, "application": 15, "vipUpgrade": 0, "attendToAppPct": 34.09, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0 },
-    { "runDate": "2026-08-18", "runLabel": "18 Aug 2026", "registered": 51, "attended": 0, "showUpRatePct": null, "application": 2, "vipUpgrade": 0, "attendToAppPct": null, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0 }
+    { "runDate": "2026-07-16", "runLabel": "16 Jul 2026", "registered": 85, "attended": 25, "showUpRatePct": 29.41, "application": 9, "vipUpgrade": 0, "attendToAppPct": 36.0, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0, "deals": [] },
+    { "runDate": "2026-07-22", "runLabel": "22 Jul 2026", "registered": 185, "attended": 40, "showUpRatePct": 21.62, "application": 11, "vipUpgrade": 0, "attendToAppPct": 27.5, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0, "deals": [] },
+    { "runDate": "2026-07-28", "runLabel": "28 Jul 2026", "registered": 194, "attended": 39, "showUpRatePct": 20.10, "application": 18, "vipUpgrade": 2, "attendToAppPct": 46.15, "revenue": 11000, "dealsClosed": 2, "cashFromAds": 11000, "cashFromOrganic": 0,
+      "deals": [
+        { "date": "2026-07-31", "name": "Bruce Notman", "email": "bruce.notman@bigpond.com", "product": "Accelerator", "amount": 6000, "closer": "Laura Fillmann", "mode": "Stripe" },
+        { "date": "2026-07-31", "name": "Bruce Notman", "email": "bruce.notman@bigpond.com", "product": "Accelerator", "amount": 5000, "closer": "Laura Fillmann", "mode": "Stripe" }
+      ]
+    },
+    { "runDate": "2026-08-04", "runLabel": "04 Aug 2026", "registered": 178, "attended": 53, "showUpRatePct": 29.78, "application": 17, "vipUpgrade": 0, "attendToAppPct": 32.08, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0, "deals": [] },
+    { "runDate": "2026-08-11", "runLabel": "11 Aug 2026", "registered": 227, "attended": 44, "showUpRatePct": 19.38, "application": 15, "vipUpgrade": 0, "attendToAppPct": 34.09, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0, "deals": [] },
+    { "runDate": "2026-08-18", "runLabel": "18 Aug 2026", "registered": 51, "attended": 0, "showUpRatePct": null, "application": 2, "vipUpgrade": 0, "attendToAppPct": null, "revenue": 0, "dealsClosed": 0, "cashFromAds": 0, "cashFromOrganic": 0, "deals": [] }
   ],
   "adSpendDaily": [
     { "date": "2026-07-13", "spend": 1040.06, "impressions": 21932, "linkClicks": 313, "leads": 26 },
