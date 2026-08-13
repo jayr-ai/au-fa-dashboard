@@ -5,13 +5,30 @@
     "masterclassRunsWindow": "2026-07-16 to 2026-08-18 (6 most recent runs on the current tag scheme)",
     "adSpendWindow": "2026-07-13 to 2026-08-12 (31 days)",
     "notFilled": [
-      "deals_closed, cash_from_vip, cash_from_ads, cash_from_organic per run — needs opportunity-stage + CONSOLIDATED sheet cross-reference",
-      "funnel stage counts (Registered→Close Won) per run — the compound tag+pipelineStage filter GHL's search API needs isn't supported (verified: nested filters on opportunities.pipelineStageId silently return 0 even for populous stages); bulk-fetching contacts to tally client-side would mean pulling 500+ heavy records, impractical for a single session — needs Apps Script (no context-window limit) instead",
+      "deals_closed, cash_from_vip, cash_from_ads, cash_from_organic per run — needs opportunity-stage counts scoped to one run's registrants + CONSOLIDATED sheet cross-reference",
+      "funnel stage counts (Registered→Close Won) split per masterclass run — the compound tag+pipelineStage filter on GHL's contact-search API isn't supported (verified: nested filters on opportunities.pipelineStageId silently return 0 even for populous stages). The current, all-time, all-runs-combined snapshot IS available though — see funnelSnapshot below, pulled via the separate /opportunities/search endpoint which takes pipelineId+pipelineStageId directly and isn't affected by that bug.",
       "Cash Collected — needs CONSOLIDATED sheet API access, browser-based CSV export was blocked",
       "Charlie/Dialer/Outbound Bookings — needs the separate 'FA Marketing Funnel Dashboard' sheet URL"
     ],
     "attributionSampleNote": "Sampled 17 real contacts across recent runs: attributionSource.utmMedium was 'paid' or 'paid_social' for 11/17 (~65%). Directional only, not a full census — do not treat as an exact split.",
-    "vipUpgradeNote": "Counted via the 'fdr masterclass - vip upgrade' tag (compound filter with each run's registered tag). This tag is legacy-named but still gets applied — however tags persist across re-registrations, so a contact who upgraded on an earlier run and later re-registered for a newer one will show as a VIP upgrade on the newer run too. Small numbers (mostly 0-2 per run) so this rarely matters, but it's not a guaranteed per-run-only count."
+    "vipUpgradeNote": "Counted via the 'fdr masterclass - vip upgrade' tag (compound filter with each run's registered tag). This tag is legacy-named but still gets applied — however tags persist across re-registrations, so a contact who upgraded on an earlier run and later re-registers for a newer one will show as a VIP upgrade on the newer run too. Small numbers (mostly 0-2 per run) so this rarely matters, but it's not a guaranteed per-run-only count.",
+    "funnelSnapshotNote": "Current opportunity count per stage across the entire Masterclass Pipeline (djiSwm3hJsW7Rv9tyqSl), all-time, all runs combined — pulled live via GHL's /opportunities/search endpoint (pipelineId+pipelineStageId params, status=all). Not scoped to any single run and not affected by the date selector — there's no supported way to split it per run (see notFilled above), so this is the full-pipeline snapshot instead."
+  },
+  "funnelSnapshot": {
+    "generatedAt": "2026-08-13T06:20:00Z",
+    "stages": [
+      { "stage": "Registered", "count": 4424 },
+      { "stage": "VIP Upgrade", "count": 17 },
+      { "stage": "Replay Optin", "count": 359 },
+      { "stage": "Appointment Booked", "count": 15 },
+      { "stage": "No-Showed", "count": 245 },
+      { "stage": "Bad Fit", "count": 22 },
+      { "stage": "Call Cancelled / Not Interested", "count": 230 },
+      { "stage": "Call Cancelled / Need To Reschedule", "count": 136 },
+      { "stage": "Pending Sale", "count": 6 },
+      { "stage": "Close Lost", "count": 339 },
+      { "stage": "Close Won", "count": 71 }
+    ]
   },
   "masterclassRuns": [
     { "runDate": "2026-07-16", "runLabel": "16 Jul 2026", "registered": 85, "attended": 25, "showUpRatePct": 29.41, "application": 9, "vipUpgrade": 0, "attendToAppPct": 36.0 },
