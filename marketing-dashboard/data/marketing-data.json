@@ -37,11 +37,21 @@
       "registered": 163,
       "attended": 90,
       "showUpRatePct": 55.21,
+      "application": 16,
+      "attendToAppPct": 17.78,
       "dealsClosed": 6,
       "revenue": 26033.33,
       "cashFromAds": 0,
       "cashFromOrganic": 26033.33,
-      "sourceLabel": "One-off collab event — GHL 'crypto fa masterclass - registered/attended' tags + BigQuery revenue_transactions join, see README"
+      "sourceLabel": "One-off collab event, no dedicated Meta ad spend identified (appears organic/partner-driven) — GHL 'crypto fa masterclass - registered/attended' tags + BigQuery revenue_transactions join, see README",
+      "deals": [
+        { "date": "2026-08-06", "name": "Liezel | Mark Van Der Merwe", "email": "liezelvdm@hotmail.com", "product": "Accelerator", "amount": 1000, "closer": "Shane Dacosta", "mode": "Stripe" },
+        { "date": "2026-08-07", "name": "Michelle Miller", "email": "deshell7@protonmail.com", "product": "Accelerator", "amount": 5500, "closer": "Shane Dacosta", "mode": "Stripe" },
+        { "date": "2026-08-10", "name": "Lynne Alexander", "email": "alexanderlynne12@gmail.com", "product": "Accelerator", "amount": 1000, "closer": "Stacie Skehan", "mode": "Stripe" },
+        { "date": "2026-08-10", "name": "Ben Miners", "email": "glenminers@gmail.com", "product": "Accelerator", "amount": 3533.33, "closer": "Stacie Skehan", "mode": "Stripe" },
+        { "date": "2026-08-10", "name": "Kerin Finch", "email": "finc82@hotmail.com", "product": "Accelerator", "amount": 5000, "closer": "Shane Dacosta", "mode": "Stripe" },
+        { "date": "2026-08-11", "name": "Lynne Alexander", "email": "alexanderlynne12@gmail.com", "product": "Accelerator", "amount": 10000, "closer": "Stacie Skehan", "mode": "Stripe" }
+      ]
     }
   ],
   "masterclassRuns": [
