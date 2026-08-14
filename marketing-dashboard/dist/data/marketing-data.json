@@ -1,0 +1,2169 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-13T00:00:00Z",
+    "source": "One-time live backfill from GoHighLevel (location ZwP47P1XZZ8TSazVZMxc) and Meta Ads (act_1185223312884959) \u2014 not yet on an automated refresh, see README",
+    "masterclassRunsWindow": "2026-05-26 to 2026-08-18 (14 runs on the current reliable tag scheme \u2014 extended from the original 6 backfilled 2026-08-13; runs before 26 May use deprecated tag schemes and are not included, see notFilled)",
+    "adSpendWindow": "2026-05-26 to 2026-08-12 (78 daily rows across a 79-day span \u2014 one gap, 2026-06-15, appears to be a zero/paused-delivery day, not a failed pull)",
+    "notFilled": [
+      "funnel stage counts (Registered\u2192Close Won) split per masterclass run \u2014 the compound tag+pipelineStage filter on GHL's contact-search API isn't supported (verified: nested filters on opportunities.pipelineStageId silently return 0 even for populous stages). The current, all-time, all-runs-combined snapshot IS available though \u2014 see funnelSnapshot below, pulled via the separate /opportunities/search endpoint which takes pipelineId+pipelineStageId directly and isn't affected by that bug.",
+      "Cash Collected on the separate Marketing/Granular View pages \u2014 needs CONSOLIDATED sheet API access, browser-based CSV export was blocked (Masterclass Dashboard's per-run Revenue/Deals Closed/Cash From Ads/Organic ARE solved now, see revenueDataNote \u2014 that used BigQuery's revenue_transactions table instead)",
+      "Charlie/Dialer/Outbound Bookings \u2014 needs the separate 'FA Marketing Funnel Dashboard' sheet URL",
+      "Masterclass runs before 26 May 2026 \u2014 three DIFFERENT, deprecated GHL tag schemes exist covering roughly 25 Feb-21 May 2026 ('fdr masterclass - registered D/M', 'fdr masterclass YYYYMMDD participants', 'new masterclass D/M'). Not backfilled: unverified whether each has a matching 'attended' tag in the same reliable pattern, so the same join methodology can't be assumed safe without checking each scheme individually first. No Masterclass tag data exists at all before 25 Feb 2026 \u2014 nothing to backfill back to January 2026, confirmed by checking the location's full tag list.",
+      "Leads Generated / Cost Per Lead for a few of the newly-added runs' Marketing Performance windows \u2014 Meta's leads metric returns 'Not available' for 11 of the 79 days now covered (mostly 26 May-3 Jun, plus 9 Jun and 12 Jun) \u2014 not a pull failure, the account's lead tracking wasn't returning data yet for that period. Windows that fall entirely inside those days (28 May, 02 Jun, 04 Jun runs) will show 0 leads / $0 cost-per-lead \u2014 that's an honest reflection of unavailable data, not a claim that zero leads were actually generated. Ad Spend/Link Clicks/CTR are real and unaffected for those same days."
+    ],
+    "attributionSampleNote": "Sampled 17 real contacts across recent runs: attributionSource.utmMedium was 'paid' or 'paid_social' for 11/17 (~65%). Directional only, not a full census \u2014 do not treat as an exact split.",
+    "vipUpgradeNote": "Counted via the 'fdr masterclass - vip upgrade' tag (compound filter with each run's registered tag). This tag is legacy-named but still gets applied \u2014 however tags persist across re-registrations, so a contact who upgraded on an earlier run and later re-registers for a newer one will show as a VIP upgrade on the newer run too. Small numbers (mostly 0-2 per run) so this rarely matters, but it's not a guaranteed per-run-only count.",
+    "funnelSnapshotNote": "Current opportunity count per stage across the entire Masterclass Pipeline (djiSwm3hJsW7Rv9tyqSl), all-time, all runs combined \u2014 pulled live via GHL's /opportunities/search endpoint (pipelineId+pipelineStageId params, status=all). Not scoped to any single run and not affected by the date selector \u2014 there's no supported way to split it per run (see notFilled above), so this is the full-pipeline snapshot instead.",
+    "revenueDataNote": "Revenue/Deals Closed/Cash From Ads/Cash From Organic, pulled 2026-08-13T09:47:00Z, refined 2026-08-13T18:00:00Z per JV's rules: for each run, fetched the run's registered-contact emails from GHL, then joined by email against BigQuery jv-data-warehouse.freedom_academy_au.revenue_transactions (the same table backing the separate FA Revenue Dashboard \u2014 698 rows, $795,669.01 total, synced from the CONSOLIDATED Google Sheet), FILTERED to product IN ('Accelerator','Foundation') AND closer IS NOT NULL (JV: only these products count as Masterclass-contributed revenue; unassigned-closer rows are excluded; no 'Foundation' rows exist in the data yet, filter is ready for when they do) \u2014 218 of 698 transactions / $684,489.01 pass this filter. A transaction only counts toward a run if its date is on/after that run's date \u2014 this excludes matched buyers' pre-existing purchases from before they ever registered, which would otherwise misattribute old revenue to a run that didn't generate it. Cash From Ads vs Organic uses the same contact-level attributionSource.utmMedium signal as everything else in this app. Result: only 28 Jul 2026 has real matched revenue ($11,000, 2 deals, both Bruce Notman \u2014 a $6,000 and a $5,000 Accelerator purchase 3 days after the run); the other 5 runs are genuinely $0 under this filter (the earlier $97 'per run' figures on 4 Aug/11 Aug were '3D HT Closer Challenge' purchases, correctly excluded now \u2014 that product isn't Accelerator/Foundation). Caveats: (1) registered tags persist across re-registrations \u2014 a contact registered for two different runs would count toward both, none observed this pull; (2) most of the $795K total revenue (~$658K after the product filter) doesn't match any of the 6 runs' registrants \u2014 investigated three Aug 7-11 examples (alexanderlynne12@gmail.com, finc82@hotmail.com, bennyam4646@gmail.com) by hand: all three came through a SEPARATE, untracked Masterclass funnel ('Crypto Collective X FA Masterclass', tags 'crypto fa masterclass - registered/attended', not the per-date 'masterclass - registered D/M' scheme the 6 tracked runs use) \u2014 see oneOffEvents below, that funnel is now tracked separately. EXTENDED 2026-08-13T21:50:00Z to cover 8 more runs (26 May-24 Jun 2026, same tag scheme, same Accelerator/Foundation+closer+date-guard join). One real cross-run duplicate surfaced in this extension (previously only a theoretical caveat): Bruce Notman is tagged registered for BOTH 24 Jun (where he never attended \u2014 0 attended that day) AND 28 Jul (where he did attend and apply) \u2014 his $6,000+$5,000 Accelerator purchase on 31 Jul lands in both runs' revenue totals as a result. Left as-is per the established per-run join logic rather than guessing which run 'deserves' the credit \u2014 but do not sum revenue across all runs and expect it to reconcile to a clean total; this $11,000 is double-counted between 24 Jun and 28 Jul specifically.",
+    "oneOffEventsNote": "JV's manager flagged that co-branded/collab events like 'Crypto x FA Masterclass' happen one-off, not on the recurring weekly schedule, and asked for them tracked separately rather than folded into the date selector above (they have no single 'run date' \u2014 registrations trickle in over an open window, tagged generically e.g. 'crypto fa masterclass - registered'/'attended' with no per-date suffix, confirmed via GHL's full location tag list \u2014 only one such collab scheme exists right now). Same computation as the tracked runs: registered/attended counts via GHL tag search; revenue/deals/cash-split via the same BigQuery join (Accelerator/Foundation + assigned closer + transaction date on/after each individual contact's registration date, verified by hand for all 6 matched transactions here \u2014 no pre-existing-customer leakage). Cash From Ads is $0 for Crypto x FA Masterclass because none of its matched buyers show attributionSource.utmMedium='paid' \u2014 this collab appears to be organically/community-driven (a partner audience), not Meta-ads-driven, so no Ad Spend/ROAS metric is shown for it; that's a real absence, not unfetched data. Pulled 2026-08-13T18:30:00Z.",
+    "cashAttributionNote": "Revenue_transactions rows (698 total, all products, not filtered to Accelerator/Foundation), joined by email against GHL's attributionSource.utmMedium (same paid/organic rule used throughout this app: utmMedium='paid' or 'paid_social' = paid, otherwise organic), aggregated to daily grain so the Weekly/Monthly/Custom period picker can sum any range client-side exactly like adSpendDaily already does. Results: 489 paid-channel txns ($440,421 total), 209 organic-channel txns ($355,248 total), 183 unique dates spanning 2025-11-06 to 2026-08-11. Includes 3 emails not resolved by GHL contact lookup (nick.b.jones@hotmail.com, vonfis88@gmail.com, riandi@gmail.com \u2014 counted as organic). Backfill completed 2026-08-14."
+  },
+  "funnelSnapshot": {
+    "generatedAt": "2026-08-13T06:20:00Z",
+    "stages": [
+      {
+        "stage": "Registered",
+        "count": 4424
+      },
+      {
+        "stage": "VIP Upgrade",
+        "count": 17
+      },
+      {
+        "stage": "Replay Optin",
+        "count": 359
+      },
+      {
+        "stage": "Appointment Booked",
+        "count": 15
+      },
+      {
+        "stage": "No-Showed",
+        "count": 245
+      },
+      {
+        "stage": "Bad Fit",
+        "count": 22
+      },
+      {
+        "stage": "Call Cancelled / Not Interested",
+        "count": 230
+      },
+      {
+        "stage": "Call Cancelled / Need To Reschedule",
+        "count": 136
+      },
+      {
+        "stage": "Pending Sale",
+        "count": 6
+      },
+      {
+        "stage": "Close Lost",
+        "count": 339
+      },
+      {
+        "stage": "Close Won",
+        "count": 71
+      }
+    ]
+  },
+  "cashAttributionDaily": [
+    {
+      "date": "2025-11-06",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 9700.0
+    },
+    {
+      "date": "2025-11-15",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 9997.0
+    },
+    {
+      "date": "2026-01-02",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-01-12",
+      "cashFromAds": 7.0,
+      "cashFromOrganic": 158.0
+    },
+    {
+      "date": "2026-01-13",
+      "cashFromAds": 160.0,
+      "cashFromOrganic": 14.0
+    },
+    {
+      "date": "2026-01-14",
+      "cashFromAds": 7.0,
+      "cashFromOrganic": 14.0
+    },
+    {
+      "date": "2026-01-15",
+      "cashFromAds": 42.0,
+      "cashFromOrganic": 521.0
+    },
+    {
+      "date": "2026-01-16",
+      "cashFromAds": 236.0,
+      "cashFromOrganic": 7.0
+    },
+    {
+      "date": "2026-01-17",
+      "cashFromAds": 153.0,
+      "cashFromOrganic": 7.0
+    },
+    {
+      "date": "2026-01-18",
+      "cashFromAds": 312.0,
+      "cashFromOrganic": 7.0
+    },
+    {
+      "date": "2026-01-19",
+      "cashFromAds": 129.0,
+      "cashFromOrganic": 14.0
+    },
+    {
+      "date": "2026-01-20",
+      "cashFromAds": 35.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-01-21",
+      "cashFromAds": 207.0,
+      "cashFromOrganic": 7.0
+    },
+    {
+      "date": "2026-01-22",
+      "cashFromAds": 96.0,
+      "cashFromOrganic": 28.0
+    },
+    {
+      "date": "2026-01-23",
+      "cashFromAds": 153.0,
+      "cashFromOrganic": 111.0
+    },
+    {
+      "date": "2026-01-24",
+      "cashFromAds": 139.0,
+      "cashFromOrganic": 104.0
+    },
+    {
+      "date": "2026-01-25",
+      "cashFromAds": 172.0,
+      "cashFromOrganic": 104.0
+    },
+    {
+      "date": "2026-01-26",
+      "cashFromAds": 165.0,
+      "cashFromOrganic": 118.0
+    },
+    {
+      "date": "2026-01-27",
+      "cashFromAds": 132.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-01-28",
+      "cashFromAds": 236.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-01-29",
+      "cashFromAds": 89.0,
+      "cashFromOrganic": 312.0
+    },
+    {
+      "date": "2026-01-30",
+      "cashFromAds": 21.0,
+      "cashFromOrganic": 111.0
+    },
+    {
+      "date": "2026-01-31",
+      "cashFromAds": 236.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-01",
+      "cashFromAds": 21.0,
+      "cashFromOrganic": 97.0
+    },
+    {
+      "date": "2026-02-02",
+      "cashFromAds": 54.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-06",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 2500.0
+    },
+    {
+      "date": "2026-02-07",
+      "cashFromAds": 25500.0,
+      "cashFromOrganic": 6000.0
+    },
+    {
+      "date": "2026-02-08",
+      "cashFromAds": 500.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-09",
+      "cashFromAds": 2050.0,
+      "cashFromOrganic": 9000.0
+    },
+    {
+      "date": "2026-02-10",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 8250.0
+    },
+    {
+      "date": "2026-02-12",
+      "cashFromAds": 7000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-13",
+      "cashFromAds": 500.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-14",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 8000.0
+    },
+    {
+      "date": "2026-02-15",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 500.0
+    },
+    {
+      "date": "2026-02-20",
+      "cashFromAds": 50.0,
+      "cashFromOrganic": 147.0
+    },
+    {
+      "date": "2026-02-21",
+      "cashFromAds": 97.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-22",
+      "cashFromAds": 194.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-23",
+      "cashFromAds": 147.0,
+      "cashFromOrganic": 291.0
+    },
+    {
+      "date": "2026-02-24",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 47.0
+    },
+    {
+      "date": "2026-02-25",
+      "cashFromAds": 250.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-02-26",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 250.0
+    },
+    {
+      "date": "2026-02-28",
+      "cashFromAds": 97.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-01",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 694.0
+    },
+    {
+      "date": "2026-03-02",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 550.0
+    },
+    {
+      "date": "2026-03-04",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 150.0
+    },
+    {
+      "date": "2026-03-05",
+      "cashFromAds": 144.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-06",
+      "cashFromAds": 344.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-07",
+      "cashFromAds": 3000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-08",
+      "cashFromAds": 47.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-10",
+      "cashFromAds": 597.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-11",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 194.0
+    },
+    {
+      "date": "2026-03-12",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 100.0
+    },
+    {
+      "date": "2026-03-13",
+      "cashFromAds": 47.0,
+      "cashFromOrganic": 2200.0
+    },
+    {
+      "date": "2026-03-16",
+      "cashFromAds": 1100.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-17",
+      "cashFromAds": 97.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-18",
+      "cashFromAds": 194.0,
+      "cashFromOrganic": 1194.0
+    },
+    {
+      "date": "2026-03-19",
+      "cashFromAds": 95.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-20",
+      "cashFromAds": 3500.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-21",
+      "cashFromAds": 600.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-03-23",
+      "cashFromAds": 5250.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-25",
+      "cashFromAds": 4000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-26",
+      "cashFromAds": 597.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-27",
+      "cashFromAds": 2100.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-03-30",
+      "cashFromAds": 250.0,
+      "cashFromOrganic": 2000.0
+    },
+    {
+      "date": "2026-03-31",
+      "cashFromAds": 2500.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-01",
+      "cashFromAds": 400.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-02",
+      "cashFromAds": 3525.0,
+      "cashFromOrganic": 200.0
+    },
+    {
+      "date": "2026-04-03",
+      "cashFromAds": 47.0,
+      "cashFromOrganic": 500.0
+    },
+    {
+      "date": "2026-04-04",
+      "cashFromAds": 1297.0,
+      "cashFromOrganic": 10750.0
+    },
+    {
+      "date": "2026-04-07",
+      "cashFromAds": 347.0,
+      "cashFromOrganic": 500.0
+    },
+    {
+      "date": "2026-04-08",
+      "cashFromAds": 22000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-09",
+      "cashFromAds": 1700.0,
+      "cashFromOrganic": 1600.0
+    },
+    {
+      "date": "2026-04-10",
+      "cashFromAds": 150.0,
+      "cashFromOrganic": 21450.0
+    },
+    {
+      "date": "2026-04-11",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 50.0
+    },
+    {
+      "date": "2026-04-13",
+      "cashFromAds": 1097.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-14",
+      "cashFromAds": 100.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-15",
+      "cashFromAds": 1510.0,
+      "cashFromOrganic": 500.0
+    },
+    {
+      "date": "2026-04-16",
+      "cashFromAds": 1520.0,
+      "cashFromOrganic": 5750.0
+    },
+    {
+      "date": "2026-04-17",
+      "cashFromAds": 11647.0,
+      "cashFromOrganic": 9000.0
+    },
+    {
+      "date": "2026-04-18",
+      "cashFromAds": 11750.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-19",
+      "cashFromAds": 147.0,
+      "cashFromOrganic": 50.0
+    },
+    {
+      "date": "2026-04-20",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 6950.0
+    },
+    {
+      "date": "2026-04-21",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 10950.0
+    },
+    {
+      "date": "2026-04-22",
+      "cashFromAds": 3097.0,
+      "cashFromOrganic": 100.0
+    },
+    {
+      "date": "2026-04-23",
+      "cashFromAds": 5502.0,
+      "cashFromOrganic": 97.0
+    },
+    {
+      "date": "2026-04-24",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-25",
+      "cashFromAds": 22000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-26",
+      "cashFromAds": 950.0,
+      "cashFromOrganic": 194.0
+    },
+    {
+      "date": "2026-04-27",
+      "cashFromAds": 127.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-04-28",
+      "cashFromAds": 10000.0,
+      "cashFromOrganic": 194.0
+    },
+    {
+      "date": "2026-04-29",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 4097.0
+    },
+    {
+      "date": "2026-04-30",
+      "cashFromAds": 6098.0,
+      "cashFromOrganic": 8030.0
+    },
+    {
+      "date": "2026-05-01",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-02",
+      "cashFromAds": 11000.0,
+      "cashFromOrganic": 144.0
+    },
+    {
+      "date": "2026-05-03",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 20900.0
+    },
+    {
+      "date": "2026-05-04",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 100.0
+    },
+    {
+      "date": "2026-05-05",
+      "cashFromAds": 247.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-06",
+      "cashFromAds": 11044.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-07",
+      "cashFromAds": 47.0,
+      "cashFromOrganic": 400.0
+    },
+    {
+      "date": "2026-05-08",
+      "cashFromAds": 94.0,
+      "cashFromOrganic": 10600.0
+    },
+    {
+      "date": "2026-05-09",
+      "cashFromAds": 2647.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-10",
+      "cashFromAds": 1644.0,
+      "cashFromOrganic": 1100.0
+    },
+    {
+      "date": "2026-05-11",
+      "cashFromAds": 97.0,
+      "cashFromOrganic": 550.0
+    },
+    {
+      "date": "2026-05-13",
+      "cashFromAds": 1700.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-14",
+      "cashFromAds": 2091.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-15",
+      "cashFromAds": 1397.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-05-16",
+      "cashFromAds": 10700.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-17",
+      "cashFromAds": 194.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-18",
+      "cashFromAds": 510.0,
+      "cashFromOrganic": 550.0
+    },
+    {
+      "date": "2026-05-19",
+      "cashFromAds": 1097.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-20",
+      "cashFromAds": 400.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-21",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 97.0
+    },
+    {
+      "date": "2026-05-22",
+      "cashFromAds": 2097.0,
+      "cashFromOrganic": 97.0
+    },
+    {
+      "date": "2026-05-23",
+      "cashFromAds": 11847.0,
+      "cashFromOrganic": 550.0
+    },
+    {
+      "date": "2026-05-26",
+      "cashFromAds": 18597.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-27",
+      "cashFromAds": 10000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-28",
+      "cashFromAds": 11000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-05-29",
+      "cashFromAds": 2247.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-05-30",
+      "cashFromAds": 12094.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-05-31",
+      "cashFromAds": 97.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-01",
+      "cashFromAds": 1.0,
+      "cashFromOrganic": 300.0
+    },
+    {
+      "date": "2026-06-02",
+      "cashFromAds": 11097.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-03",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-04",
+      "cashFromAds": 47.0,
+      "cashFromOrganic": 11000.0
+    },
+    {
+      "date": "2026-06-05",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 11500.0
+    },
+    {
+      "date": "2026-06-06",
+      "cashFromAds": 2550.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-07",
+      "cashFromAds": 1.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-08",
+      "cashFromAds": 6390.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-06-09",
+      "cashFromAds": 2401.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-06-10",
+      "cashFromAds": 2597.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-11",
+      "cashFromAds": 400.0,
+      "cashFromOrganic": 1550.0
+    },
+    {
+      "date": "2026-06-12",
+      "cashFromAds": 12210.0,
+      "cashFromOrganic": 11100.0
+    },
+    {
+      "date": "2026-06-13",
+      "cashFromAds": 1557.0,
+      "cashFromOrganic": 12100.0
+    },
+    {
+      "date": "2026-06-14",
+      "cashFromAds": 1050.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-15",
+      "cashFromAds": 300.0,
+      "cashFromOrganic": 250.0
+    },
+    {
+      "date": "2026-06-16",
+      "cashFromAds": 50.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-17",
+      "cashFromAds": 200.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-18",
+      "cashFromAds": 15350.0,
+      "cashFromOrganic": 550.0
+    },
+    {
+      "date": "2026-06-19",
+      "cashFromAds": 60.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-06-20",
+      "cashFromAds": 12244.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-21",
+      "cashFromAds": 500.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-06-22",
+      "cashFromAds": 11751.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-23",
+      "cashFromAds": 12063.0,
+      "cashFromOrganic": 550.0
+    },
+    {
+      "date": "2026-06-24",
+      "cashFromAds": 1310.0,
+      "cashFromOrganic": 15973.0
+    },
+    {
+      "date": "2026-06-25",
+      "cashFromAds": 18.0,
+      "cashFromOrganic": 18.0
+    },
+    {
+      "date": "2026-06-26",
+      "cashFromAds": 1306.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-06-27",
+      "cashFromAds": 90.0,
+      "cashFromOrganic": 36.0
+    },
+    {
+      "date": "2026-06-28",
+      "cashFromAds": 36.0,
+      "cashFromOrganic": 27.0
+    },
+    {
+      "date": "2026-06-29",
+      "cashFromAds": 536.0,
+      "cashFromOrganic": 18.0
+    },
+    {
+      "date": "2026-06-30",
+      "cashFromAds": 36.0,
+      "cashFromOrganic": 56.0
+    },
+    {
+      "date": "2026-07-01",
+      "cashFromAds": 1178.0,
+      "cashFromOrganic": 9.0
+    },
+    {
+      "date": "2026-07-02",
+      "cashFromAds": 36.0,
+      "cashFromOrganic": 12100.0
+    },
+    {
+      "date": "2026-07-03",
+      "cashFromAds": 777.0,
+      "cashFromOrganic": 109.0
+    },
+    {
+      "date": "2026-07-04",
+      "cashFromAds": 9.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-05",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 12009.0
+    },
+    {
+      "date": "2026-07-06",
+      "cashFromAds": 350.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-07",
+      "cashFromAds": 11081.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-08",
+      "cashFromAds": 2045.0,
+      "cashFromOrganic": 18.0
+    },
+    {
+      "date": "2026-07-09",
+      "cashFromAds": 41.0,
+      "cashFromOrganic": 1009.0
+    },
+    {
+      "date": "2026-07-10",
+      "cashFromAds": 1583.0,
+      "cashFromOrganic": 18.0
+    },
+    {
+      "date": "2026-07-11",
+      "cashFromAds": 230.0,
+      "cashFromOrganic": 4349.0
+    },
+    {
+      "date": "2026-07-12",
+      "cashFromAds": 106.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-13",
+      "cashFromAds": 11009.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-14",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 11550.0
+    },
+    {
+      "date": "2026-07-16",
+      "cashFromAds": 1100.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-17",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 20.0
+    },
+    {
+      "date": "2026-07-18",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 550.0
+    },
+    {
+      "date": "2026-07-20",
+      "cashFromAds": 30.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-21",
+      "cashFromAds": 100.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-24",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 4840.0
+    },
+    {
+      "date": "2026-07-25",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-26",
+      "cashFromAds": 1950.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-28",
+      "cashFromAds": 550.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-29",
+      "cashFromAds": 10450.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-07-30",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 5000.0
+    },
+    {
+      "date": "2026-07-31",
+      "cashFromAds": 11000.0,
+      "cashFromOrganic": 500.0
+    },
+    {
+      "date": "2026-08-01",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 2666.68
+    },
+    {
+      "date": "2026-08-03",
+      "cashFromAds": 97.0,
+      "cashFromOrganic": 1100.0
+    },
+    {
+      "date": "2026-08-06",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 3294.0
+    },
+    {
+      "date": "2026-08-07",
+      "cashFromAds": 1000.0,
+      "cashFromOrganic": 21900.0
+    },
+    {
+      "date": "2026-08-08",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 1000.0
+    },
+    {
+      "date": "2026-08-10",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 9533.33
+    },
+    {
+      "date": "2026-08-11",
+      "cashFromAds": 0.0,
+      "cashFromOrganic": 10097.0
+    }
+  ],
+  "oneOffEvents": [
+    {
+      "name": "Crypto x FA Masterclass",
+      "registered": 163,
+      "attended": 90,
+      "showUpRatePct": 55.21,
+      "application": 16,
+      "attendToAppPct": 17.78,
+      "dealsClosed": 6,
+      "revenue": 26033.33,
+      "cashFromAds": 0,
+      "cashFromOrganic": 26033.33,
+      "sourceLabel": "One-off collab event, no dedicated Meta ad spend identified (appears organic/partner-driven) \u2014 GHL 'crypto fa masterclass - registered/attended' tags + BigQuery revenue_transactions join, see README",
+      "deals": [
+        {
+          "date": "2026-08-06",
+          "name": "Liezel | Mark Van Der Merwe",
+          "email": "liezelvdm@hotmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-08-07",
+          "name": "Michelle Miller",
+          "email": "deshell7@protonmail.com",
+          "product": "Accelerator",
+          "amount": 5500,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-08-10",
+          "name": "Lynne Alexander",
+          "email": "alexanderlynne12@gmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-08-10",
+          "name": "Ben Miners",
+          "email": "glenminers@gmail.com",
+          "product": "Accelerator",
+          "amount": 3533.33,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-08-10",
+          "name": "Kerin Finch",
+          "email": "finc82@hotmail.com",
+          "product": "Accelerator",
+          "amount": 5000,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-08-11",
+          "name": "Lynne Alexander",
+          "email": "alexanderlynne12@gmail.com",
+          "product": "Accelerator",
+          "amount": 10000,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        }
+      ]
+    }
+  ],
+  "masterclassRuns": [
+    {
+      "runDate": "2026-05-26",
+      "runLabel": "26 May 2026",
+      "registered": 226,
+      "attended": 41,
+      "showUpRatePct": 18.14,
+      "application": 2,
+      "vipUpgrade": 0,
+      "attendToAppPct": 4.88,
+      "revenue": 24050,
+      "dealsClosed": 5,
+      "cashFromAds": 12050,
+      "cashFromOrganic": 12000,
+      "deals": [
+        {
+          "date": "2026-05-29",
+          "name": "Vance Ripi",
+          "email": "vance_ripi@hotmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Nelson Lopera",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-04",
+          "name": "Vance Johnny Ripi",
+          "email": "vance_ripi@hotmail.com",
+          "product": "Accelerator",
+          "amount": 11000,
+          "closer": "Nelson Lopera",
+          "mode": "Finance"
+        },
+        {
+          "date": "2026-06-09",
+          "name": "Melissa Andres",
+          "email": "melissajoysandres@yahoo.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-12",
+          "name": "Melissa Andres",
+          "email": "melissajoysandres@yahoo.com",
+          "product": "Accelerator",
+          "amount": 11000,
+          "closer": "Stacie Skehan",
+          "mode": "Finance"
+        },
+        {
+          "date": "2026-06-20",
+          "name": "Andrea Fallon",
+          "email": "andreafallon83@gmail.com",
+          "product": "Accelerator",
+          "amount": 50,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-05-28",
+      "runLabel": "28 May 2026",
+      "registered": 182,
+      "attended": 27,
+      "showUpRatePct": 14.84,
+      "application": 8,
+      "vipUpgrade": 0,
+      "attendToAppPct": 29.63,
+      "revenue": 3230,
+      "dealsClosed": 6,
+      "cashFromAds": 3230,
+      "cashFromOrganic": 0,
+      "deals": [
+        {
+          "date": "2026-05-29",
+          "name": "Matthew Healey",
+          "email": "mattezio@hotmail.com",
+          "product": "Accelerator",
+          "amount": 500,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-05-29",
+          "name": "CATHERINE RIDGE",
+          "email": "catindeep@outlook.com",
+          "product": "Accelerator",
+          "amount": 200,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-18",
+          "name": "Liridona Calaki",
+          "email": "dona.calaki@outlook.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-18",
+          "name": "Liridona Calaki",
+          "email": "dona.calaki@outlook.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Shane Dacosta",
+          "mode": "EFT"
+        },
+        {
+          "date": "2026-06-29",
+          "name": "Steve Watson",
+          "email": "info@wattoswondrouscreations.com.au",
+          "product": "Accelerator",
+          "amount": 500,
+          "closer": "Natalie Khoury",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-07-20",
+          "name": "Ally Tarr",
+          "email": "allytarr1985@gmail.com",
+          "product": "Accelerator",
+          "amount": 30,
+          "closer": "Laura Fillmann",
+          "mode": "Stripe"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-06-02",
+      "runLabel": "02 Jun 2026",
+      "registered": 204,
+      "attended": 27,
+      "showUpRatePct": 13.24,
+      "application": 6,
+      "vipUpgrade": 0,
+      "attendToAppPct": 22.22,
+      "revenue": 4100,
+      "dealsClosed": 5,
+      "cashFromAds": 4100,
+      "cashFromOrganic": 0,
+      "deals": [
+        {
+          "date": "2026-06-06",
+          "name": "Tam Nguyen",
+          "email": "mtam2812@yahoo.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-24",
+          "name": "Aukje Vermaat",
+          "email": "aukjevermaat@gmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Nelson Lopera",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-07-21",
+          "name": "Johan Erasmus",
+          "email": "aukjevermaat@gmail.com",
+          "product": "Accelerator",
+          "amount": 100,
+          "closer": "Nelson Lopera",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-07-25",
+          "name": "Rheuben Ariki Boutet-Manning",
+          "email": "aukjevermaat@gmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Nelson Lopera",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-07-26",
+          "name": "Aukje Vermaat",
+          "email": "aukjevermaat@gmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Nelson Lopera",
+          "mode": "Stripe"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-06-04",
+      "runLabel": "04 Jun 2026",
+      "registered": 146,
+      "attended": 12,
+      "showUpRatePct": 8.22,
+      "application": 5,
+      "vipUpgrade": 0,
+      "attendToAppPct": 41.67,
+      "revenue": 12450,
+      "dealsClosed": 4,
+      "cashFromAds": 12450,
+      "cashFromOrganic": 0,
+      "deals": [
+        {
+          "date": "2026-06-06",
+          "name": "Sameer Imran",
+          "email": "sameerimrvn0@gmail.com",
+          "product": "Accelerator",
+          "amount": 50,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-09",
+          "name": "Madison Wocnker",
+          "email": "mwockner15@hotmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-13",
+          "name": "Yani Kantzakis",
+          "email": "yanikantzakis728@gmail.com",
+          "product": "Accelerator",
+          "amount": 400,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-23",
+          "name": "Madi Wockner",
+          "email": "mwockner15@hotmail.com",
+          "product": "Accelerator",
+          "amount": 11000,
+          "closer": "Vanessa Caruso",
+          "mode": "Finance"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-06-09",
+      "runLabel": "09 Jun 2026",
+      "registered": 209,
+      "attended": 33,
+      "showUpRatePct": 15.79,
+      "application": 8,
+      "vipUpgrade": 0,
+      "attendToAppPct": 24.24,
+      "revenue": 25500,
+      "dealsClosed": 7,
+      "cashFromAds": 25400,
+      "cashFromOrganic": 100,
+      "deals": [
+        {
+          "date": "2026-06-10",
+          "name": "Lila Kelly",
+          "email": "lilakelly7@icloud.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-11",
+          "name": "Gloria Edwards",
+          "email": "gedwards11@gmail.com",
+          "product": "Accelerator",
+          "amount": 400,
+          "closer": "Shane Dacosta",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-12",
+          "name": "Isabel Wrayde ",
+          "email": "isabelwrayde1@gmail.com",
+          "product": "Accelerator",
+          "amount": 100,
+          "closer": "Natalie Khoury",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-17",
+          "name": "Mylee Schneider",
+          "email": "myleeschneider33@gmail.com",
+          "product": "Accelerator",
+          "amount": 200,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-18",
+          "name": "Mylee Schneider",
+          "email": "myleeschneider33@gmail.com",
+          "product": "Accelerator",
+          "amount": 11800,
+          "closer": "Vanessa Caruso",
+          "mode": "Finance"
+        },
+        {
+          "date": "2026-06-21",
+          "name": "Julie Meek",
+          "email": "littlelyo48@gmail.com",
+          "product": "Accelerator",
+          "amount": 500,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-22",
+          "name": "Julie Meek / Judy S",
+          "email": "littlelyo48@gmail.com",
+          "product": "Accelerator",
+          "amount": 11500,
+          "closer": "Stacie Skehan",
+          "mode": "Finance"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-06-11",
+      "runLabel": "11 Jun 2026",
+      "registered": 178,
+      "attended": 20,
+      "showUpRatePct": 11.24,
+      "application": 7,
+      "vipUpgrade": 0,
+      "attendToAppPct": 35.0,
+      "revenue": 2350,
+      "dealsClosed": 6,
+      "cashFromAds": 2100,
+      "cashFromOrganic": 250,
+      "deals": [
+        {
+          "date": "2026-06-12",
+          "name": "Rachel Coffey",
+          "email": "rachelcoffey171@gmail.com",
+          "product": "Accelerator",
+          "amount": 200,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-13",
+          "name": "Charbe Said",
+          "email": "ccssaid7979@gmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-13",
+          "name": "Gregory McAuliffe",
+          "email": "gmcauliffe08@outlook.com",
+          "product": "Accelerator",
+          "amount": 100,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-14",
+          "name": "Charbe Said",
+          "email": "ccssaid7979@gmail.com",
+          "product": "Accelerator",
+          "amount": 500,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-15",
+          "name": "Warren Lee",
+          "email": "warrenleeau@gmail.com",
+          "product": "Accelerator",
+          "amount": 250,
+          "closer": "Stacie Skehan",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-06-15",
+          "name": "Tayne Riley",
+          "email": "tayneriley3@gmail.com",
+          "product": "Accelerator",
+          "amount": 300,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-06-17",
+      "runLabel": "17 Jun 2026",
+      "registered": 97,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "application": 0,
+      "vipUpgrade": 0,
+      "attendToAppPct": null,
+      "revenue": 10,
+      "dealsClosed": 1,
+      "cashFromAds": 10,
+      "cashFromOrganic": 0,
+      "deals": [
+        {
+          "date": "2026-06-19",
+          "name": "Alvin Hawkins ",
+          "email": "alvin.hawkins@windowslive.com",
+          "product": "Accelerator",
+          "amount": 10,
+          "closer": "Vanessa Caruso",
+          "mode": "Stripe"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-06-24",
+      "runLabel": "24 Jun 2026",
+      "registered": 6,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "application": 1,
+      "vipUpgrade": 0,
+      "attendToAppPct": null,
+      "revenue": 11000,
+      "dealsClosed": 2,
+      "cashFromAds": 11000,
+      "cashFromOrganic": 0,
+      "deals": [
+        {
+          "date": "2026-07-31",
+          "name": "Bruce Notman",
+          "email": "bruce.notman@bigpond.com",
+          "product": "Accelerator",
+          "amount": 6000,
+          "closer": "Laura Fillmann",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-07-31",
+          "name": "Bruce Notman",
+          "email": "bruce.notman@bigpond.com",
+          "product": "Accelerator",
+          "amount": 5000,
+          "closer": "Laura Fillmann",
+          "mode": "Stripe"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-07-16",
+      "runLabel": "16 Jul 2026",
+      "registered": 85,
+      "attended": 25,
+      "showUpRatePct": 29.41,
+      "application": 9,
+      "vipUpgrade": 0,
+      "attendToAppPct": 36.0,
+      "revenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": []
+    },
+    {
+      "runDate": "2026-07-22",
+      "runLabel": "22 Jul 2026",
+      "registered": 185,
+      "attended": 40,
+      "showUpRatePct": 21.62,
+      "application": 11,
+      "vipUpgrade": 0,
+      "attendToAppPct": 27.5,
+      "revenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": []
+    },
+    {
+      "runDate": "2026-07-28",
+      "runLabel": "28 Jul 2026",
+      "registered": 194,
+      "attended": 39,
+      "showUpRatePct": 20.1,
+      "application": 18,
+      "vipUpgrade": 2,
+      "attendToAppPct": 46.15,
+      "revenue": 11000,
+      "dealsClosed": 2,
+      "cashFromAds": 11000,
+      "cashFromOrganic": 0,
+      "deals": [
+        {
+          "date": "2026-07-31",
+          "name": "Bruce Notman",
+          "email": "bruce.notman@bigpond.com",
+          "product": "Accelerator",
+          "amount": 6000,
+          "closer": "Laura Fillmann",
+          "mode": "Stripe"
+        },
+        {
+          "date": "2026-07-31",
+          "name": "Bruce Notman",
+          "email": "bruce.notman@bigpond.com",
+          "product": "Accelerator",
+          "amount": 5000,
+          "closer": "Laura Fillmann",
+          "mode": "Stripe"
+        }
+      ]
+    },
+    {
+      "runDate": "2026-08-04",
+      "runLabel": "04 Aug 2026",
+      "registered": 178,
+      "attended": 53,
+      "showUpRatePct": 29.78,
+      "application": 17,
+      "vipUpgrade": 0,
+      "attendToAppPct": 32.08,
+      "revenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": []
+    },
+    {
+      "runDate": "2026-08-11",
+      "runLabel": "11 Aug 2026",
+      "registered": 227,
+      "attended": 44,
+      "showUpRatePct": 19.38,
+      "application": 15,
+      "vipUpgrade": 0,
+      "attendToAppPct": 34.09,
+      "revenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": []
+    },
+    {
+      "runDate": "2026-08-18",
+      "runLabel": "18 Aug 2026",
+      "registered": 51,
+      "attended": 0,
+      "showUpRatePct": null,
+      "application": 2,
+      "vipUpgrade": 0,
+      "attendToAppPct": null,
+      "revenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": []
+    }
+  ],
+  "adSpendDaily": [
+    {
+      "date": "2026-05-26",
+      "spend": 2312.5,
+      "impressions": 48543,
+      "linkClicks": 868,
+      "leads": 0
+    },
+    {
+      "date": "2026-05-27",
+      "spend": 1919.1,
+      "impressions": 37672,
+      "linkClicks": 611,
+      "leads": 0
+    },
+    {
+      "date": "2026-05-28",
+      "spend": 1771.34,
+      "impressions": 32822,
+      "linkClicks": 647,
+      "leads": 0
+    },
+    {
+      "date": "2026-05-29",
+      "spend": 1598.74,
+      "impressions": 26448,
+      "linkClicks": 531,
+      "leads": 0
+    },
+    {
+      "date": "2026-05-30",
+      "spend": 1367.84,
+      "impressions": 21529,
+      "linkClicks": 441,
+      "leads": 0
+    },
+    {
+      "date": "2026-05-31",
+      "spend": 1855.7,
+      "impressions": 29779,
+      "linkClicks": 573,
+      "leads": 0
+    },
+    {
+      "date": "2026-06-01",
+      "spend": 1862.51,
+      "impressions": 37612,
+      "linkClicks": 705,
+      "leads": 0
+    },
+    {
+      "date": "2026-06-02",
+      "spend": 1745.38,
+      "impressions": 37111,
+      "linkClicks": 685,
+      "leads": 0
+    },
+    {
+      "date": "2026-06-03",
+      "spend": 1534.34,
+      "impressions": 33937,
+      "linkClicks": 628,
+      "leads": 0
+    },
+    {
+      "date": "2026-06-04",
+      "spend": 1770.15,
+      "impressions": 36436,
+      "linkClicks": 571,
+      "leads": 2
+    },
+    {
+      "date": "2026-06-05",
+      "spend": 1771.04,
+      "impressions": 34443,
+      "linkClicks": 525,
+      "leads": 1
+    },
+    {
+      "date": "2026-06-06",
+      "spend": 1805.05,
+      "impressions": 32725,
+      "linkClicks": 604,
+      "leads": 3
+    },
+    {
+      "date": "2026-06-07",
+      "spend": 2167.76,
+      "impressions": 39338,
+      "linkClicks": 679,
+      "leads": 2
+    },
+    {
+      "date": "2026-06-08",
+      "spend": 2196.92,
+      "impressions": 45547,
+      "linkClicks": 757,
+      "leads": 2
+    },
+    {
+      "date": "2026-06-09",
+      "spend": 2029.0,
+      "impressions": 41949,
+      "linkClicks": 675,
+      "leads": 0
+    },
+    {
+      "date": "2026-06-10",
+      "spend": 2055.37,
+      "impressions": 43106,
+      "linkClicks": 658,
+      "leads": 2
+    },
+    {
+      "date": "2026-06-11",
+      "spend": 1530.6,
+      "impressions": 26729,
+      "linkClicks": 400,
+      "leads": 1
+    },
+    {
+      "date": "2026-06-12",
+      "spend": 1339.98,
+      "impressions": 18711,
+      "linkClicks": 351,
+      "leads": 0
+    },
+    {
+      "date": "2026-06-13",
+      "spend": 1277.63,
+      "impressions": 16771,
+      "linkClicks": 313,
+      "leads": 1
+    },
+    {
+      "date": "2026-06-14",
+      "spend": 616.63,
+      "impressions": 7222,
+      "linkClicks": 129,
+      "leads": 1
+    },
+    {
+      "date": "2026-06-16",
+      "spend": 1416.91,
+      "impressions": 22529,
+      "linkClicks": 267,
+      "leads": 1
+    },
+    {
+      "date": "2026-06-17",
+      "spend": 1706.36,
+      "impressions": 27238,
+      "linkClicks": 417,
+      "leads": 3
+    },
+    {
+      "date": "2026-06-18",
+      "spend": 904.0,
+      "impressions": 12269,
+      "linkClicks": 184,
+      "leads": 6
+    },
+    {
+      "date": "2026-06-19",
+      "spend": 706.83,
+      "impressions": 8406,
+      "linkClicks": 149,
+      "leads": 4
+    },
+    {
+      "date": "2026-06-20",
+      "spend": 1965.67,
+      "impressions": 21606,
+      "linkClicks": 456,
+      "leads": 12
+    },
+    {
+      "date": "2026-06-21",
+      "spend": 2137.11,
+      "impressions": 22859,
+      "linkClicks": 471,
+      "leads": 3
+    },
+    {
+      "date": "2026-06-22",
+      "spend": 1046.47,
+      "impressions": 11127,
+      "linkClicks": 281,
+      "leads": 5
+    },
+    {
+      "date": "2026-06-23",
+      "spend": 1695.76,
+      "impressions": 20751,
+      "linkClicks": 439,
+      "leads": 1
+    },
+    {
+      "date": "2026-06-24",
+      "spend": 2170.59,
+      "impressions": 26057,
+      "linkClicks": 510,
+      "leads": 6
+    },
+    {
+      "date": "2026-06-25",
+      "spend": 2422.38,
+      "impressions": 30933,
+      "linkClicks": 602,
+      "leads": 6
+    },
+    {
+      "date": "2026-06-26",
+      "spend": 2328.13,
+      "impressions": 35009,
+      "linkClicks": 570,
+      "leads": 11
+    },
+    {
+      "date": "2026-06-27",
+      "spend": 3031.35,
+      "impressions": 44850,
+      "linkClicks": 735,
+      "leads": 29
+    },
+    {
+      "date": "2026-06-28",
+      "spend": 2803.85,
+      "impressions": 39921,
+      "linkClicks": 756,
+      "leads": 21
+    },
+    {
+      "date": "2026-06-29",
+      "spend": 2301.43,
+      "impressions": 37463,
+      "linkClicks": 513,
+      "leads": 12
+    },
+    {
+      "date": "2026-06-30",
+      "spend": 3207.26,
+      "impressions": 45148,
+      "linkClicks": 803,
+      "leads": 17
+    },
+    {
+      "date": "2026-07-01",
+      "spend": 3135.59,
+      "impressions": 57344,
+      "linkClicks": 1075,
+      "leads": 42
+    },
+    {
+      "date": "2026-07-02",
+      "spend": 2200.11,
+      "impressions": 50649,
+      "linkClicks": 985,
+      "leads": 53
+    },
+    {
+      "date": "2026-07-03",
+      "spend": 865.17,
+      "impressions": 18560,
+      "linkClicks": 294,
+      "leads": 13
+    },
+    {
+      "date": "2026-07-04",
+      "spend": 1413.92,
+      "impressions": 36935,
+      "linkClicks": 599,
+      "leads": 18
+    },
+    {
+      "date": "2026-07-05",
+      "spend": 1419.2,
+      "impressions": 30508,
+      "linkClicks": 556,
+      "leads": 31
+    },
+    {
+      "date": "2026-07-06",
+      "spend": 740.69,
+      "impressions": 23050,
+      "linkClicks": 314,
+      "leads": 13
+    },
+    {
+      "date": "2026-07-07",
+      "spend": 1297.65,
+      "impressions": 44217,
+      "linkClicks": 818,
+      "leads": 18
+    },
+    {
+      "date": "2026-07-08",
+      "spend": 2673.49,
+      "impressions": 53725,
+      "linkClicks": 923,
+      "leads": 42
+    },
+    {
+      "date": "2026-07-09",
+      "spend": 1632.14,
+      "impressions": 30909,
+      "linkClicks": 790,
+      "leads": 25
+    },
+    {
+      "date": "2026-07-10",
+      "spend": 1791.36,
+      "impressions": 33036,
+      "linkClicks": 705,
+      "leads": 32
+    },
+    {
+      "date": "2026-07-11",
+      "spend": 2068.53,
+      "impressions": 37679,
+      "linkClicks": 850,
+      "leads": 44
+    },
+    {
+      "date": "2026-07-12",
+      "spend": 1624.44,
+      "impressions": 26027,
+      "linkClicks": 514,
+      "leads": 37
+    },
+    {
+      "date": "2026-07-13",
+      "spend": 1040.06,
+      "impressions": 21932,
+      "linkClicks": 313,
+      "leads": 26
+    },
+    {
+      "date": "2026-07-14",
+      "spend": 1052.71,
+      "impressions": 23298,
+      "linkClicks": 343,
+      "leads": 26
+    },
+    {
+      "date": "2026-07-15",
+      "spend": 1382.99,
+      "impressions": 27704,
+      "linkClicks": 403,
+      "leads": 20
+    },
+    {
+      "date": "2026-07-16",
+      "spend": 1563.63,
+      "impressions": 26991,
+      "linkClicks": 366,
+      "leads": 25
+    },
+    {
+      "date": "2026-07-17",
+      "spend": 1550.94,
+      "impressions": 22134,
+      "linkClicks": 346,
+      "leads": 32
+    },
+    {
+      "date": "2026-07-18",
+      "spend": 1311.11,
+      "impressions": 19699,
+      "linkClicks": 330,
+      "leads": 30
+    },
+    {
+      "date": "2026-07-19",
+      "spend": 1475.89,
+      "impressions": 23006,
+      "linkClicks": 419,
+      "leads": 31
+    },
+    {
+      "date": "2026-07-20",
+      "spend": 1355.17,
+      "impressions": 22354,
+      "linkClicks": 382,
+      "leads": 33
+    },
+    {
+      "date": "2026-07-21",
+      "spend": 1435.87,
+      "impressions": 25517,
+      "linkClicks": 403,
+      "leads": 27
+    },
+    {
+      "date": "2026-07-22",
+      "spend": 1309.19,
+      "impressions": 21303,
+      "linkClicks": 382,
+      "leads": 34
+    },
+    {
+      "date": "2026-07-23",
+      "spend": 1475.92,
+      "impressions": 19928,
+      "linkClicks": 334,
+      "leads": 43
+    },
+    {
+      "date": "2026-07-24",
+      "spend": 1326.65,
+      "impressions": 18452,
+      "linkClicks": 282,
+      "leads": 29
+    },
+    {
+      "date": "2026-07-25",
+      "spend": 1055.96,
+      "impressions": 17715,
+      "linkClicks": 306,
+      "leads": 28
+    },
+    {
+      "date": "2026-07-26",
+      "spend": 1470.89,
+      "impressions": 22977,
+      "linkClicks": 453,
+      "leads": 39
+    },
+    {
+      "date": "2026-07-27",
+      "spend": 1400.34,
+      "impressions": 21877,
+      "linkClicks": 406,
+      "leads": 37
+    },
+    {
+      "date": "2026-07-28",
+      "spend": 971.22,
+      "impressions": 15041,
+      "linkClicks": 342,
+      "leads": 26
+    },
+    {
+      "date": "2026-07-29",
+      "spend": 882.4,
+      "impressions": 17029,
+      "linkClicks": 364,
+      "leads": 16
+    },
+    {
+      "date": "2026-07-30",
+      "spend": 477.05,
+      "impressions": 9039,
+      "linkClicks": 197,
+      "leads": 14
+    },
+    {
+      "date": "2026-07-31",
+      "spend": 689.5,
+      "impressions": 12632,
+      "linkClicks": 247,
+      "leads": 23
+    },
+    {
+      "date": "2026-08-01",
+      "spend": 958.26,
+      "impressions": 14814,
+      "linkClicks": 309,
+      "leads": 27
+    },
+    {
+      "date": "2026-08-02",
+      "spend": 1077.99,
+      "impressions": 17849,
+      "linkClicks": 358,
+      "leads": 28
+    },
+    {
+      "date": "2026-08-03",
+      "spend": 947.78,
+      "impressions": 16614,
+      "linkClicks": 334,
+      "leads": 20
+    },
+    {
+      "date": "2026-08-04",
+      "spend": 964.51,
+      "impressions": 18357,
+      "linkClicks": 370,
+      "leads": 31
+    },
+    {
+      "date": "2026-08-05",
+      "spend": 934.05,
+      "impressions": 17233,
+      "linkClicks": 327,
+      "leads": 30
+    },
+    {
+      "date": "2026-08-06",
+      "spend": 1082.4,
+      "impressions": 20629,
+      "linkClicks": 390,
+      "leads": 41
+    },
+    {
+      "date": "2026-08-07",
+      "spend": 1206.79,
+      "impressions": 17994,
+      "linkClicks": 361,
+      "leads": 25
+    },
+    {
+      "date": "2026-08-08",
+      "spend": 1240.46,
+      "impressions": 15433,
+      "linkClicks": 307,
+      "leads": 29
+    },
+    {
+      "date": "2026-08-09",
+      "spend": 1277.87,
+      "impressions": 18841,
+      "linkClicks": 401,
+      "leads": 37
+    },
+    {
+      "date": "2026-08-10",
+      "spend": 957.92,
+      "impressions": 15726,
+      "linkClicks": 329,
+      "leads": 30
+    },
+    {
+      "date": "2026-08-11",
+      "spend": 1060.36,
+      "impressions": 19374,
+      "linkClicks": 324,
+      "leads": 26
+    },
+    {
+      "date": "2026-08-12",
+      "spend": 998.28,
+      "impressions": 20086,
+      "linkClicks": 309,
+      "leads": 20
+    }
+  ]
+}
