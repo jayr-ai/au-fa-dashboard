@@ -286,7 +286,8 @@ function applyFilters() {
 
         // Filter transactions by custom date range
         filteredTransactions = filteredTransactions.filter(tx => {
-            const txDate = new Date(tx.date);
+            const [year, month, day] = tx.date.split('-').map(Number);
+            const txDate = new Date(year, month - 1, day);
             return txDate >= fromDate && txDate <= toDate;
         });
 
@@ -337,7 +338,8 @@ function applyFilters() {
         fromDate = new Date(year, month, 1);
         toDate = new Date(year, month + 1, 0, 23, 59, 59, 999);
         filteredTransactions = filteredTransactions.filter(tx => {
-            const txDate = new Date(tx.date);
+            const [txYear, txMonth, txDay] = tx.date.split('-').map(Number);
+            const txDate = new Date(txYear, txMonth - 1, txDay);
             return txDate >= fromDate && txDate <= toDate;
         });
     } else if (window.currentMode === 'weekly') {
@@ -348,7 +350,8 @@ function applyFilters() {
 
         // For weekly mode, don't use monthlyData - calculate summary from transactions
         filteredTransactions = filteredTransactions.filter(tx => {
-            const txDate = new Date(tx.date);
+            const [year, month, day] = tx.date.split('-').map(Number);
+            const txDate = new Date(year, month - 1, day);
             return txDate >= fromDate && txDate <= toDate;
         });
 
