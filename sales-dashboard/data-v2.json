@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-08-16T23:35:53.616Z",
+  "synced_at": "2026-08-17T03:29:52.270Z",
   "agents": [
     {
       "n": "Alexandra Smouha",
@@ -57,6 +57,20 @@
     }
   ],
   "funnel": [
+    {
+      "n": "Stacie Skehan",
+      "d": "2026-08-17",
+      "won": 0,
+      "pen": 0,
+      "lost": 0,
+      "ns": 0,
+      "mis": 0,
+      "can": 0,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
     {
       "n": "Stacie Skehan",
       "d": "2026-08-15",
