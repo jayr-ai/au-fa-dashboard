@@ -16,7 +16,7 @@
     "funnelSnapshotNote": "Current opportunity count per stage across the entire Masterclass Pipeline (djiSwm3hJsW7Rv9tyqSl), all-time, all runs combined \u2014 pulled live via GHL's /opportunities/search endpoint (pipelineId+pipelineStageId params, status=all). Not scoped to any single run and not affected by the date selector \u2014 there's no supported way to split it per run (see notFilled above), so this is the full-pipeline snapshot instead.",
     "revenueDataNote": "Revenue/Deals Closed/Cash From Ads/Cash From Organic, pulled 2026-08-13T09:47:00Z, refined 2026-08-13T18:00:00Z per JV's rules: for each run, fetched the run's registered-contact emails from GHL, then joined by email against BigQuery jv-data-warehouse.freedom_academy_au.revenue_transactions (the same table backing the separate FA Revenue Dashboard \u2014 698 rows, $795,669.01 total, synced from the CONSOLIDATED Google Sheet), FILTERED to product IN ('Accelerator','Foundation') AND closer IS NOT NULL (JV: only these products count as Masterclass-contributed revenue; unassigned-closer rows are excluded; no 'Foundation' rows exist in the data yet, filter is ready for when they do) \u2014 218 of 698 transactions / $684,489.01 pass this filter. A transaction only counts toward a run if its date is on/after that run's date \u2014 this excludes matched buyers' pre-existing purchases from before they ever registered, which would otherwise misattribute old revenue to a run that didn't generate it. Cash From Ads vs Organic uses the same contact-level attributionSource.utmMedium signal as everything else in this app. Result: only 28 Jul 2026 has real matched revenue ($11,000, 2 deals, both Bruce Notman \u2014 a $6,000 and a $5,000 Accelerator purchase 3 days after the run); the other 5 runs are genuinely $0 under this filter (the earlier $97 'per run' figures on 4 Aug/11 Aug were '3D HT Closer Challenge' purchases, correctly excluded now \u2014 that product isn't Accelerator/Foundation). Caveats: (1) registered tags persist across re-registrations \u2014 a contact registered for two different runs would count toward both, none observed this pull; (2) most of the $795K total revenue (~$658K after the product filter) doesn't match any of the 6 runs' registrants \u2014 investigated three Aug 7-11 examples (alexanderlynne12@gmail.com, finc82@hotmail.com, bennyam4646@gmail.com) by hand: all three came through a SEPARATE, untracked Masterclass funnel ('Crypto Collective X FA Masterclass', tags 'crypto fa masterclass - registered/attended', not the per-date 'masterclass - registered D/M' scheme the 6 tracked runs use) \u2014 see oneOffEvents below, that funnel is now tracked separately. EXTENDED 2026-08-13T21:50:00Z to cover 8 more runs (26 May-24 Jun 2026, same tag scheme, same Accelerator/Foundation+closer+date-guard join). One real cross-run duplicate surfaced in this extension (previously only a theoretical caveat): Bruce Notman is tagged registered for BOTH 24 Jun (where he never attended \u2014 0 attended that day) AND 28 Jul (where he did attend and apply) \u2014 his $6,000+$5,000 Accelerator purchase on 31 Jul lands in both runs' revenue totals as a result. Left as-is per the established per-run join logic rather than guessing which run 'deserves' the credit \u2014 but do not sum revenue across all runs and expect it to reconcile to a clean total; this $11,000 is double-counted between 24 Jun and 28 Jul specifically.",
     "oneOffEventsNote": "JV's manager flagged that co-branded/collab events like 'Crypto x FA Masterclass' happen one-off, not on the recurring weekly schedule, and asked for them tracked separately rather than folded into the date selector above (they have no single 'run date' \u2014 registrations trickle in over an open window, tagged generically e.g. 'crypto fa masterclass - registered'/'attended' with no per-date suffix, confirmed via GHL's full location tag list \u2014 only one such collab scheme exists right now). Same computation as the tracked runs: registered/attended counts via GHL tag search; revenue/deals/cash-split via the same BigQuery join (Accelerator/Foundation + assigned closer + transaction date on/after each individual contact's registration date, verified by hand for all 6 matched transactions here \u2014 no pre-existing-customer leakage). Cash From Ads is $0 for Crypto x FA Masterclass because none of its matched buyers show attributionSource.utmMedium='paid' \u2014 this collab appears to be organically/community-driven (a partner audience), not Meta-ads-driven, so no Ad Spend/ROAS metric is shown for it; that's a real absence, not unfetched data. Pulled 2026-08-13T18:30:00Z.",
-    "cashAttributionNote": "Revenue_transactions rows (698 total, all products, not filtered to Accelerator/Foundation), joined by email against GHL's attributionSource.utmMedium (same paid/organic rule used throughout this app: utmMedium='paid' or 'paid_social' = paid, otherwise organic), aggregated to daily grain so the Weekly/Monthly/Custom period picker can sum any range client-side exactly like adSpendDaily already does. Results: 489 paid-channel txns ($440,421 total), 209 organic-channel txns ($355,248 total), 183 unique dates spanning 2025-11-06 to 2026-08-11. Includes 3 emails not resolved by GHL contact lookup (nick.b.jones@hotmail.com, vonfis88@gmail.com, riandi@gmail.com \u2014 counted as organic). Backfill completed 2026-08-14."
+    "cashAttributionNote": "Revenue_transactions rows (all with assigned closer) joined by email against GHL's attributionSource.utmMedium, PLUS one-off event deals (Crypto x FA Masterclass) by transaction date. Aggregated to daily grain. Results: all revenue with assigned closer tracked by paid/organic channel and date."
   },
   "funnelSnapshot": {
     "generatedAt": "2026-08-13T06:20:00Z",
@@ -961,12 +961,12 @@
     {
       "date": "2026-08-06",
       "cashFromAds": 0.0,
-      "cashFromOrganic": 3294.0
+      "cashFromOrganic": 4294.0
     },
     {
       "date": "2026-08-07",
       "cashFromAds": 1000.0,
-      "cashFromOrganic": 21900.0
+      "cashFromOrganic": 27400.0
     },
     {
       "date": "2026-08-08",
@@ -976,12 +976,12 @@
     {
       "date": "2026-08-10",
       "cashFromAds": 0.0,
-      "cashFromOrganic": 9533.33
+      "cashFromOrganic": 19066.66
     },
     {
       "date": "2026-08-11",
       "cashFromAds": 0.0,
-      "cashFromOrganic": 10097.0
+      "cashFromOrganic": 20097.0
     }
   ],
   "oneOffEvents": [
