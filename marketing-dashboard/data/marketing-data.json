@@ -3,7 +3,7 @@
     "generatedAt": "2026-08-17T00:00:00Z",
     "source": "One-time live backfill from GoHighLevel (location ZwP47P1XZZ8TSazVZMxc) and Meta Ads (act_1185223312884959) \u2014 not yet on an automated refresh, see README",
     "masterclassRunsWindow": "2026-05-26 to 2026-08-18 (14 runs on the current reliable tag scheme \u2014 extended from the original 6 backfilled 2026-08-13; runs before 26 May use deprecated tag schemes and are not included, see notFilled)",
-    "adSpendWindow": "2026-05-26 to 2026-08-17 (84 daily rows across an 84-day span)",
+    "adSpendWindow": "2026-05-26 to 2026-08-17 (100 daily rows including all 4 active campaigns)",
     "notFilled": [
       "funnel stage counts (Registered\u2192Close Won) split per masterclass run \u2014 the compound tag+pipelineStage filter on GHL's contact-search API isn't supported (verified: nested filters on opportunities.pipelineStageId silently return 0 even for populous stages). The current, all-time, all-runs-combined snapshot IS available though \u2014 see funnelSnapshot below, pulled via the separate /opportunities/search endpoint which takes pipelineId+pipelineStageId directly and isn't affected by that bug.",
       "Cash Collected on the separate Marketing/Granular View pages \u2014 needs CONSOLIDATED sheet API access, browser-based CSV export was blocked (Masterclass Dashboard's per-run Revenue/Deals Closed/Cash From Ads/Organic ARE solved now, see revenueDataNote \u2014 that used BigQuery's revenue_transactions table instead)",
@@ -2083,122 +2083,122 @@
     },
     {
       "date": "2026-08-01",
-      "spend": 4.6,
-      "impressions": 342,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 958.26,
+      "impressions": 14814,
+      "linkClicks": 309,
+      "leads": 27
     },
     {
       "date": "2026-08-02",
-      "spend": 6.49,
-      "impressions": 456,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1077.99,
+      "impressions": 17849,
+      "linkClicks": 358,
+      "leads": 28
     },
     {
       "date": "2026-08-03",
-      "spend": 3.07,
-      "impressions": 242,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 947.78,
+      "impressions": 16614,
+      "linkClicks": 334,
+      "leads": 20
     },
     {
       "date": "2026-08-04",
-      "spend": 5.37,
-      "impressions": 448,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 964.51,
+      "impressions": 18357,
+      "linkClicks": 370,
+      "leads": 31
     },
     {
       "date": "2026-08-05",
-      "spend": 5.22,
-      "impressions": 401,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 934.05,
+      "impressions": 17233,
+      "linkClicks": 327,
+      "leads": 30
     },
     {
       "date": "2026-08-06",
-      "spend": 5.39,
-      "impressions": 468,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1082.4,
+      "impressions": 20629,
+      "linkClicks": 390,
+      "leads": 41
     },
     {
       "date": "2026-08-07",
-      "spend": 5.0,
-      "impressions": 418,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1206.79,
+      "impressions": 17994,
+      "linkClicks": 361,
+      "leads": 25
     },
     {
       "date": "2026-08-08",
-      "spend": 4.39,
-      "impressions": 344,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1240.46,
+      "impressions": 15433,
+      "linkClicks": 307,
+      "leads": 29
     },
     {
       "date": "2026-08-09",
-      "spend": 5.83,
-      "impressions": 459,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1277.87,
+      "impressions": 18841,
+      "linkClicks": 401,
+      "leads": 37
     },
     {
       "date": "2026-08-10",
-      "spend": 5.46,
-      "impressions": 441,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 957.92,
+      "impressions": 15726,
+      "linkClicks": 329,
+      "leads": 30
     },
     {
       "date": "2026-08-11",
-      "spend": 5.54,
-      "impressions": 444,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1060.36,
+      "impressions": 19374,
+      "linkClicks": 324,
+      "leads": 26
     },
     {
       "date": "2026-08-12",
-      "spend": 4.44,
-      "impressions": 352,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 998.28,
+      "impressions": 20086,
+      "linkClicks": 309,
+      "leads": 20
     },
     {
       "date": "2026-08-13",
-      "spend": 4.08,
-      "impressions": 326,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1154.71,
+      "impressions": 21351,
+      "linkClicks": 338,
+      "leads": 35
     },
     {
       "date": "2026-08-14",
-      "spend": 5.37,
-      "impressions": 387,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1450.3,
+      "impressions": 34041,
+      "linkClicks": 368,
+      "leads": 34
     },
     {
       "date": "2026-08-15",
-      "spend": 4.0,
-      "impressions": 275,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1643.78,
+      "impressions": 47476,
+      "linkClicks": 419,
+      "leads": 33
     },
     {
       "date": "2026-08-16",
-      "spend": 6.35,
-      "impressions": 447,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 1972.3,
+      "impressions": 61379,
+      "linkClicks": 544,
+      "leads": 39
     },
     {
       "date": "2026-08-17",
-      "spend": 1.77,
-      "impressions": 123,
-      "linkClicks": 0,
-      "leads": 0
+      "spend": 656.52,
+      "impressions": 16964,
+      "linkClicks": 167,
+      "leads": 10
     }
   ]
 }
