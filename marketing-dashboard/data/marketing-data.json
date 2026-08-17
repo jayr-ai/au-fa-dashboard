@@ -1,13 +1,12 @@
 {
   "meta": {
-<<<<<<< HEAD
-    "generatedAt": "2026-08-17T11:37:02.896Z",
+    "generatedAt": "2026-08-17T12:02:12.108Z",
     "source": "Automated BigQuery enriched VIEW + GHL contacts cache (apps-script sync)",
     "dataWindow": "2026-01-01 to 2026-08-17 (all revenue with assigned closers)",
     "cacheStatus": "ghl_contacts_cache updated daily, revenue_transactions_enriched VIEW auto-joins"
   },
   "funnelSnapshot": {
-    "generatedAt": "2026-08-17T11:37:02.896Z",
+    "generatedAt": "2026-08-17T12:02:12.111Z",
     "stages": [
       {
         "stage": "Registered",
@@ -21,32 +20,10 @@
         "stage": "Close Won",
         "count": 71
       }
-=======
-    "generatedAt": "2026-08-17T12:30:00Z",
-    "source": "BigQuery revenue_transactions (authoritative) + GHL attributionSource.utmMedium (cached in BigQuery for efficient lookups)",
-    "dataWindow": "2026-08-01 to 2026-08-17 (17 days, assigned deals only, Accelerator/Foundation products)",
-    "cacheStatus": "All 21 contacts backfilled into ghl_contacts_cache for token-efficient future syncs"
-  },
-  "funnelSnapshot": {
-    "generatedAt": "2026-08-17T12:30:00Z",
-    "stages": [
-      {"stage": "Registered", "count": 4424},
-      {"stage": "VIP Upgrade", "count": 17},
-      {"stage": "Replay Optin", "count": 359},
-      {"stage": "Appointment Booked", "count": 15},
-      {"stage": "No-Showed", "count": 245},
-      {"stage": "Bad Fit", "count": 22},
-      {"stage": "Call Cancelled / Not Interested", "count": 230},
-      {"stage": "Call Cancelled / Need To Reschedule", "count": 136},
-      {"stage": "Pending Sale", "count": 6},
-      {"stage": "Close Lost", "count": 339},
-      {"stage": "Close Won", "count": 71}
->>>>>>> 0d029ff (Fix marketing dashboard React interfaces)
     ]
   },
   "cashAttributionDaily": [
     {
-<<<<<<< HEAD
       "date": "2026-01-02",
       "cashFromAds": 0,
       "cashFromOrganic": 1000
@@ -935,26 +912,6 @@
       "date": "2026-08-07",
       "cashFromAds": 1500,
       "cashFromOrganic": 21400
-=======
-      "date": "2026-08-01",
-      "cashFromAds": 2666.68,
-      "cashFromOrganic": 0.0
-    },
-    {
-      "date": "2026-08-03",
-      "cashFromAds": 1100.0,
-      "cashFromOrganic": 0.0
-    },
-    {
-      "date": "2026-08-06",
-      "cashFromAds": 0.0,
-      "cashFromOrganic": 2100.0
-    },
-    {
-      "date": "2026-08-07",
-      "cashFromAds": 1000.0,
-      "cashFromOrganic": 22000.0
->>>>>>> 0d029ff (Fix marketing dashboard React interfaces)
     },
     {
       "date": "2026-08-08",
@@ -963,35 +920,21 @@
     },
     {
       "date": "2026-08-10",
-<<<<<<< HEAD
       "cashFromAds": 0,
-=======
-      "cashFromAds": 0.0,
->>>>>>> 0d029ff (Fix marketing dashboard React interfaces)
       "cashFromOrganic": 9533.33
     },
     {
       "date": "2026-08-11",
-<<<<<<< HEAD
       "cashFromAds": 0,
       "cashFromOrganic": 10097
     },
     {
       "date": "2026-08-12",
       "cashFromAds": 0,
-=======
-      "cashFromAds": 0.0,
-      "cashFromOrganic": 10000.0
-    },
-    {
-      "date": "2026-08-12",
-      "cashFromAds": 0.0,
->>>>>>> 0d029ff (Fix marketing dashboard React interfaces)
       "cashFromOrganic": 4095.32
     },
     {
       "date": "2026-08-14",
-<<<<<<< HEAD
       "cashFromAds": 10400,
       "cashFromOrganic": 5500
     },
@@ -1258,165 +1201,6 @@
           "email": "deshell7@protonmail.com",
           "product": "Accelerator",
           "amount": 5500,
-=======
-      "cashFromAds": 10400.0,
-      "cashFromOrganic": 5500.0
-    }
-  ],
-  "adSpendDaily": [
-    {"date": "2026-08-01", "spend": 215.48, "impressions": 4852, "linkClicks": 89, "leads": 3},
-    {"date": "2026-08-02", "spend": 198.32, "impressions": 4521, "linkClicks": 76, "leads": 2},
-    {"date": "2026-08-03", "spend": 201.19, "impressions": 4698, "linkClicks": 82, "leads": 3},
-    {"date": "2026-08-04", "spend": 189.67, "impressions": 4234, "linkClicks": 71, "leads": 2},
-    {"date": "2026-08-05", "spend": 206.54, "impressions": 4876, "linkClicks": 85, "leads": 3},
-    {"date": "2026-08-06", "spend": 218.76, "impressions": 5123, "linkClicks": 91, "leads": 3},
-    {"date": "2026-08-07", "spend": 234.81, "impressions": 5412, "linkClicks": 98, "leads": 4},
-    {"date": "2026-08-08", "spend": 212.43, "impressions": 4987, "linkClicks": 87, "leads": 3},
-    {"date": "2026-08-09", "spend": 205.32, "impressions": 4765, "linkClicks": 83, "leads": 3},
-    {"date": "2026-08-10", "spend": 221.65, "impressions": 5234, "linkClicks": 92, "leads": 3},
-    {"date": "2026-08-11", "spend": 228.54, "impressions": 5456, "linkClicks": 97, "leads": 4},
-    {"date": "2026-08-12", "spend": 219.87, "impressions": 5123, "linkClicks": 89, "leads": 3},
-    {"date": "2026-08-13", "spend": 202.43, "impressions": 4698, "linkClicks": 81, "leads": 3},
-    {"date": "2026-08-14", "spend": 224.56, "impressions": 5287, "linkClicks": 94, "leads": 3},
-    {"date": "2026-08-15", "spend": 216.78, "impressions": 5012, "linkClicks": 88, "leads": 3},
-    {"date": "2026-08-16", "spend": 210.32, "impressions": 4876, "linkClicks": 85, "leads": 3},
-    {"date": "2026-08-17", "spend": 198.76, "impressions": 4654, "linkClicks": 79, "leads": 2}
-  ],
-  "masterclassRuns": [
-    {
-      "date": "2026-08-01",
-      "label": "August Revenue (BigQuery verified)",
-      "registered": 21,
-      "attended": 21,
-      "showUpRatePct": 100,
-      "deals": [
-        {
-          "date": "2026-08-01",
-          "name": "Nathaniel Jarnicki",
-          "email": "nathanieljarnicki@icloud.com",
-          "product": "Accelerator",
-          "amount": 2666.68,
-          "closer": "Natalie Khoury"
-        },
-        {
-          "date": "2026-08-03",
-          "name": "Simone Cameron",
-          "email": "simonerubycameron@gmail.com",
-          "product": "Accelerator",
-          "amount": 1100.0,
-          "closer": "Laura Fillmann"
-        },
-        {
-          "date": "2026-08-06",
-          "name": "Jenny Marwick",
-          "email": "jennymarwick3011@live.com",
-          "product": "Accelerator",
-          "amount": 1100.0,
-          "closer": "Laura Fillmann"
-        },
-        {
-          "date": "2026-08-06",
-          "name": "Liezel | Mark Van Der Merwe",
-          "email": "liezelvdm@hotmail.com",
-          "product": "Accelerator",
-          "amount": 1000.0,
-          "closer": "Shane Dacosta"
-        },
-        {
-          "date": "2026-08-07",
-          "name": "Ben Miners",
-          "email": "bennyam4646@gmail.com",
-          "product": "Accelerator",
-          "amount": 500.0,
-          "closer": "Stacie Skehan"
-        },
-        {
-          "date": "2026-08-07",
-          "name": "David Knight",
-          "email": "davidknight289@gmail.com",
-          "product": "Accelerator",
-          "amount": 1000.0,
-          "closer": "Brittany Cooper"
-        },
-        {
-          "date": "2026-08-07",
-          "name": "Michelle Miller",
-          "email": "deshell7@protonmail.com",
-          "product": "Accelerator",
-          "amount": 5500.0,
-          "closer": "Shane Dacosta"
-        },
-        {
-          "date": "2026-08-07",
-          "name": "JJ (Jennet) Johnson",
-          "email": "jennetjohnson71@gmail.com",
-          "product": "Accelerator",
-          "amount": 5500.0,
-          "closer": "Nelson Lopera"
-        },
-        {
-          "date": "2026-08-07",
-          "name": "Jenny Marwick",
-          "email": "jennymarwick3011@live.com",
-          "product": "Accelerator",
-          "amount": 9900.0,
-          "closer": "Laura Fillmann"
-        },
-        {
-          "date": "2026-08-07",
-          "name": "Sylvia Iskander",
-          "email": "sylviaisky@gmail.com",
-          "product": "Accelerator",
-          "amount": 500.0,
-          "closer": "Nelson Lopera"
-        },
-        {
-          "date": "2026-08-08",
-          "name": "Ann Lopez",
-          "email": "annielopezbeauty@gmail.com",
-          "product": "Accelerator",
-          "amount": 1000.0,
-          "closer": "Brittany Cooper"
-        },
-        {
-          "date": "2026-08-10",
-          "name": "Lynne Alexander",
-          "email": "alexanderlynne12@gmail.com",
-          "product": "Accelerator",
-          "amount": 1000.0,
-          "closer": "Stacie Skehan"
-        },
-        {
-          "date": "2026-08-10",
-          "name": "Kerin Finch",
-          "email": "finc82@hotmail.com",
-          "product": "Accelerator",
-          "amount": 5000.0,
-          "closer": "Shane Dacosta"
-        },
-        {
-          "date": "2026-08-10",
-          "name": "Ben Miners",
-          "email": "glenminers@gmail.com",
-          "product": "Accelerator",
-          "amount": 3533.33,
-          "closer": "Stacie Skehan"
-        },
-        {
-          "date": "2026-08-11",
-          "name": "Lynne Alexander",
-          "email": "alexanderlynne12@gmail.com",
-          "product": "Accelerator",
-          "amount": 10000.0,
-          "closer": "Stacie Skehan"
-        },
-        {
-          "date": "2026-08-12",
-          "name": "Brett Purcell",
-          "email": "brett7166@gmail.com",
-          "product": "Accelerator",
-          "amount": 47.0,
->>>>>>> 0d029ff (Fix marketing dashboard React interfaces)
           "closer": "Shane Dacosta"
         },
         {
@@ -1436,7 +1220,6 @@
           "closer": "Stacie Skehan"
         },
         {
-<<<<<<< HEAD
           "date": "2026-08-12",
           "name": "Brett Purcell",
           "email": "brett7166@gmail.com",
@@ -7019,35 +6802,3 @@
   ],
   "oneOffEvents": []
 }
-=======
-          "date": "2026-08-14",
-          "name": "Michelle Miller",
-          "email": "deshell7@protonmail.com",
-          "product": "Accelerator",
-          "amount": 5500.0,
-          "closer": "Shane Dacosta"
-        },
-        {
-          "date": "2026-08-14",
-          "name": "Shak Chandrasekar",
-          "email": "shaq.dream2win@gmail.com",
-          "product": "Accelerator",
-          "amount": 500.0,
-          "closer": "Laura Fillmann"
-        },
-        {
-          "date": "2026-08-14",
-          "name": "Simone Cameron",
-          "email": "simonerubycameron@gmail.com",
-          "product": "Accelerator",
-          "amount": 9900.0,
-          "closer": "Laura Fillmann"
-        }
-      ],
-      "cashFromAds": 16166.68,
-      "cashFromOrganic": 53227.95
-    }
-  ],
-  "oneOffEvents": []
-}
->>>>>>> 0d029ff (Fix marketing dashboard React interfaces)
