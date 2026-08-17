@@ -5,6 +5,22 @@
     "dataWindow": "2026-08-01 to 2026-08-17 (17 days, assigned deals only, Accelerator/Foundation products)",
     "cacheStatus": "All 21 contacts backfilled into ghl_contacts_cache for token-efficient future syncs"
   },
+  "funnelSnapshot": {
+    "generatedAt": "2026-08-17T12:30:00Z",
+    "stages": [
+      {"stage": "Registered", "count": 4424},
+      {"stage": "VIP Upgrade", "count": 17},
+      {"stage": "Replay Optin", "count": 359},
+      {"stage": "Appointment Booked", "count": 15},
+      {"stage": "No-Showed", "count": 245},
+      {"stage": "Bad Fit", "count": 22},
+      {"stage": "Call Cancelled / Not Interested", "count": 230},
+      {"stage": "Call Cancelled / Need To Reschedule", "count": 136},
+      {"stage": "Pending Sale", "count": 6},
+      {"stage": "Close Lost", "count": 339},
+      {"stage": "Close Won", "count": 71}
+    ]
+  },
   "cashAttributionDaily": [
     {
       "date": "2026-08-01",
