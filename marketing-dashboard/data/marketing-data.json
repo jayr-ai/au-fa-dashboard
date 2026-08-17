@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generatedAt": "2026-08-13T00:00:00Z",
+    "generatedAt": "2026-08-17T00:00:00Z",
     "source": "One-time live backfill from GoHighLevel (location ZwP47P1XZZ8TSazVZMxc) and Meta Ads (act_1185223312884959) \u2014 not yet on an automated refresh, see README",
     "masterclassRunsWindow": "2026-05-26 to 2026-08-18 (14 runs on the current reliable tag scheme \u2014 extended from the original 6 backfilled 2026-08-13; runs before 26 May use deprecated tag schemes and are not included, see notFilled)",
-    "adSpendWindow": "2026-05-26 to 2026-08-12 (78 daily rows across a 79-day span \u2014 one gap, 2026-06-15, appears to be a zero/paused-delivery day, not a failed pull)",
+    "adSpendWindow": "2026-05-26 to 2026-08-17 (84 daily rows across an 84-day span)",
     "notFilled": [
       "funnel stage counts (Registered\u2192Close Won) split per masterclass run \u2014 the compound tag+pipelineStage filter on GHL's contact-search API isn't supported (verified: nested filters on opportunities.pipelineStageId silently return 0 even for populous stages). The current, all-time, all-runs-combined snapshot IS available though \u2014 see funnelSnapshot below, pulled via the separate /opportunities/search endpoint which takes pipelineId+pipelineStageId directly and isn't affected by that bug.",
       "Cash Collected on the separate Marketing/Granular View pages \u2014 needs CONSOLIDATED sheet API access, browser-based CSV export was blocked (Masterclass Dashboard's per-run Revenue/Deals Closed/Cash From Ads/Organic ARE solved now, see revenueDataNote \u2014 that used BigQuery's revenue_transactions table instead)",
@@ -1859,9 +1859,9 @@
     },
     {
       "date": "2026-06-30",
-      "spend": 3207.26,
-      "impressions": 45148,
-      "linkClicks": 803,
+      "spend": 3208.4,
+      "impressions": 45187,
+      "linkClicks": 804,
       "leads": 17
     },
     {
@@ -1880,290 +1880,325 @@
     },
     {
       "date": "2026-07-03",
-      "spend": 865.17,
-      "impressions": 18560,
-      "linkClicks": 294,
-      "leads": 13
+      "spend": 805.7,
+      "impressions": 17167,
+      "linkClicks": 270,
+      "leads": 12
     },
     {
       "date": "2026-07-04",
-      "spend": 1413.92,
-      "impressions": 36935,
-      "linkClicks": 599,
-      "leads": 18
-    },
-    {
-      "date": "2026-07-05",
-      "spend": 1419.2,
-      "impressions": 30508,
-      "linkClicks": 556,
-      "leads": 31
-    },
-    {
-      "date": "2026-07-06",
-      "spend": 740.69,
-      "impressions": 23050,
-      "linkClicks": 314,
-      "leads": 13
-    },
-    {
-      "date": "2026-07-07",
-      "spend": 1297.65,
-      "impressions": 44217,
-      "linkClicks": 818,
-      "leads": 18
-    },
-    {
-      "date": "2026-07-08",
-      "spend": 2673.49,
-      "impressions": 53725,
-      "linkClicks": 923,
-      "leads": 42
-    },
-    {
-      "date": "2026-07-09",
-      "spend": 1632.14,
-      "impressions": 30909,
-      "linkClicks": 790,
-      "leads": 25
-    },
-    {
-      "date": "2026-07-10",
-      "spend": 1791.36,
-      "impressions": 33036,
-      "linkClicks": 705,
-      "leads": 32
-    },
-    {
-      "date": "2026-07-11",
-      "spend": 2068.53,
-      "impressions": 37679,
-      "linkClicks": 850,
-      "leads": 44
-    },
-    {
-      "date": "2026-07-12",
-      "spend": 1624.44,
-      "impressions": 26027,
-      "linkClicks": 514,
-      "leads": 37
-    },
-    {
-      "date": "2026-07-13",
-      "spend": 1040.06,
-      "impressions": 21932,
-      "linkClicks": 313,
-      "leads": 26
-    },
-    {
-      "date": "2026-07-14",
-      "spend": 1052.71,
-      "impressions": 23298,
-      "linkClicks": 343,
-      "leads": 26
-    },
-    {
-      "date": "2026-07-15",
-      "spend": 1382.99,
-      "impressions": 27704,
-      "linkClicks": 403,
-      "leads": 20
-    },
-    {
-      "date": "2026-07-16",
-      "spend": 1563.63,
-      "impressions": 26991,
-      "linkClicks": 366,
-      "leads": 25
-    },
-    {
-      "date": "2026-07-17",
-      "spend": 1550.94,
-      "impressions": 22134,
-      "linkClicks": 346,
-      "leads": 32
-    },
-    {
-      "date": "2026-07-18",
-      "spend": 1311.11,
-      "impressions": 19699,
-      "linkClicks": 330,
-      "leads": 30
-    },
-    {
-      "date": "2026-07-19",
-      "spend": 1475.89,
-      "impressions": 23006,
-      "linkClicks": 419,
-      "leads": 31
-    },
-    {
-      "date": "2026-07-20",
-      "spend": 1355.17,
-      "impressions": 22354,
-      "linkClicks": 382,
-      "leads": 33
-    },
-    {
-      "date": "2026-07-21",
-      "spend": 1435.87,
-      "impressions": 25517,
-      "linkClicks": 403,
-      "leads": 27
-    },
-    {
-      "date": "2026-07-22",
-      "spend": 1309.19,
-      "impressions": 21303,
-      "linkClicks": 382,
-      "leads": 34
-    },
-    {
-      "date": "2026-07-23",
-      "spend": 1475.92,
-      "impressions": 19928,
-      "linkClicks": 334,
-      "leads": 43
-    },
-    {
-      "date": "2026-07-24",
-      "spend": 1326.65,
-      "impressions": 18452,
-      "linkClicks": 282,
-      "leads": 29
-    },
-    {
-      "date": "2026-07-25",
-      "spend": 1055.96,
-      "impressions": 17715,
-      "linkClicks": 306,
-      "leads": 28
-    },
-    {
-      "date": "2026-07-26",
-      "spend": 1470.89,
-      "impressions": 22977,
-      "linkClicks": 453,
-      "leads": 39
-    },
-    {
-      "date": "2026-07-27",
-      "spend": 1400.34,
-      "impressions": 21877,
-      "linkClicks": 406,
-      "leads": 37
-    },
-    {
-      "date": "2026-07-28",
-      "spend": 971.22,
-      "impressions": 15041,
-      "linkClicks": 342,
-      "leads": 26
-    },
-    {
-      "date": "2026-07-29",
-      "spend": 882.4,
-      "impressions": 17029,
-      "linkClicks": 364,
-      "leads": 16
-    },
-    {
-      "date": "2026-07-30",
-      "spend": 477.05,
-      "impressions": 9039,
-      "linkClicks": 197,
+      "spend": 1264.63,
+      "impressions": 33543,
+      "linkClicks": 550,
       "leads": 14
     },
     {
-      "date": "2026-07-31",
-      "spend": 689.5,
-      "impressions": 12632,
-      "linkClicks": 247,
+      "date": "2026-07-05",
+      "spend": 1097.12,
+      "impressions": 24221,
+      "linkClicks": 431,
+      "leads": 15
+    },
+    {
+      "date": "2026-07-06",
+      "spend": 558.93,
+      "impressions": 17962,
+      "linkClicks": 241,
+      "leads": 5
+    },
+    {
+      "date": "2026-07-07",
+      "spend": 1086.36,
+      "impressions": 39726,
+      "linkClicks": 732,
+      "leads": 11
+    },
+    {
+      "date": "2026-07-08",
+      "spend": 1098.38,
+      "impressions": 23246,
+      "linkClicks": 275,
+      "leads": 19
+    },
+    {
+      "date": "2026-07-09",
+      "spend": 565.12,
+      "impressions": 9220,
+      "linkClicks": 115,
+      "leads": 5
+    },
+    {
+      "date": "2026-07-10",
+      "spend": 761.0,
+      "impressions": 11077,
+      "linkClicks": 174,
+      "leads": 22
+    },
+    {
+      "date": "2026-07-11",
+      "spend": 752.22,
+      "impressions": 10505,
+      "linkClicks": 172,
+      "leads": 15
+    },
+    {
+      "date": "2026-07-12",
+      "spend": 785.75,
+      "impressions": 13061,
+      "linkClicks": 209,
       "leads": 23
     },
     {
+      "date": "2026-07-13",
+      "spend": 644.06,
+      "impressions": 15470,
+      "linkClicks": 185,
+      "leads": 15
+    },
+    {
+      "date": "2026-07-14",
+      "spend": 331.62,
+      "impressions": 8944,
+      "linkClicks": 87,
+      "leads": 3
+    },
+    {
+      "date": "2026-07-15",
+      "spend": 376.93,
+      "impressions": 10320,
+      "linkClicks": 123,
+      "leads": 2
+    },
+    {
+      "date": "2026-07-16",
+      "spend": 412.51,
+      "impressions": 9156,
+      "linkClicks": 92,
+      "leads": 2
+    },
+    {
+      "date": "2026-07-17",
+      "spend": 387.69,
+      "impressions": 8163,
+      "linkClicks": 86,
+      "leads": 5
+    },
+    {
+      "date": "2026-07-18",
+      "spend": 231.83,
+      "impressions": 5292,
+      "linkClicks": 48,
+      "leads": 3
+    },
+    {
+      "date": "2026-07-19",
+      "spend": 249.93,
+      "impressions": 5387,
+      "linkClicks": 72,
+      "leads": 0
+    },
+    {
+      "date": "2026-07-20",
+      "spend": 274.64,
+      "impressions": 5993,
+      "linkClicks": 90,
+      "leads": 2
+    },
+    {
+      "date": "2026-07-21",
+      "spend": 267.75,
+      "impressions": 5978,
+      "linkClicks": 55,
+      "leads": 0
+    },
+    {
+      "date": "2026-07-22",
+      "spend": 273.16,
+      "impressions": 5571,
+      "linkClicks": 57,
+      "leads": 3
+    },
+    {
+      "date": "2026-07-23",
+      "spend": 252.41,
+      "impressions": 4235,
+      "linkClicks": 51,
+      "leads": 7
+    },
+    {
+      "date": "2026-07-24",
+      "spend": 290.84,
+      "impressions": 4978,
+      "linkClicks": 54,
+      "leads": 6
+    },
+    {
+      "date": "2026-07-25",
+      "spend": 176.15,
+      "impressions": 3653,
+      "linkClicks": 26,
+      "leads": 0
+    },
+    {
+      "date": "2026-07-26",
+      "spend": 304.95,
+      "impressions": 5265,
+      "linkClicks": 61,
+      "leads": 5
+    },
+    {
+      "date": "2026-07-27",
+      "spend": 270.21,
+      "impressions": 5372,
+      "linkClicks": 78,
+      "leads": 4
+    },
+    {
+      "date": "2026-07-28",
+      "spend": 60.92,
+      "impressions": 1357,
+      "linkClicks": 10,
+      "leads": 2
+    },
+    {
+      "date": "2026-07-29",
+      "spend": 64.53,
+      "impressions": 1279,
+      "linkClicks": 7,
+      "leads": 0
+    },
+    {
+      "date": "2026-07-30",
+      "spend": 42.86,
+      "impressions": 1005,
+      "linkClicks": 7,
+      "leads": 0
+    },
+    {
+      "date": "2026-07-31",
+      "spend": 5.45,
+      "impressions": 421,
+      "linkClicks": 0,
+      "leads": 0
+    },
+    {
       "date": "2026-08-01",
-      "spend": 958.26,
-      "impressions": 14814,
-      "linkClicks": 309,
-      "leads": 27
+      "spend": 4.6,
+      "impressions": 342,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-02",
-      "spend": 1077.99,
-      "impressions": 17849,
-      "linkClicks": 358,
-      "leads": 28
+      "spend": 6.49,
+      "impressions": 456,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-03",
-      "spend": 947.78,
-      "impressions": 16614,
-      "linkClicks": 334,
-      "leads": 20
+      "spend": 3.07,
+      "impressions": 242,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-04",
-      "spend": 964.51,
-      "impressions": 18357,
-      "linkClicks": 370,
-      "leads": 31
+      "spend": 5.37,
+      "impressions": 448,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-05",
-      "spend": 934.05,
-      "impressions": 17233,
-      "linkClicks": 327,
-      "leads": 30
+      "spend": 5.22,
+      "impressions": 401,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-06",
-      "spend": 1082.4,
-      "impressions": 20629,
-      "linkClicks": 390,
-      "leads": 41
+      "spend": 5.39,
+      "impressions": 468,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-07",
-      "spend": 1206.79,
-      "impressions": 17994,
-      "linkClicks": 361,
-      "leads": 25
+      "spend": 5.0,
+      "impressions": 418,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-08",
-      "spend": 1240.46,
-      "impressions": 15433,
-      "linkClicks": 307,
-      "leads": 29
+      "spend": 4.39,
+      "impressions": 344,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-09",
-      "spend": 1277.87,
-      "impressions": 18841,
-      "linkClicks": 401,
-      "leads": 37
+      "spend": 5.83,
+      "impressions": 459,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-10",
-      "spend": 957.92,
-      "impressions": 15726,
-      "linkClicks": 329,
-      "leads": 30
+      "spend": 5.46,
+      "impressions": 441,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-11",
-      "spend": 1060.36,
-      "impressions": 19374,
-      "linkClicks": 324,
-      "leads": 26
+      "spend": 5.54,
+      "impressions": 444,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-08-12",
-      "spend": 998.28,
-      "impressions": 20086,
-      "linkClicks": 309,
-      "leads": 20
+      "spend": 4.44,
+      "impressions": 352,
+      "linkClicks": 0,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-13",
+      "spend": 4.08,
+      "impressions": 326,
+      "linkClicks": 0,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-14",
+      "spend": 5.37,
+      "impressions": 387,
+      "linkClicks": 0,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-15",
+      "spend": 4.0,
+      "impressions": 275,
+      "linkClicks": 0,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-16",
+      "spend": 6.35,
+      "impressions": 447,
+      "linkClicks": 0,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-17",
+      "spend": 1.77,
+      "impressions": 123,
+      "linkClicks": 0,
+      "leads": 0
     }
   ]
 }
