@@ -949,7 +949,92 @@
       "cashFromOrganic": 4033.33
     }
   ],
-  "adSpendDaily": [],
+  "adSpendDaily": [
+    {
+      "date": "2026-08-01",
+      "spend": 958.26,
+      "impressions": 14814,
+      "link_clicks": 309,
+      "leads": 27
+    },
+    {
+      "date": "2026-08-02",
+      "spend": 1077.99,
+      "impressions": 17849,
+      "link_clicks": 358,
+      "leads": 28
+    },
+    {
+      "date": "2026-08-03",
+      "spend": 947.78,
+      "impressions": 16614,
+      "link_clicks": 334,
+      "leads": 20
+    },
+    {
+      "date": "2026-08-04",
+      "spend": 964.51,
+      "impressions": 18357,
+      "link_clicks": 370,
+      "leads": 31
+    },
+    {
+      "date": "2026-08-05",
+      "spend": 934.05,
+      "impressions": 17233,
+      "link_clicks": 327,
+      "leads": 30
+    },
+    {
+      "date": "2026-08-06",
+      "spend": 1082.4,
+      "impressions": 20629,
+      "link_clicks": 390,
+      "leads": 41
+    },
+    {
+      "date": "2026-08-07",
+      "spend": 1206.79,
+      "impressions": 17994,
+      "link_clicks": 361,
+      "leads": 25
+    },
+    {
+      "date": "2026-08-08",
+      "spend": 1240.46,
+      "impressions": 15433,
+      "link_clicks": 307,
+      "leads": 29
+    },
+    {
+      "date": "2026-08-09",
+      "spend": 1277.87,
+      "impressions": 18841,
+      "link_clicks": 401,
+      "leads": 37
+    },
+    {
+      "date": "2026-08-10",
+      "spend": 957.92,
+      "impressions": 15726,
+      "link_clicks": 329,
+      "leads": 30
+    },
+    {
+      "date": "2026-08-11",
+      "spend": 1060.36,
+      "impressions": 19374,
+      "link_clicks": 324,
+      "leads": 26
+    },
+    {
+      "date": "2026-08-12",
+      "spend": 998.28,
+      "impressions": 20086,
+      "link_clicks": 309,
+      "leads": 20
+    }
+  ],
   "masterclassRuns": [
     {
       "date": "2026-08-18",
