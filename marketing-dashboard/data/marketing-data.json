@@ -951,6 +951,139 @@
   ],
   "adSpendDaily": [
     {
+      "date": "2026-07-13",
+      "spend": 1040.06,
+      "impressions": 21932,
+      "link_clicks": 313,
+      "leads": 26
+    },
+    {
+      "date": "2026-07-14",
+      "spend": 1052.71,
+      "impressions": 23298,
+      "link_clicks": 343,
+      "leads": 26
+    },
+    {
+      "date": "2026-07-15",
+      "spend": 1382.99,
+      "impressions": 27704,
+      "link_clicks": 403,
+      "leads": 20
+    },
+    {
+      "date": "2026-07-16",
+      "spend": 1563.63,
+      "impressions": 26991,
+      "link_clicks": 366,
+      "leads": 25
+    },
+    {
+      "date": "2026-07-17",
+      "spend": 1550.94,
+      "impressions": 22134,
+      "link_clicks": 346,
+      "leads": 32
+    },
+    {
+      "date": "2026-07-18",
+      "spend": 1311.11,
+      "impressions": 19699,
+      "link_clicks": 330,
+      "leads": 30
+    },
+    {
+      "date": "2026-07-19",
+      "spend": 1475.89,
+      "impressions": 23006,
+      "link_clicks": 419,
+      "leads": 31
+    },
+    {
+      "date": "2026-07-20",
+      "spend": 1355.17,
+      "impressions": 22354,
+      "link_clicks": 382,
+      "leads": 33
+    },
+    {
+      "date": "2026-07-21",
+      "spend": 1435.87,
+      "impressions": 25517,
+      "link_clicks": 403,
+      "leads": 27
+    },
+    {
+      "date": "2026-07-22",
+      "spend": 1309.19,
+      "impressions": 21303,
+      "link_clicks": 382,
+      "leads": 34
+    },
+    {
+      "date": "2026-07-23",
+      "spend": 1475.92,
+      "impressions": 19928,
+      "link_clicks": 334,
+      "leads": 43
+    },
+    {
+      "date": "2026-07-24",
+      "spend": 1326.65,
+      "impressions": 18452,
+      "link_clicks": 282,
+      "leads": 29
+    },
+    {
+      "date": "2026-07-25",
+      "spend": 1055.96,
+      "impressions": 17715,
+      "link_clicks": 306,
+      "leads": 28
+    },
+    {
+      "date": "2026-07-26",
+      "spend": 1470.89,
+      "impressions": 22977,
+      "link_clicks": 453,
+      "leads": 39
+    },
+    {
+      "date": "2026-07-27",
+      "spend": 1400.34,
+      "impressions": 21877,
+      "link_clicks": 406,
+      "leads": 37
+    },
+    {
+      "date": "2026-07-28",
+      "spend": 971.22,
+      "impressions": 15041,
+      "link_clicks": 342,
+      "leads": 26
+    },
+    {
+      "date": "2026-07-29",
+      "spend": 882.4,
+      "impressions": 17029,
+      "link_clicks": 364,
+      "leads": 16
+    },
+    {
+      "date": "2026-07-30",
+      "spend": 477.05,
+      "impressions": 9039,
+      "link_clicks": 197,
+      "leads": 14
+    },
+    {
+      "date": "2026-07-31",
+      "spend": 689.5,
+      "impressions": 12632,
+      "link_clicks": 247,
+      "leads": 23
+    },
+    {
       "date": "2026-08-01",
       "spend": 958.26,
       "impressions": 14814,
