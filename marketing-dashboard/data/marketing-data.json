@@ -1543,6 +1543,27 @@
     },
     {
       "date": "2026-08-11",
+      "label": "Crypto x FA Masterclass (one-off)",
+      "registered": 188,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0.0,
+      "allTimeRevenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": [],
+      "executiveSummary": {
+        "bullets": [
+          "One-off Crypto Collective x Freedom Academy Masterclass (Aug 11, 2026). 188 registrations."
+        ]
+      }
+    },
+    {
+      "date": "2026-08-11",
       "label": "11 Aug 2026",
       "registered": 227,
       "attended": 44,
@@ -8137,6 +8158,69 @@
       ],
       "executiveSummary": {
         "bullets": []
+      }
+    },
+    {
+      "date": "2026-06-24",
+      "label": "24 Jun 2026",
+      "registered": 828,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0.0,
+      "allTimeRevenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": [],
+      "executiveSummary": {
+        "bullets": [
+          "June 2026 masterclass run with 828 registrations."
+        ]
+      }
+    },
+    {
+      "date": "2026-05-28",
+      "label": "28 May 2026",
+      "registered": 1336,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0.0,
+      "allTimeRevenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": [],
+      "executiveSummary": {
+        "bullets": [
+          "May 2026 masterclass run with 1,336 registrations."
+        ]
+      }
+    },
+    {
+      "date": "2026-04-30",
+      "label": "30 Apr 2026",
+      "registered": 1675,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0.0,
+      "allTimeRevenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": [],
+      "executiveSummary": {
+        "bullets": [
+          "April 2026 masterclass run with 1,675 registrations."
+        ]
       }
     }
   ]
