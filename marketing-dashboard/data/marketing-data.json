@@ -1497,13 +1497,41 @@
       "leads": 16
     }
   ],
+  "oneOffEvents": [],
   "masterclassRuns": [
     {
       "date": "2026-08-18",
-      "label": "All Revenue (Auto-synced from BigQuery)",
-      "registered": 722,
-      "attended": 722,
-      "showUpRatePct": 100,
+      "label": "18 Aug 2026",
+      "registered": 51,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0,
+      "allTimeRevenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": [],
+      "executiveSummary": {
+        "bullets": []
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "label": "11 Aug 2026",
+      "registered": 227,
+      "attended": 44,
+      "showUpRatePct": 19.38,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0,
+      "allTimeRevenue": 34675.65,
+      "dealsClosed": 10,
+      "cashFromAds": 10400.0,
+      "cashFromOrganic": 24275.65,
       "deals": [
         {
           "date": "2026-08-17",
@@ -1594,7 +1622,27 @@
           "amount": 10000.0,
           "closer": "Stacie Skehan",
           "source": "organic"
-        },
+        }
+      ],
+      "executiveSummary": {
+        "bullets": []
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "label": "04 Aug 2026",
+      "registered": 178,
+      "attended": 53,
+      "showUpRatePct": 29.78,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0,
+      "allTimeRevenue": 38727.33,
+      "dealsClosed": 17,
+      "cashFromAds": 2500.0,
+      "cashFromOrganic": 36227.33,
+      "deals": [
         {
           "date": "2026-08-10",
           "name": "Kerin Finch",
@@ -1747,7 +1795,27 @@
           "amount": 97.0,
           "closer": "",
           "source": "organic"
-        },
+        }
+      ],
+      "executiveSummary": {
+        "bullets": []
+      }
+    },
+    {
+      "date": "2026-07-28",
+      "label": "28 Jul 2026",
+      "registered": 194,
+      "attended": 39,
+      "showUpRatePct": 20.1,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0,
+      "allTimeRevenue": 34030.36,
+      "dealsClosed": 10,
+      "cashFromAds": 34030.36,
+      "cashFromOrganic": 0,
+      "deals": [
         {
           "date": "2026-08-03",
           "name": "Simone Cameron",
@@ -1837,7 +1905,27 @@
           "amount": 550.0,
           "closer": "Laura Fillmann",
           "source": "paid"
-        },
+        }
+      ],
+      "executiveSummary": {
+        "bullets": []
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "label": "22 Jul 2026",
+      "registered": 185,
+      "attended": 40,
+      "showUpRatePct": 21.62,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0,
+      "allTimeRevenue": 7790.0,
+      "dealsClosed": 4,
+      "cashFromAds": 7790.0,
+      "cashFromOrganic": 0,
+      "deals": [
         {
           "date": "2026-07-26",
           "name": "Tim Collins",
@@ -1873,7 +1961,27 @@
           "amount": 4840.0,
           "closer": "",
           "source": "paid"
-        },
+        }
+      ],
+      "executiveSummary": {
+        "bullets": []
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "label": "16 Jul 2026",
+      "registered": 85,
+      "attended": 25,
+      "showUpRatePct": 29.41,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0,
+      "allTimeRevenue": 701350.0,
+      "dealsClosed": 681,
+      "cashFromAds": 114908.0,
+      "cashFromOrganic": 586442.0,
+      "deals": [
         {
           "date": "2026-07-21",
           "name": "Johan Erasmus",
@@ -8004,9 +8112,9 @@
           "source": "organic"
         }
       ],
-      "cashFromAds": 169628.36,
-      "cashFromOrganic": 646944.98
+      "executiveSummary": {
+        "bullets": []
+      }
     }
-  ],
-  "oneOffEvents": []
+  ]
 }
