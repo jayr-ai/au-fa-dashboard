@@ -1500,6 +1500,29 @@
   "oneOffEvents": [],
   "masterclassRuns": [
     {
+      "date": "2026-08-25",
+      "label": "25 Aug 2026",
+      "registered": 4,
+      "attended": 0,
+      "showUpRatePct": 0.0,
+      "vipUpgrade": 0,
+      "cashFromVip": 0,
+      "application": 0,
+      "attendToAppPct": 0.0,
+      "allTimeRevenue": 0,
+      "dealsClosed": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0,
+      "deals": [],
+      "executiveSummary": {
+        "bullets": [
+          "Future masterclass run - 4 registrations as of Aug 18, 2026.",
+          "This run is scheduled for Tuesday, August 25, 2026, 6:00 PM AEST.",
+          "Metrics will update after the run occurs and deals are processed."
+        ]
+      }
+    },
+    {
       "date": "2026-08-18",
       "label": "18 Aug 2026",
       "registered": 51,
