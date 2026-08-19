@@ -1,123 +1,43 @@
 {
   "meta": {
-    "generatedAt": "2026-08-19T00:49:16.827Z",
-    "source": "GHL (Attendance tags)",
+    "generatedAt": "2026-08-19T02:58:57.085Z",
+    "source": "Google Sheet (FA | Webinar Lead Tracker, X-Auto tab)",
     "dataWindow": "Apr 2026 - Present",
-    "cacheStatus": "Live sync from GHL (updated daily)",
-    "totalAttendees": 0
+    "cacheStatus": "Live sync from Google Sheet (updated daily)",
+    "totalAttendees": 270
   },
   "masterclassAttendance": [
     {
-      "date": "2026-08-25",
-      "attended": 0
-    },
-    {
       "date": "2026-08-18",
-      "attended": 0
+      "attended": 33
     },
     {
       "date": "2026-08-11",
-      "attended": 0
+      "attended": 38
     },
     {
       "date": "2026-08-05",
-      "attended": 0
+      "attended": 76
     },
     {
       "date": "2026-08-04",
-      "attended": 0
+      "attended": 40
     },
     {
       "date": "2026-07-28",
-      "attended": 0
+      "attended": 32
     },
     {
       "date": "2026-07-22",
-      "attended": 0
+      "attended": 33
     },
     {
       "date": "2026-07-16",
-      "attended": 0
-    },
-    {
-      "date": "2026-06-24",
-      "attended": 0
-    },
-    {
-      "date": "2026-06-17",
-      "attended": 0
-    },
-    {
-      "date": "2026-06-11",
-      "attended": 0
-    },
-    {
-      "date": "2026-06-09",
-      "attended": 0
+      "attended": 17
     },
     {
       "date": "2026-06-04",
-      "attended": 0
-    },
-    {
-      "date": "2026-06-02",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-28",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-26",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-21",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-19",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-14",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-12",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-07",
-      "attended": 0
-    },
-    {
-      "date": "2026-05-05",
-      "attended": 0
-    },
-    {
-      "date": "2026-04-30",
-      "attended": 0
-    },
-    {
-      "date": "2026-04-28",
-      "attended": 0
-    },
-    {
-      "date": "2026-04-23",
-      "attended": 0
-    },
-    {
-      "date": "2026-04-21",
-      "attended": 0
-    },
-    {
-      "date": "2026-04-15",
-      "attended": 0
-    },
-    {
-      "date": "2026-04-08",
-      "attended": 0
+      "attended": 1
     }
   ]
 }
