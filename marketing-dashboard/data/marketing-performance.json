@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-19T07:30:02.677Z",
+    "generatedAt": "2026-08-19T23:55:34.976Z",
     "source": "BigQuery marketing_ad_spend_daily table",
     "dataWindow": "Jan 2026 - Aug 2026",
     "dataPoints": 203,
-    "cacheStatus": "Live sync from BigQuery (daily refresh via Apps Script)"
+    "cacheStatus": "Live sync from BigQuery"
   },
   "totals": {
     "spend": 256933.57,
