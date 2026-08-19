@@ -1,22 +1,22 @@
 {
   "meta": {
-    "generatedAt": "2026-08-19T03:46:44.611Z",
-    "source": "CONSOLIDATED sheet (FA | Webinar Lead Tracker)",
-    "dataWindow": "Apr 2026 - Present",
-    "cacheStatus": "Live sync from CONSOLIDATED sheet (updated daily)",
-    "totalRevenue": 358331.32000000007
+    "generatedAt": "2026-08-19T05:02:50.247Z",
+    "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
+    "dataWindow": "Jan 2026 - Present",
+    "cacheStatus": "Live sync from BigQuery (updated daily)",
+    "totalRevenue": 361582
   },
   "masterclassRevenueByDate": [
     {
       "date": "2026-08-11",
-      "revenue": 2175.66,
+      "revenue": 2176,
       "cashFromAds": 0,
       "cashFromOrganic": 2176,
       "dealsCount": 3
     },
     {
       "date": "2026-08-05",
-      "revenue": 41163.66,
+      "revenue": 41164,
       "cashFromAds": 0,
       "cashFromOrganic": 41164,
       "dealsCount": 10
@@ -24,15 +24,15 @@
     {
       "date": "2026-08-04",
       "revenue": 194,
-      "cashFromAds": 0,
-      "cashFromOrganic": 194,
+      "cashFromAds": 97,
+      "cashFromOrganic": 97,
       "dealsCount": 2
     },
     {
       "date": "2026-07-28",
       "revenue": 27759,
-      "cashFromAds": 0,
-      "cashFromOrganic": 27759,
+      "cashFromAds": 27662,
+      "cashFromOrganic": 97,
       "dealsCount": 11
     },
     {
@@ -59,71 +59,71 @@
     {
       "date": "2026-06-17",
       "revenue": 310,
-      "cashFromAds": 0,
-      "cashFromOrganic": 310,
+      "cashFromAds": 256,
+      "cashFromOrganic": 54,
       "dealsCount": 5
     },
     {
       "date": "2026-06-11",
       "revenue": 2429,
-      "cashFromAds": 0,
-      "cashFromOrganic": 2429,
+      "cashFromAds": 670,
+      "cashFromOrganic": 1759,
       "dealsCount": 12
     },
     {
       "date": "2026-06-09",
       "revenue": 43841,
-      "cashFromAds": 0,
-      "cashFromOrganic": 43841,
+      "cashFromAds": 26401,
+      "cashFromOrganic": 17440,
       "dealsCount": 13
     },
     {
       "date": "2026-06-04",
       "revenue": 12847,
-      "cashFromAds": 0,
-      "cashFromOrganic": 12847,
+      "cashFromAds": 12847,
+      "cashFromOrganic": 0,
       "dealsCount": 7
     },
     {
       "date": "2026-06-02",
       "revenue": 7542,
-      "cashFromAds": 0,
-      "cashFromOrganic": 7542,
+      "cashFromAds": 6100,
+      "cashFromOrganic": 1442,
       "dealsCount": 14
     },
     {
       "date": "2026-05-28",
       "revenue": 1095,
-      "cashFromAds": 0,
-      "cashFromOrganic": 1095,
+      "cashFromAds": 509,
+      "cashFromOrganic": 586,
       "dealsCount": 6
     },
     {
       "date": "2026-05-26",
       "revenue": 25584,
-      "cashFromAds": 0,
-      "cashFromOrganic": 25584,
+      "cashFromAds": 24165,
+      "cashFromOrganic": 1419,
       "dealsCount": 18
     },
     {
       "date": "2026-05-21",
       "revenue": 12318,
-      "cashFromAds": 0,
-      "cashFromOrganic": 12318,
+      "cashFromAds": 12009,
+      "cashFromOrganic": 309,
       "dealsCount": 6
     },
     {
       "date": "2026-05-19",
-      "revenue": 40392,
-      "cashFromAds": 0,
-      "cashFromOrganic": 40392,
-      "dealsCount": 21
+      "revenue": 43642,
+      "cashFromAds": 8254,
+      "cashFromOrganic": 35388,
+      "dealsCount": 25
     },
     {
       "date": "2026-05-14",
       "revenue": 24858,
-      "cashFromAds": 0,
-      "cashFromOrganic": 24858,
+      "cashFromAds": 12097,
+      "cashFromOrganic": 12761,
       "dealsCount": 10
     },
     {
@@ -143,8 +143,8 @@
     {
       "date": "2026-05-05",
       "revenue": 34512,
-      "cashFromAds": 0,
-      "cashFromOrganic": 34512,
+      "cashFromAds": 9,
+      "cashFromOrganic": 34503,
       "dealsCount": 10
     },
     {
