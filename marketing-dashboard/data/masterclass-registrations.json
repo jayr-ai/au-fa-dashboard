@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-08-18T16:40:36.714Z",
+    "generatedAt": "2026-08-19T01:28:33.560Z",
     "source": "Google Sheet (FA | Webinar Lead Tracker, X-Auto tab)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from Google Sheet (updated daily)",
-    "totalRegistrations": 3665
+    "totalRegistrations": 3671
   },
   "masterclassRegistrations": [
     {
       "date": "2026-08-25",
       "label": "25 Aug 2026",
-      "registered": 14,
+      "registered": 21,
       "attended": 0,
       "showUpRatePct": 0,
       "vipUpgrade": 0,
@@ -24,7 +24,7 @@
       "deals": [],
       "executiveSummary": {
         "bullets": [
-          "14 registrations for 25 Aug 2026"
+          "21 registrations for 25 Aug 2026"
         ]
       }
     },
@@ -198,7 +198,7 @@
     },
     {
       "date": "2026-06-17",
-      "label": "17 June 2026",
+      "label": "17 Jun 2026",
       "registered": 97,
       "attended": 0,
       "showUpRatePct": 0,
@@ -213,13 +213,13 @@
       "deals": [],
       "executiveSummary": {
         "bullets": [
-          "97 registrations for 17 June 2026"
+          "97 registrations for 17 Jun 2026"
         ]
       }
     },
     {
       "date": "2026-06-11",
-      "label": "11 June 2026",
+      "label": "11 Jun 2026",
       "registered": 176,
       "attended": 0,
       "showUpRatePct": 0,
@@ -234,13 +234,13 @@
       "deals": [],
       "executiveSummary": {
         "bullets": [
-          "176 registrations for 11 June 2026"
+          "176 registrations for 11 Jun 2026"
         ]
       }
     },
     {
       "date": "2026-06-09",
-      "label": "09 June 2026",
+      "label": "09 Jun 2026",
       "registered": 206,
       "attended": 0,
       "showUpRatePct": 0,
@@ -255,14 +255,14 @@
       "deals": [],
       "executiveSummary": {
         "bullets": [
-          "206 registrations for 09 June 2026"
+          "206 registrations for 09 Jun 2026"
         ]
       }
     },
     {
       "date": "2026-06-04",
-      "label": "04 June 2026",
-      "registered": 139,
+      "label": "04 Jun 2026",
+      "registered": 138,
       "attended": 0,
       "showUpRatePct": 0,
       "vipUpgrade": 0,
@@ -276,13 +276,13 @@
       "deals": [],
       "executiveSummary": {
         "bullets": [
-          "139 registrations for 04 June 2026"
+          "138 registrations for 04 Jun 2026"
         ]
       }
     },
     {
       "date": "2026-06-02",
-      "label": "02 June 2026",
+      "label": "02 Jun 2026",
       "registered": 194,
       "attended": 0,
       "showUpRatePct": 0,
@@ -297,7 +297,7 @@
       "deals": [],
       "executiveSummary": {
         "bullets": [
-          "194 registrations for 02 June 2026"
+          "194 registrations for 02 Jun 2026"
         ]
       }
     },
