@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-08-20T06:22:27.692Z",
+    "generatedAt": "2026-08-20T23:21:29.770Z",
     "source": "Google Sheet (FA | Webinar Lead Tracker, X-Auto tab)",
     "dataWindow": "All-time",
     "cacheStatus": "Live sync from Google Sheet (updated daily)",
-    "totalApplications": 110
+    "totalApplications": 111
   },
   "applications": [
     {
       "date": "2026-08-25",
-      "applications": 6
+      "applications": 7
     },
     {
       "date": "2026-08-18",
