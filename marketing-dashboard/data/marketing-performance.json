@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-20T10:06:12.308873Z",
+    "generatedAt": "2026-08-20T10:12:00.912887Z",
     "source": "BigQuery marketing_ad_spend_daily (Meta Ads verified)",
     "dataWindow": "Jan 2026 - Aug 2026",
     "cacheStatus": "Live sync from BigQuery with Meta Ads daily leads verification",
-    "note": "June and July 2026 leads corrected from Meta Ads API: June 152, July 907"
+    "note": "June, July, and August 2026 leads corrected from Meta Ads API: June 152, July 907, August 611 (Aug 1-20 MTD)"
   },
   "daily": [
     {
@@ -1307,126 +1307,144 @@
       "spend": 958.26,
       "impressions": 14814,
       "linkClicks": 309,
-      "leads": 0
+      "leads": 27,
+      "link_clicks": 568
     },
     {
       "date": "2026-08-02",
       "spend": 1077.99,
       "impressions": 17849,
       "linkClicks": 359,
-      "leads": 0
+      "leads": 28,
+      "link_clicks": 723
     },
     {
       "date": "2026-08-03",
       "spend": 947.78,
       "impressions": 16614,
       "linkClicks": 334,
-      "leads": 0
+      "leads": 20,
+      "link_clicks": 769
     },
     {
       "date": "2026-08-04",
       "spend": 964.51,
       "impressions": 18357,
       "linkClicks": 370,
-      "leads": 0
+      "leads": 31,
+      "link_clicks": 772
     },
     {
       "date": "2026-08-05",
       "spend": 934.05,
       "impressions": 17233,
       "linkClicks": 327,
-      "leads": 0
+      "leads": 30,
+      "link_clicks": 663
     },
     {
       "date": "2026-08-06",
       "spend": 1082.4,
       "impressions": 20629,
       "linkClicks": 390,
-      "leads": 0
+      "leads": 41,
+      "link_clicks": 793
     },
     {
       "date": "2026-08-07",
       "spend": 1206.79,
       "impressions": 17994,
       "linkClicks": 361,
-      "leads": 0
+      "leads": 25,
+      "link_clicks": 739
     },
     {
       "date": "2026-08-08",
       "spend": 1240.46,
       "impressions": 15433,
       "linkClicks": 306,
-      "leads": 0
+      "leads": 29,
+      "link_clicks": 608
     },
     {
       "date": "2026-08-09",
       "spend": 1277.87,
       "impressions": 18841,
       "linkClicks": 402,
-      "leads": 0
+      "leads": 37,
+      "link_clicks": 791
     },
     {
       "date": "2026-08-10",
       "spend": 957.92,
       "impressions": 15726,
       "linkClicks": 329,
-      "leads": 0
+      "leads": 30,
+      "link_clicks": 629
     },
     {
       "date": "2026-08-11",
       "spend": 1060.36,
       "impressions": 19374,
       "linkClicks": 323,
-      "leads": 0
+      "leads": 26,
+      "link_clicks": 598
     },
     {
       "date": "2026-08-12",
       "spend": 998.44,
       "impressions": 20094,
       "linkClicks": 309,
-      "leads": 0
+      "leads": 20,
+      "link_clicks": 582
     },
     {
       "date": "2026-08-13",
       "spend": 1154.71,
       "impressions": 21349,
       "linkClicks": 338,
-      "leads": 0
+      "leads": 35,
+      "link_clicks": 632
     },
     {
       "date": "2026-08-14",
       "spend": 1450.3,
       "impressions": 34428,
       "linkClicks": 368,
-      "leads": 0
+      "leads": 34,
+      "link_clicks": 756
     },
     {
       "date": "2026-08-15",
       "spend": 1643.78,
       "impressions": 47755,
       "linkClicks": 417,
-      "leads": 0
+      "leads": 33,
+      "link_clicks": 825
     },
     {
       "date": "2026-08-16",
-      "spend": 1973.43,
-      "impressions": 61404,
+      "spend": 1974.29,
+      "impressions": 61405,
       "linkClicks": 543,
-      "leads": 0
+      "leads": 39,
+      "link_clicks": 1062
     },
     {
       "date": "2026-08-17",
-      "spend": 1882.62,
-      "impressions": 51562,
+      "spend": 1883.12,
+      "impressions": 51570,
       "linkClicks": 487,
-      "leads": 0
+      "leads": 32,
+      "link_clicks": 950
     },
     {
       "date": "2026-08-18",
-      "spend": 1019.75,
-      "impressions": 27311,
+      "spend": 1812.57,
+      "impressions": 51357,
       "linkClicks": 263,
-      "leads": 0
+      "leads": 34,
+      "link_clicks": 1056
     }
   ]
 }
