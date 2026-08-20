@@ -583,6 +583,11 @@ function buildPeriods() {
   const dates = new Set();
   for (const r of DATA.funnel) dates.add(r.d);
   for (const k of DATA.kpi) dates.add(k.d);
+  // Also include dates from v2 data if available (for accurate DATA_MAX in leaderboard)
+  if (DATA_V2) {
+    for (const r of DATA_V2.funnel) dates.add(r.d);
+    for (const k of DATA_V2.kpi) dates.add(k.d);
+  }
 
   const weeks = new Map(), months = new Map();
   for (const ds of dates) {
