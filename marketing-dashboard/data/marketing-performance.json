@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-20T10:12:00.912887Z",
+    "generatedAt": "2026-08-20T08:40:33.459874Z",
     "source": "BigQuery marketing_ad_spend_daily (Meta Ads verified)",
     "dataWindow": "Jan 2026 - Aug 2026",
     "cacheStatus": "Live sync from BigQuery with Meta Ads daily leads verification",
-    "note": "June, July, and August 2026 leads corrected from Meta Ads API: June 152, July 907, August 611 (Aug 1-20 MTD)"
+    "note": "June, July, and August 2026 leads verified from Meta Ads API: June 152, July 907, August 611 (Aug 1-20 MTD, inclusive of Aug 19-20 refresh)"
   },
   "daily": [
     {
@@ -1445,6 +1445,22 @@
       "linkClicks": 263,
       "leads": 34,
       "link_clicks": 1056
+    },
+    {
+      "date": "2026-08-19",
+      "spend": 1741.81,
+      "impressions": 55041,
+      "linkClicks": 484,
+      "leads": 27,
+      "link_clicks": 970
+    },
+    {
+      "date": "2026-08-20",
+      "spend": 1032.62,
+      "impressions": 37874,
+      "linkClicks": 326,
+      "leads": 5,
+      "link_clicks": 652
     }
   ]
 }
