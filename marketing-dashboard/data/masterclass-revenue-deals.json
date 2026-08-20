@@ -1,19 +1,27 @@
 {
   "meta": {
-    "generatedAt": "2026-08-20T06:22:30.331Z",
+    "generatedAt": "2026-08-20T23:21:32.224Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 359432
+    "totalRevenue": 359632
   },
   "masterclassRevenueByDate": [
     {
       "date": "2026-08-18",
-      "revenue": 1100,
+      "revenue": 1300,
       "cashFromAds": 0,
-      "cashFromOrganic": 1100,
-      "dealsCount": 1,
+      "cashFromOrganic": 1300,
+      "dealsCount": 2,
       "deals": [
+        {
+          "date": "2026-08-18",
+          "name": "Ben McLean",
+          "email": "bennymac2019@gmail.com",
+          "product": "N/A",
+          "amount": 200,
+          "source": "organic"
+        },
         {
           "date": "2026-08-18",
           "name": "Brad Hutcheson",
@@ -509,7 +517,7 @@
           "name": "Carolyn McMahon",
           "email": "cazkyeshae@yahoo.com",
           "product": "Accelerator",
-          "amount": 300,
+          "amount": 11700,
           "source": "organic"
         },
         {
@@ -517,7 +525,7 @@
           "name": "Carolyn McMahon",
           "email": "cazkyeshae@yahoo.com",
           "product": "Accelerator",
-          "amount": 11700,
+          "amount": 300,
           "source": "organic"
         },
         {
@@ -904,16 +912,16 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 97,
           "source": "organic"
         },
         {
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "Live Closing Accelerator",
-          "amount": 97,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "organic"
         },
         {
