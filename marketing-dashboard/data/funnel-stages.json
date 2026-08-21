@@ -1,75 +1,75 @@
 {
   "meta": {
-    "generatedAt": "2026-08-21T07:24:48.000Z",
+    "generatedAt": "2026-08-21T07:50:00.000Z",
     "source": "BigQuery marketing_funnel_stages (GHL Masterclass Pipeline)",
     "dataWindow": "2026-08-21",
-    "totalOpportunities": 100,
+    "totalOpportunities": 6046,
     "pipelineId": "djiSwm3hJsW7Rv9tyqSl"
   },
   "stages": [
     {
       "name": "Registered",
-      "count": 82,
+      "count": 4564,
       "position": 0,
       "winProbability": 8.33
     },
     {
       "name": "VIP Upgrade",
-      "count": 0,
+      "count": 17,
       "position": 1,
       "winProbability": 16.67
     },
     {
       "name": "Replay Optin",
-      "count": 2,
+      "count": 369,
       "position": 2,
       "winProbability": 25
     },
     {
       "name": "Appointment Booked",
-      "count": 11,
+      "count": 21,
       "position": 3,
       "winProbability": 33.33
     },
     {
       "name": "No-Showed",
-      "count": 0,
+      "count": 245,
       "position": 4,
       "winProbability": 41.67
     },
     {
       "name": "Bad Fit",
-      "count": 2,
+      "count": 25,
       "position": 5,
       "winProbability": 50
     },
     {
       "name": "Call Cancelled / Not Interested",
-      "count": 2,
+      "count": 241,
       "position": 6,
       "winProbability": 58.33
     },
     {
       "name": "Call Cancelled / Need To Reschedule",
-      "count": 0,
+      "count": 136,
       "position": 7,
       "winProbability": 66.67
     },
     {
       "name": "Pending Sale",
-      "count": 1,
+      "count": 10,
       "position": 8,
       "winProbability": 75
     },
     {
       "name": "Close Lost",
-      "count": 0,
+      "count": 345,
       "position": 9,
       "winProbability": 83.33
     },
     {
       "name": "Close Won",
-      "count": 0,
+      "count": 73,
       "position": 10,
       "winProbability": 91.67
     }
