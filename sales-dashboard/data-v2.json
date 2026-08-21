@@ -1,16 +1,10 @@
 {
-  "synced_at": "2026-08-20T23:49:00.531Z",
+  "synced_at": "2026-08-21T07:15:46.160Z",
   "agents": [
     {
-      "n": "Alexandra Smouha",
-      "f": "Alexandra Smouha",
+      "n": "David Thorpe",
+      "f": "David Thorpe",
       "t": "TIER 3",
-      "s": "ACTIVE"
-    },
-    {
-      "n": "Dylan Smouha",
-      "f": "Dylan Smouha",
-      "t": "TIER 2",
       "s": "ACTIVE"
     },
     {
@@ -26,15 +20,9 @@
       "s": "ACTIVE"
     },
     {
-      "n": "Natalie Boyd",
-      "f": "Natalie Boyd",
-      "t": "TIER 2",
-      "s": "ACTIVE"
-    },
-    {
-      "n": "Nelson Lopera",
-      "f": "Nelson Lopera",
-      "t": "TIER 2",
+      "n": "Michelle Libert",
+      "f": "Michelle Libert",
+      "t": "TIER 3",
       "s": "ACTIVE"
     },
     {
@@ -54,15 +42,51 @@
       "f": "Stacie Skehan",
       "t": "TIER 1",
       "s": "ACTIVE"
-    },
-    {
-      "n": "Zac Tallentire",
-      "f": "Zac Tallentire",
-      "t": "TIER 3",
-      "s": "ACTIVE"
     }
   ],
   "funnel": [
+    {
+      "n": "Stacie Skehan",
+      "d": "2026-08-21",
+      "won": 0,
+      "pen": 0,
+      "lost": 0,
+      "ns": 0,
+      "mis": 0,
+      "can": 0,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Stacie Skehan",
+      "d": "2026-08-21",
+      "won": 0,
+      "pen": 0,
+      "lost": 0,
+      "ns": 0,
+      "mis": 0,
+      "can": 0,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Laura Fillmann",
+      "d": "2026-08-21",
+      "won": 0,
+      "pen": 2,
+      "lost": 0,
+      "ns": 0,
+      "mis": 0,
+      "can": 1,
+      "pp": 2,
+      "ts": 2,
+      "rev": 0,
+      "cash": 2200
+    },
     {
       "n": "Shane Dacosta",
       "d": "2026-08-20",
@@ -974,6 +998,20 @@
       "cash": 0
     },
     {
+      "n": "Nelson Lopera",
+      "d": "2026-07-21",
+      "won": 0,
+      "pen": 0,
+      "lost": 2,
+      "ns": 2,
+      "mis": 0,
+      "can": 0,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
       "n": "Stacie Skehan",
       "d": "2026-07-21",
       "won": 0,
@@ -988,12 +1026,12 @@
       "cash": 0
     },
     {
-      "n": "Nelson Lopera",
-      "d": "2026-07-21",
+      "n": "Vanessa Caruso",
+      "d": "2026-07-20",
       "won": 0,
       "pen": 0,
-      "lost": 2,
-      "ns": 2,
+      "lost": 0,
+      "ns": 1,
       "mis": 0,
       "can": 0,
       "pp": 0,
@@ -1010,20 +1048,6 @@
       "ns": 0,
       "mis": 0,
       "can": 4,
-      "pp": 0,
-      "ts": 0,
-      "rev": 0,
-      "cash": 0
-    },
-    {
-      "n": "Vanessa Caruso",
-      "d": "2026-07-20",
-      "won": 0,
-      "pen": 0,
-      "lost": 0,
-      "ns": 1,
-      "mis": 0,
-      "can": 0,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -1184,14 +1208,14 @@
       "cash": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Laura Fillmann",
       "d": "2026-07-16",
       "won": 0,
       "pen": 0,
-      "lost": 0,
+      "lost": 1,
       "ns": 1,
       "mis": 0,
-      "can": 2,
+      "can": 3,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -1226,14 +1250,14 @@
       "cash": 0
     },
     {
-      "n": "Laura Fillmann",
+      "n": "Vanessa Caruso",
       "d": "2026-07-16",
       "won": 0,
       "pen": 0,
-      "lost": 1,
+      "lost": 0,
       "ns": 1,
       "mis": 0,
-      "can": 3,
+      "can": 2,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -1458,20 +1482,6 @@
       "ns": 2,
       "mis": 0,
       "can": 0,
-      "pp": 0,
-      "ts": 0,
-      "rev": 0,
-      "cash": 0
-    },
-    {
-      "n": "Laura Fillmann",
-      "d": "2026-07-09",
-      "won": 0,
-      "pen": 0,
-      "lost": 0,
-      "ns": 3,
-      "mis": 0,
-      "can": 3,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -1500,6 +1510,20 @@
       "ns": 1,
       "mis": 0,
       "can": 0,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Laura Fillmann",
+      "d": "2026-07-09",
+      "won": 0,
+      "pen": 0,
+      "lost": 0,
+      "ns": 3,
+      "mis": 0,
+      "can": 3,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -2010,20 +2034,6 @@
       "cash": 11000
     },
     {
-      "n": "Stacie Skehan",
-      "d": "2026-06-23",
-      "won": 1,
-      "pen": 0,
-      "lost": 3,
-      "ns": 0,
-      "mis": 0,
-      "can": 0,
-      "pp": 0,
-      "ts": 0,
-      "rev": 11000,
-      "cash": 11000
-    },
-    {
       "n": "Vanessa Caruso",
       "d": "2026-06-23",
       "won": 1,
@@ -2032,6 +2042,20 @@
       "ns": 1,
       "mis": 0,
       "can": 1,
+      "pp": 0,
+      "ts": 0,
+      "rev": 11000,
+      "cash": 11000
+    },
+    {
+      "n": "Stacie Skehan",
+      "d": "2026-06-23",
+      "won": 1,
+      "pen": 0,
+      "lost": 3,
+      "ns": 0,
+      "mis": 0,
+      "can": 0,
       "pp": 0,
       "ts": 0,
       "rev": 11000,
