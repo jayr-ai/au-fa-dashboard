@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generatedAt": "2026-08-21T07:50:00.000Z",
+    "generatedAt": "2026-08-21T08:40:00.000Z",
     "source": "BigQuery marketing_funnel_stages (GHL Masterclass Pipeline)",
     "dataWindow": "2026-08-21",
-    "totalOpportunities": 6046,
+    "totalOpportunities": 6047,
     "pipelineId": "djiSwm3hJsW7Rv9tyqSl"
   },
   "stages": [
