@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FA Sales Agent - End of Day Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #667eea;
+            width: 50%;
+            transition: width 0.3s ease;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        label .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e8eef7;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d4dde8;
+        }
+
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .input-error {
+            border-color: #e74c3c !important;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: #27ae60;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+
+        .success-message h2 {
+            color: #27ae60;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .success-message p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .success-message a {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .success-message a:hover {
+            background: #5568d3;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e0e0e0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .page-header {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 24px;
+        }
+
+        .yes-no-group {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
+            display: none;
+        }
+
+        .yes-no-group.active {
+            display: block;
+        }
+
+        .page2-info {
+            background: #f5f7fa;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>End of Day Report</h1>
+            <p>Sales KPI & Reflection Form</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- PAGE 1 -->
+        <form id="reportForm">
+            <div class="page active" id="page1">
+                <div class="page-header">Agent Information</div>
+
+                <div class="form-group">
+                    <label for="agentName">Agent Name</label>
+                    <select id="agentName" name="agentName">
+                        <option value="">-- Select an agent --</option>
+                    </select>
+                    <div class="error" id="agentNameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfReport">Date of Report <span class="required">*</span></label>
+                    <input type="date" id="dateOfReport" name="dateOfReport" required>
+                    <div class="error" id="dateOfReportError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tierLevel">Tier Level <span class="required">*</span></label>
+                    <select id="tierLevel" name="tierLevel" required>
+                        <option value="">-- Select a tier --</option>
+                        <option value="1">Tier 1</option>
+                        <option value="2">Tier 2</option>
+                        <option value="3">Tier 3</option>
+                    </select>
+                    <div class="error" id="tierLevelError"></div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" id="btnNext" onclick="goToPage2()">
+                        Next
+                    </button>
+                </div>
+            </div>
+
+            <!-- PAGE 2 -->
+            <div class="page" id="page2">
+                <div class="page-header">Sales KPI</div>
+                <div class="page2-info">All fields on this page are optional. Fill in what applies to your day.</div>
+
+                <div class="form-group">
+                    <label for="hoursOnDialer">Hours on Dialer</label>
+                    <input type="text" id="hoursOnDialer" name="hoursOnDialer" placeholder="e.g., 8.5">
+                </div>
+
+                <div class="form-group">
+                    <label for="dials">Dials</label>
+                    <input type="text" id="dials" name="dials" placeholder="e.g., 145">
+                </div>
+
+                <div class="form-group">
+                    <label for="sets">Sets</label>
+                    <input type="text" id="sets" name="sets" placeholder="e.g., 32">
+                </div>
+
+                <div class="form-group">
+                    <label for="showUps">Show Ups</label>
+                    <input type="text" id="showUps" name="showUps" placeholder="e.g., 28">
+                </div>
+
+                <div class="form-group">
+                    <label for="numberOfSales">Number of Sales</label>
+                    <input type="text" id="numberOfSales" name="numberOfSales" placeholder="e.g., 5">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmedTomorrow">Have you confirmed tomorrow's appointment?</label>
+                    <select id="confirmedTomorrow" name="confirmedTomorrow" onchange="toggleConfirmedWhy()">
+                        <option value="">-- Select --</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <div class="yes-no-group" id="confirmedWhyGroup">
+                        <label for="confirmedWhy">If No, Why not?</label>
+                        <textarea id="confirmedWhy" name="confirmedWhy" placeholder="Explain..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="calledLastSevenDays">Have you called the last 7 days of no shows?</label>
+                    <select id="calledLastSevenDays" name="calledLastSevenDays" onchange="toggleCalledWhy()">
+                        <option value="">-- Select --</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <div class="yes-no-group" id="calledWhyGroup">
+                        <label for="calledWhy">If No, Why not?</label>
+                        <textarea id="calledWhy" name="calledWhy" placeholder="Explain..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="achievedGoal">Did you achieve today's goal?</label>
+                    <select id="achievedGoal" name="achievedGoal">
+                        <option value="">-- Select --</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="goalTomorrow">What is your goal tomorrow?</label>
+                    <textarea id="goalTomorrow" name="goalTomorrow" placeholder="Describe your goal..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="cashCollected">Cash Collected</label>
+                    <input type="text" id="cashCollected" name="cashCollected" placeholder="e.g., $500">
+                </div>
+
+                <div class="form-group">
+                    <label for="revenue">Revenue</label>
+                    <input type="text" id="revenue" name="revenue" placeholder="e.g., $2000">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-secondary" onclick="goToPage1()">
+                        Back
+                    </button>
+                    <button type="submit" class="btn-primary" id="btnSubmit">
+                        Submit
+                    </button>
+                </div>
+            </div>
+
+            <!-- LOADING STATE -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Submitting your report...</p>
+            </div>
+
+            <!-- SUCCESS STATE -->
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">✓</div>
+                <h2>Report Submitted!</h2>
+                <p>Your end-of-day report has been recorded successfully.</p>
+                <a href="javascript:resetForm()">Submit Another Report</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7MEwBUFyjWs9yka50ryZ_JG9QJUpgnz908wZqFUhdohiT2Bn3YIYsMvAof3AOiEls/exec';
+
+        let currentPage = 1;
+        const form = document.getElementById('reportForm');
+
+        // Load agents on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAgents();
+            form.addEventListener('submit', handleSubmit);
+        });
+
+        function loadAgents() {
+            fetch(APPS_SCRIPT_URL + '?action=getAgents')
+                .then(response => response.json())
+                .then(data => {
+                    const agentSelect = document.getElementById('agentName');
+                    agentSelect.innerHTML = '<option value="">-- Select an agent --</option>';
+                    data.agents.forEach(agent => {
+                        const option = document.createElement('option');
+                        option.value = agent;
+                        option.textContent = agent;
+                        agentSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading agents:', error);
+                    // Fallback to hardcoded list if fetch fails
+                    const fallbackAgents = ['Stacie Skehan', 'Peter Kladis Jr', 'Nelson Lopera', 'Shane Dacosta', 'Dylan Smouha', 'Laura Fillmann', 'Natalie Khoury', 'Vanessa Caruso'];
+                    const agentSelect = document.getElementById('agentName');
+                    agentSelect.innerHTML = '<option value="">-- Select an agent --</option>';
+                    fallbackAgents.forEach(agent => {
+                        const option = document.createElement('option');
+                        option.value = agent;
+                        option.textContent = agent;
+                        agentSelect.appendChild(option);
+                    });
+                });
+        }
+
+        function goToPage2() {
+            if (validatePage1()) {
+                currentPage = 2;
+                updatePageDisplay();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function goToPage1() {
+            currentPage = 1;
+            updatePageDisplay();
+            window.scrollTo(0, 0);
+        }
+
+        function updatePageDisplay() {
+            document.getElementById('page1').classList.toggle('active', currentPage === 1);
+            document.getElementById('page2').classList.toggle('active', currentPage === 2);
+            document.getElementById('progressFill').style.width = currentPage === 1 ? '50%' : '100%';
+        }
+
+        function validatePage1() {
+            const agentName = document.getElementById('agentName').value;
+            const dateOfReport = document.getElementById('dateOfReport').value;
+            const tierLevel = document.getElementById('tierLevel').value;
+
+            let isValid = true;
+
+            if (!dateOfReport) {
+                document.getElementById('dateOfReport').classList.add('input-error');
+                document.getElementById('dateOfReportError').textContent = 'Date of Report is required';
+                isValid = false;
+            } else {
+                document.getElementById('dateOfReport').classList.remove('input-error');
+                document.getElementById('dateOfReportError').textContent = '';
+            }
+
+            if (!tierLevel) {
+                document.getElementById('tierLevel').classList.add('input-error');
+                document.getElementById('tierLevelError').textContent = 'Tier Level is required';
+                isValid = false;
+            } else {
+                document.getElementById('tierLevel').classList.remove('input-error');
+                document.getElementById('tierLevelError').textContent = '';
+            }
+
+            return isValid;
+        }
+
+        function toggleConfirmedWhy() {
+            const value = document.getElementById('confirmedTomorrow').value;
+            document.getElementById('confirmedWhyGroup').classList.toggle('active', value === 'No');
+        }
+
+        function toggleCalledWhy() {
+            const value = document.getElementById('calledLastSevenDays').value;
+            document.getElementById('calledWhyGroup').classList.toggle('active', value === 'No');
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            if (!validatePage1()) {
+                goToPage1();
+                return;
+            }
+
+            // Show loading state
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('page2').style.display = 'none';
+
+            // Gather form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            // Send to Apps Script
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        showSuccess();
+                    } else {
+                        showError(result.message || 'Submission failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showError('Network error. Please check your connection and try again.');
+                });
+        }
+
+        function showSuccess() {
+            document.getElementById('loading').classList.remove('active');
+            document.getElementById('successMessage').classList.add('active');
+            form.style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('loading').classList.remove('active');
+            document.getElementById('page2').style.display = 'block';
+            alert('Error: ' + message);
+        }
+
+        function resetForm() {
+            form.reset();
+            document.getElementById('successMessage').classList.remove('active');
+            form.style.display = 'block';
+            currentPage = 1;
+            updatePageDisplay();
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
