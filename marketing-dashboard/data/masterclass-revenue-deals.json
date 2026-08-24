@@ -1,18 +1,43 @@
 {
   "meta": {
-    "generatedAt": "2026-08-20T23:21:32.224Z",
+    "generatedAt": "2026-08-24T00:48:51.119Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 359632
+    "totalRevenue": 363532
   },
   "masterclassRevenueByDate": [
     {
-      "date": "2026-08-18",
-      "revenue": 1300,
+      "date": "2026-08-25",
+      "revenue": 109,
       "cashFromAds": 0,
-      "cashFromOrganic": 1300,
+      "cashFromOrganic": 109,
       "dealsCount": 2,
+      "deals": [
+        {
+          "date": "2026-08-25",
+          "name": "Felix Yatich",
+          "email": "felixkiprono47@gmail.com",
+          "product": "Accelerator",
+          "amount": 100,
+          "source": "organic"
+        },
+        {
+          "date": "2026-08-25",
+          "name": "Josephine Bushell",
+          "email": "josephinebushell@hotmail.com",
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
+          "source": "organic"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "revenue": 3500,
+      "cashFromAds": 2200,
+      "cashFromOrganic": 1300,
+      "dealsCount": 4,
       "deals": [
         {
           "date": "2026-08-18",
@@ -29,6 +54,22 @@
           "product": "Accelerator",
           "amount": 1100,
           "source": "organic"
+        },
+        {
+          "date": "2026-08-18",
+          "name": "Russell Jones",
+          "email": "jeepc1@outlook.com",
+          "product": "Accelerator",
+          "amount": 1100,
+          "source": "paid"
+        },
+        {
+          "date": "2026-08-18",
+          "name": "Joshua Delaney",
+          "email": "joshdelaney01@hotmail.com",
+          "product": "Accelerator",
+          "amount": 1100,
+          "source": "paid"
         }
       ]
     },
@@ -181,10 +222,10 @@
     },
     {
       "date": "2026-07-28",
-      "revenue": 27759,
-      "cashFromAds": 27662,
+      "revenue": 29359,
+      "cashFromAds": 29262,
       "cashFromOrganic": 97,
-      "dealsCount": 11,
+      "dealsCount": 12,
       "deals": [
         {
           "date": "2026-07-28",
@@ -207,7 +248,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 5000,
+          "amount": 6000,
           "source": "paid"
         },
         {
@@ -215,7 +256,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 6000,
+          "amount": 5000,
           "source": "paid"
         },
         {
@@ -224,6 +265,14 @@
           "email": "g.morgan52@yahoo.com",
           "product": "Accelerator",
           "amount": 5000,
+          "source": "paid"
+        },
+        {
+          "date": "2026-07-28",
+          "name": "Georgina Morgan",
+          "email": "g.morgan52@yahoo.com",
+          "product": "Accelerator",
+          "amount": 1600,
           "source": "paid"
         },
         {
@@ -306,23 +355,6 @@
           "email": "wendywild1@yahoo.com.au",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "organic"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-24",
-      "revenue": 9,
-      "cashFromAds": 0,
-      "cashFromOrganic": 9,
-      "dealsCount": 1,
-      "deals": [
-        {
-          "date": "2026-06-24",
-          "name": "Josephine Bushell",
-          "email": "josephinebushell@hotmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
           "source": "organic"
         }
       ]
@@ -912,16 +944,16 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "Live Closing Accelerator",
-          "amount": 97,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "organic"
         },
         {
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 97,
           "source": "organic"
         },
         {
