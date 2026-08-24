@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-24T05:37:15.271Z",
+    "generatedAt": "2026-08-24T07:07:23.460Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -9,419 +9,419 @@
       "month": "2026-01",
       "transactionCount": 174,
       "totalCash": 5364,
-      "cashFromAds": 283,
-      "cashFromOrganic": 5081
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "month": "2026-02",
       "transactionCount": 42,
       "totalCash": 72542,
-      "cashFromAds": 19250,
-      "cashFromOrganic": 53292
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "month": "2026-03",
       "transactionCount": 48,
       "totalCash": 32544,
-      "cashFromAds": 3444,
-      "cashFromOrganic": 29100
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "month": "2026-04",
       "transactionCount": 94,
       "totalCash": 188973,
-      "cashFromAds": 3200,
-      "cashFromOrganic": 184479
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "month": "2026-05",
       "transactionCount": 84,
       "totalCash": 151976,
-      "cashFromAds": 7697,
-      "cashFromOrganic": 141182
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "month": "2026-06",
       "transactionCount": 137,
       "totalCash": 166179,
-      "cashFromAds": 44019,
-      "cashFromOrganic": 54588
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "month": "2026-07",
       "transactionCount": 97,
       "totalCash": 107706,
-      "cashFromAds": 64949,
-      "cashFromOrganic": 42757
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "month": "2026-08",
-      "transactionCount": 34,
-      "totalCash": 80466.66000000002,
-      "cashFromAds": 19563.68,
-      "cashFromOrganic": 60902.98000000001
+      "transactionCount": 35,
+      "totalCash": 90366.66000000002,
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     }
   ],
   "dailyBreakdown": [
     {
       "date": "2026-01-02",
       "cashFromAds": 0,
-      "cashFromOrganic": 1000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-12",
       "cashFromAds": 0,
-      "cashFromOrganic": 165
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-13",
       "cashFromAds": 0,
-      "cashFromOrganic": 174
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-14",
       "cashFromAds": 0,
-      "cashFromOrganic": 21
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-15",
       "cashFromAds": 0,
-      "cashFromOrganic": 563
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-16",
       "cashFromAds": 0,
-      "cashFromOrganic": 243
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-17",
-      "cashFromAds": 7,
-      "cashFromOrganic": 153
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-18",
-      "cashFromAds": 111,
-      "cashFromOrganic": 208
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-19",
-      "cashFromAds": 47,
-      "cashFromOrganic": 96
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-20",
       "cashFromAds": 0,
-      "cashFromOrganic": 35
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-21",
-      "cashFromAds": 104,
-      "cashFromOrganic": 110
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-22",
       "cashFromAds": 0,
-      "cashFromOrganic": 124
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-23",
       "cashFromAds": 0,
-      "cashFromOrganic": 264
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-24",
       "cashFromAds": 0,
-      "cashFromOrganic": 243
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-25",
-      "cashFromAds": 7,
-      "cashFromOrganic": 269
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-26",
       "cashFromAds": 0,
-      "cashFromOrganic": 283
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-27",
       "cashFromAds": 0,
-      "cashFromOrganic": 132
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-28",
       "cashFromAds": 0,
-      "cashFromOrganic": 236
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-29",
-      "cashFromAds": 7,
-      "cashFromOrganic": 394
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-30",
       "cashFromAds": 0,
-      "cashFromOrganic": 132
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-31",
       "cashFromAds": 0,
-      "cashFromOrganic": 236
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-01",
       "cashFromAds": 0,
-      "cashFromOrganic": 118
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-02",
       "cashFromAds": 0,
-      "cashFromOrganic": 54
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-06",
       "cashFromAds": 0,
-      "cashFromOrganic": 3500
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-07",
-      "cashFromAds": 9000,
-      "cashFromOrganic": 22500
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-08",
-      "cashFromAds": 500,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-02-09",
-      "cashFromAds": 2000,
-      "cashFromOrganic": 9050
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-10",
       "cashFromAds": 0,
-      "cashFromOrganic": 8250
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-12",
-      "cashFromAds": 7000,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-02-13",
-      "cashFromAds": 500,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-02-14",
       "cashFromAds": 0,
-      "cashFromOrganic": 8000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-15",
       "cashFromAds": 0,
-      "cashFromOrganic": 500
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-20",
       "cashFromAds": 0,
-      "cashFromOrganic": 197
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-21",
       "cashFromAds": 0,
-      "cashFromOrganic": 97
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-22",
       "cashFromAds": 0,
-      "cashFromOrganic": 194
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-23",
       "cashFromAds": 0,
-      "cashFromOrganic": 438
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-24",
       "cashFromAds": 0,
-      "cashFromOrganic": 47
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-25",
-      "cashFromAds": 250,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-02-26",
       "cashFromAds": 0,
-      "cashFromOrganic": 250
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-02-28",
       "cashFromAds": 0,
-      "cashFromOrganic": 97
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-01",
       "cashFromAds": 0,
-      "cashFromOrganic": 694
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-02",
       "cashFromAds": 0,
-      "cashFromOrganic": 550
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-04",
       "cashFromAds": 0,
-      "cashFromOrganic": 150
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-05",
       "cashFromAds": 0,
-      "cashFromOrganic": 144
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-06",
       "cashFromAds": 0,
-      "cashFromOrganic": 344
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-07",
       "cashFromAds": 0,
-      "cashFromOrganic": 3000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-08",
       "cashFromAds": 0,
-      "cashFromOrganic": 47
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-10",
       "cashFromAds": 0,
-      "cashFromOrganic": 597
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-11",
       "cashFromAds": 0,
-      "cashFromOrganic": 194
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-12",
       "cashFromAds": 0,
-      "cashFromOrganic": 100
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-13",
       "cashFromAds": 0,
-      "cashFromOrganic": 2247
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-16",
       "cashFromAds": 0,
-      "cashFromOrganic": 1100
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-17",
       "cashFromAds": 0,
-      "cashFromOrganic": 97
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-18",
-      "cashFromAds": 97,
-      "cashFromOrganic": 1291
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-19",
       "cashFromAds": 0,
-      "cashFromOrganic": 95
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-20",
       "cashFromAds": 0,
-      "cashFromOrganic": 3500
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-21",
-      "cashFromAds": 500,
-      "cashFromOrganic": 1100
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-23",
       "cashFromAds": 0,
-      "cashFromOrganic": 5250
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-25",
       "cashFromAds": 0,
-      "cashFromOrganic": 4000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-26",
-      "cashFromAds": 97,
-      "cashFromOrganic": 500
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-27",
       "cashFromAds": 0,
-      "cashFromOrganic": 2100
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-30",
-      "cashFromAds": 250,
-      "cashFromOrganic": 2000
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-03-31",
-      "cashFromAds": 2500,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-04-01",
-      "cashFromAds": 300,
-      "cashFromOrganic": 100
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-02",
       "cashFromAds": 0,
-      "cashFromOrganic": 3625
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-03",
       "cashFromAds": 0,
-      "cashFromOrganic": 547
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-04",
-      "cashFromAds": 200,
-      "cashFromOrganic": 11847
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-07",
-      "cashFromAds": 250,
-      "cashFromOrganic": 597
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-08",
       "cashFromAds": 0,
-      "cashFromOrganic": 22000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-09",
-      "cashFromAds": 1500,
-      "cashFromOrganic": 1800
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-10",
       "cashFromAds": 0,
-      "cashFromOrganic": 21600
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-11",
       "cashFromAds": 0,
-      "cashFromOrganic": 1050
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-13",
@@ -431,182 +431,182 @@
     {
       "date": "2026-04-14",
       "cashFromAds": 0,
-      "cashFromOrganic": 100
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-15",
       "cashFromAds": 0,
-      "cashFromOrganic": 2010
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-16",
       "cashFromAds": 0,
-      "cashFromOrganic": 7270
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-17",
       "cashFromAds": 0,
-      "cashFromOrganic": 20647
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-18",
       "cashFromAds": 0,
-      "cashFromOrganic": 11750
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-19",
       "cashFromAds": 0,
-      "cashFromOrganic": 197
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-20",
       "cashFromAds": 0,
-      "cashFromOrganic": 6950
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-21",
       "cashFromAds": 0,
-      "cashFromOrganic": 10950
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-22",
       "cashFromAds": 0,
-      "cashFromOrganic": 3197
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-23",
       "cashFromAds": 0,
-      "cashFromOrganic": 5599
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-24",
       "cashFromAds": 0,
-      "cashFromOrganic": 1000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-25",
       "cashFromAds": 0,
-      "cashFromOrganic": 22000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-26",
-      "cashFromAds": 950,
-      "cashFromOrganic": 194
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-27",
       "cashFromAds": 0,
-      "cashFromOrganic": 127
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-28",
       "cashFromAds": 0,
-      "cashFromOrganic": 10194
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-29",
       "cashFromAds": 0,
-      "cashFromOrganic": 5097
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-04-30",
       "cashFromAds": 0,
-      "cashFromOrganic": 14031
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-01",
       "cashFromAds": 0,
-      "cashFromOrganic": 1000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-02",
       "cashFromAds": 0,
-      "cashFromOrganic": 11144
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-03",
       "cashFromAds": 0,
-      "cashFromOrganic": 20900
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-04",
       "cashFromAds": 0,
-      "cashFromOrganic": 100
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-05",
       "cashFromAds": 0,
-      "cashFromOrganic": 247
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-06",
       "cashFromAds": 0,
-      "cashFromOrganic": 11044
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-07",
       "cashFromAds": 0,
-      "cashFromOrganic": 447
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-08",
       "cashFromAds": 0,
-      "cashFromOrganic": 10694
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-09",
-      "cashFromAds": 1550,
-      "cashFromOrganic": 1097
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-10",
-      "cashFromAds": 1500,
-      "cashFromOrganic": 1244
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-11",
       "cashFromAds": 0,
-      "cashFromOrganic": 647
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-13",
       "cashFromAds": 0,
-      "cashFromOrganic": 700
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-14",
-      "cashFromAds": 1647,
-      "cashFromOrganic": 444
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-15",
-      "cashFromAds": 500,
-      "cashFromOrganic": 1897
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-16",
       "cashFromAds": 0,
-      "cashFromOrganic": 10700
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-17",
       "cashFromAds": 0,
-      "cashFromOrganic": 194
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-18",
       "cashFromAds": 0,
-      "cashFromOrganic": 1060
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-19",
       "cashFromAds": 0,
-      "cashFromOrganic": 1097
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-20",
       "cashFromAds": 0,
-      "cashFromOrganic": 400
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-21",
@@ -615,48 +615,48 @@
     },
     {
       "date": "2026-05-22",
-      "cashFromAds": 550,
-      "cashFromOrganic": 1144
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-23",
       "cashFromAds": 0,
-      "cashFromOrganic": 12397
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-26",
-      "cashFromAds": 950,
-      "cashFromOrganic": 17147
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-27",
       "cashFromAds": 0,
-      "cashFromOrganic": 10000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-28",
       "cashFromAds": 0,
-      "cashFromOrganic": 11000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-29",
       "cashFromAds": 0,
-      "cashFromOrganic": 2247
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-30",
-      "cashFromAds": 1000,
-      "cashFromOrganic": 12094
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-05-31",
       "cashFromAds": 0,
-      "cashFromOrganic": 97
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-01",
       "cashFromAds": 0,
-      "cashFromOrganic": 300
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-02",
@@ -670,17 +670,17 @@
     },
     {
       "date": "2026-06-04",
-      "cashFromAds": 47,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-06-05",
       "cashFromAds": 0,
-      "cashFromOrganic": 11500
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-06",
-      "cashFromAds": 1500,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
@@ -690,43 +690,43 @@
     },
     {
       "date": "2026-06-08",
-      "cashFromAds": 5390,
-      "cashFromOrganic": 1000
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-09",
-      "cashFromAds": 1401,
-      "cashFromOrganic": 1000
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-10",
-      "cashFromAds": 1597,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-06-11",
       "cashFromAds": 0,
-      "cashFromOrganic": 1550
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-12",
-      "cashFromAds": 210,
-      "cashFromOrganic": 11100
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-13",
-      "cashFromAds": 547,
-      "cashFromOrganic": 13000
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-14",
-      "cashFromAds": 550,
-      "cashFromOrganic": 500
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-15",
       "cashFromAds": 0,
-      "cashFromOrganic": 250
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-16",
@@ -740,268 +740,268 @@
     },
     {
       "date": "2026-06-18",
-      "cashFromAds": 1550,
-      "cashFromOrganic": 550
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-19",
       "cashFromAds": 0,
-      "cashFromOrganic": 1000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-20",
-      "cashFromAds": 147,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-06-21",
-      "cashFromAds": 500,
-      "cashFromOrganic": 1000
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-22",
-      "cashFromAds": 11500,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-06-23",
-      "cashFromAds": 12036,
-      "cashFromOrganic": 550
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-24",
-      "cashFromAds": 5867,
-      "cashFromOrganic": 11133
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-25",
-      "cashFromAds": 9,
-      "cashFromOrganic": 18
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-26",
-      "cashFromAds": 1006,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-06-27",
-      "cashFromAds": 63,
-      "cashFromOrganic": 36
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-28",
-      "cashFromAds": 36,
-      "cashFromOrganic": 27
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-29",
-      "cashFromAds": 27,
-      "cashFromOrganic": 18
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-06-30",
-      "cashFromAds": 36,
-      "cashFromOrganic": 56
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-01",
-      "cashFromAds": 1000,
-      "cashFromOrganic": 187
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-02",
       "cashFromAds": 0,
-      "cashFromOrganic": 12136
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-03",
-      "cashFromAds": 759,
-      "cashFromOrganic": 127
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-04",
       "cashFromAds": 0,
-      "cashFromOrganic": 9
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-05",
       "cashFromAds": 0,
-      "cashFromOrganic": 12009
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-06",
-      "cashFromAds": 300,
-      "cashFromOrganic": 50
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-07",
-      "cashFromAds": 11000,
-      "cashFromOrganic": 81
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-08",
-      "cashFromAds": 2000,
-      "cashFromOrganic": 63
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-09",
       "cashFromAds": 0,
-      "cashFromOrganic": 1050
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-10",
-      "cashFromAds": 1500,
-      "cashFromOrganic": 101
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-11",
       "cashFromAds": 0,
-      "cashFromOrganic": 4579
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-12",
       "cashFromAds": 0,
-      "cashFromOrganic": 106
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-13",
-      "cashFromAds": 11000,
-      "cashFromOrganic": 9
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-14",
       "cashFromAds": 0,
-      "cashFromOrganic": 11550
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-16",
-      "cashFromAds": 1000,
-      "cashFromOrganic": 100
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-17",
-      "cashFromAds": 1000,
-      "cashFromOrganic": 20
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-18",
       "cashFromAds": 0,
-      "cashFromOrganic": 550
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-20",
       "cashFromAds": 0,
-      "cashFromOrganic": 30
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-07-21",
-      "cashFromAds": 100,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-07-24",
-      "cashFromAds": 4840,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-07-25",
-      "cashFromAds": 1000,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-07-26",
-      "cashFromAds": 1950,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-07-28",
-      "cashFromAds": 550,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-07-29",
-      "cashFromAds": 10450,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-07-30",
-      "cashFromAds": 5000,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-07-31",
-      "cashFromAds": 11500,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-08-01",
-      "cashFromAds": 2666.68,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-08-03",
-      "cashFromAds": 1197,
+      "cashFromAds": 0,
       "cashFromOrganic": 0
     },
     {
       "date": "2026-08-06",
       "cashFromAds": 0,
-      "cashFromOrganic": 3294
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-07",
-      "cashFromAds": 1500,
-      "cashFromOrganic": 21400
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-08",
       "cashFromAds": 0,
-      "cashFromOrganic": 1000
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-10",
       "cashFromAds": 0,
-      "cashFromOrganic": 9533.33
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-11",
       "cashFromAds": 0,
-      "cashFromOrganic": 10097
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-12",
       "cashFromAds": 0,
-      "cashFromOrganic": 4095.32
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-14",
-      "cashFromAds": 10400,
-      "cashFromOrganic": 5500
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-17",
       "cashFromAds": 0,
-      "cashFromOrganic": 4033.33
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-18",
       "cashFromAds": 0,
-      "cashFromOrganic": 550
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-19",
       "cashFromAds": 0,
-      "cashFromOrganic": 1100
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-20",
       "cashFromAds": 0,
-      "cashFromOrganic": 200
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-21",
-      "cashFromAds": 3800,
-      "cashFromOrganic": 100
+      "cashFromAds": 0,
+      "cashFromOrganic": 0
     }
   ],
   "transactions": [
@@ -1010,8 +1010,16 @@
       "name": "Russell Jones",
       "email": "jeepc1@outlook.com",
       "product": "Accelerator",
+      "amount": 9900,
+      "source": "Organic"
+    },
+    {
+      "date": "2026-08-21",
+      "name": "Russell Jones",
+      "email": "jeepc1@outlook.com",
+      "product": "Accelerator",
       "amount": 1100,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-21",
@@ -1019,7 +1027,7 @@
       "email": "joshdelaney01@hotmail.com",
       "product": "Accelerator",
       "amount": 1100,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-21",
@@ -1027,7 +1035,7 @@
       "email": "g.morgan52@yahoo.com",
       "product": "Accelerator",
       "amount": 1600,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-21",
@@ -1075,7 +1083,7 @@
       "email": "simonerubycameron@gmail.com",
       "product": "Accelerator",
       "amount": 9900,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-14",
@@ -1091,7 +1099,7 @@
       "email": "shaq.dream2win@gmail.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-12",
@@ -1171,7 +1179,7 @@
       "email": "sylviaisky@gmail.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-07",
@@ -1211,7 +1219,7 @@
       "email": "davidknight289@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-06",
@@ -1259,7 +1267,7 @@
       "email": "simonerubycameron@gmail.com",
       "product": "Accelerator",
       "amount": 1100,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-03",
@@ -1267,7 +1275,7 @@
       "email": "teaghanpowell408@gmail.com",
       "product": "",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-08-01",
@@ -1275,7 +1283,7 @@
       "email": "nathanieljarnicki@icloud.com",
       "product": "Accelerator",
       "amount": 2666.68,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-31",
@@ -1283,7 +1291,7 @@
       "email": "robdaminato@gmail.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-31",
@@ -1291,7 +1299,7 @@
       "email": "bruce.notman@bigpond.com",
       "product": "Accelerator",
       "amount": 5000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-31",
@@ -1299,7 +1307,7 @@
       "email": "bruce.notman@bigpond.com",
       "product": "Accelerator",
       "amount": 6000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-30",
@@ -1307,7 +1315,7 @@
       "email": "g.morgan52@yahoo.com",
       "product": "Accelerator",
       "amount": 5000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-29",
@@ -1315,7 +1323,7 @@
       "email": "scottfrancisburgess@gmail.com",
       "product": "Accelerator",
       "amount": 10450,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-28",
@@ -1323,15 +1331,7 @@
       "email": "scottfrancisburgess@gmail.com",
       "product": "Accelerator",
       "amount": 550,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-07-26",
-      "name": "Aukje Vermaat",
-      "email": "aukjevermaat@gmail.com",
-      "product": "Accelerator",
-      "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-26",
@@ -1339,7 +1339,15 @@
       "email": "timpriscollins@gmail.com",
       "product": "",
       "amount": 950,
-      "source": "Paid"
+      "source": "Organic"
+    },
+    {
+      "date": "2026-07-26",
+      "name": "Aukje Vermaat",
+      "email": "aukjevermaat@gmail.com",
+      "product": "Accelerator",
+      "amount": 1000,
+      "source": "Organic"
     },
     {
       "date": "2026-07-25",
@@ -1347,7 +1355,7 @@
       "email": "aukjevermaat@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-24",
@@ -1355,7 +1363,7 @@
       "email": "cassiescare1@gmail.com",
       "product": "",
       "amount": 4840,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-21",
@@ -1363,7 +1371,7 @@
       "email": "aukjevermaat@gmail.com",
       "product": "Accelerator",
       "amount": 100,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-20",
@@ -1387,7 +1395,7 @@
       "email": "nathanieljarnicki@icloud.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-17",
@@ -1403,7 +1411,7 @@
       "email": "mcfsystem@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-16",
@@ -1443,7 +1451,7 @@
       "email": "john.flano@hotmail.com",
       "product": "Accelerator",
       "amount": 10800,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-13",
@@ -1451,7 +1459,7 @@
       "email": "john.flano@hotmail.com",
       "product": "Accelerator",
       "amount": 200,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-13",
@@ -1480,7 +1488,7 @@
     {
       "date": "2026-07-11",
       "name": "",
-      "email": "wparr9@gmail.com",
+      "email": "tapiwa70@icloud.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -1496,7 +1504,7 @@
     {
       "date": "2026-07-11",
       "name": "",
-      "email": "tapiwa70@icloud.com",
+      "email": "wparr9@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -1579,7 +1587,7 @@
       "email": "brendanwenke@gmail.com",
       "product": "",
       "amount": 1500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-10",
@@ -1683,7 +1691,7 @@
       "email": "alexandra_djordjevic_2017@yahoo.com",
       "product": "",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-08",
@@ -1707,7 +1715,7 @@
       "email": "davidknight289@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-08",
@@ -1787,7 +1795,7 @@
       "email": "bhhext1979@gmail.com",
       "product": "Accelerator",
       "amount": 11000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-07",
@@ -1827,7 +1835,7 @@
       "email": "waynesabraham@gmail.com",
       "product": "",
       "amount": 300,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-05",
@@ -1867,7 +1875,7 @@
       "email": "annehuine8@gmail.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-03",
@@ -1875,7 +1883,7 @@
       "email": "yanikantzakis728@gmail.com",
       "product": "",
       "amount": 250,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-03",
@@ -1915,7 +1923,7 @@
       "email": "nathanieljarnicki@icloud.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-02",
@@ -1979,7 +1987,7 @@
       "email": "nategingerjones@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-01",
@@ -2059,7 +2067,7 @@
       "email": "ronankingsbury073@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-30",
@@ -2067,7 +2075,7 @@
       "email": "matlatsisky@yahoo.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-30",
@@ -2075,7 +2083,7 @@
       "email": "thushika.kularathne@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-30",
@@ -2083,7 +2091,7 @@
       "email": "mylesschiele2010@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-30",
@@ -2131,7 +2139,7 @@
       "email": "bkcongreve@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-29",
@@ -2147,7 +2155,7 @@
       "email": "carmen_a4@yahoo.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-29",
@@ -2155,7 +2163,7 @@
       "email": "marc@niemes.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-28",
@@ -2163,7 +2171,7 @@
       "email": "cnolder@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-28",
@@ -2171,7 +2179,7 @@
       "email": "josh@advancedlifestyletraining.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-28",
@@ -2179,7 +2187,7 @@
       "email": "overtones56@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-28",
@@ -2203,7 +2211,7 @@
       "email": "t.geddes7@icloud.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-28",
@@ -2243,7 +2251,7 @@
       "email": "lucy.rib@hotmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-27",
@@ -2251,7 +2259,7 @@
       "email": "jacintah@bigpond.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-27",
@@ -2291,7 +2299,7 @@
       "email": "rileybrownlie11@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-27",
@@ -2299,7 +2307,7 @@
       "email": "pep@iinform.com.au",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-27",
@@ -2307,7 +2315,7 @@
       "email": "domenicvirgara08@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-27",
@@ -2315,7 +2323,7 @@
       "email": "jordancarlson859@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-27",
@@ -2323,7 +2331,7 @@
       "email": "jakobe_1@icloud.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-26",
@@ -2339,7 +2347,7 @@
       "email": "bruce.notman@bigpond.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-26",
@@ -2347,7 +2355,7 @@
       "email": "bruce.notman@bigpond.com",
       "product": "Live Closing Accelerator",
       "amount": 47,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-26",
@@ -2355,7 +2363,7 @@
       "email": "timpriscollins@gmail.com",
       "product": "Accelerator",
       "amount": 950,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-25",
@@ -2371,7 +2379,7 @@
       "email": "tragisscott@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-25",
@@ -2391,8 +2399,8 @@
     },
     {
       "date": "2026-06-24",
-      "name": "Mirtha Meza",
-      "email": "mirtuca@hotmail.com",
+      "name": "Elina Vesma",
+      "email": "elinavesma@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -2403,14 +2411,6 @@
       "email": "joshuapaulosmith@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-06-24",
-      "name": "Elina Vesma",
-      "email": "elinavesma@gmail.com",
-      "product": "3D HT Closer Challenge",
-      "amount": 9,
       "source": "Organic"
     },
     {
@@ -2419,6 +2419,14 @@
       "email": "kial-richards@hotmail.com",
       "product": "Accelerator",
       "amount": 11000,
+      "source": "Organic"
+    },
+    {
+      "date": "2026-06-24",
+      "name": "Mirtha Meza",
+      "email": "mirtuca@hotmail.com",
+      "product": "3D HT Closer Challenge",
+      "amount": 9,
       "source": "Organic"
     },
     {
@@ -2459,7 +2467,7 @@
       "email": "aukjevermaat@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-24",
@@ -2475,7 +2483,7 @@
       "email": "leannewilson80@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-24",
@@ -2483,7 +2491,7 @@
       "email": "cassiescare1@gmail.com",
       "product": "Accelerator",
       "amount": 4840,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-24",
@@ -2491,7 +2499,7 @@
       "email": "carlo.natoli86@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-24",
@@ -2531,7 +2539,7 @@
       "email": "mwockner15@hotmail.com",
       "product": "Accelerator",
       "amount": 11000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-23",
@@ -2547,7 +2555,7 @@
       "email": "danesept73@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-23",
@@ -2555,7 +2563,7 @@
       "email": "iyli.beto@hotmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-23",
@@ -2563,7 +2571,7 @@
       "email": "shyamila_i@icloud.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-23",
@@ -2595,7 +2603,7 @@
       "email": "ksankoh129@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-23",
@@ -2603,7 +2611,7 @@
       "email": "shamirishaq@yahoo.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-22",
@@ -2611,7 +2619,7 @@
       "email": "littlelyo48@gmail.com",
       "product": "Accelerator",
       "amount": 11500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-22",
@@ -2651,7 +2659,7 @@
       "email": "littlelyo48@gmail.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-20",
@@ -2675,7 +2683,7 @@
       "email": "andreafallon83@gmail.com",
       "product": "Accelerator",
       "amount": 50,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-20",
@@ -2683,7 +2691,7 @@
       "email": "annehuine8@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-19",
@@ -2739,7 +2747,7 @@
       "email": "david.thorpe@talkingwithnumbers.com",
       "product": "Freedom Fighters Comm",
       "amount": 550,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-18",
@@ -2747,7 +2755,7 @@
       "email": "mcfsystem@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-18",
@@ -2803,7 +2811,7 @@
       "email": "jason.martin0482@gmail.com",
       "product": "Freedom Fighters Comm",
       "amount": 550,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-13",
@@ -2827,7 +2835,7 @@
       "email": "yanikantzakis728@gmail.com",
       "product": "Accelerator",
       "amount": 400,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-13",
@@ -2843,7 +2851,7 @@
       "email": "j.g.clark0001@gmail.com",
       "product": "FDR Masterclass VIP Upgrade",
       "amount": 47,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-13",
@@ -2859,7 +2867,7 @@
       "email": "gmcauliffe08@outlook.com",
       "product": "Accelerator",
       "amount": 100,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-13",
@@ -2891,7 +2899,7 @@
       "email": "rachelcoffey171@gmail.com",
       "product": "Accelerator",
       "amount": 200,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-12",
@@ -2899,7 +2907,7 @@
       "email": "t.geddes7@icloud.com",
       "product": "",
       "amount": 10,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-12",
@@ -2947,7 +2955,7 @@
       "email": "gmcauliffe08@outlook.com",
       "product": "FDR Masterclass VIP Upgrade",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-10",
@@ -2963,7 +2971,7 @@
       "email": "brendanwenke@gmail.com",
       "product": "",
       "amount": 1500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-09",
@@ -2971,7 +2979,7 @@
       "email": "lisamariegiuffrida2025@outlook.com",
       "product": "Accelerator",
       "amount": 1,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-09",
@@ -2979,7 +2987,7 @@
       "email": "mwockner15@hotmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-09",
@@ -2987,7 +2995,7 @@
       "email": "hemopojosh@outlook.com",
       "product": "",
       "amount": 400,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-09",
@@ -3019,7 +3027,7 @@
       "email": "alanbezzina72@gmail.com",
       "product": "Accelerator",
       "amount": 4840,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-08",
@@ -3027,7 +3035,7 @@
       "email": "jasonbesters@gmail.com",
       "product": "Freedom Fighters Comm",
       "amount": 550,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-08",
@@ -3067,7 +3075,7 @@
       "email": "hemopojosh@outlook.com",
       "product": "",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-06",
@@ -3075,7 +3083,7 @@
       "email": "iyli.beto@hotmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-05",
@@ -3107,7 +3115,7 @@
       "email": "anna05purple@gmail.com",
       "product": "FDR Masterclass VIP Upgrade",
       "amount": 47,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-06-03",
@@ -3179,7 +3187,7 @@
       "email": "aukjevermaat@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-30",
@@ -3307,7 +3315,7 @@
       "email": "timpriscollins@gmail.com",
       "product": "Accelerator",
       "amount": 950,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-23",
@@ -3363,7 +3371,7 @@
       "email": "david.thorpe@talkingwithnumbers.com",
       "product": "Freedom Fighters Comm",
       "amount": 550,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-22",
@@ -3507,7 +3515,7 @@
       "email": "alexandra_djordjevic_2017@yahoo.com",
       "product": "",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-15",
@@ -3523,7 +3531,7 @@
       "email": "jason.martin0482@gmail.com",
       "product": "Freedom Fighters Comm",
       "amount": 550,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-14",
@@ -3531,7 +3539,7 @@
       "email": "alexandra_djordjevic_2017@yahoo.com",
       "product": "FDR Masterclass VIP Upgrade",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-14",
@@ -3555,7 +3563,7 @@
       "email": "mcfsystem@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-14",
@@ -3643,7 +3651,7 @@
       "email": "brendanwenke@gmail.com",
       "product": "Deposit",
       "amount": 1500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-09",
@@ -3659,7 +3667,7 @@
       "email": "davidknight289@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-09",
@@ -3667,7 +3675,7 @@
       "email": "jasonbesters@gmail.com",
       "product": "Freedom Fighters Comm",
       "amount": 550,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-05-09",
@@ -3831,14 +3839,6 @@
     },
     {
       "date": "2026-04-30",
-      "name": "Nick Jones",
-      "email": "nick.b.jones@hotmail.com",
-      "product": "Deposit",
-      "amount": 30,
-      "source": "Organic"
-    },
-    {
-      "date": "2026-04-30",
       "name": "Marvi Joyce",
       "email": "marvi_j@hotmail.com",
       "product": "FDR Masterclass VIP Upgrade",
@@ -3847,10 +3847,10 @@
     },
     {
       "date": "2026-04-30",
-      "name": "Sanjay Soni",
-      "email": "sanjaysoni2k1@gmail.com",
-      "product": "Accelerator",
-      "amount": 1000,
+      "name": "Nick Jones",
+      "email": "nick.b.jones@hotmail.com",
+      "product": "Deposit",
+      "amount": 30,
       "source": "Organic"
     },
     {
@@ -3865,6 +3865,14 @@
       "date": "2026-04-30",
       "name": "Mamta Kochhar",
       "email": "mkochhar2010@hotmail.com",
+      "product": "Accelerator",
+      "amount": 1000,
+      "source": "Organic"
+    },
+    {
+      "date": "2026-04-30",
+      "name": "Sanjay Soni",
+      "email": "sanjaysoni2k1@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
       "source": "Organic"
@@ -3947,7 +3955,7 @@
       "email": "timpriscollins@gmail.com",
       "product": "Accelerator",
       "amount": 950,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-04-26",
@@ -4371,7 +4379,7 @@
       "email": "iyli.beto@hotmail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-04-09",
@@ -4395,7 +4403,7 @@
       "email": "davidknight289@gmail.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-04-09",
@@ -4435,7 +4443,7 @@
       "email": "hemopojosh@outlook.com",
       "product": "Accelerator",
       "amount": 250,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-04-07",
@@ -4459,7 +4467,7 @@
       "email": "hemopojosh@outlook.com",
       "product": "Accelerator",
       "amount": 200,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-04-04",
@@ -4571,7 +4579,7 @@
       "email": "hemopojosh@outlook.com",
       "product": "",
       "amount": 300,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-03-31",
@@ -4579,7 +4587,7 @@
       "email": "nategingerjones@gmail.com",
       "product": "Accelerator",
       "amount": 2500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-03-30",
@@ -4587,7 +4595,7 @@
       "email": "hemopojosh@outlook.com",
       "product": "",
       "amount": 250,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-03-30",
@@ -4627,7 +4635,7 @@
       "email": "hemopojosh@outlook.com",
       "product": "FDR Masterclass VIP Upgrade",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-03-25",
@@ -4667,7 +4675,7 @@
       "email": "davidknight289@gmail.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-03-21",
@@ -4747,7 +4755,7 @@
       "email": "davidknight289@gmail.com",
       "product": "FDR Masterclass VIP Upgrade",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-03-18",
@@ -4979,7 +4987,7 @@
       "email": "mcfsystem@gmail.com",
       "product": "FDR Application Deposit",
       "amount": 250,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-02-24",
@@ -5099,7 +5107,7 @@
       "email": "david.thorpe@talkingwithnumbers.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-02-12",
@@ -5107,7 +5115,7 @@
       "email": "jason.martin0482@gmail.com",
       "product": "Accelerator",
       "amount": 7000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-02-10",
@@ -5139,7 +5147,7 @@
       "email": "jason.martin0482@gmail.com",
       "product": "Accelerator",
       "amount": 2000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-02-09",
@@ -5155,7 +5163,7 @@
       "email": "david.thorpe@talkingwithnumbers.com",
       "product": "Accelerator",
       "amount": 500,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-02-07",
@@ -5195,7 +5203,7 @@
       "email": "jasonbesters@gmail.com",
       "product": "Accelerator",
       "amount": 3000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-02-07",
@@ -5203,7 +5211,7 @@
       "email": "jasonbesters@gmail.com",
       "product": "Accelerator",
       "amount": 6000,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-02-07",
@@ -5411,7 +5419,7 @@
       "email": "anna05purple@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-29",
@@ -5739,7 +5747,7 @@
       "email": "lisamariegiuffrida2025@outlook.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-25",
@@ -6035,7 +6043,7 @@
       "email": "david.thorpe@talkingwithnumbers.com",
       "product": "Freedom Coach Upgrade",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-21",
@@ -6115,7 +6123,7 @@
       "email": "david.thorpe@talkingwithnumbers.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-20",
@@ -6171,7 +6179,7 @@
       "email": "jason.martin0482@gmail.com",
       "product": "Freedom Coach Upgrade",
       "amount": 47,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-19",
@@ -6251,7 +6259,7 @@
       "email": "jasonbesters@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-18",
@@ -6259,7 +6267,7 @@
       "email": "jasonbesters@gmail.com",
       "product": "Freedom Coach Upgrade",
       "amount": 97,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-18",
@@ -6275,7 +6283,7 @@
       "email": "overtones56@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-18",
@@ -6299,7 +6307,7 @@
       "email": "jason.martin0482@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-01-17",
