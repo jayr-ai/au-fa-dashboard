@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-20T00:12:40.845Z",
+    "generatedAt": "2026-08-24T02:33:19.467Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -56,10 +56,10 @@
     },
     {
       "month": "2026-08",
-      "transactionCount": 29,
-      "totalCash": 76366.66000000002,
-      "cashFromAds": 15763.68,
-      "cashFromOrganic": 60602.98000000001
+      "transactionCount": 34,
+      "totalCash": 80466.66000000002,
+      "cashFromAds": 19563.68,
+      "cashFromOrganic": 60902.98000000001
     }
   ],
   "dailyBreakdown": [
@@ -992,9 +992,59 @@
       "date": "2026-08-19",
       "cashFromAds": 0,
       "cashFromOrganic": 1100
+    },
+    {
+      "date": "2026-08-20",
+      "cashFromAds": 0,
+      "cashFromOrganic": 200
+    },
+    {
+      "date": "2026-08-21",
+      "cashFromAds": 3800,
+      "cashFromOrganic": 100
     }
   ],
   "transactions": [
+    {
+      "date": "2026-08-21",
+      "name": "Russell Jones",
+      "email": "jeepc1@outlook.com",
+      "product": "Accelerator",
+      "amount": 1100,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-08-21",
+      "name": "Joshua Delaney",
+      "email": "joshdelaney01@hotmail.com",
+      "product": "Accelerator",
+      "amount": 1100,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-08-21",
+      "name": "Georgina Morgan",
+      "email": "g.morgan52@yahoo.com",
+      "product": "Accelerator",
+      "amount": 1600,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-08-21",
+      "name": "Felix Yatich",
+      "email": "felixkiprono47@gmail.com",
+      "product": "Accelerator",
+      "amount": 100,
+      "source": "Organic"
+    },
+    {
+      "date": "2026-08-20",
+      "name": "Ben McLean",
+      "email": "bennymac2019@gmail.com",
+      "product": "",
+      "amount": 200,
+      "source": "Organic"
+    },
     {
       "date": "2026-08-19",
       "name": "Brad Hutcheson",
@@ -1277,18 +1327,18 @@
     },
     {
       "date": "2026-07-26",
-      "name": "Tim Collins",
-      "email": "timpriscollins@gmail.com",
-      "product": "",
-      "amount": 950,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-07-26",
       "name": "Aukje Vermaat",
       "email": "aukjevermaat@gmail.com",
       "product": "Accelerator",
       "amount": 1000,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-07-26",
+      "name": "Tim Collins",
+      "email": "timpriscollins@gmail.com",
+      "product": "",
+      "amount": 950,
       "source": "Paid"
     },
     {
@@ -1430,7 +1480,7 @@
     {
       "date": "2026-07-11",
       "name": "",
-      "email": "tapiwa70@icloud.com",
+      "email": "wparr9@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -1446,7 +1496,7 @@
     {
       "date": "2026-07-11",
       "name": "",
-      "email": "wparr9@gmail.com",
+      "email": "tapiwa70@icloud.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -1614,7 +1664,7 @@
     {
       "date": "2026-07-08",
       "name": "",
-      "email": "kentconf@gmx.com",
+      "email": "jhard254@eq.edu.au",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -1646,7 +1696,7 @@
     {
       "date": "2026-07-08",
       "name": "",
-      "email": "jhard254@eq.edu.au",
+      "email": "monisay@hotmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -1670,7 +1720,7 @@
     {
       "date": "2026-07-08",
       "name": "",
-      "email": "monisay@hotmail.com",
+      "email": "kentconf@gmx.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -2341,8 +2391,8 @@
     },
     {
       "date": "2026-06-24",
-      "name": "Felicity N",
-      "email": "wadzinyamz@gmail.com",
+      "name": "Mirtha Meza",
+      "email": "mirtuca@hotmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -2365,10 +2415,10 @@
     },
     {
       "date": "2026-06-24",
-      "name": "Mirtha Meza",
-      "email": "mirtuca@hotmail.com",
-      "product": "3D HT Closer Challenge",
-      "amount": 9,
+      "name": "Kial Richards",
+      "email": "kial-richards@hotmail.com",
+      "product": "Accelerator",
+      "amount": 11000,
       "source": "Organic"
     },
     {
@@ -2381,10 +2431,10 @@
     },
     {
       "date": "2026-06-24",
-      "name": "Kial Richards",
-      "email": "kial-richards@hotmail.com",
-      "product": "Accelerator",
-      "amount": 11000,
+      "name": "Felicity N",
+      "email": "wadzinyamz@gmail.com",
+      "product": "3D HT Closer Challenge",
+      "amount": 9,
       "source": "Organic"
     },
     {
@@ -3773,18 +3823,18 @@
     },
     {
       "date": "2026-04-30",
-      "name": "Nick Jones",
-      "email": "nick.b.jones@hotmail.com",
-      "product": "Deposit",
-      "amount": 30,
+      "name": "Matthew Burns",
+      "email": "mattburns86@hotmail.com",
+      "product": "Accelerator",
+      "amount": 7000,
       "source": "Organic"
     },
     {
       "date": "2026-04-30",
-      "name": "Sanjay Soni",
-      "email": "sanjaysoni2k1@gmail.com",
-      "product": "Accelerator",
-      "amount": 1000,
+      "name": "Nick Jones",
+      "email": "nick.b.jones@hotmail.com",
+      "product": "Deposit",
+      "amount": 30,
       "source": "Organic"
     },
     {
@@ -3797,10 +3847,10 @@
     },
     {
       "date": "2026-04-30",
-      "name": "Matthew Burns",
-      "email": "mattburns86@hotmail.com",
+      "name": "Sanjay Soni",
+      "email": "sanjaysoni2k1@gmail.com",
       "product": "Accelerator",
-      "amount": 7000,
+      "amount": 1000,
       "source": "Organic"
     },
     {
@@ -3821,10 +3871,10 @@
     },
     {
       "date": "2026-04-29",
-      "name": "Stewart Carolan",
-      "email": "stewartcarolan@gmail.com",
-      "product": "FDR Masterclass VIP Upgrade",
-      "amount": 97,
+      "name": "Timothy Essington-Wilson",
+      "email": "gettimesso@gmail.com",
+      "product": "Accelerator",
+      "amount": 1000,
       "source": "Organic"
     },
     {
@@ -3837,10 +3887,10 @@
     },
     {
       "date": "2026-04-29",
-      "name": "Timothy Essington-Wilson",
-      "email": "gettimesso@gmail.com",
-      "product": "Accelerator",
-      "amount": 1000,
+      "name": "Stewart Carolan",
+      "email": "stewartcarolan@gmail.com",
+      "product": "FDR Masterclass VIP Upgrade",
+      "amount": 97,
       "source": "Organic"
     },
     {
