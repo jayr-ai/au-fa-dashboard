@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-25T00:07:22.396Z",
+    "generatedAt": "2026-08-25T00:08:08.218Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
