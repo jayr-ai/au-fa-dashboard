@@ -1,43 +1,18 @@
 {
   "meta": {
-    "generatedAt": "2026-08-26T06:58:33.308Z",
+    "generatedAt": "2026-08-20T23:21:32.224Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 373432
+    "totalRevenue": 359632
   },
   "masterclassRevenueByDate": [
     {
-      "date": "2026-08-25",
-      "revenue": 109,
-      "cashFromAds": 109,
-      "cashFromOrganic": 0,
-      "dealsCount": 2,
-      "deals": [
-        {
-          "date": "2026-08-25",
-          "name": "Felix Yatich",
-          "email": "felixkiprono47@gmail.com",
-          "product": "Accelerator",
-          "amount": 100,
-          "source": "paid"
-        },
-        {
-          "date": "2026-08-25",
-          "name": "Josephine Bushell",
-          "email": "josephinebushell@hotmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
-          "source": "paid"
-        }
-      ]
-    },
-    {
       "date": "2026-08-18",
-      "revenue": 13400,
-      "cashFromAds": 13200,
-      "cashFromOrganic": 200,
-      "dealsCount": 5,
+      "revenue": 1300,
+      "cashFromAds": 0,
+      "cashFromOrganic": 1300,
+      "dealsCount": 2,
       "deals": [
         {
           "date": "2026-08-18",
@@ -53,39 +28,15 @@
           "email": "bradhutch12@gmail.com",
           "product": "Accelerator",
           "amount": 1100,
-          "source": "paid"
-        },
-        {
-          "date": "2026-08-18",
-          "name": "Russell Jones",
-          "email": "jeepc1@outlook.com",
-          "product": "Accelerator",
-          "amount": 1100,
-          "source": "paid"
-        },
-        {
-          "date": "2026-08-18",
-          "name": "Russell Jones",
-          "email": "jeepc1@outlook.com",
-          "product": "Accelerator",
-          "amount": 9900,
-          "source": "paid"
-        },
-        {
-          "date": "2026-08-18",
-          "name": "Joshua Delaney",
-          "email": "joshdelaney01@hotmail.com",
-          "product": "Accelerator",
-          "amount": 1100,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-08-11",
       "revenue": 2176,
-      "cashFromAds": 144,
-      "cashFromOrganic": 2032,
+      "cashFromAds": 0,
+      "cashFromOrganic": 2176,
       "dealsCount": 3,
       "deals": [
         {
@@ -94,7 +45,7 @@
           "email": "brett7166@gmail.com",
           "product": "Accelerator",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-08-11",
@@ -102,7 +53,7 @@
           "email": "catherinevdh50@icloud.com",
           "product": "3D HT Closer Challenge",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-08-11",
@@ -117,8 +68,8 @@
     {
       "date": "2026-08-05",
       "revenue": 41164,
-      "cashFromAds": 3533,
-      "cashFromOrganic": 37630,
+      "cashFromAds": 0,
+      "cashFromOrganic": 41164,
       "dealsCount": 10,
       "deals": [
         {
@@ -175,7 +126,7 @@
           "email": "glenminers@gmail.com",
           "product": "Accelerator",
           "amount": 3533.33,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-08-05",
@@ -230,25 +181,25 @@
     },
     {
       "date": "2026-07-28",
-      "revenue": 29359,
-      "cashFromAds": 29359,
-      "cashFromOrganic": 0,
-      "dealsCount": 12,
+      "revenue": 27759,
+      "cashFromAds": 27662,
+      "cashFromOrganic": 97,
+      "dealsCount": 11,
       "deals": [
-        {
-          "date": "2026-07-28",
-          "name": "Bruce Notman",
-          "email": "bruce.notman@bigpond.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
-          "source": "paid"
-        },
         {
           "date": "2026-07-28",
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Live Closing Accelerator",
           "amount": 47,
+          "source": "paid"
+        },
+        {
+          "date": "2026-07-28",
+          "name": "Bruce Notman",
+          "email": "bruce.notman@bigpond.com",
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "paid"
         },
         {
@@ -277,14 +228,6 @@
         },
         {
           "date": "2026-07-28",
-          "name": "Georgina Morgan",
-          "email": "g.morgan52@yahoo.com",
-          "product": "Accelerator",
-          "amount": 1600,
-          "source": "paid"
-        },
-        {
-          "date": "2026-07-28",
           "name": "Marvi Joyce",
           "email": "marvi_j@hotmail.com",
           "product": "FDR Masterclass VIP Upgrade",
@@ -305,7 +248,7 @@
           "email": "nfaivalu@hotmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-07-28",
@@ -336,8 +279,8 @@
     {
       "date": "2026-07-22",
       "revenue": 7,
-      "cashFromAds": 7,
-      "cashFromOrganic": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 7,
       "dealsCount": 1,
       "deals": [
         {
@@ -346,15 +289,15 @@
           "email": "mjtxxv@gmail.com",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-07-16",
       "revenue": 7,
-      "cashFromAds": 7,
-      "cashFromOrganic": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 7,
       "dealsCount": 1,
       "deals": [
         {
@@ -363,15 +306,32 @@
           "email": "wendywild1@yahoo.com.au",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "paid"
+          "source": "organic"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-24",
+      "revenue": 9,
+      "cashFromAds": 0,
+      "cashFromOrganic": 9,
+      "dealsCount": 1,
+      "deals": [
+        {
+          "date": "2026-06-24",
+          "name": "Josephine Bushell",
+          "email": "josephinebushell@hotmail.com",
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-06-17",
       "revenue": 310,
-      "cashFromAds": 310,
-      "cashFromOrganic": 0,
+      "cashFromAds": 256,
+      "cashFromOrganic": 54,
       "dealsCount": 5,
       "deals": [
         {
@@ -404,7 +364,7 @@
           "email": "rhellyer47@gmail.com",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-17",
@@ -412,15 +372,15 @@
           "email": "rhellyer47@gmail.com",
           "product": "Freedom Coach Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-06-11",
       "revenue": 2429,
-      "cashFromAds": 929,
-      "cashFromOrganic": 1500,
+      "cashFromAds": 670,
+      "cashFromOrganic": 1759,
       "dealsCount": 12,
       "deals": [
         {
@@ -469,7 +429,7 @@
           "email": "ethanheyward@outlook.com",
           "product": "3D HT Closer Challenge",
           "amount": 9,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-11",
@@ -517,15 +477,15 @@
           "email": "warrenleeau@gmail.com",
           "product": "Accelerator",
           "amount": 250,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-06-09",
       "revenue": 43841,
-      "cashFromAds": 26400,
-      "cashFromOrganic": 17441,
+      "cashFromAds": 26401,
+      "cashFromOrganic": 17440,
       "dealsCount": 13,
       "deals": [
         {
@@ -630,7 +590,7 @@
           "email": "nick.gioskos@hotmail.com",
           "product": "Accelerator",
           "amount": 1,
-          "source": "organic"
+          "source": "paid"
         }
       ]
     },
@@ -702,8 +662,8 @@
     {
       "date": "2026-06-02",
       "revenue": 7542,
-      "cashFromAds": 7542,
-      "cashFromOrganic": 0,
+      "cashFromAds": 6100,
+      "cashFromOrganic": 1442,
       "dealsCount": 14,
       "deals": [
         {
@@ -712,7 +672,7 @@
           "email": "aaron@lonestargroup.com.au",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-02",
@@ -720,7 +680,7 @@
           "email": "aaron@lonestargroup.com.au",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-02",
@@ -728,7 +688,7 @@
           "email": "aaron@lonestargroup.com.au",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-02",
@@ -776,7 +736,7 @@
           "email": "cecilia.grayson81@gmail.com",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-02",
@@ -784,7 +744,7 @@
           "email": "cecilia.grayson81@gmail.com",
           "product": "Freedom Coach Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-02",
@@ -800,7 +760,7 @@
           "email": "mihalafam@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-06-02",
@@ -816,15 +776,15 @@
           "email": "sebastianbannister@yahoo.com.au",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-05-28",
       "revenue": 1095,
-      "cashFromAds": 1095,
-      "cashFromOrganic": 0,
+      "cashFromAds": 509,
+      "cashFromOrganic": 586,
       "dealsCount": 6,
       "deals": [
         {
@@ -833,7 +793,7 @@
           "email": "allytarr1985@gmail.com",
           "product": "Accelerator",
           "amount": 30,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-28",
@@ -841,7 +801,7 @@
           "email": "erinlukjanov@hotmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-28",
@@ -857,7 +817,7 @@
           "email": "lleatuavao@gmail.com",
           "product": "3D HT Closer Challenge",
           "amount": 9,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-28",
@@ -865,7 +825,7 @@
           "email": "mattezio@hotmail.com",
           "product": "Accelerator",
           "amount": 500,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-28",
@@ -880,8 +840,8 @@
     {
       "date": "2026-05-26",
       "revenue": 25584,
-      "cashFromAds": 12390,
-      "cashFromOrganic": 13194,
+      "cashFromAds": 24165,
+      "cashFromOrganic": 1419,
       "dealsCount": 18,
       "deals": [
         {
@@ -914,7 +874,7 @@
           "email": "corrie.duplooy1@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-26",
@@ -922,7 +882,7 @@
           "email": "fabsweety@icloud.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-26",
@@ -930,7 +890,7 @@
           "email": "manalkarrar01@gmail.com",
           "product": "3D HT Closer Challenge",
           "amount": 9,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-26",
@@ -946,14 +906,6 @@
           "email": "melissajoysandres@yahoo.com",
           "product": "Accelerator",
           "amount": 11000,
-          "source": "paid"
-        },
-        {
-          "date": "2026-05-26",
-          "name": "",
-          "email": "michelleroff1982@gmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
           "source": "paid"
         },
         {
@@ -962,7 +914,15 @@
           "email": "michelleroff1982@gmail.com",
           "product": "Live Closing Accelerator",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
+        },
+        {
+          "date": "2026-05-26",
+          "name": "",
+          "email": "michelleroff1982@gmail.com",
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
+          "source": "organic"
         },
         {
           "date": "2026-05-26",
@@ -970,7 +930,7 @@
           "email": "sendtojenniferho@gmail.com",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-26",
@@ -978,39 +938,39 @@
           "email": "skaru06@icloud.com",
           "product": "3D HT Closer Challenge",
           "amount": 9,
+          "source": "organic"
+        },
+        {
+          "date": "2026-05-26",
+          "name": "Swati Nampally",
+          "email": "swati.awakenedsoul@gmail.com",
+          "product": "FDR Masterclass VIP Upgrade",
+          "amount": 97,
+          "source": "organic"
+        },
+        {
+          "date": "2026-05-26",
+          "name": "Swati Nampally",
+          "email": "swati.awakenedsoul@gmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "source": "organic"
+        },
+        {
+          "date": "2026-05-26",
+          "name": "Vance Ripi",
+          "email": "vance_ripi@hotmail.com",
+          "product": "FDR Masterclass VIP Upgrade",
+          "amount": 97,
           "source": "paid"
         },
         {
           "date": "2026-05-26",
-          "name": "Swati Nampally",
-          "email": "swati.awakenedsoul@gmail.com",
-          "product": "FDR Masterclass VIP Upgrade",
-          "amount": 97,
-          "source": "organic"
-        },
-        {
-          "date": "2026-05-26",
-          "name": "Swati Nampally",
-          "email": "swati.awakenedsoul@gmail.com",
-          "product": "Accelerator",
-          "amount": 1000,
-          "source": "organic"
-        },
-        {
-          "date": "2026-05-26",
-          "name": "Vance Ripi",
-          "email": "vance_ripi@hotmail.com",
-          "product": "FDR Masterclass VIP Upgrade",
-          "amount": 97,
-          "source": "organic"
-        },
-        {
-          "date": "2026-05-26",
           "name": "Vance Ripi",
           "email": "vance_ripi@hotmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-26",
@@ -1018,7 +978,7 @@
           "email": "vance_ripi@hotmail.com",
           "product": "Accelerator",
           "amount": 11000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-26",
@@ -1026,7 +986,7 @@
           "email": "wombatron99@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
@@ -1090,8 +1050,8 @@
     {
       "date": "2026-05-19",
       "revenue": 40392,
-      "cashFromAds": 40392,
-      "cashFromOrganic": 0,
+      "cashFromAds": 5004,
+      "cashFromOrganic": 35388,
       "dealsCount": 21,
       "deals": [
         {
@@ -1124,7 +1084,7 @@
           "email": "baileynewell09@icloud.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1132,7 +1092,7 @@
           "email": "bigbenpaintdecorate@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1148,7 +1108,7 @@
           "email": "jessehupping@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1156,7 +1116,7 @@
           "email": "jessehupping@gmail.com",
           "product": "Accelerator",
           "amount": 200,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1164,7 +1124,7 @@
           "email": "jessehupping@gmail.com",
           "product": "Accelerator",
           "amount": 11800,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1228,7 +1188,7 @@
           "email": "pete.jm.roberts@gmail.com",
           "product": "Accelerator",
           "amount": 100,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1236,7 +1196,7 @@
           "email": "pete.jm.roberts@gmail.com",
           "product": "Accelerator",
           "amount": 10900,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1244,7 +1204,7 @@
           "email": "scropoi@outlook.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1252,7 +1212,7 @@
           "email": "sheehymatt164@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-19",
@@ -1260,15 +1220,15 @@
           "email": "sheehymatt164@gmail.com",
           "product": "Accelerator",
           "amount": 11000,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-05-14",
       "revenue": 24858,
-      "cashFromAds": 24358,
-      "cashFromOrganic": 500,
+      "cashFromAds": 12097,
+      "cashFromOrganic": 12761,
       "dealsCount": 10,
       "deals": [
         {
@@ -1301,7 +1261,7 @@
           "email": "mlmn2829@gmail.com",
           "product": "Accelerator",
           "amount": 100,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-14",
@@ -1309,7 +1269,7 @@
           "email": "scott2704@gmail.com",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-14",
@@ -1317,7 +1277,7 @@
           "email": "sfrncs89@gmail.com",
           "product": "Accelerator",
           "amount": 10,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-14",
@@ -1325,7 +1285,7 @@
           "email": "support@aaronshedlock.com.au",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-14",
@@ -1333,7 +1293,7 @@
           "email": "tmpau@bigpond.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-14",
@@ -1341,7 +1301,7 @@
           "email": "wendy.somer@live.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-14",
@@ -1349,15 +1309,15 @@
           "email": "wendy.somer@live.com",
           "product": "Accelerator",
           "amount": 11000,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-05-12",
       "revenue": 12738,
-      "cashFromAds": 12738,
-      "cashFromOrganic": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 12738,
       "dealsCount": 9,
       "deals": [
         {
@@ -1366,7 +1326,7 @@
           "email": "cameron.arthur001@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1374,7 +1334,7 @@
           "email": "cameron.arthur001@gmail.com",
           "product": "Accelerator",
           "amount": 300,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1382,7 +1342,7 @@
           "email": "cameron.arthur001@gmail.com",
           "product": "Accelerator",
           "amount": 10700,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1390,7 +1350,7 @@
           "email": "justinsandersss95@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1398,7 +1358,7 @@
           "email": "lilliannettlefold@icloud.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1406,7 +1366,7 @@
           "email": "moussanasour05@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1414,7 +1374,7 @@
           "email": "moussanasour05@gmail.com",
           "product": "Accelerator",
           "amount": 500,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1422,7 +1382,7 @@
           "email": "rigelle7@gmail.com",
           "product": "Accelerator",
           "amount": 500,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-12",
@@ -1430,15 +1390,15 @@
           "email": "tim.asimus@gmail.com",
           "product": "Accelerator",
           "amount": 500,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-05-07",
       "revenue": 11794,
-      "cashFromAds": 11597,
-      "cashFromOrganic": 197,
+      "cashFromAds": 0,
+      "cashFromOrganic": 11794,
       "dealsCount": 6,
       "deals": [
         {
@@ -1447,7 +1407,7 @@
           "email": "abe.halabe@hotmail.com",
           "product": "Accelerator",
           "amount": 500,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-07",
@@ -1455,7 +1415,7 @@
           "email": "gettimesso@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-07",
@@ -1463,7 +1423,7 @@
           "email": "gettimesso@gmail.com",
           "product": "Accelerator",
           "amount": 10000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-07",
@@ -1487,15 +1447,15 @@
           "email": "steeleryan5297@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     },
     {
       "date": "2026-05-05",
       "revenue": 34512,
-      "cashFromAds": 34465,
-      "cashFromOrganic": 47,
+      "cashFromAds": 9,
+      "cashFromOrganic": 34503,
       "dealsCount": 10,
       "deals": [
         {
@@ -1504,7 +1464,7 @@
           "email": "alisonbennett_is@hotmail.com",
           "product": "Accelerator",
           "amount": 250,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1512,7 +1472,7 @@
           "email": "emmapolinelli@gmail.com",
           "product": "Accelerator",
           "amount": 150,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1520,7 +1480,7 @@
           "email": "emmapolinelli@gmail.com",
           "product": "Accelerator",
           "amount": 10850,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1528,7 +1488,7 @@
           "email": "gettimesso@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1536,7 +1496,7 @@
           "email": "gettimesso@gmail.com",
           "product": "Accelerator",
           "amount": 10000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1544,7 +1504,7 @@
           "email": "jamesburot0@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1560,7 +1520,7 @@
           "email": "mieke.boer@icloud.com",
           "product": "3D HT Closer Challenge",
           "amount": 9,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1568,7 +1528,7 @@
           "email": "mieke.boer@icloud.com",
           "product": "Accelerator",
           "amount": 12100,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-05-05",
@@ -1600,8 +1560,8 @@
     {
       "date": "2026-04-28",
       "revenue": 45659,
-      "cashFromAds": 23144,
-      "cashFromOrganic": 22515,
+      "cashFromAds": 0,
+      "cashFromOrganic": 45659,
       "dealsCount": 17,
       "deals": [
         {
@@ -1610,7 +1570,7 @@
           "email": "gettimesso@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-04-28",
@@ -1618,7 +1578,7 @@
           "email": "gettimesso@gmail.com",
           "product": "Accelerator",
           "amount": 10000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-04-28",
@@ -1626,7 +1586,7 @@
           "email": "jasonllbw@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-04-28",
@@ -1658,7 +1618,7 @@
           "email": "mkochhar2010@hotmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-04-28",
@@ -1666,7 +1626,7 @@
           "email": "mkochhar2010@hotmail.com",
           "product": "Accelerator",
           "amount": 10000,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-04-28",
@@ -1698,7 +1658,7 @@
           "email": "romeryder@icloud.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-04-28",
@@ -1730,7 +1690,7 @@
           "email": "sixwalters6@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "paid"
+          "source": "organic"
         },
         {
           "date": "2026-04-28",
@@ -1745,8 +1705,8 @@
     {
       "date": "2026-04-23",
       "revenue": 11000,
-      "cashFromAds": 11000,
-      "cashFromOrganic": 0,
+      "cashFromAds": 0,
+      "cashFromOrganic": 11000,
       "dealsCount": 1,
       "deals": [
         {
@@ -1755,7 +1715,7 @@
           "email": "kongxiaobao1002@hotmail.com",
           "product": "Accelerator",
           "amount": 11000,
-          "source": "paid"
+          "source": "organic"
         }
       ]
     }
