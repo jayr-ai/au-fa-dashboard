@@ -3,19 +3,19 @@
     "generatedAt": "2026-08-20T23:20:20.333Z",
     "source": "BigQuery marketing_ad_spend_daily table",
     "dataWindow": "Jan 2026 - Aug 2026",
-    "dataPoints": 205,
+    "dataPoints": 209,
     "cacheStatus": "Live sync from BigQuery",
     "syncedAt": "2026-08-24T23:49:07.005236Z"
   },
   "totals": {
-    "spend": 260894.21,
-    "impressions": 4994986,
-    "linkClicks": 92615,
-    "leads": 5560,
-    "ctr": 1.85,
-    "ctlr": 6,
-    "cpm": 52.23,
-    "cpl": 46.92
+    "spend": 263959.4,
+    "impressions": 5151978,
+    "linkClicks": 93381,
+    "leads": 5605,
+    "ctr": 1.81,
+    "ctlr": 6.0,
+    "cpm": 51.23,
+    "cpl": 47.09
   },
   "monthly": [
     {
@@ -104,15 +104,15 @@
     },
     {
       "period": "2026-08",
-      "dayCount": 20,
-      "spend": 25792.06,
-      "impressions": 587949,
-      "linkClicks": 14430,
-      "leads": 590,
-      "ctr": 2.45,
-      "ctlr": 4.09,
-      "cpm": 43.87,
-      "cpl": 43.72
+      "dayCount": 24,
+      "spend": 28857.25,
+      "impressions": 744941,
+      "linkClicks": 15196,
+      "leads": 635,
+      "ctr": 2.04,
+      "ctlr": 4.18,
+      "cpm": 38.74,
+      "cpl": 45.44
     }
   ],
   "weekly": [
@@ -1924,6 +1924,34 @@
       "impressions": 52076,
       "linkClicks": 430,
       "leads": 12
+    },
+    {
+      "date": "2026-08-21",
+      "spend": 207.44,
+      "impressions": 10689,
+      "linkClicks": 12,
+      "leads": 1
+    },
+    {
+      "date": "2026-08-22",
+      "spend": 753.87,
+      "impressions": 47128,
+      "linkClicks": 158,
+      "leads": 9
+    },
+    {
+      "date": "2026-08-23",
+      "spend": 818.18,
+      "impressions": 43523,
+      "linkClicks": 154,
+      "leads": 9
+    },
+    {
+      "date": "2026-08-24",
+      "spend": 1285.7,
+      "impressions": 55652,
+      "linkClicks": 442,
+      "leads": 26
     }
   ]
 }
