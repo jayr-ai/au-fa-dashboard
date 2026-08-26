@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-08-26T00:26:24.148Z",
+    "generatedAt": "2026-08-26T04:16:52.922Z",
     "source": "Google Sheet (FA | Webinar Lead Tracker, X-Auto tab)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from Google Sheet (updated daily)",
-    "totalRegistrations": 3770
+    "totalRegistrations": 3774
   },
   "masterclassRegistrations": [
     {
       "date": "2026-09-01",
       "label": "01 Sept 2026",
-      "registered": 28
+      "registered": 33
     },
     {
       "date": "2026-08-25",
@@ -120,7 +120,7 @@
     {
       "date": "2026-05-05",
       "label": "05 May 2026",
-      "registered": 165
+      "registered": 164
     },
     {
       "date": "2026-04-30",
