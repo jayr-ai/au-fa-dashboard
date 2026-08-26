@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-25T02:28:24.331Z",
+    "generatedAt": "2026-08-26T00:26:33.391Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
@@ -10,8 +10,8 @@
     {
       "date": "2026-08-25",
       "revenue": 109,
-      "cashFromAds": 0,
-      "cashFromOrganic": 109,
+      "cashFromAds": 100,
+      "cashFromOrganic": 9,
       "dealsCount": 2,
       "deals": [
         {
@@ -20,7 +20,7 @@
           "email": "felixkiprono47@gmail.com",
           "product": "Accelerator",
           "amount": 100,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-08-25",
@@ -60,7 +60,7 @@
           "name": "Russell Jones",
           "email": "jeepc1@outlook.com",
           "product": "Accelerator",
-          "amount": 9900,
+          "amount": 1100,
           "source": "paid"
         },
         {
@@ -68,7 +68,7 @@
           "name": "Russell Jones",
           "email": "jeepc1@outlook.com",
           "product": "Accelerator",
-          "amount": 1100,
+          "amount": 9900,
           "source": "paid"
         },
         {
@@ -231,25 +231,25 @@
     {
       "date": "2026-07-28",
       "revenue": 29359,
-      "cashFromAds": 0,
-      "cashFromOrganic": 29359,
+      "cashFromAds": 28656,
+      "cashFromOrganic": 703,
       "dealsCount": 12,
       "deals": [
         {
           "date": "2026-07-28",
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
-          "product": "Live Closing Accelerator",
-          "amount": 47,
-          "source": "organic"
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
+          "source": "paid"
         },
         {
           "date": "2026-07-28",
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
-          "source": "organic"
+          "product": "Live Closing Accelerator",
+          "amount": 47,
+          "source": "paid"
         },
         {
           "date": "2026-07-28",
@@ -257,7 +257,7 @@
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
           "amount": 5000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-07-28",
@@ -265,7 +265,7 @@
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
           "amount": 6000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-07-28",
@@ -273,7 +273,7 @@
           "email": "g.morgan52@yahoo.com",
           "product": "Accelerator",
           "amount": 5000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-07-28",
@@ -281,7 +281,7 @@
           "email": "g.morgan52@yahoo.com",
           "product": "Accelerator",
           "amount": 1600,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-07-28",
@@ -321,7 +321,7 @@
           "email": "simonerubycameron@gmail.com",
           "product": "Accelerator",
           "amount": 1100,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-07-28",
@@ -329,7 +329,7 @@
           "email": "simonerubycameron@gmail.com",
           "product": "Accelerator",
           "amount": 9900,
-          "source": "organic"
+          "source": "paid"
         }
       ]
     },
@@ -419,8 +419,8 @@
     {
       "date": "2026-06-11",
       "revenue": 2429,
-      "cashFromAds": 0,
-      "cashFromOrganic": 2429,
+      "cashFromAds": 154,
+      "cashFromOrganic": 2275,
       "dealsCount": 12,
       "deals": [
         {
@@ -429,7 +429,7 @@
           "email": "anna05purple@gmail.com",
           "product": "FA 5Day Challenge",
           "amount": 7,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-11",
@@ -437,7 +437,7 @@
           "email": "anna05purple@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-11",
@@ -445,7 +445,7 @@
           "email": "cassandratobias3@gmail.com",
           "product": "N/A",
           "amount": 100,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-11",
@@ -524,8 +524,8 @@
     {
       "date": "2026-06-09",
       "revenue": 43841,
-      "cashFromAds": 0,
-      "cashFromOrganic": 43841,
+      "cashFromAds": 1000,
+      "cashFromOrganic": 42841,
       "dealsCount": 13,
       "deals": [
         {
@@ -550,6 +550,14 @@
           "email": "azzas_empire@hotmail.com",
           "product": "N/A",
           "amount": 1000,
+          "source": "paid"
+        },
+        {
+          "date": "2026-06-09",
+          "name": "Carolyn McMahon",
+          "email": "cazkyeshae@yahoo.com",
+          "product": "Accelerator",
+          "amount": 11700,
           "source": "organic"
         },
         {
@@ -558,14 +566,6 @@
           "email": "cazkyeshae@yahoo.com",
           "product": "Accelerator",
           "amount": 300,
-          "source": "organic"
-        },
-        {
-          "date": "2026-06-09",
-          "name": "Carolyn McMahon",
-          "email": "cazkyeshae@yahoo.com",
-          "product": "Accelerator",
-          "amount": 11700,
           "source": "organic"
         },
         {
@@ -702,8 +702,8 @@
     {
       "date": "2026-06-02",
       "revenue": 7542,
-      "cashFromAds": 0,
-      "cashFromOrganic": 7542,
+      "cashFromAds": 4391,
+      "cashFromOrganic": 3151,
       "dealsCount": 14,
       "deals": [
         {
@@ -712,7 +712,7 @@
           "email": "aaron@lonestargroup.com.au",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -720,7 +720,7 @@
           "email": "aaron@lonestargroup.com.au",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -728,7 +728,7 @@
           "email": "aaron@lonestargroup.com.au",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -736,7 +736,7 @@
           "email": "aukjevermaat@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -744,7 +744,7 @@
           "email": "aukjevermaat@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -752,7 +752,7 @@
           "email": "aukjevermaat@gmail.com",
           "product": "Accelerator",
           "amount": 100,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -760,7 +760,7 @@
           "email": "aukjevermaat@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -768,7 +768,7 @@
           "email": "aukjevermaat@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-06-02",
@@ -823,8 +823,8 @@
     {
       "date": "2026-05-28",
       "revenue": 1095,
-      "cashFromAds": 0,
-      "cashFromOrganic": 1095,
+      "cashFromAds": 30,
+      "cashFromOrganic": 1065,
       "dealsCount": 6,
       "deals": [
         {
@@ -833,7 +833,7 @@
           "email": "allytarr1985@gmail.com",
           "product": "Accelerator",
           "amount": 30,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-28",
@@ -880,8 +880,8 @@
     {
       "date": "2026-05-26",
       "revenue": 25584,
-      "cashFromAds": 0,
-      "cashFromOrganic": 25584,
+      "cashFromAds": 68,
+      "cashFromOrganic": 25516,
       "dealsCount": 18,
       "deals": [
         {
@@ -890,7 +890,7 @@
           "email": "andreafallon83@gmail.com",
           "product": "Accelerator",
           "amount": 50,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-26",
@@ -898,7 +898,7 @@
           "email": "bronson.stowers@gmail.com",
           "product": "3D HT Closer Challenge",
           "amount": 9,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-26",
@@ -906,7 +906,7 @@
           "email": "carlo.natoli86@gmail.com",
           "product": "3D HT Closer Challenge",
           "amount": 9,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-26",
@@ -952,16 +952,16 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "Live Closing Accelerator",
-          "amount": 97,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "organic"
         },
         {
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 97,
           "source": "organic"
         },
         {
@@ -1090,8 +1090,8 @@
     {
       "date": "2026-05-19",
       "revenue": 40392,
-      "cashFromAds": 0,
-      "cashFromOrganic": 40392,
+      "cashFromAds": 1791,
+      "cashFromOrganic": 38601,
       "dealsCount": 21,
       "deals": [
         {
@@ -1100,7 +1100,7 @@
           "email": "alexandra_djordjevic_2017@yahoo.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-19",
@@ -1108,7 +1108,7 @@
           "email": "alexandra_djordjevic_2017@yahoo.com",
           "product": "N/A",
           "amount": 500,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-19",
@@ -1116,7 +1116,7 @@
           "email": "alexandra_djordjevic_2017@yahoo.com",
           "product": "N/A",
           "amount": 1000,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-19",
@@ -1124,7 +1124,7 @@
           "email": "baileynewell09@icloud.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-19",
@@ -1132,7 +1132,7 @@
           "email": "bigbenpaintdecorate@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 97,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-19",
@@ -1178,16 +1178,16 @@
           "date": "2026-05-19",
           "name": "John Lornel Villanueva",
           "email": "johnlornel_p_villanueva@yahoo.com.au",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 47,
           "source": "organic"
         },
         {
           "date": "2026-05-19",
           "name": "John Lornel Villanueva",
           "email": "johnlornel_p_villanueva@yahoo.com.au",
-          "product": "Live Closing Accelerator",
-          "amount": 47,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "organic"
         },
         {
@@ -1267,8 +1267,8 @@
     {
       "date": "2026-05-14",
       "revenue": 24858,
-      "cashFromAds": 0,
-      "cashFromOrganic": 24858,
+      "cashFromAds": 97,
+      "cashFromOrganic": 24761,
       "dealsCount": 10,
       "deals": [
         {
@@ -1277,7 +1277,7 @@
           "email": "alexei.ilinykh@outlook.com",
           "product": "3D HT Closer Challenge",
           "amount": 97,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-14",
@@ -1356,8 +1356,8 @@
     {
       "date": "2026-05-12",
       "revenue": 12738,
-      "cashFromAds": 0,
-      "cashFromOrganic": 12738,
+      "cashFromAds": 11047,
+      "cashFromOrganic": 1691,
       "dealsCount": 9,
       "deals": [
         {
@@ -1366,7 +1366,7 @@
           "email": "cameron.arthur001@gmail.com",
           "product": "FDR Masterclass VIP Upgrade",
           "amount": 47,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-12",
@@ -1374,7 +1374,7 @@
           "email": "cameron.arthur001@gmail.com",
           "product": "Accelerator",
           "amount": 300,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-12",
@@ -1382,7 +1382,7 @@
           "email": "cameron.arthur001@gmail.com",
           "product": "Accelerator",
           "amount": 10700,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-12",
@@ -1437,8 +1437,8 @@
     {
       "date": "2026-05-07",
       "revenue": 11794,
-      "cashFromAds": 0,
-      "cashFromOrganic": 11794,
+      "cashFromAds": 500,
+      "cashFromOrganic": 11294,
       "dealsCount": 6,
       "deals": [
         {
@@ -1447,7 +1447,7 @@
           "email": "abe.halabe@hotmail.com",
           "product": "Accelerator",
           "amount": 500,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-07",
@@ -1494,8 +1494,8 @@
     {
       "date": "2026-05-05",
       "revenue": 34512,
-      "cashFromAds": 0,
-      "cashFromOrganic": 34512,
+      "cashFromAds": 250,
+      "cashFromOrganic": 34262,
       "dealsCount": 10,
       "deals": [
         {
@@ -1504,7 +1504,7 @@
           "email": "alisonbennett_is@hotmail.com",
           "product": "Accelerator",
           "amount": 250,
-          "source": "organic"
+          "source": "paid"
         },
         {
           "date": "2026-05-05",
