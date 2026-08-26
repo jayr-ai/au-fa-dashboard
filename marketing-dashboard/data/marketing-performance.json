@@ -2,7 +2,8 @@
   "meta": {
     "generatedAt": "2026-08-26T07:44:59.015Z",
     "source": "BigQuery marketing_ad_spend_daily (live Meta Ads MCP)",
-    "dataWindow": "Jan 2026 - Aug 2026"
+    "dataWindow": "Jan 2026 - Aug 2026",
+    "syncedAt": "2026-08-24T23:49:07.005236Z"
   },
   "daily": [
     {
