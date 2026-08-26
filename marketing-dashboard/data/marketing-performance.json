@@ -10,168 +10,168 @@
       "date": "2026-08-01",
       "spend": 1234.56,
       "impressions": 45000,
-      "link_clicks": 350,
+      "linkClicks": 350,
       "leads": 15
     },
     {
       "date": "2026-08-02",
       "spend": 1456.78,
       "impressions": 52000,
-      "link_clicks": 420,
+      "linkClicks": 420,
       "leads": 18
     },
     {
       "date": "2026-08-03",
       "spend": 1678.9,
       "impressions": 58000,
-      "link_clicks": 480,
+      "linkClicks": 480,
       "leads": 22
     },
     {
       "date": "2026-08-04",
       "spend": 1234.56,
       "impressions": 45000,
-      "link_clicks": 350,
+      "linkClicks": 350,
       "leads": 15
     },
     {
       "date": "2026-08-05",
       "spend": 1567.89,
       "impressions": 55000,
-      "link_clicks": 440,
+      "linkClicks": 440,
       "leads": 20
     },
     {
       "date": "2026-08-06",
       "spend": 1789.01,
       "impressions": 61000,
-      "link_clicks": 520,
+      "linkClicks": 520,
       "leads": 24
     },
     {
       "date": "2026-08-07",
       "spend": 1345.67,
       "impressions": 48000,
-      "link_clicks": 380,
+      "linkClicks": 380,
       "leads": 17
     },
     {
       "date": "2026-08-08",
       "spend": 1678.9,
       "impressions": 58000,
-      "link_clicks": 480,
+      "linkClicks": 480,
       "leads": 22
     },
     {
       "date": "2026-08-09",
       "spend": 1890.12,
       "impressions": 64000,
-      "link_clicks": 560,
+      "linkClicks": 560,
       "leads": 26
     },
     {
       "date": "2026-08-10",
       "spend": 1456.78,
       "impressions": 52000,
-      "link_clicks": 420,
+      "linkClicks": 420,
       "leads": 19
     },
     {
       "date": "2026-08-11",
       "spend": 1567.89,
       "impressions": 55000,
-      "link_clicks": 440,
+      "linkClicks": 440,
       "leads": 20
     },
     {
       "date": "2026-08-12",
       "spend": 1678.9,
       "impressions": 58000,
-      "link_clicks": 480,
+      "linkClicks": 480,
       "leads": 22
     },
     {
       "date": "2026-08-13",
       "spend": 1789.01,
       "impressions": 61000,
-      "link_clicks": 520,
+      "linkClicks": 520,
       "leads": 24
     },
     {
       "date": "2026-08-14",
       "spend": 1890.12,
       "impressions": 64000,
-      "link_clicks": 560,
+      "linkClicks": 560,
       "leads": 26
     },
     {
       "date": "2026-08-15",
       "spend": 1643.78,
       "impressions": 47755,
-      "link_clicks": 825,
+      "linkClicks": 825,
       "leads": 33
     },
     {
       "date": "2026-08-16",
       "spend": 1974.29,
       "impressions": 61405,
-      "link_clicks": 1062,
+      "linkClicks": 1062,
       "leads": 39
     },
     {
       "date": "2026-08-17",
       "spend": 1883.12,
       "impressions": 51570,
-      "link_clicks": 487,
+      "linkClicks": 487,
       "leads": 32
     },
     {
       "date": "2026-08-18",
       "spend": 1812.57,
       "impressions": 51357,
-      "link_clicks": 513,
+      "linkClicks": 513,
       "leads": 34
     },
     {
       "date": "2026-08-19",
       "spend": 1742.83,
       "impressions": 55052,
-      "link_clicks": 484,
+      "linkClicks": 484,
       "leads": 27
     },
     {
       "date": "2026-08-20",
       "spend": 1429.29,
       "impressions": 52124,
-      "link_clicks": 430,
+      "linkClicks": 430,
       "leads": 12
     },
     {
       "date": "2026-08-21",
       "spend": 207.44,
       "impressions": 10689,
-      "link_clicks": 12,
+      "linkClicks": 12,
       "leads": 0
     },
     {
       "date": "2026-08-22",
       "spend": 753.87,
       "impressions": 47128,
-      "link_clicks": 158,
+      "linkClicks": 158,
       "leads": 6
     },
     {
       "date": "2026-08-23",
       "spend": 818.18,
       "impressions": 43523,
-      "link_clicks": 154,
+      "linkClicks": 154,
       "leads": 4
     },
     {
       "date": "2026-08-24",
       "spend": 1285.28,
       "impressions": 55616,
-      "link_clicks": 442,
+      "linkClicks": 442,
       "leads": 24
     }
   ]
