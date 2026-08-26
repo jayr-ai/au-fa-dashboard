@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-25T06:25:07.196Z",
+    "generatedAt": "2026-08-26T00:25:59.890Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -9,8 +9,8 @@
       "month": "2026-01",
       "transactionCount": 174,
       "totalCash": 5364,
-      "cashFromAds": 277,
-      "cashFromOrganic": 5087
+      "cashFromAds": 423,
+      "cashFromOrganic": 4941
     },
     {
       "month": "2026-02",
@@ -75,18 +75,18 @@
     },
     {
       "date": "2026-01-13",
-      "cashFromAds": 14,
-      "cashFromOrganic": 160
+      "cashFromAds": 21,
+      "cashFromOrganic": 153
     },
     {
       "date": "2026-01-14",
-      "cashFromAds": 7,
-      "cashFromOrganic": 14
+      "cashFromAds": 21,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-01-15",
-      "cashFromAds": 0,
-      "cashFromOrganic": 563
+      "cashFromAds": 28,
+      "cashFromOrganic": 535
     },
     {
       "date": "2026-01-16",
@@ -100,8 +100,8 @@
     },
     {
       "date": "2026-01-18",
-      "cashFromAds": 0,
-      "cashFromOrganic": 319
+      "cashFromAds": 97,
+      "cashFromOrganic": 222
     },
     {
       "date": "2026-01-19",
@@ -6275,7 +6275,7 @@
       "email": "michaelkemp816@gmail.com",
       "product": "Freedom Coach Upgrade",
       "amount": 97,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-18",
@@ -6451,7 +6451,7 @@
       "email": "dublechoc@hotmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-15",
@@ -6491,7 +6491,7 @@
       "email": "michaelkemp816@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-15",
@@ -6507,7 +6507,7 @@
       "email": "mack_mate@hotmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-15",
@@ -6523,7 +6523,7 @@
       "email": "kellyfoxwell1@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-14",
@@ -6531,7 +6531,7 @@
       "email": "tinochama@yahoo.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-14",
@@ -6539,7 +6539,7 @@
       "email": "jessica.dickson1991@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-14",
@@ -6579,7 +6579,7 @@
       "email": "danieljstace@gmail.com",
       "product": "FA 5Day Challenge",
       "amount": 7,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-01-13",
