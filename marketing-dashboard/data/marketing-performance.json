@@ -1,20 +1,20 @@
 {
   "meta": {
-    "generatedAt": "2026-08-20T23:20:20.333Z",
+    "generatedAt": "2026-08-26T06:58:50.836Z",
     "source": "BigQuery marketing_ad_spend_daily table",
     "dataWindow": "Jan 2026 - Aug 2026",
-    "dataPoints": 205,
+    "dataPoints": 209,
     "cacheStatus": "Live sync from BigQuery"
   },
   "totals": {
-    "spend": 260894.21,
-    "impressions": 4994986,
-    "linkClicks": 92615,
-    "leads": 5560,
-    "ctr": 1.85,
-    "ctlr": 6,
-    "cpm": 52.23,
-    "cpl": 46.92
+    "spend": 263964.64,
+    "impressions": 5151991,
+    "linkClicks": 92375,
+    "leads": 5594,
+    "ctr": 1.79,
+    "ctlr": 6.06,
+    "cpm": 51.24,
+    "cpl": 47.19
   },
   "monthly": [
     {
@@ -103,15 +103,15 @@
     },
     {
       "period": "2026-08",
-      "dayCount": 20,
-      "spend": 25792.06,
-      "impressions": 587949,
-      "linkClicks": 14430,
-      "leads": 590,
-      "ctr": 2.45,
-      "ctlr": 4.09,
-      "cpm": 43.87,
-      "cpl": 43.72
+      "dayCount": 24,
+      "spend": 28862.49,
+      "impressions": 744954,
+      "linkClicks": 14190,
+      "leads": 624,
+      "ctr": 1.9,
+      "ctlr": 4.4,
+      "cpm": 38.74,
+      "cpl": 46.25
     }
   ],
   "weekly": [
@@ -477,15 +477,27 @@
     },
     {
       "period": "2026-W34",
-      "dayCount": 4,
-      "spend": 6862.15,
-      "impressions": 210054,
-      "linkClicks": 2920,
-      "leads": 105,
-      "ctr": 1.39,
-      "ctlr": 3.6,
-      "cpm": 32.67,
-      "cpl": 65.35
+      "dayCount": 7,
+      "spend": 8647.3,
+      "impressions": 311443,
+      "linkClicks": 2238,
+      "leads": 115,
+      "ctr": 0.72,
+      "ctlr": 5.14,
+      "cpm": 27.77,
+      "cpl": 75.19
+    },
+    {
+      "period": "2026-W35",
+      "dayCount": 1,
+      "spend": 1285.28,
+      "impressions": 55616,
+      "linkClicks": 442,
+      "leads": 24,
+      "ctr": 0.79,
+      "ctlr": 5.43,
+      "cpm": 23.11,
+      "cpl": 53.55
     }
   ],
   "daily": [
@@ -1900,29 +1912,57 @@
       "date": "2026-08-17",
       "spend": 1883.12,
       "impressions": 51570,
-      "linkClicks": 950,
+      "linkClicks": 487,
       "leads": 32
     },
     {
       "date": "2026-08-18",
       "spend": 1812.57,
       "impressions": 51357,
-      "linkClicks": 1056,
+      "linkClicks": 513,
       "leads": 34
     },
     {
       "date": "2026-08-19",
-      "spend": 1742.15,
-      "impressions": 55051,
+      "spend": 1742.83,
+      "impressions": 55052,
       "linkClicks": 484,
       "leads": 27
     },
     {
       "date": "2026-08-20",
-      "spend": 1424.31,
-      "impressions": 52076,
+      "spend": 1429.29,
+      "impressions": 52124,
       "linkClicks": 430,
       "leads": 12
+    },
+    {
+      "date": "2026-08-21",
+      "spend": 207.44,
+      "impressions": 10689,
+      "linkClicks": 12,
+      "leads": 0
+    },
+    {
+      "date": "2026-08-22",
+      "spend": 753.87,
+      "impressions": 47128,
+      "linkClicks": 158,
+      "leads": 6
+    },
+    {
+      "date": "2026-08-23",
+      "spend": 818.18,
+      "impressions": 43523,
+      "linkClicks": 154,
+      "leads": 4
+    },
+    {
+      "date": "2026-08-24",
+      "spend": 1285.28,
+      "impressions": 55616,
+      "linkClicks": 442,
+      "leads": 24
     }
   ]
 }
