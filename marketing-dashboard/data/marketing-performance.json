@@ -1,20 +1,20 @@
 {
   "meta": {
-    "generatedAt": "2026-08-27T05:57:08.556Z",
+    "generatedAt": "2026-08-27T07:20:21.620Z",
     "source": "BigQuery marketing_ad_spend_daily table",
     "dataWindow": "Jan 2026 - Aug 2026",
-    "dataPoints": 209,
+    "dataPoints": 212,
     "cacheStatus": "Live sync from BigQuery"
   },
   "totals": {
-    "spend": 263964.64,
-    "impressions": 5151991,
-    "linkClicks": 92375,
-    "leads": 5594,
-    "ctr": 1.79,
+    "spend": 266721.47,
+    "impressions": 5255435,
+    "linkClicks": 93471,
+    "leads": 5669,
+    "ctr": 1.78,
     "ctlr": 6.06,
-    "cpm": 51.24,
-    "cpl": 47.19
+    "cpm": 50.75,
+    "cpl": 47.05
   },
   "monthly": [
     {
@@ -103,15 +103,15 @@
     },
     {
       "period": "2026-08",
-      "dayCount": 24,
-      "spend": 28862.49,
-      "impressions": 744954,
-      "linkClicks": 14190,
-      "leads": 624,
-      "ctr": 1.9,
-      "ctlr": 4.4,
-      "cpm": 38.74,
-      "cpl": 46.25
+      "dayCount": 27,
+      "spend": 31619.32,
+      "impressions": 848398,
+      "linkClicks": 15286,
+      "leads": 699,
+      "ctr": 1.8,
+      "ctlr": 4.57,
+      "cpm": 37.27,
+      "cpl": 45.24
     }
   ],
   "weekly": [
@@ -489,15 +489,15 @@
     },
     {
       "period": "2026-W35",
-      "dayCount": 1,
-      "spend": 1285.28,
-      "impressions": 55616,
-      "linkClicks": 442,
-      "leads": 24,
-      "ctr": 0.79,
-      "ctlr": 5.43,
-      "cpm": 23.11,
-      "cpl": 53.55
+      "dayCount": 4,
+      "spend": 4042.11,
+      "impressions": 159060,
+      "linkClicks": 1538,
+      "leads": 99,
+      "ctr": 0.97,
+      "ctlr": 6.44,
+      "cpm": 25.41,
+      "cpl": 40.83
     }
   ],
   "daily": [
@@ -1963,6 +1963,27 @@
       "impressions": 55616,
       "linkClicks": 442,
       "leads": 24
+    },
+    {
+      "date": "2026-08-25",
+      "spend": 1699.21,
+      "impressions": 64354,
+      "linkClicks": 695,
+      "leads": 42
+    },
+    {
+      "date": "2026-08-26",
+      "spend": 994.84,
+      "impressions": 37193,
+      "linkClicks": 379,
+      "leads": 31
+    },
+    {
+      "date": "2026-08-27",
+      "spend": 62.78,
+      "impressions": 1897,
+      "linkClicks": 22,
+      "leads": 2
     }
   ]
 }
