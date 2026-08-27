@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-27T05:57:11.887Z",
+    "generatedAt": "2026-08-27T07:20:25.762Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -56,9 +56,9 @@
     },
     {
       "month": "2026-08",
-      "transactionCount": 35,
-      "totalCash": 90366.66000000002,
-      "cashFromAds": 34341.01,
+      "transactionCount": 36,
+      "totalCash": 91366.66000000002,
+      "cashFromAds": 35341.01,
       "cashFromOrganic": 56025.65000000001
     }
   ],
@@ -1002,9 +1002,22 @@
       "date": "2026-08-21",
       "cashFromAds": 13800,
       "cashFromOrganic": 0
+    },
+    {
+      "date": "2026-08-26",
+      "cashFromAds": 1000,
+      "cashFromOrganic": 0
     }
   ],
   "transactions": [
+    {
+      "date": "2026-08-26",
+      "name": "Aukje Vermaat",
+      "email": "aukjevermaat@gmail.com",
+      "product": "Accelerator",
+      "amount": 1000,
+      "source": "Paid"
+    },
     {
       "date": "2026-08-21",
       "name": "Russell Jones",
@@ -1672,7 +1685,7 @@
     {
       "date": "2026-07-08",
       "name": "",
-      "email": "jhard254@eq.edu.au",
+      "email": "rubengeros@yahoo.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -1696,18 +1709,18 @@
     {
       "date": "2026-07-08",
       "name": "",
-      "email": "rubengeros@yahoo.com",
-      "product": "3D HT Closer Challenge",
-      "amount": 9,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-07-08",
-      "name": "",
       "email": "monisay@hotmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
+    },
+    {
+      "date": "2026-07-08",
+      "name": "",
+      "email": "jhard254@eq.edu.au",
+      "product": "3D HT Closer Challenge",
+      "amount": 9,
+      "source": "Paid"
     },
     {
       "date": "2026-07-08",
@@ -3831,6 +3844,14 @@
     },
     {
       "date": "2026-04-30",
+      "name": "Michael Lewis Tate",
+      "email": "4051mt@gmail.com",
+      "product": "Accelerator",
+      "amount": 5001,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-04-30",
       "name": "Matthew Burns",
       "email": "mattburns86@hotmail.com",
       "product": "Accelerator",
@@ -3847,27 +3868,19 @@
     },
     {
       "date": "2026-04-30",
-      "name": "Nick Jones",
-      "email": "nick.b.jones@hotmail.com",
-      "product": "Deposit",
-      "amount": 30,
-      "source": "Organic"
-    },
-    {
-      "date": "2026-04-30",
-      "name": "Michael Lewis Tate",
-      "email": "4051mt@gmail.com",
-      "product": "Accelerator",
-      "amount": 5001,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-04-30",
       "name": "Mamta Kochhar",
       "email": "mkochhar2010@hotmail.com",
       "product": "Accelerator",
       "amount": 1000,
       "source": "Paid"
+    },
+    {
+      "date": "2026-04-30",
+      "name": "Nick Jones",
+      "email": "nick.b.jones@hotmail.com",
+      "product": "Deposit",
+      "amount": 30,
+      "source": "Organic"
     },
     {
       "date": "2026-04-30",
