@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-08-26T07:32:52.658Z",
+  "synced_at": "2026-08-27T07:17:24.132Z",
   "agents": [
     {
       "n": "Laura Fillmann",
@@ -40,8 +40,8 @@
   ],
   "funnel": [
     {
-      "n": "Stacie Skehan",
-      "d": "2026-08-26",
+      "n": "Shane Dacosta",
+      "d": "2026-08-27",
       "won": 0,
       "pen": 0,
       "lost": 0,
@@ -55,7 +55,7 @@
     },
     {
       "n": "Laura Fillmann",
-      "d": "2026-08-26",
+      "d": "2026-08-27",
       "won": 0,
       "pen": 0,
       "lost": 0,
@@ -63,6 +63,48 @@
       "mis": 0,
       "can": 0,
       "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Shane Dacosta",
+      "d": "2026-08-26",
+      "won": 0,
+      "pen": 0,
+      "lost": 0,
+      "ns": 1,
+      "mis": 1,
+      "can": 0,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Stacie Skehan",
+      "d": "2026-08-26",
+      "won": 0,
+      "pen": 0,
+      "lost": 1,
+      "ns": 1,
+      "mis": 0,
+      "can": 2,
+      "pp": 1,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Laura Fillmann",
+      "d": "2026-08-26",
+      "won": 0,
+      "pen": 0,
+      "lost": 1,
+      "ns": 1,
+      "mis": 1,
+      "can": 2,
+      "pp": 1,
       "ts": 0,
       "rev": 0,
       "cash": 0
@@ -992,12 +1034,12 @@
       "cash": 0
     },
     {
-      "n": "Stacie Skehan",
+      "n": "Nelson Lopera",
       "d": "2026-07-23",
       "won": 0,
       "pen": 0,
-      "lost": 0,
-      "ns": 1,
+      "lost": 1,
+      "ns": 0,
       "mis": 0,
       "can": 0,
       "pp": 0,
@@ -1006,12 +1048,12 @@
       "cash": 0
     },
     {
-      "n": "Nelson Lopera",
+      "n": "Stacie Skehan",
       "d": "2026-07-23",
       "won": 0,
       "pen": 0,
-      "lost": 1,
-      "ns": 0,
+      "lost": 0,
+      "ns": 1,
       "mis": 0,
       "can": 0,
       "pp": 0,
@@ -2042,20 +2084,6 @@
       "cash": 0
     },
     {
-      "n": "Laura Fillmann",
-      "d": "2026-06-25",
-      "won": 0,
-      "pen": 0,
-      "lost": 0,
-      "ns": 1,
-      "mis": 0,
-      "can": 1,
-      "pp": 0,
-      "ts": 0,
-      "rev": 0,
-      "cash": 0
-    },
-    {
       "n": "Vanessa Caruso",
       "d": "2026-06-25",
       "won": 0,
@@ -2064,6 +2092,20 @@
       "ns": 0,
       "mis": 0,
       "can": 0,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Laura Fillmann",
+      "d": "2026-06-25",
+      "won": 0,
+      "pen": 0,
+      "lost": 0,
+      "ns": 1,
+      "mis": 0,
+      "can": 1,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -2238,14 +2280,14 @@
       "cash": 11000
     },
     {
-      "n": "Laura Fillmann",
+      "n": "Vanessa Caruso",
       "d": "2026-06-19",
       "won": 0,
       "pen": 0,
-      "lost": 0,
-      "ns": 3,
+      "lost": 3,
+      "ns": 1,
       "mis": 0,
-      "can": 1,
+      "can": 0,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -2280,14 +2322,14 @@
       "cash": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Laura Fillmann",
       "d": "2026-06-19",
       "won": 0,
       "pen": 0,
-      "lost": 3,
-      "ns": 1,
+      "lost": 0,
+      "ns": 3,
       "mis": 0,
-      "can": 0,
+      "can": 1,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -2518,12 +2560,12 @@
       "cash": 11000
     },
     {
-      "n": "Shane Dacosta",
+      "n": "Vanessa Caruso",
       "d": "2026-06-11",
       "won": 0,
       "pen": 0,
-      "lost": 1,
-      "ns": 0,
+      "lost": 0,
+      "ns": 2,
       "mis": 0,
       "can": 1,
       "pp": 0,
@@ -2532,12 +2574,12 @@
       "cash": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Shane Dacosta",
       "d": "2026-06-11",
       "won": 0,
       "pen": 0,
-      "lost": 0,
-      "ns": 2,
+      "lost": 1,
+      "ns": 0,
       "mis": 0,
       "can": 1,
       "pp": 0,
@@ -2770,20 +2812,6 @@
       "cash": 0
     },
     {
-      "n": "Shane Dacosta",
-      "d": "2026-06-04",
-      "won": 0,
-      "pen": 0,
-      "lost": 2,
-      "ns": 2,
-      "mis": 0,
-      "can": 0,
-      "pp": 0,
-      "ts": 0,
-      "rev": 0,
-      "cash": 0
-    },
-    {
       "n": "Stacie Skehan",
       "d": "2026-06-04",
       "won": 0,
@@ -2792,6 +2820,20 @@
       "ns": 0,
       "mis": 0,
       "can": 1,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Shane Dacosta",
+      "d": "2026-06-04",
+      "won": 0,
+      "pen": 0,
+      "lost": 2,
+      "ns": 2,
+      "mis": 0,
+      "can": 0,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -3036,20 +3078,6 @@
       "cash": 11000
     },
     {
-      "n": "Nelson Lopera",
-      "d": "2026-05-22",
-      "won": 0,
-      "pen": 0,
-      "lost": 0,
-      "ns": 1,
-      "mis": 0,
-      "can": 0,
-      "pp": 0,
-      "ts": 0,
-      "rev": 0,
-      "cash": 0
-    },
-    {
       "n": "Shane Dacosta",
       "d": "2026-05-22",
       "won": 0,
@@ -3058,6 +3086,20 @@
       "ns": 1,
       "mis": 0,
       "can": 1,
+      "pp": 0,
+      "ts": 0,
+      "rev": 0,
+      "cash": 0
+    },
+    {
+      "n": "Nelson Lopera",
+      "d": "2026-05-22",
+      "won": 0,
+      "pen": 0,
+      "lost": 0,
+      "ns": 1,
+      "mis": 0,
+      "can": 0,
       "pp": 0,
       "ts": 0,
       "rev": 0,
@@ -4060,14 +4102,14 @@
   ],
   "kpi": [
     {
-      "n": "Stacie Skehan",
-      "d": "2026-08-26",
-      "hrs": 1.5,
+      "n": "",
+      "d": "2026-08-27",
+      "hrs": 1,
       "di": 56,
-      "se": 0,
+      "se": 1,
       "ap": 0,
-      "ns": 2,
-      "su": 1,
+      "ns": 0,
+      "su": 0,
       "cf": 0,
       "cash": 0,
       "rev": 0
@@ -4081,6 +4123,19 @@
       "ap": 0,
       "ns": 0,
       "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Stacie Skehan",
+      "d": "2026-08-26",
+      "hrs": 1.5,
+      "di": 56,
+      "se": 0,
+      "ap": 0,
+      "ns": 2,
+      "su": 1,
       "cf": 0,
       "cash": 0,
       "rev": 0
@@ -4775,7 +4830,7 @@
       "rev": 0
     },
     {
-      "n": "Marie Grondin",
+      "n": "Nelson Lopera",
       "d": "2026-08-12",
       "hrs": 0,
       "di": 0,
@@ -4814,7 +4869,7 @@
       "rev": 0
     },
     {
-      "n": "Nelson Lopera",
+      "n": "Vanessa Caruso",
       "d": "2026-08-12",
       "hrs": 0,
       "di": 0,
@@ -4827,7 +4882,7 @@
       "rev": 0
     },
     {
-      "n": "Vanessa Caruso",
+      "n": "Marie Grondin",
       "d": "2026-08-12",
       "hrs": 0,
       "di": 0,
@@ -17216,19 +17271,6 @@
       "rev": 0
     },
     {
-      "n": "Kymberley Peters",
-      "d": "2026-04-26",
-      "hrs": 0,
-      "di": 0,
-      "se": 0,
-      "ap": 0,
-      "ns": 0,
-      "su": 0,
-      "cf": 0,
-      "cash": 0,
-      "rev": 0
-    },
-    {
       "n": "Laura Fillmann",
       "d": "2026-04-26",
       "hrs": 0,
@@ -17307,7 +17349,7 @@
       "rev": 0
     },
     {
-      "n": "Brittany Cooper",
+      "n": "Kymberley Peters",
       "d": "2026-04-26",
       "hrs": 0,
       "di": 0,
@@ -17321,6 +17363,19 @@
     },
     {
       "n": "Vanessa Caruso",
+      "d": "2026-04-26",
+      "hrs": 0,
+      "di": 0,
+      "se": 0,
+      "ap": 0,
+      "ns": 0,
+      "su": 0,
+      "cf": 0,
+      "cash": 0,
+      "rev": 0
+    },
+    {
+      "n": "Brittany Cooper",
       "d": "2026-04-26",
       "hrs": 0,
       "di": 0,
