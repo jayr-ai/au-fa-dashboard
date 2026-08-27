@@ -1,21 +1,21 @@
 {
   "meta": {
-    "generatedAt": "2026-08-27T14:30:00.000Z",
+    "generatedAt": "2026-08-28T12:00:00.000Z",
     "source": "BigQuery marketing_ad_spend_daily table",
     "dataWindow": "Jan 2026 - Aug 2026",
-    "dataPoints": 212,
+    "dataPoints": 213,
     "cacheStatus": "Live sync from BigQuery",
-    "syncedAt": "2026-08-27T14:30:00.000Z"
+    "syncedAt": "2026-08-28T12:00:00.000Z"
   },
   "totals": {
-    "spend": 265715.83,
-    "impressions": 5255422,
-    "linkClicks": 94529,
-    "leads": 5680,
+    "spend": 265881.06,
+    "impressions": 5258878,
+    "linkClicks": 94556,
+    "leads": 5682,
     "ctr": 1.8,
     "ctlr": 5.98,
-    "cpm": 50.72,
-    "cpl": 46.81
+    "cpm": 50.71,
+    "cpl": 46.80
   },
   "monthly": [
     {
@@ -1972,6 +1972,13 @@
       "spend": 62.78,
       "impressions": 1897,
       "linkClicks": 22,
+      "leads": 2
+    },
+    {
+      "date": "2026-08-28",
+      "spend": 165.23,
+      "impressions": 3456,
+      "linkClicks": 27,
       "leads": 2
     }
   ]
