@@ -131,10 +131,43 @@ ORDER BY date ASC
 }
 ```
 
-#### Step 3: Write to File
-Path: `au-fa-dashboard/marketing-dashboard/data/marketing-performance.json`
+#### Step 3: Write to Files
+Paths:
+- `au-fa-dashboard/marketing-dashboard/data/marketing-performance.json` (ad spend daily)
+- `au-fa-dashboard/marketing-dashboard/data/funnel-stages.json` (GHL pipeline stages)
 
-Verify file was written and has correct format.
+Verify both files were written and have correct format.
+
+#### Step 4: Export GHL Funnel Stages to JSON
+```sql
+SELECT 
+  stage,
+  COUNT(*) as count,
+  ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) as position,
+  ROUND(100.0 / SUM(COUNT(*)) OVER () * COUNT(*), 2) as winProbability
+FROM `jv-data-warehouse.freedom_academy_au.marketing_funnel_stages`
+WHERE run_date = CURRENT_DATE()
+GROUP BY stage
+ORDER BY position
+```
+
+Generate JSON:
+```python
+{
+  "meta": {
+    "generatedAt": "2026-08-27T...",
+    "source": "BigQuery marketing_funnel_stages (GHL Masterclass Pipeline)",
+    "dataWindow": "2026-08-27",
+    "totalOpportunities": 6047,
+    "pipelineId": "djiSwm3hJsW7Rv9tyqSl"
+  },
+  "stages": [
+    { "name": "Registered", "count": 4564, "position": 0, "winProbability": 8.33 },
+    { "name": "VIP Upgrade", "count": 17, "position": 1, "winProbability": 16.67 },
+    ...
+  ]
+}
+```
 
 ### Phase 5: Git Commit & Push
 
@@ -149,7 +182,7 @@ Should show:
 
 #### Step 2: Git Add
 ```bash
-git add marketing-dashboard/data/marketing-performance.json
+git add marketing-dashboard/data/marketing-performance.json marketing-dashboard/data/funnel-stages.json
 ```
 
 #### Step 3: Git Commit
