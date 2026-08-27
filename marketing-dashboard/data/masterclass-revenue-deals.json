@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-27T05:57:04.838Z",
+    "generatedAt": "2026-08-27T07:20:17.887Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 373432
+    "totalRevenue": 374432
   },
   "masterclassRevenueByDate": [
     {
@@ -64,7 +64,7 @@
           "name": "Russell Jones",
           "email": "jeepc1@outlook.com",
           "product": "Accelerator",
-          "amount": 1100,
+          "amount": 9900,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -73,7 +73,7 @@
           "name": "Russell Jones",
           "email": "jeepc1@outlook.com",
           "product": "Accelerator",
-          "amount": 9900,
+          "amount": 1100,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -280,7 +280,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 5000,
+          "amount": 6000,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -289,7 +289,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 6000,
+          "amount": 5000,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -613,7 +613,7 @@
           "name": "Carolyn McMahon",
           "email": "cazkyeshae@yahoo.com",
           "product": "Accelerator",
-          "amount": 11700,
+          "amount": 300,
           "source": "organic",
           "closer": "Vanessa Caruso"
         },
@@ -622,7 +622,7 @@
           "name": "Carolyn McMahon",
           "email": "cazkyeshae@yahoo.com",
           "product": "Accelerator",
-          "amount": 300,
+          "amount": 11700,
           "source": "organic",
           "closer": "Vanessa Caruso"
         },
@@ -774,10 +774,10 @@
     },
     {
       "date": "2026-06-02",
-      "revenue": 7542,
-      "cashFromAds": 7542,
+      "revenue": 8542,
+      "cashFromAds": 8542,
       "cashFromOrganic": 0,
-      "dealsCount": 14,
+      "dealsCount": 15,
       "deals": [
         {
           "date": "2026-06-02",
@@ -836,6 +836,15 @@
         {
           "date": "2026-06-02",
           "name": "Rheuben Ariki Boutet-Manning",
+          "email": "aukjevermaat@gmail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "source": "paid",
+          "closer": "Nelson Lopera"
+        },
+        {
+          "date": "2026-06-02",
+          "name": "Aukje Vermaat",
           "email": "aukjevermaat@gmail.com",
           "product": "Accelerator",
           "amount": 1000,
@@ -1053,8 +1062,8 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 97,
           "source": "paid",
           "closer": "?"
         },
@@ -1062,8 +1071,8 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "Live Closing Accelerator",
-          "amount": 97,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "paid",
           "closer": "?"
         },
@@ -1305,8 +1314,8 @@
           "date": "2026-05-19",
           "name": "John Lornel Villanueva",
           "email": "johnlornel_p_villanueva@yahoo.com.au",
-          "product": "Live Closing Accelerator",
-          "amount": 47,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "paid",
           "closer": "?"
         },
@@ -1314,8 +1323,8 @@
           "date": "2026-05-19",
           "name": "John Lornel Villanueva",
           "email": "johnlornel_p_villanueva@yahoo.com.au",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 47,
           "source": "paid",
           "closer": "?"
         },
