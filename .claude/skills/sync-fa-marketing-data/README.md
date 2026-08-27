@@ -174,7 +174,9 @@ Verify pipeline ID: `djiSwm3hJsW7Rv9tyqSl` (Masterclass Funnel)
 ## Notes
 
 - Safe to run multiple times (idempotent)
-- Auto-detects missing dates
+- Auto-detects missing dates from MAX(date) to TODAY (forward-filling)
+  - **Fixed 2026-08-27**: Previously only backfilled 7 days, missing recent data. Now extends to current date.
+  - **What this means**: After Aug 24 was last synced, Aug 25-27 weren't attempted. Now they are automatically included.
 - No manual date entry needed
 - Upsert prevents duplicates
 - Git push requires GitHub access (already set up)

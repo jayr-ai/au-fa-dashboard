@@ -19,7 +19,7 @@ FROM `jv-data-warehouse.freedom_academy_au.marketing_ad_spend_daily`
 ```
 - If `--meta-since` flag: use provided date
 - If `--meta-days` flag: use last N days
-- Default: Fill 7-day gap before last known date
+- Default: Sync from MAX(date) to TODAY (fills forward to current date, not backward)
 
 #### Step 2: Query Meta MCP
 For each date in the range, call Meta Ads tool:
