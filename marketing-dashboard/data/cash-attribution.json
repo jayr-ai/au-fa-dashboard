@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-27T23:44:21.818Z",
+    "generatedAt": "2026-08-31T00:16:04.878Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -56,10 +56,10 @@
     },
     {
       "month": "2026-08",
-      "transactionCount": 36,
-      "totalCash": 91366.66000000002,
-      "cashFromAds": 35341.01,
-      "cashFromOrganic": 56025.65000000001
+      "transactionCount": 39,
+      "totalCash": 97323.32000000002,
+      "cashFromAds": 41097.670000000006,
+      "cashFromOrganic": 56225.65000000001
     }
   ],
   "dailyBreakdown": [
@@ -1007,9 +1007,38 @@
       "date": "2026-08-26",
       "cashFromAds": 1000,
       "cashFromOrganic": 0
+    },
+    {
+      "date": "2026-08-27",
+      "cashFromAds": 5756.66,
+      "cashFromOrganic": 200
     }
   ],
   "transactions": [
+    {
+      "date": "2026-08-27",
+      "name": "Brad Hutcheson",
+      "email": "bradhutch12@gmail.com",
+      "product": "Accelerator",
+      "amount": 916.66,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-08-27",
+      "name": "Cassandra Scopelliti",
+      "email": "cassiescare1@gmail.com",
+      "product": "",
+      "amount": 4840,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-08-27",
+      "name": "NICHOLAS FIFITA",
+      "email": "prioritydisplays@outlook.com",
+      "product": "",
+      "amount": 200,
+      "source": "Organic"
+    },
     {
       "date": "2026-08-26",
       "name": "Aukje Vermaat",
@@ -1685,10 +1714,10 @@
     {
       "date": "2026-07-08",
       "name": "",
-      "email": "rubengeros@yahoo.com",
+      "email": "monisay@hotmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Paid"
+      "source": "Organic"
     },
     {
       "date": "2026-07-08",
@@ -1709,10 +1738,10 @@
     {
       "date": "2026-07-08",
       "name": "",
-      "email": "monisay@hotmail.com",
+      "email": "rubengeros@yahoo.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-07-08",
@@ -1980,8 +2009,8 @@
     },
     {
       "date": "2026-07-01",
-      "name": "Cooper Lester",
-      "email": "surfingcooper@gmail.com",
+      "name": "Jandri Coetzee",
+      "email": "jan3coetzee@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2052,8 +2081,8 @@
     },
     {
       "date": "2026-07-01",
-      "name": "Jandri Coetzee",
-      "email": "jan3coetzee@gmail.com",
+      "name": "Cooper Lester",
+      "email": "surfingcooper@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2076,16 +2105,16 @@
     },
     {
       "date": "2026-06-30",
-      "name": "Ronan Kingsbury",
-      "email": "ronankingsbury073@gmail.com",
+      "name": "Mattie N",
+      "email": "matlatsisky@yahoo.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
     },
     {
       "date": "2026-06-30",
-      "name": "Mattie N",
-      "email": "matlatsisky@yahoo.com",
+      "name": "Ronan Kingsbury",
+      "email": "ronankingsbury073@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2180,8 +2209,8 @@
     },
     {
       "date": "2026-06-28",
-      "name": "Chris Nolder",
-      "email": "cnolder@gmail.com",
+      "name": "Antonin Matuska",
+      "email": "overtones56@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2196,8 +2225,8 @@
     },
     {
       "date": "2026-06-28",
-      "name": "Antonin Matuska",
-      "email": "overtones56@gmail.com",
+      "name": "Chris Nolder",
+      "email": "cnolder@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2236,8 +2265,8 @@
     },
     {
       "date": "2026-06-27",
-      "name": "Mieke Boer",
-      "email": "mieke.boer@icloud.com",
+      "name": "Lorena Pal",
+      "email": "pallorena2005@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2300,8 +2329,8 @@
     },
     {
       "date": "2026-06-27",
-      "name": "Lorena Pal",
-      "email": "pallorena2005@gmail.com",
+      "name": "Mieke Boer",
+      "email": "mieke.boer@icloud.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2412,10 +2441,10 @@
     },
     {
       "date": "2026-06-24",
-      "name": "Elina Vesma",
-      "email": "elinavesma@gmail.com",
-      "product": "3D HT Closer Challenge",
-      "amount": 9,
+      "name": "Kial Richards",
+      "email": "kial-richards@hotmail.com",
+      "product": "Accelerator",
+      "amount": 11000,
       "source": "Organic"
     },
     {
@@ -2428,10 +2457,10 @@
     },
     {
       "date": "2026-06-24",
-      "name": "Kial Richards",
-      "email": "kial-richards@hotmail.com",
-      "product": "Accelerator",
-      "amount": 11000,
+      "name": "Elina Vesma",
+      "email": "elinavesma@gmail.com",
+      "product": "3D HT Closer Challenge",
+      "amount": 9,
       "source": "Organic"
     },
     {
@@ -3852,6 +3881,14 @@
     },
     {
       "date": "2026-04-30",
+      "name": "Mamta Kochhar",
+      "email": "mkochhar2010@hotmail.com",
+      "product": "Accelerator",
+      "amount": 1000,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-04-30",
       "name": "Matthew Burns",
       "email": "mattburns86@hotmail.com",
       "product": "Accelerator",
@@ -3864,14 +3901,6 @@
       "email": "marvi_j@hotmail.com",
       "product": "FDR Masterclass VIP Upgrade",
       "amount": 97,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-04-30",
-      "name": "Mamta Kochhar",
-      "email": "mkochhar2010@hotmail.com",
-      "product": "Accelerator",
-      "amount": 1000,
       "source": "Paid"
     },
     {
