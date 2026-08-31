@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-27T23:44:13.833Z",
+    "generatedAt": "2026-08-31T00:15:56.422Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 374432
+    "totalRevenue": 375349
   },
   "masterclassRevenueByDate": [
     {
@@ -36,10 +36,10 @@
     },
     {
       "date": "2026-08-18",
-      "revenue": 13400,
-      "cashFromAds": 13200,
+      "revenue": 14317,
+      "cashFromAds": 14117,
       "cashFromOrganic": 200,
-      "dealsCount": 5,
+      "dealsCount": 6,
       "deals": [
         {
           "date": "2026-08-18",
@@ -61,10 +61,10 @@
         },
         {
           "date": "2026-08-18",
-          "name": "Russell Jones",
-          "email": "jeepc1@outlook.com",
+          "name": "Brad Hutcheson",
+          "email": "bradhutch12@gmail.com",
           "product": "Accelerator",
-          "amount": 9900,
+          "amount": 916.66,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -74,6 +74,15 @@
           "email": "jeepc1@outlook.com",
           "product": "Accelerator",
           "amount": 1100,
+          "source": "paid",
+          "closer": "Laura Fillmann"
+        },
+        {
+          "date": "2026-08-18",
+          "name": "Russell Jones",
+          "email": "jeepc1@outlook.com",
+          "product": "Accelerator",
+          "amount": 9900,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -280,7 +289,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 6000,
+          "amount": 5000,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -289,7 +298,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 5000,
+          "amount": 6000,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
