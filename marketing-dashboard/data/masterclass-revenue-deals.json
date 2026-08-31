@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-31T00:15:56.422Z",
+    "generatedAt": "2026-08-31T01:19:14.556Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
