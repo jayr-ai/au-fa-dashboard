@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-31T01:19:14.556Z",
+    "generatedAt": "2026-09-01T01:29:27.376Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
@@ -1071,8 +1071,8 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "Live Closing Accelerator",
-          "amount": 97,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "paid",
           "closer": "?"
         },
@@ -1080,8 +1080,8 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 97,
           "source": "paid",
           "closer": "?"
         },
