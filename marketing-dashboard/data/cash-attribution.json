@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-31T01:19:21.662Z",
+    "generatedAt": "2026-09-01T01:29:34.593Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -56,9 +56,9 @@
     },
     {
       "month": "2026-08",
-      "transactionCount": 39,
-      "totalCash": 97323.32000000002,
-      "cashFromAds": 41097.670000000006,
+      "transactionCount": 40,
+      "totalCash": 98273.32000000002,
+      "cashFromAds": 42047.670000000006,
       "cashFromOrganic": 56225.65000000001
     }
   ],
@@ -1012,9 +1012,22 @@
       "date": "2026-08-27",
       "cashFromAds": 5756.66,
       "cashFromOrganic": 200
+    },
+    {
+      "date": "2026-08-30",
+      "cashFromAds": 950,
+      "cashFromOrganic": 0
     }
   ],
   "transactions": [
+    {
+      "date": "2026-08-30",
+      "name": "Timothy Collins",
+      "email": "timpriscollins@gmail.com",
+      "product": "",
+      "amount": 950,
+      "source": "Paid"
+    },
     {
       "date": "2026-08-27",
       "name": "Brad Hutcheson",
@@ -1657,11 +1670,11 @@
     },
     {
       "date": "2026-07-09",
-      "name": "",
-      "email": "vishtaspa.patel@iinet.net.au",
-      "product": "3D HT Closer Challenge",
-      "amount": 9,
-      "source": "Paid"
+      "name": "Ann Lopez",
+      "email": "annielopezbeauty@gmail.com",
+      "product": "Accelerator",
+      "amount": 1000,
+      "source": "Organic"
     },
     {
       "date": "2026-07-09",
@@ -1705,11 +1718,11 @@
     },
     {
       "date": "2026-07-09",
-      "name": "Ann Lopez",
-      "email": "annielopezbeauty@gmail.com",
-      "product": "Accelerator",
-      "amount": 1000,
-      "source": "Organic"
+      "name": "",
+      "email": "vishtaspa.patel@iinet.net.au",
+      "product": "3D HT Closer Challenge",
+      "amount": 9,
+      "source": "Paid"
     },
     {
       "date": "2026-07-08",
@@ -1785,10 +1798,10 @@
     },
     {
       "date": "2026-07-07",
-      "name": "",
-      "email": "geebee77777@gmail.com",
-      "product": "3D HT Closer Challenge",
-      "amount": 9,
+      "name": "Benjamin Hext",
+      "email": "bhhext1979@gmail.com",
+      "product": "Accelerator",
+      "amount": 11000,
       "source": "Paid"
     },
     {
@@ -1833,10 +1846,10 @@
     },
     {
       "date": "2026-07-07",
-      "name": "Benjamin Hext",
-      "email": "bhhext1979@gmail.com",
-      "product": "Accelerator",
-      "amount": 11000,
+      "name": "",
+      "email": "geebee77777@gmail.com",
+      "product": "3D HT Closer Challenge",
+      "amount": 9,
       "source": "Paid"
     },
     {
@@ -1884,7 +1897,7 @@
       "name": "Mirtha Meza",
       "email": "mirtuca@hotmail.com",
       "product": "Accelerator",
-      "amount": 8000,
+      "amount": 4000,
       "source": "Organic"
     },
     {
@@ -1900,7 +1913,7 @@
       "name": "Mirtha Meza",
       "email": "mirtuca@hotmail.com",
       "product": "Accelerator",
-      "amount": 4000,
+      "amount": 8000,
       "source": "Organic"
     },
     {
@@ -2009,8 +2022,8 @@
     },
     {
       "date": "2026-07-01",
-      "name": "Jandri Coetzee",
-      "email": "jan3coetzee@gmail.com",
+      "name": "Mitchell Thompson",
+      "email": "brickit.constructions@outlook.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2033,8 +2046,8 @@
     },
     {
       "date": "2026-07-01",
-      "name": "Mitchell Thompson",
-      "email": "brickit.constructions@outlook.com",
+      "name": "Jandri Coetzee",
+      "email": "jan3coetzee@gmail.com",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Paid"
@@ -2409,8 +2422,8 @@
     },
     {
       "date": "2026-06-25",
-      "name": "Jerrad Allen",
-      "email": "jerrad@allenspsw.com.au",
+      "name": "Fabian D'Amore",
+      "email": "yellowlunarsun1@proton.me",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -2433,8 +2446,8 @@
     },
     {
       "date": "2026-06-25",
-      "name": "Fabian D'Amore",
-      "email": "yellowlunarsun1@proton.me",
+      "name": "Jerrad Allen",
+      "email": "jerrad@allenspsw.com.au",
       "product": "3D HT Closer Challenge",
       "amount": 9,
       "source": "Organic"
@@ -2577,19 +2590,19 @@
     },
     {
       "date": "2026-06-23",
-      "name": "Madi Wockner",
-      "email": "mwockner15@hotmail.com",
-      "product": "Accelerator",
-      "amount": 11000,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-06-23",
       "name": "Jack Shannon",
       "email": "shannonjack60@gmail.com",
       "product": "Freedom Fighters Comm",
       "amount": 550,
       "source": "Organic"
+    },
+    {
+      "date": "2026-06-23",
+      "name": "Madi Wockner",
+      "email": "mwockner15@hotmail.com",
+      "product": "Accelerator",
+      "amount": 11000,
+      "source": "Paid"
     },
     {
       "date": "2026-06-23",
@@ -2761,18 +2774,18 @@
     },
     {
       "date": "2026-06-18",
-      "name": "Liridona Calaki",
-      "email": "dona.calaki@outlook.com",
-      "product": "Accelerator",
-      "amount": 1000,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-06-18",
       "name": "Mylee Schneider",
       "email": "myleeschneider33@gmail.com",
       "product": "Accelerator",
       "amount": 11800,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-06-18",
+      "name": "Liridona Calaki",
+      "email": "dona.calaki@outlook.com",
+      "product": "Accelerator",
+      "amount": 1000,
       "source": "Paid"
     },
     {
@@ -2921,10 +2934,10 @@
     },
     {
       "date": "2026-06-12",
-      "name": "Melissa Andres",
-      "email": "melissajoysandres@yahoo.com",
-      "product": "Accelerator",
-      "amount": 11000,
+      "name": "Toby Geddes",
+      "email": "t.geddes7@icloud.com",
+      "product": "",
+      "amount": 10,
       "source": "Paid"
     },
     {
@@ -2945,10 +2958,10 @@
     },
     {
       "date": "2026-06-12",
-      "name": "Toby Geddes",
-      "email": "t.geddes7@icloud.com",
-      "product": "",
-      "amount": 10,
+      "name": "Melissa Andres",
+      "email": "melissajoysandres@yahoo.com",
+      "product": "Accelerator",
+      "amount": 11000,
       "source": "Paid"
     },
     {
@@ -3017,18 +3030,18 @@
     },
     {
       "date": "2026-06-09",
-      "name": "Lisamarie Giuffrida",
-      "email": "lisamariegiuffrida2025@outlook.com",
-      "product": "Accelerator",
-      "amount": 1,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-06-09",
       "name": "Madison Wocnker",
       "email": "mwockner15@hotmail.com",
       "product": "Accelerator",
       "amount": 1000,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-06-09",
+      "name": "Lisamarie Giuffrida",
+      "email": "lisamariegiuffrida2025@outlook.com",
+      "product": "Accelerator",
+      "amount": 1,
       "source": "Paid"
     },
     {
@@ -3129,18 +3142,18 @@
     },
     {
       "date": "2026-06-05",
-      "name": "Swati Nampally",
-      "email": "swati.nampallys@gmail.com",
-      "product": "Accelerator",
-      "amount": 11000,
-      "source": "Organic"
-    },
-    {
-      "date": "2026-06-05",
       "name": "Alexandra Minutello",
       "email": "sasha_djor05@hotmail.com",
       "product": "",
       "amount": 500,
+      "source": "Organic"
+    },
+    {
+      "date": "2026-06-05",
+      "name": "Swati Nampally",
+      "email": "swati.nampallys@gmail.com",
+      "product": "Accelerator",
+      "amount": 11000,
       "source": "Organic"
     },
     {
@@ -4201,14 +4214,6 @@
     },
     {
       "date": "2026-04-17",
-      "name": "Deepika Coelho",
-      "email": "dee783@icloud.com",
-      "product": "FDR Masterclass VIP Upgrade",
-      "amount": 97,
-      "source": "Paid"
-    },
-    {
-      "date": "2026-04-17",
       "name": "Craig Ronald Whitney",
       "email": "craig.whitney1985@gmail.com",
       "product": "Accelerator",
@@ -4221,6 +4226,14 @@
       "email": "camilo.osorno@gmail.com",
       "product": "Accelerator",
       "amount": 10000,
+      "source": "Paid"
+    },
+    {
+      "date": "2026-04-17",
+      "name": "Deepika Coelho",
+      "email": "dee783@icloud.com",
+      "product": "FDR Masterclass VIP Upgrade",
+      "amount": 97,
       "source": "Paid"
     },
     {
