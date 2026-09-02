@@ -1,19 +1,28 @@
 {
   "meta": {
-    "generatedAt": "2026-09-01T01:29:27.376Z",
+    "generatedAt": "2026-09-02T05:12:37.067Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 375349
+    "totalRevenue": 375449
   },
   "masterclassRevenueByDate": [
     {
       "date": "2026-08-25",
-      "revenue": 109,
+      "revenue": 209,
       "cashFromAds": 109,
-      "cashFromOrganic": 0,
-      "dealsCount": 2,
+      "cashFromOrganic": 100,
+      "dealsCount": 3,
       "deals": [
+        {
+          "date": "2026-08-25",
+          "name": "Jean-Jacques Joubert",
+          "email": "chewbacka40@gmail.com",
+          "product": "Accelerator",
+          "amount": 100,
+          "source": "organic",
+          "closer": "Shane Dacosta"
+        },
         {
           "date": "2026-08-25",
           "name": "Felix Yatich",
@@ -289,7 +298,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 5000,
+          "amount": 6000,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -298,7 +307,7 @@
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
           "product": "Accelerator",
-          "amount": 6000,
+          "amount": 5000,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -622,7 +631,7 @@
           "name": "Carolyn McMahon",
           "email": "cazkyeshae@yahoo.com",
           "product": "Accelerator",
-          "amount": 300,
+          "amount": 11700,
           "source": "organic",
           "closer": "Vanessa Caruso"
         },
@@ -631,7 +640,7 @@
           "name": "Carolyn McMahon",
           "email": "cazkyeshae@yahoo.com",
           "product": "Accelerator",
-          "amount": 11700,
+          "amount": 300,
           "source": "organic",
           "closer": "Vanessa Caruso"
         },
