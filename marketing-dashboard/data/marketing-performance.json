@@ -1,20 +1,20 @@
 {
   "meta": {
-    "generatedAt": "2026-09-02T05:13:23.293Z",
+    "generatedAt": "2026-09-02T05:13:47.100Z",
     "source": "BigQuery marketing_ad_spend_daily table",
     "dataWindow": "Jan 2026 - Aug 2026",
-    "dataPoints": 217,
+    "dataPoints": 216,
     "cacheStatus": "Live sync from BigQuery"
   },
   "totals": {
-    "spend": 274716.82,
-    "impressions": 5484897,
-    "linkClicks": 90190,
-    "leads": 5843,
-    "ctr": 1.64,
+    "spend": 273964.73,
+    "impressions": 5464794,
+    "linkClicks": 89979,
+    "leads": 5835,
+    "ctr": 1.65,
     "ctlr": 6.48,
-    "cpm": 50.09,
-    "cpl": 47.02
+    "cpm": 50.13,
+    "cpl": 46.95
   },
   "monthly": [
     {
@@ -112,18 +112,6 @@
       "ctlr": 7.33,
       "cpm": 36.74,
       "cpl": 44.93
-    },
-    {
-      "period": "2026-09",
-      "dayCount": 1,
-      "spend": 752.09,
-      "impressions": 20103,
-      "linkClicks": 211,
-      "leads": 8,
-      "ctr": 1.05,
-      "ctlr": 3.79,
-      "cpm": 37.41,
-      "cpl": 94.01
     }
   ],
   "weekly": [
@@ -513,15 +501,15 @@
     },
     {
       "period": "2026-W36",
-      "dayCount": 2,
-      "spend": 2805.05,
-      "impressions": 82889,
-      "linkClicks": 894,
-      "leads": 56,
-      "ctr": 1.08,
-      "ctlr": 6.26,
-      "cpm": 33.84,
-      "cpl": 50.09
+      "dayCount": 1,
+      "spend": 2052.96,
+      "impressions": 62786,
+      "linkClicks": 683,
+      "leads": 48,
+      "ctr": 1.09,
+      "ctlr": 7.03,
+      "cpm": 32.7,
+      "cpl": 42.77
     }
   ],
   "daily": [
@@ -2036,13 +2024,6 @@
       "impressions": 62786,
       "linkClicks": 683,
       "leads": 48
-    },
-    {
-      "date": "2026-09-01",
-      "spend": 752.09,
-      "impressions": 20103,
-      "linkClicks": 211,
-      "leads": 8
     }
   ]
 }
