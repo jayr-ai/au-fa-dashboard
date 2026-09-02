@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-01T01:29:34.593Z",
+    "generatedAt": "2026-09-02T05:12:45.484Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -1024,7 +1024,7 @@
       "date": "2026-08-30",
       "name": "Timothy Collins",
       "email": "timpriscollins@gmail.com",
-      "product": "",
+      "product": "Accelerator",
       "amount": 950,
       "source": "Paid"
     },
@@ -1040,7 +1040,7 @@
       "date": "2026-08-27",
       "name": "Cassandra Scopelliti",
       "email": "cassiescare1@gmail.com",
-      "product": "",
+      "product": "Accelerator",
       "amount": 4840,
       "source": "Paid"
     },
@@ -1392,7 +1392,7 @@
       "date": "2026-07-26",
       "name": "Tim Collins",
       "email": "timpriscollins@gmail.com",
-      "product": "",
+      "product": "Accelerator",
       "amount": 950,
       "source": "Paid"
     },
@@ -1416,7 +1416,7 @@
       "date": "2026-07-24",
       "name": "Cassandra Scopelliti",
       "email": "cassiescare1@gmail.com",
-      "product": "",
+      "product": "Accelerator",
       "amount": 4840,
       "source": "Paid"
     },
