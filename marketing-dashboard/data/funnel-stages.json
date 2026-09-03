@@ -1,40 +1,77 @@
 {
   "meta": {
-    "generatedAt": "2026-09-01T01:52:31.225458Z",
+    "generatedAt": "2026-09-03T04:15:00.000000Z",
     "source": "GHL Pipeline API (djiSwm3hJsW7Rv9tyqSl)",
-    "runDate": "2026-09-01",
-    "stageCount": 5,
-    "totalOpportunities": 5400
+    "runDate": "2026-08-31",
+    "stageCount": 11,
+    "totalOpportunities": 6172,
+    "note": "All 11 GHL pipeline stages now exported (including empty stages)"
   },
   "stages": [
     {
       "name": "Registered",
-      "count": 4737,
+      "count": 4650,
       "position": 1,
-      "percentage": 87.7
+      "percentage": 75.3
     },
     {
       "name": "Replay Optin",
-      "count": 382,
+      "count": 380,
       "position": 2,
-      "percentage": 7.1
+      "percentage": 6.2
+    },
+    {
+      "name": "Close Lost",
+      "count": 352,
+      "position": 3,
+      "percentage": 5.7
     },
     {
       "name": "No-Showed",
       "count": 251,
-      "position": 3,
-      "percentage": 4.6
+      "position": 4,
+      "percentage": 4.1
     },
     {
-      "name": "VIP Upgrade",
-      "count": 17,
-      "position": 4,
-      "percentage": 0.3
+      "name": "Call Cancelled / Not Interested",
+      "count": 247,
+      "position": 5,
+      "percentage": 4.0
+    },
+    {
+      "name": "Call Cancelled / Need To Reschedule",
+      "count": 140,
+      "position": 6,
+      "percentage": 2.3
+    },
+    {
+      "name": "Close Won",
+      "count": 75,
+      "position": 7,
+      "percentage": 1.2
+    },
+    {
+      "name": "Bad Fit",
+      "count": 26,
+      "position": 8,
+      "percentage": 0.4
     },
     {
       "name": "Appointment Booked",
-      "count": 13,
-      "position": 5,
+      "count": 22,
+      "position": 9,
+      "percentage": 0.4
+    },
+    {
+      "name": "VIP Upgrade",
+      "count": 18,
+      "position": 10,
+      "percentage": 0.3
+    },
+    {
+      "name": "Pending Sale",
+      "count": 11,
+      "position": 11,
       "percentage": 0.2
     }
   ]
