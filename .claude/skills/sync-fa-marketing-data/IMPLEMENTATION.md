@@ -69,35 +69,70 @@ Report after each insert:
 
 ### Phase 3: GHL Pipeline Sync (if not `--meta-only`)
 
-#### Step 1: Query GHL MCP
-Call GHL MCP to get pipeline stages for `djiSwm3hJsW7Rv9tyqSl`:
+#### Step 1: Query GHL MCP - Per-Stage Individual Queries (ACCURATE METHOD)
 
-Expected response format:
-```json
-{
-  "stages": [
-    { "id": "stage_id_1", "name": "Registered", "count": 4424 },
-    { "id": "stage_id_2", "name": "VIP Upgrade", "count": 17 },
-    { "id": "stage_id_3", "name": "Attended", "count": 2850 },
-    ...
-  ]
-}
+**IMPORTANT**: To get accurate per-stage counts, query each stage individually:
+
+For the Masterclass Pipeline (`djiSwm3hJsW7Rv9tyqSl`), call GHL `search-opportunity` 11 times:
+- Once per stage with stage-specific `pipelineStageId` filter
+- Extract `meta.total` from each response (this is the accurate count for that stage)
+
+**Stage IDs and Names:**
+1. `3ed7c5ec-576c-4a5c-a718-a8cbc4cb075f` → Registered
+2. `b61eadcc-448c-4e0e-ac5c-d9366cf6f065` → VIP Upgrade
+3. `85aa722f-621d-4694-88f2-91e15d71dab2` → Replay Optin
+4. `7a309bcf-6b76-4901-aaf2-d9b39fe28b10` → Appointment Booked
+5. `b76a0454-f3f1-40b9-90b4-f977cf7e03d9` → No-Showed
+6. `fba1583e-385c-43ef-be6a-8f10394bf168` → Bad Fit
+7. `1ebc3719-a759-4199-a679-26ebb366566a` → Call Cancelled / Not Interested
+8. `7376dc2f-0731-49c9-bd20-25a01258fc5e` → Call Cancelled / Need To Reschedule
+9. `3812deaf-b462-4299-a048-ba68c0e7b8e9` → Pending Sale
+10. `0a2c8dd0-1592-4fa7-b75d-e30c4528e726` → Close Lost
+11. `720dd586-4766-4bf4-bf9e-6c87dcb2e758` → Close Won
+
+**Query Pattern:**
+```
+search-opportunity(
+  pipelineId: "djiSwm3hJsW7Rv9tyqSl",
+  pipelineStageId: "<stage_id>",
+  limit: 1
+)
 ```
 
+Extract from response: `data.meta.total` = accurate count for that stage
+
+**Why per-stage queries?** 
+- Total count from overview may be off due to filtering or cached data
+- Per-stage queries are authoritative and match GHL UI exactly
+- Batch all 11 queries in parallel for efficiency
+
 #### Step 2: Insert to BigQuery
-For each stage, insert today's count:
+Delete today's records first, then insert all 11 stages:
 
 ```sql
+DELETE FROM `jv-data-warehouse.freedom_academy_au.marketing_funnel_stages`
+WHERE run_date = CURRENT_DATE();
+
 INSERT INTO `jv-data-warehouse.freedom_academy_au.marketing_funnel_stages`
   (run_date, stage, count, synced_at)
 VALUES
-  (CURRENT_DATE(), 'Registered', 4424, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Registered', 4789, CURRENT_TIMESTAMP()),
   (CURRENT_DATE(), 'VIP Upgrade', 17, CURRENT_TIMESTAMP()),
-  (CURRENT_DATE(), 'Attended', 2850, CURRENT_TIMESTAMP()),
-  ...
+  (CURRENT_DATE(), 'Replay Optin', 390, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Appointment Booked', 12, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'No-Showed', 251, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Bad Fit', 26, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Call Cancelled / Not Interested', 257, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Call Cancelled / Need To Reschedule', 147, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Pending Sale', 7, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Close Lost', 363, CURRENT_TIMESTAMP()),
+  (CURRENT_DATE(), 'Close Won', 76, CURRENT_TIMESTAMP())
 ```
 
-Note: Delete previous entries for today if they exist (keep only latest snapshot)
+Report after insert:
+- All 11 stages synced
+- Total opportunities: 6,335
+- Record timestamp
 
 ### Phase 4: Export to JSON
 

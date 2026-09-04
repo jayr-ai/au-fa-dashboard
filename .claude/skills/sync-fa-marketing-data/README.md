@@ -77,16 +77,19 @@ Refreshes pipeline stage counts, updates BigQuery, no GitHub push.
 ## What Gets Synced
 
 ### Meta Ads (Account: Shane Da Costa AU)
-- **Source**: Meta Ads API via MCP
+- **Source**: Meta Ads MCP (`ads_get_ad_entities`) — **pulls current-day data immediately**
 - **Data**: Daily spend, impressions, link clicks, leads
 - **Table**: `jv-data-warehouse.freedom_academy_au.marketing_ad_spend_daily`
 - **Logic**: Upsert by date (no duplicates)
+- **Key Note**: Use Meta MCP directly to pull data; do NOT assume lag. Data is available same-day via API query with `time_range` parameter.
 
 ### GHL Pipeline (Masterclass Funnel)
-- **Source**: GoHighLevel API via MCP
-- **Data**: Stage names and opportunity counts
+- **Source**: GoHighLevel API via MCP (`search-opportunity` per-stage queries)
+- **Data**: All 11 stage names and accurate opportunity counts
 - **Table**: `jv-data-warehouse.freedom_academy_au.marketing_funnel_stages`
-- **Logic**: Replace daily with latest stage counts
+- **Method**: Query each of 11 stages individually with stage-specific filter
+- **Logic**: Replace today's records with latest accurate per-stage counts
+- **Accuracy**: Queries `meta.total` from each stage's `search-opportunity` response (matches GHL UI exactly)
 
 ### Export
 - **File**: `au-fa-dashboard/marketing-dashboard/data/marketing-performance.json`
