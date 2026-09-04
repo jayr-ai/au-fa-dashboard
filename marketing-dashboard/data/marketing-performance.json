@@ -6,7 +6,7 @@
     "cacheStatus": "Live sync from BigQuery with latest Meta Ads data through today"
   },
   "daily": [
-    {"date": "2026-09-04", "spend": 467.34, "impressions": 12526, "linkClicks": 154, "leads": 14},
+    {"date": "2026-09-04", "spend": 479.39, "impressions": 12761, "linkClicks": 155, "leads": 14},
     {"date": "2026-09-03", "spend": 2039.44, "impressions": 56496, "linkClicks": 604, "leads": 45},
     {"date": "2026-09-02", "spend": 2009.18, "impressions": 57867, "linkClicks": 545, "leads": 37},
     {"date": "2026-09-01", "spend": 752.09, "impressions": 20103, "linkClicks": 211, "leads": 8},
