@@ -1,12 +1,30 @@
 {
   "meta": {
-    "generatedAt": "2026-09-03T00:09:10.959Z",
+    "generatedAt": "2026-09-04T05:09:28.510Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 375449
+    "totalRevenue": 376449
   },
   "masterclassRevenueByDate": [
+    {
+      "date": "2026-09-01",
+      "revenue": 1000,
+      "cashFromAds": 0,
+      "cashFromOrganic": 1000,
+      "dealsCount": 1,
+      "deals": [
+        {
+          "date": "2026-09-01",
+          "name": "Sunita Mohanty",
+          "email": "sunita.mohanty@mail.com",
+          "product": "Accelerator",
+          "amount": 1000,
+          "source": "organic",
+          "closer": "Stacie Skehan"
+        }
+      ]
+    },
     {
       "date": "2026-08-25",
       "revenue": 209,
@@ -1332,8 +1350,8 @@
           "date": "2026-05-19",
           "name": "John Lornel Villanueva",
           "email": "johnlornel_p_villanueva@yahoo.com.au",
-          "product": "Live Closing Accelerator",
-          "amount": 47,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "paid",
           "closer": "?"
         },
@@ -1341,8 +1359,8 @@
           "date": "2026-05-19",
           "name": "John Lornel Villanueva",
           "email": "johnlornel_p_villanueva@yahoo.com.au",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 47,
           "source": "paid",
           "closer": "?"
         },
