@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-03T00:09:18.884Z",
+    "generatedAt": "2026-09-04T05:09:36.015Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - Aug 2026"
   },
@@ -58,8 +58,8 @@
       "month": "2026-08",
       "transactionCount": 40,
       "totalCash": 98273.32000000002,
-      "cashFromAds": 42047.670000000006,
-      "cashFromOrganic": 56225.65000000001
+      "cashFromAds": 42247.670000000006,
+      "cashFromOrganic": 56025.65000000001
     }
   ],
   "dailyBreakdown": [
@@ -1010,8 +1010,8 @@
     },
     {
       "date": "2026-08-27",
-      "cashFromAds": 5756.66,
-      "cashFromOrganic": 200
+      "cashFromAds": 5956.66,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-08-30",
@@ -1050,7 +1050,7 @@
       "email": "prioritydisplays@outlook.com",
       "product": "",
       "amount": 200,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-08-26",
