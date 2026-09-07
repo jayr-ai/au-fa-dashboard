@@ -345,6 +345,7 @@ function applyFilters() {
     } else if (window.currentMode === 'weekly') {
         // Weekly mode - filter for the selected week
         fromDate = new Date(window.currentWeekStart);
+        fromDate.setHours(0, 0, 0, 0);
         toDate = new Date(window.currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000);
         toDate.setHours(23, 59, 59, 999);
 
