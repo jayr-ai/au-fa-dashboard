@@ -5,35 +5,35 @@
     "this-month",
     "last-month"
   ],
-  "pull": "Tuesday, September 8, 2026 (advertiser time zone, Australia/Sydney)",
+  "pull": "Wednesday, September 9, 2026 (advertiser time zone, Australia/Sydney)",
   "currency": "AUD",
   "ranges": {
     "this-week": {
       "label": "This Week",
-      "window": "Mon Sep 7 to Tue Sep 8, 2026 (to date)",
+      "window": "Mon Sep 7 to Wed Sep 9, 2026 (to date)",
       "kind": "Week-to-date (Mon to Sun, in progress)",
       "live": true,
-      "days": 2,
+      "days": 3,
       "hero": {
-        "spend_day": 574.93,
+        "spend_day": 383.28,
         "purch": 0,
         "cpp": 0,
-        "leads": 21,
-        "cpl": 47.92,
+        "leads": 23,
+        "cpl": 43.75,
         "roas": 0
       },
       "snapshot": {
         "spend": 1149.85,
-        "impr": "37,076",
+        "impr": "37,087",
         "clicks": "574",
         "ctr": "1.55%",
         "cpc": "A$2.00",
-        "cpm": "A$31.01",
-        "reach": "29,834",
+        "cpm": "A$31.00",
+        "reach": "29,871",
         "freq": "1.24",
         "roas": 0
       },
-      "summary": "Shane Da Costa AU spent A$1,149.85 so far this week (Mon Sep 7 to Tue Sep 8) - all of it attributed to Sep 7, since Meta had not yet posted any Sep 8 spend at pull time (Sep 7's own hourly data stops at 8pm Sydney time, still settling). FA | Accelerator Masterclass | Leads | ABO drove 17 leads at A$46.57 cpl and FA | 10k-Guarantee added 4 leads at A$53.61 cpl - a blended 21 leads at A$47.92 cpl. FA_RSMC_Purchase_ABO_Aug2026 spent A$0.00 with zero delivery - still fully dormant. Two small video-views campaigns spent A$143.64 combined for thruplays. Treat these figures as an early floor; the last day or two of any in-progress window settles further as Meta's attribution catches up.",
+      "summary": "Shane Da Costa AU has spent A$1,149.85 this week so far (Mon Sep 7 to Wed Sep 9) - and notably, that figure is entirely from Sep 7. No new spend has posted for Sep 8 or Sep 9 at all, across two consecutive daily checks 24 hours apart with identical results - this looks like the account has genuinely paused delivery, not just a reporting delay, and is worth a direct check with the client. FA | Accelerator Masterclass | Leads | ABO drove 17 leads at A$46.57 cpl and FA | 10k-Guarantee added 6 leads at A$35.74 cpl (up from 4, as Sep 7's attribution continued settling) - a blended 23 leads at A$43.75 cpl on lead-campaign spend. FA_RSMC_Purchase_ABO_Aug2026 spent A$0.00 with zero delivery - still fully dormant. Two small video-views campaigns spent A$143.64 combined for thruplays.",
       "campaigns": [
         {
           "name": "FA | Accelerator Masterclass | Leads | ABO",
@@ -41,15 +41,15 @@
           "rl": "LEAD",
           "cpr": "A$46.57",
           "spend": 791.76,
-          "ctr": "3.07%",
+          "ctr": "3.06%",
           "cpc": "A$1.69",
           "roas": "-"
         },
         {
           "name": "FA | 10k-Guarantee | Broad: Cold | Retarget | ABO",
-          "rc": 4,
+          "rc": 6,
           "rl": "LEAD",
-          "cpr": "A$53.61",
+          "cpr": "A$35.74",
           "spend": 214.45,
           "ctr": "2.29%",
           "cpc": "A$3.97",
@@ -57,7 +57,7 @@
         },
         {
           "name": "Awareness | Video Views | Long Form",
-          "rc": 3568,
+          "rc": 3573,
           "rl": "VID",
           "cpr": "A$0.04",
           "spend": 135.04,
@@ -99,7 +99,7 @@
       "camp_total": {
         "spend": 1149.85,
         "purch": 0,
-        "leads": 21
+        "leads": 23
       },
       "ads": [
         {
@@ -116,12 +116,12 @@
           "rc": 4,
           "rl": "LEAD",
           "roas": "-",
-          "ctr": "3.78%"
+          "ctr": "3.77%"
         },
         {
           "name": "High Ticket Calculator VSL",
           "spend": 135.04,
-          "rc": 3568,
+          "rc": 3573,
           "rl": "VID",
           "roas": "-",
           "ctr": "0.26%"
@@ -129,7 +129,7 @@
         {
           "name": "Copy V2 | Image 1: W-Make your First 10k",
           "spend": 83.51,
-          "rc": 1,
+          "rc": 3,
           "rl": "LEAD",
           "roas": "-",
           "ctr": "1.67%"
@@ -157,7 +157,7 @@
           668.71,
           "1.25%",
           "A$2.12",
-          "A$26.54"
+          "A$26.52"
         ],
         [
           "Instagram",
@@ -178,7 +178,7 @@
         [
           "Facebook Reels",
           357.92,
-          "4.44%",
+          "4.43%",
           "A$1.87"
         ],
         [
@@ -896,21 +896,21 @@
     },
     "this-month": {
       "label": "This Month",
-      "window": "Sep 1 to Sep 8, 2026 (to date)",
+      "window": "Sep 1 to Sep 9, 2026 (to date)",
       "kind": "Month-to-date (in progress)",
       "live": true,
-      "days": 8,
+      "days": 9,
       "hero": {
-        "spend_day": 1457.47,
+        "spend_day": 1295.53,
         "purch": 0,
         "cpp": 0,
-        "leads": 235,
-        "cpl": 43.46,
+        "leads": 237,
+        "cpl": 49.2,
         "roas": 0
       },
       "snapshot": {
         "spend": 11659.74,
-        "impr": "370,349",
+        "impr": "370,360",
         "clicks": "6,240",
         "ctr": "1.68%",
         "cpc": "A$1.87",
@@ -919,7 +919,7 @@
         "freq": "1.89",
         "roas": 0
       },
-      "summary": "September's first eight days show Shane Da Costa AU spending A$11,659.74, generating 235 leads at a blended A$43.46 cpl. FA | Accelerator Masterclass | Leads | ABO drove 158 leads at A$37.26 cpl, FA | 10k-Guarantee added 45 leads at A$46.55 cpl, and FA | Launchpad Masterclass added 32 leads at A$69.74 cpl. FA_RSMC_Purchase_ABO_Aug2026 spent A$0.00 with zero delivery this window - fully dormant across the whole month so far, extending its silence since the single Aug 25 sale. Campaign spend reconciled exactly to account-level spend, no drift. Treat these figures as an early floor; the last day is still settling under Meta's attribution lag.",
+      "summary": "September's first nine days show Shane Da Costa AU spending A$11,659.74 - identical to the total from two days ago (Sep 1-8 pull), confirming no new spend has posted for Sep 8 or Sep 9. Leads have ticked up slightly (235 to 237) purely from Sep 7's attribution continuing to settle, not new activity. FA | Accelerator Masterclass | Leads | ABO drove 158 leads at A$37.26 cpl, FA | 10k-Guarantee added 47 leads at A$44.57 cpl, and FA | Launchpad Masterclass added 32 leads at A$69.74 cpl. FA_RSMC_Purchase_ABO_Aug2026 spent A$0.00 with zero delivery - fully dormant all month. This two-day spend freeze across the whole account (not just one campaign) is worth flagging directly to the client - it looks like a genuine pause or delivery issue rather than routine reporting lag.",
       "campaigns": [
         {
           "name": "FA | Accelerator Masterclass | Leads | ABO",
@@ -943,9 +943,9 @@
         },
         {
           "name": "FA | 10k-Guarantee | Broad: Cold | Retarget | ABO",
-          "rc": 45,
+          "rc": 47,
           "rl": "LEAD",
-          "cpr": "A$46.55",
+          "cpr": "A$44.57",
           "spend": 2094.76,
           "ctr": "2.80%",
           "cpc": "A$3.58",
@@ -953,7 +953,7 @@
         },
         {
           "name": "Awareness | Video Views | Long Form",
-          "rc": 35791,
+          "rc": 35796,
           "rl": "VID",
           "cpr": "A$0.04",
           "spend": 1378.89,
@@ -985,7 +985,7 @@
       "camp_total": {
         "spend": 11659.74,
         "purch": 0,
-        "leads": 235
+        "leads": 237
       },
       "ads": [
         {
@@ -1015,7 +1015,7 @@
         {
           "name": "High Ticket Calculator VSL",
           "spend": 1378.89,
-          "rc": 35791,
+          "rc": 35796,
           "rl": "VID",
           "roas": "-",
           "ctr": "0.24%"
@@ -1023,13 +1023,13 @@
         {
           "name": "Copy V2 | Image 1: W-Make your First 10k",
           "spend": 817.77,
-          "rc": 17,
+          "rc": 19,
           "rl": "LEAD",
           "roas": "-",
           "ctr": "2.63%"
         },
         {
-          "name": "Copy V3| Image 2 | Calculator: Make your first $10k",
+          "name": "Copy V3 | Image 2 | Calculator: Make your first $10k",
           "spend": 574.64,
           "rc": 16,
           "rl": "LEAD",
