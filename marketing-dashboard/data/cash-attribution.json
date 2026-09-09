@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-09T04:00:03.216Z",
+    "generatedAt": "2026-09-09T04:27:03.860Z",
     "source": "BigQuery revenue_transactions_enriched table",
     "dataWindow": "Jan 2026 - 2026-09-09"
   },
@@ -65,8 +65,8 @@
       "month": "2026-09",
       "transactionCount": 8,
       "totalCash": 14540,
-      "cashFromAds": 2000,
-      "cashFromOrganic": 12540
+      "cashFromAds": 7940,
+      "cashFromOrganic": 6600
     }
   ],
   "dailyBreakdown": [
@@ -1037,8 +1037,8 @@
     },
     {
       "date": "2026-09-03",
-      "cashFromAds": 0,
-      "cashFromOrganic": 5340
+      "cashFromAds": 5340,
+      "cashFromOrganic": 0
     },
     {
       "date": "2026-09-05",
@@ -1052,8 +1052,8 @@
     },
     {
       "date": "2026-09-07",
-      "cashFromAds": 0,
-      "cashFromOrganic": 1600
+      "cashFromAds": 600,
+      "cashFromOrganic": 1000
     }
   ],
   "transactions": [
@@ -1071,7 +1071,7 @@
       "email": "krystal@hillehouse.org",
       "product": "Accelerator",
       "amount": 600,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-09-06",
@@ -1095,7 +1095,7 @@
       "email": "alanbezzina3@gmail.com",
       "product": "",
       "amount": 4340,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-09-03",
@@ -1103,7 +1103,7 @@
       "email": "sunita.mohanty@mail.com",
       "product": "Accelerator",
       "amount": 1000,
-      "source": "Organic"
+      "source": "Paid"
     },
     {
       "date": "2026-09-02",
