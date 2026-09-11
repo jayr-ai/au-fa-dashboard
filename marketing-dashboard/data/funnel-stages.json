@@ -1,11 +1,11 @@
 {
   "meta": {
-    "generatedAt": "2026-09-07T05:15:32.692Z",
+    "generatedAt": "2026-09-11T00:00:00Z",
     "source": "GHL Pipeline API (djiSwm3hJsW7Rv9tyqSl)",
-    "runDate": "2026-09-07",
+    "runDate": "2026-09-11",
     "stageCount": 11,
-    "totalOpportunities": 6335,
-    "note": "All 11 GHL pipeline stages with ACCURATE opportunity counts from live GHL queries"
+    "totalOpportunities": 6404,
+    "note": "All 11 GHL pipeline stages with ACCURATE opportunity counts from live GHL queries - Sep 11 update"
   },
   "stages": [
     {
