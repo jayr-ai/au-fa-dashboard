@@ -1,26 +1,35 @@
 {
   "meta": {
-    "generatedAt": "2026-09-04T05:09:28.510Z",
+    "generatedAt": "2026-09-11T00:05:49.399Z",
     "source": "BigQuery revenue_transactions_enriched (validated via Marketing script pattern)",
     "dataWindow": "Jan 2026 - Present",
     "cacheStatus": "Live sync from BigQuery (updated daily)",
-    "totalRevenue": 376449
+    "totalRevenue": 392449
   },
   "masterclassRevenueByDate": [
     {
       "date": "2026-09-01",
-      "revenue": 1000,
-      "cashFromAds": 0,
-      "cashFromOrganic": 1000,
-      "dealsCount": 1,
+      "revenue": 1600,
+      "cashFromAds": 1600,
+      "cashFromOrganic": 0,
+      "dealsCount": 2,
       "deals": [
+        {
+          "date": "2026-09-01",
+          "name": "Krystal Hille",
+          "email": "krystal@hillehouse.org",
+          "product": "Accelerator",
+          "amount": 600,
+          "source": "paid",
+          "closer": "Stacie Skehan"
+        },
         {
           "date": "2026-09-01",
           "name": "Sunita Mohanty",
           "email": "sunita.mohanty@mail.com",
           "product": "Accelerator",
           "amount": 1000,
-          "source": "organic",
+          "source": "paid",
           "closer": "Stacie Skehan"
         }
       ]
@@ -63,10 +72,10 @@
     },
     {
       "date": "2026-08-18",
-      "revenue": 14317,
-      "cashFromAds": 14117,
+      "revenue": 24217,
+      "cashFromAds": 24017,
       "cashFromOrganic": 200,
-      "dealsCount": 6,
+      "dealsCount": 7,
       "deals": [
         {
           "date": "2026-08-18",
@@ -100,7 +109,7 @@
           "name": "Russell Jones",
           "email": "jeepc1@outlook.com",
           "product": "Accelerator",
-          "amount": 1100,
+          "amount": 9900,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -109,7 +118,7 @@
           "name": "Russell Jones",
           "email": "jeepc1@outlook.com",
           "product": "Accelerator",
-          "amount": 9900,
+          "amount": 1100,
           "source": "paid",
           "closer": "Laura Fillmann"
         },
@@ -119,6 +128,15 @@
           "email": "joshdelaney01@hotmail.com",
           "product": "Accelerator",
           "amount": 1100,
+          "source": "paid",
+          "closer": "Laura Fillmann"
+        },
+        {
+          "date": "2026-08-18",
+          "name": "Joshua Delaney",
+          "email": "joshdelaney01@hotmail.com",
+          "product": "Accelerator",
+          "amount": 9900,
           "source": "paid",
           "closer": "Laura Fillmann"
         }
@@ -162,10 +180,10 @@
     },
     {
       "date": "2026-08-05",
-      "revenue": 41164,
+      "revenue": 46664,
       "cashFromAds": 3533,
-      "cashFromOrganic": 37630,
-      "dealsCount": 10,
+      "cashFromOrganic": 43130,
+      "dealsCount": 11,
       "deals": [
         {
           "date": "2026-08-05",
@@ -241,6 +259,15 @@
         },
         {
           "date": "2026-08-05",
+          "name": "Jennet Johnson",
+          "email": "jennetjohnson71@gmail.com",
+          "product": "Accelerator",
+          "amount": 5500,
+          "source": "organic",
+          "closer": "Nelson Lopera"
+        },
+        {
+          "date": "2026-08-05",
           "name": "Liezel | Mark Van Der Merwe",
           "email": "liezelvdm@hotmail.com",
           "product": "Accelerator",
@@ -297,8 +324,8 @@
           "date": "2026-07-28",
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
-          "product": "Live Closing Accelerator",
-          "amount": 47,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "paid",
           "closer": "?"
         },
@@ -306,8 +333,8 @@
           "date": "2026-07-28",
           "name": "Bruce Notman",
           "email": "bruce.notman@bigpond.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 47,
           "source": "paid",
           "closer": "?"
         },
@@ -1098,8 +1125,8 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "Live Closing Accelerator",
-          "amount": 97,
+          "product": "3D HT Closer Challenge",
+          "amount": 9,
           "source": "paid",
           "closer": "?"
         },
@@ -1107,8 +1134,8 @@
           "date": "2026-05-26",
           "name": "",
           "email": "michelleroff1982@gmail.com",
-          "product": "3D HT Closer Challenge",
-          "amount": 9,
+          "product": "Live Closing Accelerator",
+          "amount": 97,
           "source": "paid",
           "closer": "?"
         },
