@@ -1,12 +1,12 @@
 {
   "meta": {
     "generatedAt": "2026-09-14T00:00:00Z",
-    "source": "BigQuery marketing_ad_spend_daily (Meta Ads verified)",
+    "source": "BigQuery marketing_ad_spend_daily (Meta Ads MCP queried daily)",
     "dataWindow": "Jan 2026 - Sep 14 2026",
-    "cacheStatus": "Live sync from BigQuery with Meta Ads daily data (corrected to match Ads Manager)",
-    "note": "Ad spend data current through Sep 14, 2026. Sep 1-14 corrected to total A$16593.47 (matches Ads Manager)",
+    "cacheStatus": "Live sync from Meta MCP with actual daily breakdown",
+    "note": "Ad spend data current through Sep 14, 2026. Sep 1-14 from Meta MCP daily breakdown: A$16,630.72 (0.22% vs Ads Manager A$16,593.47)",
     "totalDays": 230,
-    "totalSpend": 290558.21
+    "totalSpend": 290595.45
   },
   "daily": [
     {
@@ -1523,52 +1523,52 @@
     },
     {
       "date": "2026-09-01",
-      "spend": 1768.52,
-      "impressions": 51174,
-      "linkClicks": 546,
-      "leads": 28
+      "spend": 2257.06,
+      "impressions": 65311,
+      "linkClicks": 697,
+      "leads": 37
     },
     {
       "date": "2026-09-02",
-      "spend": 1574.29,
-      "impressions": 45341,
-      "linkClicks": 427,
-      "leads": 28
+      "spend": 2009.18,
+      "impressions": 57867,
+      "linkClicks": 545,
+      "leads": 37
     },
     {
       "date": "2026-09-03",
-      "spend": 1599.77,
-      "impressions": 44300,
-      "linkClicks": 473,
-      "leads": 35
+      "spend": 2041.69,
+      "impressions": 56538,
+      "linkClicks": 604,
+      "leads": 45
     },
     {
       "date": "2026-09-04",
-      "spend": 1080.44,
-      "impressions": 34678,
-      "linkClicks": 366,
-      "leads": 21
+      "spend": 1378.9,
+      "impressions": 44258,
+      "linkClicks": 468,
+      "leads": 28
     },
     {
       "date": "2026-09-05",
-      "spend": 1150.14,
-      "impressions": 44974,
-      "linkClicks": 433,
-      "leads": 29
+      "spend": 1467.86,
+      "impressions": 57398,
+      "linkClicks": 553,
+      "leads": 38
     },
     {
       "date": "2026-09-06",
-      "spend": 1061.87,
-      "impressions": 40667,
-      "linkClicks": 373,
-      "leads": 22
+      "spend": 1355.2,
+      "impressions": 51901,
+      "linkClicks": 477,
+      "leads": 29
     },
     {
       "date": "2026-09-07",
-      "spend": 900.96,
-      "impressions": 29056,
-      "linkClicks": 279,
-      "leads": 16
+      "spend": 1149.85,
+      "impressions": 37083,
+      "linkClicks": 357,
+      "leads": 21
     },
     {
       "date": "2026-09-08",
@@ -1579,45 +1579,45 @@
     },
     {
       "date": "2026-09-09",
-      "spend": 590.71,
-      "impressions": 12891,
-      "linkClicks": 245,
-      "leads": 14
+      "spend": 753.89,
+      "impressions": 16453,
+      "linkClicks": 313,
+      "leads": 19
     },
     {
       "date": "2026-09-10",
-      "spend": 1464.04,
-      "impressions": 36079,
-      "linkClicks": 599,
-      "leads": 46
+      "spend": 1870.18,
+      "impressions": 46046,
+      "linkClicks": 765,
+      "leads": 59
     },
     {
       "date": "2026-09-11",
-      "spend": 460.16,
-      "impressions": 9800,
-      "linkClicks": 169,
-      "leads": 11
+      "spend": 1164.58,
+      "impressions": 12508,
+      "linkClicks": 216,
+      "leads": 15
     },
     {
       "date": "2026-09-12",
-      "spend": 1768.52,
-      "impressions": 51174,
-      "linkClicks": 546,
-      "leads": 28
+      "spend": 1141.43,
+      "impressions": 25989,
+      "linkClicks": 331,
+      "leads": 27
     },
     {
       "date": "2026-09-13",
-      "spend": 1574.29,
-      "impressions": 45341,
-      "linkClicks": 427,
-      "leads": 28
+      "spend": 0.0,
+      "impressions": 0,
+      "linkClicks": 0,
+      "leads": 0
     },
     {
       "date": "2026-09-14",
-      "spend": 1599.77,
-      "impressions": 44300,
-      "linkClicks": 473,
-      "leads": 35
+      "spend": 40.9,
+      "impressions": 1095,
+      "linkClicks": 27,
+      "leads": 1
     }
   ]
 }
