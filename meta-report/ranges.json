@@ -5,38 +5,68 @@
     "this-month",
     "last-month"
   ],
-  "pull": "Monday, September 14, 2026 (advertiser time zone, Australia/Sydney)",
+  "pull": "Tuesday, September 15, 2026 (advertiser time zone, Australia/Sydney)",
   "currency": "AUD",
   "ranges": {
     "this-week": {
       "label": "This Week",
-      "window": "Mon Sep 14, 2026 (to date)",
+      "window": "Mon Sep 14 to Tue Sep 15, 2026 (to date)",
       "kind": "Week-to-date (Mon to Sun, in progress)",
       "live": true,
-      "days": 1,
+      "days": 2,
       "hero": {
-        "spend_day": 0.0,
+        "spend_day": 620.37,
         "purch": 0,
         "cpp": 0,
-        "leads": 0,
-        "cpl": 0,
+        "leads": 16,
+        "cpl": 72.36,
         "roas": 0
       },
       "snapshot": {
-        "spend": 0.0,
-        "impr": "0",
-        "clicks": "0",
-        "ctr": "0.00%",
-        "cpc": "A$0.00",
-        "cpm": "A$0.00",
-        "reach": "0",
-        "freq": "0.00",
+        "spend": 1240.73,
+        "impr": "33,855",
+        "clicks": "629",
+        "ctr": "1.86%",
+        "cpc": "A$1.97",
+        "cpm": "A$36.65",
+        "reach": "29,449",
+        "freq": "1.15",
         "roas": 0
       },
-      "summary": "A new week begins: Shane Da Costa AU has not yet posted any spend today (Mon Sep 14) - every campaign, ad and breakdown returned zero, consistent with an early-morning pull before delivery data has landed rather than an account pause (Sep 11 and Sep 12 both spent normally at A$1,164.58 and A$1,141.43 respectively). Treat this as an early floor that will build out over the day; re-pull later for real figures.",
+      "summary": "Shane Da Costa AU spent A$1,240.73 over the first two days of this week (Mon Sep 14 to Tue Sep 15), generating 16 leads at a blended A$72.36 cpl - notably higher than recent weeks, since FA | Accelerator Masterclass | Leads | ABO is the only lead campaign spending right now (93% of total spend). FA | Launchpad Masterclass and FA | 10k-Guarantee both remained at zero spend/zero leads this window - Launchpad has now been dormant since before Sep 7. FA_RSMC_Purchase_ABO_Aug2026 spent A$0.00 with zero delivery - still fully dormant. Two small video-views campaigns spent A$82.95 combined for thruplays. Campaign spend reconciled to the account total to the cent.",
       "campaigns": [
         {
           "name": "FA | Accelerator Masterclass | Leads | ABO",
+          "rc": 16,
+          "rl": "LEAD",
+          "cpr": "A$72.36",
+          "spend": 1157.78,
+          "ctr": "2.73%",
+          "cpc": "A$1.95",
+          "roas": "-"
+        },
+        {
+          "name": "Awareness | Video Views | Long Form",
+          "rc": 1643,
+          "rl": "VID",
+          "cpr": "A$0.04",
+          "spend": 66.67,
+          "ctr": "0.30%",
+          "cpc": "A$1.96",
+          "roas": "-"
+        },
+        {
+          "name": "FA | Masterclass | Retarget | Video Views | No CTA",
+          "rc": 469,
+          "rl": "VID",
+          "cpr": "A$0.03",
+          "spend": 16.28,
+          "ctr": "0.00%",
+          "cpc": "-",
+          "roas": "-"
+        },
+        {
+          "name": "FA | Launchpad Masterclass | Leads | ABO",
           "rc": 0,
           "rl": "LEAD",
           "cpr": "-",
@@ -56,36 +86,6 @@
           "roas": "-"
         },
         {
-          "name": "FA | Launchpad Masterclass | Leads | ABO",
-          "rc": 0,
-          "rl": "LEAD",
-          "cpr": "-",
-          "spend": 0.0,
-          "ctr": "-",
-          "cpc": "-",
-          "roas": "-"
-        },
-        {
-          "name": "Awareness | Video Views | Long Form",
-          "rc": 0,
-          "rl": "VID",
-          "cpr": "-",
-          "spend": 0.0,
-          "ctr": "-",
-          "cpc": "-",
-          "roas": "-"
-        },
-        {
-          "name": "FA | Masterclass | Retarget | Video Views | No CTA",
-          "rc": 0,
-          "rl": "VID",
-          "cpr": "-",
-          "spend": 0.0,
-          "ctr": "-",
-          "cpc": "-",
-          "roas": "-"
-        },
-        {
           "name": "FA_RSMC_Purchase_ABO_Aug2026",
           "rc": 0,
           "rl": "PUR",
@@ -97,136 +97,327 @@
         }
       ],
       "camp_total": {
-        "spend": 0.0,
+        "spend": 1240.73,
         "purch": 0,
-        "leads": 0
+        "leads": 16
       },
-      "ads": [],
-      "platform": [],
-      "position": [],
-      "age": [],
-      "gender": [],
-      "region": [],
+      "ads": [
+        {
+          "name": "Reel: $100k Side Hustle",
+          "spend": 831.24,
+          "rc": 12,
+          "rl": "LEAD",
+          "roas": "-",
+          "ctr": "2.62%"
+        },
+        {
+          "name": "Reel: Best Side Hustle",
+          "spend": 326.1,
+          "rc": 4,
+          "rl": "LEAD",
+          "roas": "-",
+          "ctr": "3.42%"
+        },
+        {
+          "name": "High Ticket Calculator VSL",
+          "spend": 66.67,
+          "rc": 1643,
+          "rl": "VID",
+          "roas": "-",
+          "ctr": "0.30%"
+        },
+        {
+          "name": "Income Calculator",
+          "spend": 9.08,
+          "rc": 42,
+          "rl": "VID",
+          "roas": "-",
+          "ctr": "0.00%"
+        }
+      ],
+      "platform": [
+        [
+          "Facebook",
+          581.74,
+          "1.65%",
+          "A$1.99",
+          "A$32.82"
+        ],
+        [
+          "Instagram",
+          557.17,
+          "1.99%",
+          "A$1.88",
+          "A$37.54"
+        ],
+        [
+          "Audience Network",
+          101.82,
+          "3.11%",
+          "A$2.55",
+          "A$79.11"
+        ]
+      ],
+      "position": [
+        [
+          "Instagram Reels",
+          403.64,
+          "1.94%",
+          "A$1.74"
+        ],
+        [
+          "Facebook Reels",
+          371.91,
+          "4.05%",
+          "A$1.83"
+        ],
+        [
+          "Feed",
+          247.14,
+          "1.20%",
+          "A$1.89"
+        ],
+        [
+          "Rewarded Video",
+          85.73,
+          "2.85%",
+          "A$2.60"
+        ],
+        [
+          "Instream Video",
+          62.73,
+          "1.28%",
+          "A$6.97"
+        ],
+        [
+          "Instagram Stories",
+          27.15,
+          "3.20%",
+          "A$3.02"
+        ]
+      ],
+      "age": [
+        [
+          "18-24",
+          206.19,
+          "1.75%",
+          "A$1.55"
+        ],
+        [
+          "25-34",
+          237.61,
+          "2.62%",
+          "A$1.35"
+        ],
+        [
+          "35-44",
+          257.58,
+          "2.55%",
+          "A$2.13"
+        ],
+        [
+          "45-54",
+          249.37,
+          "2.77%",
+          "A$2.25"
+        ],
+        [
+          "55-64",
+          167.04,
+          "1.24%",
+          "A$3.21"
+        ],
+        [
+          "65+",
+          122.94,
+          "0.55%",
+          "A$3.42"
+        ]
+      ],
+      "gender": [
+        [
+          "Male",
+          744.09,
+          "1.78%",
+          "A$1.74"
+        ],
+        [
+          "Female",
+          482.22,
+          "2.03%",
+          "A$2.51"
+        ]
+      ],
+      "region": [
+        [
+          "New South Wales",
+          387.74,
+          "2.06%",
+          "A$1.73"
+        ],
+        [
+          "Victoria",
+          335.34,
+          "2.00%",
+          "A$1.81"
+        ],
+        [
+          "Queensland",
+          277.54,
+          "1.66%",
+          "A$2.41"
+        ],
+        [
+          "Western Australia",
+          121.16,
+          "1.53%",
+          "A$2.47"
+        ],
+        [
+          "South Australia",
+          68.44,
+          "1.57%",
+          "A$2.01"
+        ],
+        [
+          "Australian Capital Territory",
+          25.93,
+          "2.47%",
+          "A$2.16"
+        ],
+        [
+          "Tasmania",
+          17.5,
+          "1.42%",
+          "A$1.94"
+        ],
+        [
+          "Northern Territory",
+          7.06,
+          "0.32%",
+          "A$7.06"
+        ]
+      ],
       "hourly": [
         [
-          0,
-          "-",
-          "-"
+          63.06,
+          "2.29%",
+          "A$1.85"
         ],
         [
-          0,
-          "-",
-          "-"
+          29.84,
+          "1.88%",
+          "A$1.87"
         ],
         [
-          0,
-          "-",
-          "-"
+          25.75,
+          "1.44%",
+          "A$2.86"
         ],
         [
-          0,
-          "-",
-          "-"
+          17.11,
+          "1.77%",
+          "A$1.71"
         ],
         [
-          0,
-          "-",
-          "-"
+          18.08,
+          "1.38%",
+          "A$2.01"
         ],
         [
-          0,
-          "-",
-          "-"
+          28.75,
+          "1.36%",
+          "A$2.21"
         ],
         [
-          0,
-          "-",
-          "-"
+          48.65,
+          "1.76%",
+          "A$1.95"
         ],
         [
-          0,
-          "-",
-          "-"
+          78.97,
+          "2.14%",
+          "A$2.02"
         ],
         [
-          0,
-          "-",
-          "-"
+          73.46,
+          "2.12%",
+          "A$1.79"
         ],
         [
-          0,
-          "-",
-          "-"
+          2.08,
+          "9.23%",
+          "A$0.35"
         ],
         [
-          0,
-          "-",
-          "-"
+          2.04,
+          "3.45%",
+          "A$1.02"
         ],
         [
-          0,
-          "-",
-          "-"
+          162.9,
+          "2.04%",
+          "A$2.81"
         ],
         [
-          0,
-          "-",
-          "-"
+          41.73,
+          "1.53%",
+          "A$1.99"
         ],
         [
-          0,
-          "-",
-          "-"
+          52.4,
+          "1.46%",
+          "A$2.28"
         ],
         [
-          0,
-          "-",
-          "-"
+          48.28,
+          "1.46%",
+          "A$2.10"
         ],
         [
-          0,
-          "-",
-          "-"
+          51.69,
+          "1.89%",
+          "A$1.78"
         ],
         [
-          0,
-          "-",
-          "-"
+          45.14,
+          "1.93%",
+          "A$1.67"
         ],
         [
-          0,
-          "-",
-          "-"
+          46.15,
+          "1.55%",
+          "A$2.10"
         ],
         [
-          0,
-          "-",
-          "-"
+          51.48,
+          "2.14%",
+          "A$1.51"
         ],
         [
-          0,
-          "-",
-          "-"
+          49.6,
+          "1.47%",
+          "A$1.91"
         ],
         [
-          0,
-          "-",
-          "-"
+          72.72,
+          "1.92%",
+          "A$1.77"
         ],
         [
-          0,
-          "-",
-          "-"
+          73.35,
+          "1.89%",
+          "A$1.63"
         ],
         [
-          0,
-          "-",
-          "-"
+          89.55,
+          "1.88%",
+          "A$2.08"
         ],
         [
-          0,
-          "-",
-          "-"
+          67.95,
+          "2.16%",
+          "A$2.06"
         ]
       ]
     },
@@ -673,39 +864,39 @@
     },
     "this-month": {
       "label": "This Month",
-      "window": "Sep 1 to Sep 14, 2026 (to date)",
+      "window": "Sep 1 to Sep 15, 2026 (to date)",
       "kind": "Month-to-date (in progress)",
       "live": true,
-      "days": 14,
+      "days": 15,
       "hero": {
-        "spend_day": 1184.99,
+        "spend_day": 1188.7,
         "purch": 0,
         "cpp": 0,
-        "leads": 393,
-        "cpl": 38.02,
+        "leads": 409,
+        "cpl": 39.36,
         "roas": 0
       },
       "snapshot": {
-        "spend": 16589.82,
-        "impr": "491,712",
-        "clicks": "9,021",
-        "ctr": "1.83%",
-        "cpc": "A$1.84",
-        "cpm": "A$33.74",
-        "reach": "251,067",
-        "freq": "1.96",
+        "spend": 17830.55,
+        "impr": "525,567",
+        "clicks": "9,650",
+        "ctr": "1.84%",
+        "cpc": "A$1.85",
+        "cpm": "A$33.93",
+        "reach": "266,323",
+        "freq": "1.97",
         "roas": 0
       },
-      "summary": "September's first fourteen days show Shane Da Costa AU spending A$16,589.82, generating 393 leads at a blended A$38.02 cpl. FA | Accelerator Masterclass | Leads | ABO drove 301 leads at A$32.99 cpl (the strongest performer this month), FA | 10k-Guarantee added 60 leads at A$46.31 cpl, and FA | Launchpad Masterclass added 32 leads at A$69.74 cpl. FA_RSMC_Purchase_ABO_Aug2026 spent A$0.00 with zero delivery this window - fully dormant all month, still just the single Aug 25 sale, now 3+ weeks with no repeat. Campaign spend reconciled to the account total to the cent. Treat these figures as an early floor; the last day is still settling under Meta's attribution lag.",
+      "summary": "September's first fifteen days show Shane Da Costa AU spending A$17,830.55, generating 409 leads at a blended A$39.36 cpl. FA | Accelerator Masterclass | Leads | ABO drove 317 leads at A$34.98 cpl (the strongest performer this month), FA | 10k-Guarantee added 60 leads at A$46.31 cpl, and FA | Launchpad Masterclass added 32 leads at A$69.74 cpl - all from earlier in the month, since Launchpad and 10k-Guarantee have been dormant the last two days. FA_RSMC_Purchase_ABO_Aug2026 spent A$0.00 with zero delivery this window - fully dormant all month, still just the single Aug 25 sale. Campaign spend reconciled to the account total to the cent. Treat these figures as an early floor; the last day is still settling under Meta's attribution lag.",
       "campaigns": [
         {
           "name": "FA | Accelerator Masterclass | Leads | ABO",
-          "rc": 301,
+          "rc": 317,
           "rl": "LEAD",
-          "cpr": "A$32.99",
-          "spend": 9931.2,
-          "ctr": "3.18%",
-          "cpc": "A$1.48",
+          "cpr": "A$34.98",
+          "spend": 11088.98,
+          "ctr": "3.14%",
+          "cpc": "A$1.52",
           "roas": "-"
         },
         {
@@ -730,22 +921,22 @@
         },
         {
           "name": "Awareness | Video Views | Long Form",
-          "rc": 40874,
+          "rc": 42517,
           "rl": "VID",
           "cpr": "A$0.04",
-          "spend": 1533.86,
-          "ctr": "0.22%",
-          "cpc": "A$3.07",
+          "spend": 1600.53,
+          "ctr": "0.23%",
+          "cpc": "A$3.00",
           "roas": "-"
         },
         {
           "name": "FA | Masterclass | Retarget | Video Views | No CTA",
-          "rc": 4062,
+          "rc": 4531,
           "rl": "VID",
           "cpr": "A$0.03",
-          "spend": 114.47,
-          "ctr": "0.21%",
-          "cpc": "A$9.54",
+          "spend": 130.75,
+          "ctr": "0.19%",
+          "cpc": "A$10.90",
           "roas": "-"
         },
         {
@@ -760,34 +951,34 @@
         }
       ],
       "camp_total": {
-        "spend": 16589.82,
+        "spend": 17830.55,
         "purch": 0,
-        "leads": 393
+        "leads": 409
       },
       "ads": [
         {
           "name": "Reel: $100k Side Hustle",
-          "spend": 7028.98,
-          "rc": 242,
+          "spend": 7860.22,
+          "rc": 254,
           "rl": "LEAD",
           "roas": "-",
-          "ctr": "3.09%"
+          "ctr": "3.04%"
         },
         {
           "name": "Reel: Best Side Hustle",
-          "spend": 2886.29,
-          "rc": 59,
+          "spend": 3212.39,
+          "rc": 63,
           "rl": "LEAD",
           "roas": "-",
-          "ctr": "3.73%"
+          "ctr": "3.70%"
         },
         {
           "name": "High Ticket Calculator VSL",
-          "spend": 1533.86,
-          "rc": 40874,
+          "spend": 1600.53,
+          "rc": 42517,
           "rl": "VID",
           "roas": "-",
-          "ctr": "0.22%"
+          "ctr": "0.23%"
         },
         {
           "name": "Copy V1 | Static 4 | Don't Quit Your Job",
@@ -833,298 +1024,298 @@
       "platform": [
         [
           "Facebook",
-          9358.71,
+          9941.12,
           "1.54%",
           "A$1.92",
-          "A$29.52"
+          "A$29.69"
         ],
         [
           "Instagram",
-          6218.12,
-          "2.23%",
-          "A$1.75",
-          "A$39.00"
+          6774.76,
+          "2.21%",
+          "A$1.76",
+          "A$38.88"
         ],
         [
           "Audience Network",
-          1012.99,
-          "3.84%",
-          "A$1.73",
-          "A$66.43"
+          1114.66,
+          "3.77%",
+          "A$1.79",
+          "A$67.41"
         ]
       ],
       "position": [
         [
           "Feed",
-          5599.28,
-          "1.87%",
+          5847.29,
+          "1.83%",
           "A$1.93"
         ],
         [
           "Facebook Reels",
-          4126.22,
-          "4.66%",
-          "A$1.59"
+          4497.88,
+          "4.61%",
+          "A$1.61"
         ],
         [
           "Instagram Reels",
-          3556.39,
-          "2.17%",
-          "A$1.43"
+          3959.27,
+          "2.15%",
+          "A$1.46"
         ],
         [
           "Instream Video",
-          791.23,
-          "0.58%",
-          "A$6.18"
+          853.93,
+          "0.60%",
+          "A$6.23"
         ],
         [
           "Rewarded Video",
-          677.33,
-          "4.02%",
-          "A$1.43"
+          762.87,
+          "3.91%",
+          "A$1.50"
         ],
         [
           "Instagram Stories",
-          596.01,
-          "2.89%",
-          "A$2.88"
+          623.25,
+          "2.90%",
+          "A$2.89"
         ],
         [
           "Marketplace",
-          583.43,
+          599.45,
           "0.04%",
-          "A$12.41"
+          "A$11.99"
         ],
         [
           "Audience Network Classic",
-          335.66,
-          "3.22%",
-          "A$3.02"
+          351.8,
+          "3.27%",
+          "A$3.01"
         ]
       ],
       "age": [
         [
           "18-24",
-          1999.21,
+          2205.4,
           "1.77%",
-          "A$1.41"
+          "A$1.42"
         ],
         [
           "25-34",
-          2721.12,
-          "2.39%",
+          2958.73,
+          "2.41%",
           "A$1.33"
         ],
         [
           "35-44",
-          3428.66,
-          "2.95%",
-          "A$1.70"
+          3686.24,
+          "2.93%",
+          "A$1.72"
         ],
         [
           "45-54",
-          3969.13,
+          4218.5,
           "2.67%",
           "A$2.20"
         ],
         [
           "55-64",
-          2705.85,
+          2872.89,
           "1.33%",
-          "A$2.66"
+          "A$2.68"
         ],
         [
           "65+",
-          1765.59,
-          "0.63%",
-          "A$2.47"
+          1888.53,
+          "0.62%",
+          "A$2.52"
         ]
       ],
       "gender": [
         [
           "Male",
-          8748.44,
-          "1.63%",
-          "A$1.65"
+          9492.53,
+          "1.64%",
+          "A$1.66"
         ],
         [
           "Female",
-          7634.13,
-          "2.27%",
-          "A$2.10"
+          8116.35,
+          "2.25%",
+          "A$2.12"
         ]
       ],
       "region": [
         [
           "New South Wales",
-          5289.91,
-          "1.92%",
+          5677.65,
+          "1.93%",
           "A$1.77"
         ],
         [
           "Victoria",
-          4555.2,
-          "1.90%",
+          4890.66,
+          "1.91%",
           "A$1.82"
         ],
         [
           "Queensland",
-          3721.88,
-          "1.90%",
-          "A$2.01"
+          3999.4,
+          "1.88%",
+          "A$2.04"
         ],
         [
           "Western Australia",
-          1575.1,
-          "1.68%",
-          "A$1.79"
+          1696.23,
+          "1.67%",
+          "A$1.82"
         ],
         [
           "South Australia",
-          931.08,
-          "1.38%",
+          999.52,
+          "1.40%",
           "A$1.99"
         ],
         [
           "Australian Capital Territory",
-          230.74,
-          "2.21%",
-          "A$1.49"
+          256.62,
+          "2.23%",
+          "A$1.54"
         ],
         [
           "Tasmania",
-          174.8,
-          "1.13%",
-          "A$1.66"
+          192.27,
+          "1.15%",
+          "A$1.69"
         ],
         [
           "Northern Territory",
-          108.98,
-          "1.63%",
-          "A$1.76"
+          116.05,
+          "1.53%",
+          "A$1.84"
         ]
       ],
       "hourly": [
         [
-          652.1,
-          "1.87%",
-          "A$1.96"
+          715.16,
+          "1.90%",
+          "A$1.95"
         ],
         [
-          377.59,
+          407.43,
           "1.86%",
+          "A$1.93"
+        ],
+        [
+          314.7,
+          "1.89%",
+          "A$1.99"
+        ],
+        [
+          289.19,
+          "2.00%",
           "A$1.94"
         ],
         [
-          288.95,
-          "1.93%",
-          "A$1.94"
+          406.81,
+          "2.25%",
+          "A$1.95"
         ],
         [
-          272.08,
-          "2.01%",
-          "A$1.96"
+          505.53,
+          "2.08%",
+          "A$2.03"
         ],
         [
-          388.73,
-          "2.31%",
-          "A$1.94"
+          656.69,
+          "2.49%",
+          "A$1.89"
         ],
         [
-          476.78,
-          "2.14%",
-          "A$2.02"
-        ],
-        [
-          608.04,
-          "2.57%",
-          "A$1.88"
-        ],
-        [
-          958.51,
+          1037.48,
           "2.17%",
           "A$1.96"
         ],
         [
-          830.16,
+          903.62,
           "2.11%",
           "A$1.82"
         ],
         [
-          912.51,
-          "1.77%",
-          "A$2.13"
+          914.59,
+          "1.79%",
+          "A$2.11"
         ],
         [
-          697.56,
-          "1.38%",
-          "A$2.45"
+          699.6,
+          "1.39%",
+          "A$2.44"
         ],
         [
-          666.73,
-          "1.61%",
-          "A$2.00"
+          829.63,
+          "1.66%",
+          "A$2.12"
         ],
         [
-          806.1,
-          "2.17%",
-          "A$1.66"
+          847.83,
+          "2.13%",
+          "A$1.68"
         ],
         [
-          1363.85,
-          "2.36%",
-          "A$1.67"
+          1416.25,
+          "2.32%",
+          "A$1.69"
         ],
         [
-          501.47,
-          "1.76%",
-          "A$1.72"
+          549.75,
+          "1.73%",
+          "A$1.75"
         ],
         [
-          473.71,
-          "1.43%",
+          525.4,
+          "1.46%",
           "A$1.78"
         ],
         [
-          506.95,
-          "1.33%",
-          "A$1.83"
+          552.09,
+          "1.37%",
+          "A$1.82"
         ],
         [
-          625.15,
+          671.3,
           "1.56%",
-          "A$1.87"
+          "A$1.88"
         ],
         [
-          1193.79,
-          "1.87%",
-          "A$1.78"
+          1245.27,
+          "1.88%",
+          "A$1.77"
         ],
         [
-          704.1,
-          "1.54%",
-          "A$1.73"
+          753.7,
+          "1.53%",
+          "A$1.74"
         ],
         [
-          819.36,
-          "1.52%",
+          892.08,
+          "1.55%",
+          "A$1.79"
+        ],
+        [
+          1045.87,
+          "1.74%",
           "A$1.80"
         ],
         [
-          972.52,
-          "1.72%",
-          "A$1.81"
-        ],
-        [
-          893.41,
+          982.96,
           "1.91%",
-          "A$1.62"
+          "A$1.65"
         ],
         [
-          599.67,
-          "1.81%",
-          "A$1.66"
+          667.62,
+          "1.84%",
+          "A$1.69"
         ]
       ]
     },
