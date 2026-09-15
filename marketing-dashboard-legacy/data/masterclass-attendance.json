@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-20T23:21:28.255Z",
+    "source": "Google Sheet (FA | Webinar Lead Tracker, X-Auto tab)",
+    "dataWindow": "Apr 2026 - Present",
+    "cacheStatus": "Live sync from Google Sheet (updated daily)",
+    "totalAttendees": 270
+  },
+  "masterclassAttendance": [
+    {
+      "date": "2026-08-18",
+      "attended": 33
+    },
+    {
+      "date": "2026-08-11",
+      "attended": 38
+    },
+    {
+      "date": "2026-08-05",
+      "attended": 76
+    },
+    {
+      "date": "2026-08-04",
+      "attended": 40
+    },
+    {
+      "date": "2026-07-28",
+      "attended": 32
+    },
+    {
+      "date": "2026-07-22",
+      "attended": 33
+    },
+    {
+      "date": "2026-07-16",
+      "attended": 17
+    },
+    {
+      "date": "2026-06-04",
+      "attended": 1
+    }
+  ]
+}

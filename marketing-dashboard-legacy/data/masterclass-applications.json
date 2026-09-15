@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-20T23:21:29.770Z",
+    "source": "Google Sheet (FA | Webinar Lead Tracker, X-Auto tab)",
+    "dataWindow": "All-time",
+    "cacheStatus": "Live sync from Google Sheet (updated daily)",
+    "totalApplications": 111
+  },
+  "applications": [
+    {
+      "date": "2026-08-25",
+      "applications": 7
+    },
+    {
+      "date": "2026-08-18",
+      "applications": 23
+    },
+    {
+      "date": "2026-08-11",
+      "applications": 19
+    },
+    {
+      "date": "2026-08-05",
+      "applications": 23
+    },
+    {
+      "date": "2026-08-04",
+      "applications": 17
+    },
+    {
+      "date": "2026-07-28",
+      "applications": 16
+    },
+    {
+      "date": "2026-07-22",
+      "applications": 3
+    },
+    {
+      "date": "2026-07-16",
+      "applications": 2
+    },
+    {
+      "date": "2026-05-07",
+      "applications": 1
+    }
+  ]
+}
