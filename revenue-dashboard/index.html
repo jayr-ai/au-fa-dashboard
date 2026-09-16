@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Freedom Academy - Revenue Dashboard</title>
-    <link rel="stylesheet" href="css/style.css?v=20260817143000">
+    <link rel="stylesheet" href="css/style.css?v=20260917220000">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
 </head>
 <body>
@@ -124,71 +124,65 @@
             </div>
         </section>
 
-        <!-- Year Comparison Table -->
-        <section class="table-section">
-            <h3>Year-over-Year Comparison</h3>
-            <table class="data-table" id="yearComparisonTable">
-                <thead>
-                    <tr>
-                        <th>Mode</th>
-                        <th>2025</th>
-                        <th>2026</th>
-                        <th>2027</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody id="yearComparisonBody">
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Product Performance -->
-        <section class="table-section">
-            <h3>Cash Collected By Product</h3>
-            <table class="data-table" id="productTable">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>2025</th>
-                        <th>2026</th>
-                        <th>Total Revenue</th>
-                    </tr>
-                </thead>
-                <tbody id="productTableBody">
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Sales Breakdown (Collapsible) -->
-        <section class="table-section">
-            <div class="collapsible-header" id="breakdownToggle">
-                <h3 style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 12px;">
-                    Sales Breakdown
-                    <span class="collapse-icon" style="font-size: 14px; transition: transform 0.3s;">▼</span>
-                </h3>
-            </div>
-            <div class="collapsible-content" id="breakdownContent" style="display: none; margin-top: 16px; overflow-x: auto;">
-                <table class="data-table" id="breakdownTable">
+        <!-- Tables Grid - Three Columns -->
+        <div class="tables-grid tables-grid-3col">
+            <!-- Year Comparison Table -->
+            <section class="table-section">
+                <h3>Year-over-Year Comparison</h3>
+                <table class="data-table" id="yearComparisonTable">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Product</th>
-                            <th>Closer</th>
-                            <th>Mode</th>
-                            <th style="text-align: right;">Amount</th>
+                            <th>Year</th>
+                            <th>Revenue</th>
                         </tr>
                     </thead>
-                    <tbody id="breakdownTableBody"></tbody>
+                    <tbody id="yearComparisonBody">
+                    </tbody>
                 </table>
-            </div>
-        </section>
+            </section>
+
+            <!-- Product Performance -->
+            <section class="table-section">
+                <h3>Cash Collected By Product</h3>
+                <table class="data-table" id="productTable">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>2025</th>
+                            <th>2026</th>
+                            <th>Total Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Sales Breakdown (Compact) -->
+            <section class="table-section">
+                <h3>Sales Breakdown</h3>
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <table class="data-table" id="breakdownTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Product</th>
+                                <th>Closer</th>
+                                <th>Mode</th>
+                                <th style="text-align: right;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="breakdownTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
 
         <!-- Loading State -->
         <div id="loadingMessage" class="loading-message">Loading dashboard data...</div>
     </div>
 
-    <script src="js/app.js?v=100011"></script>
+    <script src="js/app.js?v=100014"></script>
 </body>
 </html>
