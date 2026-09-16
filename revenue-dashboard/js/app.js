@@ -542,7 +542,10 @@ function renderInsights(data) {
         </div>
     `).join('');
 
-    document.getElementById('insightsContent').innerHTML = insightsHtml;
+    const insightsContentEl = document.getElementById('insightsContent');
+    if (insightsContentEl) {
+        insightsContentEl.innerHTML = insightsHtml;
+    }
 }
 
 // Generate executive insights from data
