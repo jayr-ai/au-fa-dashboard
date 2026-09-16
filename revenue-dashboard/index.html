@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Freedom Academy - Revenue Dashboard</title>
-    <link rel="stylesheet" href="css/style.css?v=20260917220000">
+    <link rel="stylesheet" href="css/style.css?v=20260917230000">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
 </head>
 <body>
@@ -66,17 +66,7 @@
             </div>
         </header>
 
-        <!-- Executive Insights Section -->
-        <section class="insights-section">
-            <div class="insights-card">
-                <h3>Executive Summary</h3>
-                <div class="insights-content" id="insightsContent">
-                    <p>Loading insights...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- KPI Section -->
+        <!-- KPI Section - Compact Grid -->
         <section class="kpi-section">
             <div class="kpi-card">
                 <div class="kpi-label">Total Revenue</div>
@@ -96,30 +86,22 @@
             </div>
         </section>
 
-        <!-- Charts Section -->
-        <section class="charts-section">
-            <!-- Revenue Trend -->
+        <!-- Charts Grid - 4 Columns -->
+        <section class="charts-grid">
             <div class="chart-container">
                 <h3>Total Revenue</h3>
                 <canvas id="revenueTrendChart"></canvas>
             </div>
-
-            <!-- Revenue by Source Pie -->
             <div class="chart-container">
                 <h3>Revenue by Source</h3>
                 <canvas id="sourceBreakdownChart"></canvas>
             </div>
-        </section>
-
-        <!-- Monthly Cash Collection -->
-        <section class="charts-section">
             <div class="chart-container">
-                <h3>Cash Collected Breakdown Per Month</h3>
+                <h3>Cash Collected Breakdown</h3>
                 <canvas id="monthlyCashChart"></canvas>
             </div>
-
             <div class="chart-container">
-                <h3>Which payment channel received the most amount of cash?</h3>
+                <h3>Payment Channel Distribution</h3>
                 <canvas id="paymentChannelChart"></canvas>
             </div>
         </section>
@@ -183,6 +165,6 @@
         <div id="loadingMessage" class="loading-message">Loading dashboard data...</div>
     </div>
 
-    <script src="js/app.js?v=100014"></script>
+    <script src="js/app.js?v=100015"></script>
 </body>
 </html>
