@@ -489,31 +489,62 @@
         });
 
         function loadAgents() {
+            const agentSelect = document.getElementById('agentName');
+            const cacheKey = 'eodFormAgents_fa';
+            const cachedData = localStorage.getItem(cacheKey);
+
+            let cachedAgents = null;
+            if (cachedData) {
+                try {
+                    cachedAgents = JSON.parse(cachedData);
+                } catch (e) {
+                    localStorage.removeItem(cacheKey);
+                }
+            }
+
+            // Display cached agents immediately if available
+            if (cachedAgents && Array.isArray(cachedAgents)) {
+                populateAgents(cachedAgents);
+            } else {
+                // Show loading indicator on first load
+                agentSelect.innerHTML = '<option value="">-- Loading agents... --</option>';
+            }
+
+            // Fetch fresh agents in background
             fetch(APPS_SCRIPT_URL + '?action=getAgents')
                 .then(response => response.json())
                 .then(data => {
-                    const agentSelect = document.getElementById('agentName');
-                    agentSelect.innerHTML = '<option value="">-- Select an agent --</option>';
-                    data.agents.forEach(agent => {
-                        const option = document.createElement('option');
-                        option.value = agent;
-                        option.textContent = agent;
-                        agentSelect.appendChild(option);
-                    });
+                    if (data.agents && Array.isArray(data.agents)) {
+                        // Cache the fresh agents
+                        localStorage.setItem(cacheKey, JSON.stringify(data.agents));
+                        populateAgents(data.agents);
+                    }
                 })
                 .catch(error => {
                     console.error('Error loading agents:', error);
-                    // Fallback to hardcoded list if fetch fails
-                    const fallbackAgents = ['Stacie Skehan', 'Peter Kladis Jr', 'Nelson Lopera', 'Shane Dacosta', 'Dylan Smouha', 'Laura Fillmann', 'Natalie Khoury', 'Vanessa Caruso'];
-                    const agentSelect = document.getElementById('agentName');
-                    agentSelect.innerHTML = '<option value="">-- Select an agent --</option>';
-                    fallbackAgents.forEach(agent => {
-                        const option = document.createElement('option');
-                        option.value = agent;
-                        option.textContent = agent;
-                        agentSelect.appendChild(option);
-                    });
+                    // If we have cached agents, they're already displayed
+                    // If no cache, fallback to hardcoded list
+                    if (!cachedAgents) {
+                        const fallbackAgents = ['Stacie Skehan', 'Peter Kladis Jr', 'Nelson Lopera', 'Shane Dacosta', 'Dylan Smouha', 'Laura Fillmann', 'Natalie Khoury', 'Vanessa Caruso'];
+                        populateAgents(fallbackAgents);
+                    }
                 });
+        }
+
+        function populateAgents(agents) {
+            const agentSelect = document.getElementById('agentName');
+            const currentValue = agentSelect.value;
+            agentSelect.innerHTML = '<option value="">-- Select an agent --</option>';
+            agents.forEach(agent => {
+                const option = document.createElement('option');
+                option.value = agent;
+                option.textContent = agent;
+                agentSelect.appendChild(option);
+            });
+            // Restore previous selection if it still exists
+            if (currentValue) {
+                agentSelect.value = currentValue;
+            }
         }
 
         function goToPage2() {
