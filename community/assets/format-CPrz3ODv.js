@@ -1,0 +1,1 @@
+function e(e){return new Date(e).toLocaleString(void 0,{dateStyle:`medium`,timeStyle:`short`})}function t(e){return new Date(e).toLocaleDateString(void 0,{dateStyle:`medium`})}export{e as n,t};
