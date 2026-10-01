@@ -1,6 +1,59 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script id="fa-gate">
+(function(){
+  var PASS_HASH = "2062979286882b1a80768514f9af26a8c9e15ae9f9f4b086d0d16e718d55928d";
+  var STORAGE_KEY = "fa_hub_auth_v1";
+  if (localStorage.getItem(STORAGE_KEY) === PASS_HASH) return;
+
+  document.write('<style id="fa-gate-style">html{visibility:hidden !important}</style>');
+
+  function sha256(str){
+    var enc = new TextEncoder().encode(str);
+    return crypto.subtle.digest("SHA-256", enc).then(function(buf){
+      return Array.prototype.map.call(new Uint8Array(buf), function(b){return b.toString(16).padStart(2,"0");}).join("");
+    });
+  }
+
+  function showGate(){
+    var overlay = document.createElement('div');
+    overlay.id = 'fa-gate-overlay';
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:999999;background:#0F0F1A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;visibility:visible;';
+    overlay.innerHTML =
+      '<form id="fa-gate-form" style="text-align:center;max-width:320px;width:90%;">' +
+        '<div style="font-size:15px;font-weight:700;letter-spacing:0.02em;margin-bottom:6px;">Freedom Academy</div>' +
+        '<div style="font-size:13px;color:#A0A0A0;margin-bottom:22px;">Enter the access code to continue</div>' +
+        '<input id="fa-gate-input" type="password" autocomplete="off" placeholder="Access code" style="width:100%;padding:12px 14px;border-radius:9px;border:1px solid rgba(255,255,255,0.14);background:#1A1A2E;color:#FFFFFF;font-size:14px;box-sizing:border-box;outline:none;" />' +
+        '<div id="fa-gate-error" style="color:#ff6b6b;font-size:12.5px;margin-top:10px;min-height:16px;"></div>' +
+        '<button type="submit" style="margin-top:14px;width:100%;padding:12px;border-radius:9px;border:none;background:#B9DACD;color:#1A1A2E;font-weight:700;font-size:14px;cursor:pointer;">Enter</button>' +
+      '</form>';
+    document.body.appendChild(overlay);
+    document.documentElement.style.visibility = 'visible';
+    var input = document.getElementById('fa-gate-input');
+    var errorEl = document.getElementById('fa-gate-error');
+    input.focus();
+    document.getElementById('fa-gate-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      sha256(input.value).then(function(hash){
+        if (hash === PASS_HASH) {
+          localStorage.setItem(STORAGE_KEY, hash);
+          overlay.remove();
+          var hideStyle = document.getElementById('fa-gate-style');
+          if (hideStyle) hideStyle.remove();
+        } else {
+          errorEl.textContent = 'Incorrect code — try again.';
+          input.value = '';
+          input.focus();
+        }
+      });
+    });
+  }
+
+  if (document.body) { showGate(); }
+  else { document.addEventListener('DOMContentLoaded', showGate); }
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
