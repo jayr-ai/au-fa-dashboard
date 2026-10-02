@@ -6,13 +6,22 @@
     <meta name="theme-color" content="#1a2420" />
     <meta name="robots" content="noindex" />
     <title>FA Community Board</title>
+    <script>
+      // Apply the saved day/night choice before the page paints (no flash). See src/theme/ThemeProvider.tsx.
+      try {
+        if (localStorage.getItem('fa-theme') === 'light') {
+          document.documentElement.dataset.theme = 'light';
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f2f6f4');
+        }
+      } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/community/assets/index-CJFsUKr2.js"></script>
+    <script type="module" crossorigin src="/community/assets/index-D4Sdeovi.js"></script>
     <link rel="modulepreload" crossorigin href="/community/assets/jsx-runtime-Dk72oS4N.js">
     <link rel="modulepreload" crossorigin href="/community/assets/supabase-BL1ivcsI.js">
-    <link rel="stylesheet" crossorigin href="/community/assets/index-CFdS6EBl.css">
+    <link rel="stylesheet" crossorigin href="/community/assets/index-CuBbOKx4.css">
   </head>
   <body>
     <div id="root"></div>
