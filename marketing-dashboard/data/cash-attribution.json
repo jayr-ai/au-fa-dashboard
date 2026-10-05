@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generatedAt": "2026-10-02T02:24:41.720457Z",
+    "generatedAt": "2026-10-05T03:15:15.958154Z",
     "source": "Google Sheet 'CONSOLIDATED' (direct CSV pull), attribution from the sheet's own 'Attribution' column \u2014 no BigQuery, no GHL cross-reference",
-    "dataWindow": "2025-11-06 to 2026-10-01"
+    "dataWindow": "2025-11-06 to 2026-10-03"
   },
   "monthlySummary": [
     {
@@ -77,10 +77,10 @@
     },
     {
       "month": "2026-10",
-      "totalCash": 12500.0,
-      "cashFromAds": 12500.0,
+      "totalCash": 23500.0,
+      "cashFromAds": 23500.0,
       "cashFromOrganic": 0.0,
-      "transactionCount": 2
+      "transactionCount": 3
     }
   ],
   "dailyBreakdown": [
@@ -1366,6 +1366,12 @@
       "date": "2026-10-01",
       "totalCash": 12500.0,
       "cashFromAds": 12500.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-10-03",
+      "totalCash": 11000.0,
+      "cashFromAds": 11000.0,
       "cashFromOrganic": 0.0
     }
   ],
@@ -8897,6 +8903,16 @@
       "product": "Accelerator",
       "amount": 11000.0,
       "closer": "Stacie Skehan",
+      "mode": "EFT",
+      "source": "Paid"
+    },
+    {
+      "date": "2026-10-03",
+      "name": "Nicolina Costanzo",
+      "email": "nicole.costanzo@hotmail.com",
+      "product": "Accelerator Premium",
+      "amount": 11000.0,
+      "closer": "Shane Dacosta",
       "mode": "EFT",
       "source": "Paid"
     }

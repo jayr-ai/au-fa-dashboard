@@ -1,21 +1,21 @@
 {
   "meta": {
-    "generatedAt": "2026-10-02T02:24:51.848108Z",
+    "generatedAt": "2026-10-05T03:15:26.670408Z",
     "source": "Composite of marketing-performance.json (Meta MCP) / funnel-stages.json (GHL REST API direct via PIT) / masterclass-registrations.json / masterclass-attendance.json / masterclass-applications.json (Google Sheet) / cash-attribution.json (Google Sheet) \u2014 no BigQuery, no MCP dependency for GHL data",
-    "dataWindow": "2025-11-06 to 2026-10-02",
+    "dataWindow": "2025-11-06 to 2026-10-05",
     "cacheStatus": "Direct sync via Meta MCP + GHL REST API (PIT) + Google Sheets CSV export",
-    "syncedAt": "2026-10-02T02:24:51.848518Z"
+    "syncedAt": "2026-10-05T03:15:26.670752Z"
   },
   "funnelSnapshot": {
-    "generatedAt": "2026-10-02T02:24:01.639255Z",
+    "generatedAt": "2026-10-05T03:14:42.907741Z",
     "stages": [
       {
         "stage": "Registered",
-        "count": 5086
+        "count": 5079
       },
       {
         "stage": "Replay Optin",
-        "count": 431
+        "count": 433
       },
       {
         "stage": "Close Lost",
@@ -23,7 +23,7 @@
       },
       {
         "stage": "Call Cancelled / Not Interested",
-        "count": 286
+        "count": 287
       },
       {
         "stage": "No-Showed",
@@ -31,7 +31,7 @@
       },
       {
         "stage": "Call Cancelled / Need To Reschedule",
-        "count": 163
+        "count": 165
       },
       {
         "stage": "Close Won",
@@ -47,7 +47,7 @@
       },
       {
         "stage": "Appointment Booked",
-        "count": 13
+        "count": 15
       },
       {
         "stage": "Pending Sale",
@@ -2109,10 +2109,31 @@
     },
     {
       "date": "2026-10-02",
-      "spend": 728.3,
-      "impressions": 15018,
-      "linkClicks": 101,
-      "leads": 6
+      "spend": 1531.12,
+      "impressions": 44712,
+      "linkClicks": 271,
+      "leads": 20
+    },
+    {
+      "date": "2026-10-03",
+      "spend": 1348.59,
+      "impressions": 54001,
+      "linkClicks": 285,
+      "leads": 19
+    },
+    {
+      "date": "2026-10-04",
+      "spend": 1212.45,
+      "impressions": 50702,
+      "linkClicks": 269,
+      "leads": 11
+    },
+    {
+      "date": "2026-10-05",
+      "spend": 555.55,
+      "impressions": 26598,
+      "linkClicks": 103,
+      "leads": 9
     }
   ],
   "cashAttributionDaily": [
@@ -3398,6 +3419,12 @@
       "date": "2026-10-01",
       "totalCash": 12500.0,
       "cashFromAds": 12500.0,
+      "cashFromOrganic": 0.0
+    },
+    {
+      "date": "2026-10-03",
+      "totalCash": 11000.0,
+      "cashFromAds": 11000.0,
       "cashFromOrganic": 0.0
     }
   ],
