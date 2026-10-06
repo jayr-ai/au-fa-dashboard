@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-10-05T03:14:34.028479Z",
+    "generatedAt": "2026-10-06T03:56:34.106517Z",
     "source": "Meta MCP direct pull (act_1185223312884959, time_increment=1), no BigQuery",
-    "dataWindow": "2026-01-13 to 2026-10-05",
+    "dataWindow": "2026-01-13 to 2026-10-06",
     "cacheStatus": "Live sync from Meta MCP with actual daily breakdown",
-    "note": "Ad spend data current through 2026-10-05",
-    "totalDays": 251,
-    "totalSpend": 313058.93
+    "note": "Ad spend data current through 2026-10-06",
+    "totalDays": 252,
+    "totalSpend": 314016.16
   },
   "daily": [
     {
@@ -1761,10 +1761,17 @@
     },
     {
       "date": "2026-10-05",
-      "spend": 555.55,
-      "impressions": 26598,
-      "linkClicks": 103,
-      "leads": 9
+      "spend": 1080.84,
+      "impressions": 53486,
+      "linkClicks": 248,
+      "leads": 16
+    },
+    {
+      "date": "2026-10-06",
+      "spend": 431.94,
+      "impressions": 25464,
+      "linkClicks": 112,
+      "leads": 6
     }
   ]
 }

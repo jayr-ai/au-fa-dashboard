@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-05T03:15:44.920074Z",
+    "generatedAt": "2026-10-06T03:57:58.589040Z",
     "source": "Meta MCP direct pull (act_1185223312884959), campaign-level, scoped to 8 confirmed Application Funnel campaigns \u2014 no BigQuery",
     "campaignFilter": "Explicit campaign ID list, confirmed by user 2026-09-30 (naming alone is not reliable across this account's history)",
     "campaignIds": [
@@ -13,9 +13,9 @@
       "120255291772900285",
       "120255356743120285"
     ],
-    "dataWindow": "2026-09-23 to 2026-10-05",
-    "totalDays": 13,
-    "totalSpend": 10560.25
+    "dataWindow": "2026-09-23 to 2026-10-06",
+    "totalDays": 14,
+    "totalSpend": 11320.89
   },
   "byCampaignDaily": [
     {
@@ -229,19 +229,37 @@
       "campaignId": "120255281254990285",
       "campaignName": "FA | SubmitApplication | Optin Funnel | 10k-Guarantee | TOF Audiences",
       "date": "2026-10-05",
-      "spend": 338.29,
-      "impressions": 5793,
-      "linkClicks": 94,
-      "leads": 8
+      "spend": 709.26,
+      "impressions": 13595,
+      "linkClicks": 231,
+      "leads": 15
     },
     {
       "campaignId": "120255384275490285",
       "campaignName": "FA | Submit Application | VSL Funnel | Mixed Creatives | MOF Audiences",
       "date": "2026-10-05",
-      "spend": 98.66,
-      "impressions": 489,
-      "linkClicks": 9,
+      "spend": 157.29,
+      "impressions": 863,
+      "linkClicks": 16,
       "leads": 1
+    },
+    {
+      "campaignId": "120255281254990285",
+      "campaignName": "FA | SubmitApplication | Optin Funnel | 10k-Guarantee | TOF Audiences",
+      "date": "2026-10-06",
+      "spend": 273.37,
+      "impressions": 5943,
+      "linkClicks": 105,
+      "leads": 6
+    },
+    {
+      "campaignId": "120255384275490285",
+      "campaignName": "FA | Submit Application | VSL Funnel | Mixed Creatives | MOF Audiences",
+      "date": "2026-10-06",
+      "spend": 57.67,
+      "impressions": 313,
+      "linkClicks": 7,
+      "leads": 0
     }
   ],
   "dailyTotal": [
@@ -331,10 +349,17 @@
     },
     {
       "date": "2026-10-05",
-      "spend": 436.95,
-      "impressions": 6282,
-      "linkClicks": 103,
-      "leads": 9
+      "spend": 866.55,
+      "impressions": 14458,
+      "linkClicks": 247,
+      "leads": 16
+    },
+    {
+      "date": "2026-10-06",
+      "spend": 331.04,
+      "impressions": 6256,
+      "linkClicks": 112,
+      "leads": 6
     }
   ]
 }
